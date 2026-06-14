@@ -1,0 +1,52 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rizz Assist">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0c44a"/>
+      <stop offset="100%" stop-color="#b8780c"/>
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1e1e30"/>
+      <stop offset="100%" stop-color="#0e0e1a"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Dark background circle -->
+  <circle cx="100" cy="100" r="97" fill="url(#bgGlow)"/>
+
+  <!-- Outer gold ring -->
+  <circle cx="100" cy="100" r="97" fill="none" stroke="url(#gold)" stroke-width="2.5" opacity="0.85"/>
+
+  <!-- Inner subtle ring -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="url(#gold)" stroke-width="0.6" opacity="0.25"/>
+
+  <!-- Left sunglass lens (square-ish with rounded corners) -->
+  <rect x="18" y="84" width="58" height="32" rx="11" fill="rgba(212,160,48,0.07)" stroke="url(#gold)" stroke-width="4.5"/>
+
+  <!-- Right sunglass lens -->
+  <rect x="86" y="84" width="58" height="32" rx="11" fill="rgba(212,160,48,0.07)" stroke="url(#gold)" stroke-width="4.5"/>
+
+  <!-- Nose bridge (slight arch) -->
+  <path d="M 76,100 Q 81,93 86,100" fill="none" stroke="url(#gold)" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Left temple arm -->
+  <path d="M 18,100 L 4,94" stroke="url(#gold)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Right temple arm -->
+  <path d="M 144,100 L 158,94" stroke="url(#gold)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- 4-pointed sparkle star (top right) -->
+  <path d="M 147,48 L 150.5,57 L 160,60 L 150.5,63 L 147,72 L 143.5,63 L 134,60 L 143.5,57 Z" fill="url(#gold)"/>
+
+  <!-- Small accent dot (top left, for balance) -->
+  <circle cx="52" cy="62" r="3.5" fill="url(#gold)" opacity="0.55"/>
+
+  <!-- RIZZ text -->
+  <text x="100" y="148" text-anchor="middle" fill="url(#gold)"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="22" font-weight="400" letter-spacing="7">RIZZ</text>
+
+  <!-- ASSIST text (smaller, subdued) -->
+  <text x="101" y="167" text-anchor="middle" fill="url(#gold)"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="9.5" font-weight="400" letter-spacing="7" opacity="0.6">ASSIST</text>
+</svg>
