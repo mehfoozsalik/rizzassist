@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { AnalysisResult, ShadeItem } from '@/lib/types';
+import { generateContentWithFallback, isGeminiOverloaded } from '@/lib/geminiServer';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -187,15 +188,14 @@ export async function POST(request: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({
-      model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
-      generationConfig: { temperature: 0.7, responseMimeType: 'application/json' },
-    });
-
-    const result = await model.generateContent([
-      { text: SYSTEM_PROMPT },
-      { inlineData: { mimeType: parsed.mimeType, data: parsed.data } },
-    ]);
+    const result = await generateContentWithFallback(
+      genAI,
+      [
+        { text: SYSTEM_PROMPT },
+        { inlineData: { mimeType: parsed.mimeType, data: parsed.data } },
+      ],
+      { temperature: 0.7, responseMimeType: 'application/json' }
+    );
 
     const text = result.response.text();
     const parsedResult = extractJson(text);
@@ -211,6 +211,12 @@ export async function POST(request: Request) {
       { headers: SEO_HEADERS }
     );
   } catch (err) {
+    if (isGeminiOverloaded(err)) {
+      return Response.json(
+        { error: 'Our AI is experiencing high demand right now. Please try again in a moment.' },
+        { status: 503, headers: SEO_HEADERS }
+      );
+    }
     const message =
       err instanceof Error ? err.message : 'Unexpected server error.';
     return Response.json(

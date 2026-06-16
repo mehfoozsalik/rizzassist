@@ -6,8 +6,8 @@ export function Footer() {
   return (
     <footer className="border-t border-white/5 bg-ink-900">
       <div className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid gap-10 sm:grid-cols-3">
-          <div>
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5" aria-label="Rizz Assist home">
               <Image
                 src="/assets/logo.svg"
@@ -26,14 +26,52 @@ export function Footer() {
             </p>
           </div>
 
-          <nav aria-label="Footer navigation">
+          <nav aria-label="Tools navigation">
             <h2 className="text-xs font-semibold uppercase tracking-widest text-white/40">
-              Explore
+              Tools
             </h2>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <Link href="/" className="text-white/60 transition-colors hover:text-brand-400">
-                  Get Your Rizz Report
+                  AI Look Analyzer
+                </Link>
+              </li>
+              <li>
+                <Link href="/body-type-calculator" className="text-white/60 transition-colors hover:text-brand-400">
+                  Body Type Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/body-shape-calculator" className="text-white/60 transition-colors hover:text-brand-400">
+                  Body Shape Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/eye-shape-detector" className="text-white/60 transition-colors hover:text-brand-400">
+                  Eye Shape Detector
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          <nav aria-label="Features info navigation">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-white/40">
+              Features Info
+            </h2>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li>
+                <Link href="/features/body-type-calculator" className="text-white/60 transition-colors hover:text-brand-400">
+                  About Body Types
+                </Link>
+              </li>
+              <li>
+                <Link href="/features/body-shape-calculator" className="text-white/60 transition-colors hover:text-brand-400">
+                  About Body Shapes
+                </Link>
+              </li>
+              <li>
+                <Link href="/features/eye-shape-detector" className="text-white/60 transition-colors hover:text-brand-400">
+                  About Eye Shapes
                 </Link>
               </li>
               <li>
@@ -41,19 +79,19 @@ export function Footer() {
                   How It Works
                 </Link>
               </li>
+            </ul>
+          </nav>
+
+          <nav aria-label="Footer navigation">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-white/40">
+              Explore
+            </h2>
+            <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <Link href="/faq" className="text-white/60 transition-colors hover:text-brand-400">
                   FAQ
                 </Link>
               </li>
-            </ul>
-          </nav>
-
-          <nav aria-label="Legal navigation">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-white/40">
-              Legal
-            </h2>
-            <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <Link href="/privacy" className="text-white/60 transition-colors hover:text-brand-400">
                   Privacy Policy

@@ -1,12 +1,22 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link';
+import Image from 'next/image';
+import { MobileMenu, type NavLink } from './MobileMenu';
+
+const NAV_LINKS: NavLink[] = [
+  { href: '/', label: 'Check Rizz' },
+  { href: '/body-type-calculator', label: 'Body Type' },
+  { href: '/body-shape-calculator', label: 'Body Shape' },
+  { href: '/eye-shape-detector', label: 'Eye Shape' },
+  { href: '/how-it-works', label: 'How It Works' },
+  { href: '/faq', label: 'FAQ' },
+];
 
 export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/5 bg-ink-900 shadow-lg shadow-black/20">
       <nav
         aria-label="Main navigation"
-        className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3"
+        className="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-3"
       >
         <Link
           href="/"
@@ -26,31 +36,18 @@ export function Navbar() {
           </span>
         </Link>
 
-        <ul className="flex items-center gap-1 text-sm font-medium">
-          <li>
-            <Link
-              href="/how-it-works"
-              className="rounded-lg px-3 py-1.5 text-white/70 transition-colors hover:bg-white/5 hover:text-white"
-            >
-              How It Works
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/faq"
-              className="rounded-lg px-3 py-1.5 text-white/70 transition-colors hover:bg-white/5 hover:text-white"
-            >
-              FAQ
-            </Link>
-          </li>
-          <li className="hidden sm:block">
-            <Link
-              href="/privacy"
-              className="rounded-lg px-3 py-1.5 text-white/70 transition-colors hover:bg-white/5 hover:text-white"
-            >
-              Privacy
-            </Link>
-          </li>
+        {/* Desktop nav — full link list, tablet/mobile use the hamburger menu instead */}
+        <ul className="hidden items-center gap-1 text-sm font-medium lg:flex">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="rounded-lg px-3 py-1.5 text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
           <li>
             <Link
               href="/#upload"
@@ -60,6 +57,8 @@ export function Navbar() {
             </Link>
           </li>
         </ul>
+
+        <MobileMenu links={NAV_LINKS} />
       </nav>
     </header>
   );

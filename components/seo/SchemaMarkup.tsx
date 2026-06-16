@@ -49,6 +49,43 @@ export function WebAppSchema() {
   );
 }
 
+export function ToolWebAppSchema({
+  name,
+  description,
+  url,
+  featureList,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  featureList: string[];
+}) {
+  return (
+    <JsonLd
+      data={{
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        name,
+        description,
+        url,
+        applicationCategory: 'LifestyleApplication',
+        operatingSystem: 'Web',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+        },
+        featureList,
+        isPartOf: {
+          '@type': 'WebSite',
+          name: SITE_NAME,
+          url: SITE_URL,
+        },
+      }}
+    />
+  );
+}
+
 interface FaqItem {
   question: string;
   answer: string;
