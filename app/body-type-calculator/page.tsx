@@ -15,7 +15,7 @@ const PAGE_URL = `${SITE_URL}/body-type-calculator`;
 export const metadata: Metadata = {
   title: 'Body Type Calculator | Find Your Ectomorph, Mesomorph or Endomorph Type',
   description:
-    "Free body type calculator. Enter your measurements to discover if you're an ectomorph, mesomorph, or endomorph — with personalized fitness and style tips.",
+    "Free body type calculator. Enter your measurements to discover if you're an ectomorph, mesomorph, or endomorph, with personalized fitness and style tips.",
   keywords: [
     'body type calculator',
     'ectomorph mesomorph endomorph',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Body Type Calculator | Ectomorph, Mesomorph or Endomorph',
     description:
-      "Enter your measurements to discover your body type — with personalized fitness, diet, and style tips.",
+      "Enter your measurements to discover your body type, with personalized fitness, diet, and style tips.",
     url: PAGE_URL,
     siteName: SITE_NAME,
     type: 'website',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Body Type Calculator | Ectomorph, Mesomorph or Endomorph',
     description:
-      "Enter your measurements to discover your body type — with personalized fitness, diet, and style tips.",
+      "Enter your measurements to discover your body type, with personalized fitness, diet, and style tips.",
   },
 };
 
@@ -44,7 +44,7 @@ const FAQ_ITEMS = [
   {
     question: 'Can body type change?',
     answer:
-      'Your underlying skeletal frame stays fairly fixed, but body composition (muscle and fat distribution) can shift significantly with training and diet — many people show traits of more than one type.',
+      'Your underlying skeletal frame stays fairly fixed, but body composition (muscle and fat distribution) can shift significantly with training and diet. Many people show traits of more than one type.',
   },
   {
     question: 'Is BMI accurate?',
@@ -98,7 +98,7 @@ export default function BodyTypeCalculatorPage() {
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-base text-white/65">
                 Enter your measurements to find out if you&apos;re an Ectomorph,
-                Mesomorph, or Endomorph — with fitness, diet, and style tips
+                Mesomorph, or Endomorph, with fitness, diet, and style tips
                 tailored to your build.
               </p>
             </Reveal>
@@ -114,8 +114,8 @@ export default function BodyTypeCalculatorPage() {
             <Reveal>
               <h2 className="text-2xl font-bold text-gray-900">What Are Body Types?</h2>
               <p className="mt-3 text-gray-600">
-                Body type theory groups people into three broad somatotypes —
-                Ectomorph, Mesomorph, and Endomorph — based on skeletal frame,
+                Body type theory groups people into three broad somatotypes:
+                Ectomorph, Mesomorph, and Endomorph, based on skeletal frame,
                 metabolism, and how the body tends to build muscle and store
                 fat. Knowing yours helps you choose training and nutrition
                 approaches that actually fit your build, instead of following
@@ -140,10 +140,10 @@ export default function BodyTypeCalculatorPage() {
               </h2>
               <ul className="mt-4 space-y-2.5 text-gray-600">
                 {[
-                  'Train smarter — the right rep ranges, volume, and rest periods differ by body type',
-                  'Eat with purpose — calorie and macro needs vary significantly between types',
-                  'Dress to your build — certain cuts and fabrics flatter different frames',
-                  'Set realistic expectations — your genetics influence how fast you gain or lose weight',
+                  'Train smarter: the right rep ranges, volume, and rest periods differ by body type',
+                  'Eat with purpose: calorie and macro needs vary significantly between types',
+                  'Dress to your build: certain cuts and fabrics flatter different frames',
+                  'Set realistic expectations: your genetics influence how fast you gain or lose weight',
                 ].map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true" />

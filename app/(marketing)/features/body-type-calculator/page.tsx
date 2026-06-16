@@ -9,12 +9,12 @@ import { BODY_TYPE_PROFILES } from '@/lib/bodyType';
 const PAGE_URL = `${SITE_URL}/features/body-type-calculator`;
 
 export const metadata: Metadata = {
-  title: 'Body Types Explained — Ectomorph, Mesomorph & Endomorph',
+  title: 'Body Types Explained: Ectomorph, Mesomorph & Endomorph',
   description:
     'Learn what body types are, how the body type calculator works, and answers to common questions about ectomorph, mesomorph, and endomorph builds.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Body Types Explained — Ectomorph, Mesomorph & Endomorph',
+    title: 'Body Types Explained: Ectomorph, Mesomorph & Endomorph',
     description:
       'Learn what body types are and how the body type calculator works.',
     url: PAGE_URL,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Body Types Explained — Ectomorph, Mesomorph & Endomorph',
+    title: 'Body Types Explained: Ectomorph, Mesomorph & Endomorph',
     description:
       'Learn what body types are and how the body type calculator works.',
   },
@@ -33,7 +33,7 @@ const FAQ_ITEMS = [
   {
     question: 'Can body type change?',
     answer:
-      'Your underlying skeletal frame stays fairly fixed, but body composition (muscle and fat distribution) can shift significantly with training and diet — many people show traits of more than one type.',
+      'Your underlying skeletal frame stays fairly fixed, but body composition (muscle and fat distribution) can shift significantly with training and diet. Many people show traits of more than one type.',
   },
   {
     question: 'Is BMI accurate?',
@@ -105,7 +105,7 @@ export default function BodyTypeFeaturePage() {
             </li>
           </ul>
           <p className="mt-3 text-gray-600">
-            Everything runs in your browser — no photo or measurement data is
+            Everything runs in your browser. No photo or measurement data is
             ever sent to a server.
           </p>
         </section>

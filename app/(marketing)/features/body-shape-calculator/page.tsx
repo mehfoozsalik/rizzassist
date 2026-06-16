@@ -10,12 +10,12 @@ import { BODY_SHAPE_PROFILES } from '@/lib/bodyShape';
 const PAGE_URL = `${SITE_URL}/features/body-shape-calculator`;
 
 export const metadata: Metadata = {
-  title: 'Body Shapes Explained — Hourglass, Pear, Apple, Rectangle & Inverted Triangle',
+  title: 'Body Shapes Explained: Hourglass, Pear, Apple, Rectangle & Inverted Triangle',
   description:
     'A visual guide to the 5 body shapes, how the body shape calculator works, and the difference between body shape and body type.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Body Shapes Explained — Hourglass, Pear, Apple, Rectangle & Inverted Triangle',
+    title: 'Body Shapes Explained: Hourglass, Pear, Apple, Rectangle & Inverted Triangle',
     description: 'A visual guide to the 5 body shapes and how the calculator works.',
     url: PAGE_URL,
     siteName: SITE_NAME,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Body Shapes Explained — Hourglass, Pear, Apple, Rectangle & Inverted Triangle',
+    title: 'Body Shapes Explained: Hourglass, Pear, Apple, Rectangle & Inverted Triangle',
     description: 'A visual guide to the 5 body shapes and how the calculator works.',
   },
 };
@@ -37,12 +37,12 @@ const FAQ_ITEMS = [
   {
     question: 'How do I dress for my shape?',
     answer:
-      'The goal is balance — add visual volume where your frame is narrower and streamline where it is wider. Each shape profile includes specific wear and avoid recommendations tailored to your proportions.',
+      'The goal is balance: add visual volume where your frame is narrower and streamline where it is wider. Each shape profile includes specific wear and avoid recommendations tailored to your proportions.',
   },
   {
     question: 'Is one shape better?',
     answer:
-      'No — every body shape can look great with the right styling. This tool is about understanding your proportions so you can dress to highlight what you love, not about ranking shapes.',
+      'No, every body shape can look great with the right styling. This tool is about understanding your proportions so you can dress to highlight what you love, not about ranking shapes.',
   },
 ];
 
@@ -93,7 +93,7 @@ export default function BodyShapeFeaturePage() {
             describes your metabolism and how easily you gain or lose weight
             and muscle. Body <strong>shape</strong> (hourglass, pear, apple,
             rectangle, inverted triangle) describes the silhouette created by
-            your bust, waist, and hip measurements — useful for styling and
+            your bust, waist, and hip measurements, useful for styling and
             fashion regardless of your body type.
           </p>
         </section>
@@ -106,8 +106,8 @@ export default function BodyShapeFeaturePage() {
           </h2>
           <p className="mt-3 text-gray-600">
             Enter your bust/chest, waist, and hip measurements. We compare
-            the ratios between them — how close your bust and hips are in
-            width, and how much smaller your waist is — to classify your
+            the ratios between them (how close your bust and hips are in
+            width, and how much smaller your waist is) to classify your
             shape into one of five categories. Everything runs in your
             browser; no data is sent to a server.
           </p>

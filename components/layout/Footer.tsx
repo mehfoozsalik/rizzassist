@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { CookieSettingsButton } from './CookieSettingsButton';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -21,7 +22,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/50">
-              Your AI rizz coach — pickup lines, style upgrades, shade recs,
+              Your AI rizz coach: pickup lines, style upgrades, shade recs,
               and confidence tips. No login. No photo storage.
             </p>
           </div>
@@ -96,6 +97,9 @@ export function Footer() {
                 <Link href="/privacy" className="text-white/60 transition-colors hover:text-brand-400">
                   Privacy Policy
                 </Link>
+              </li>
+              <li>
+                <CookieSettingsButton />
               </li>
             </ul>
           </nav>

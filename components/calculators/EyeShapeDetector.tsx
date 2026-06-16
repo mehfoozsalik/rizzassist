@@ -291,7 +291,7 @@ export function EyeShapeDetector() {
               </button>
             </div>
             <figcaption className="mt-2 text-center text-xs text-gray-400">
-              Preview — your photo stays on your device until you analyze.
+              Preview: your photo stays on your device until you analyze.
             </figcaption>
           </figure>
           <div className="border-t border-gray-100 px-5 py-4">
@@ -345,7 +345,7 @@ export function EyeShapeDetector() {
               {lowConfidence && (
                 <div className="flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-xs text-amber-700">
                   <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                  Landmark confidence was low — for best accuracy, use a brighter, more direct photo.
+                  Landmark confidence was low. For best accuracy, use a brighter, more direct photo.
                 </div>
               )}
               {aiUnavailable && (

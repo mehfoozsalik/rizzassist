@@ -188,7 +188,7 @@ export function BodyTypeCalculator() {
           <div>
             <label htmlFor="bt-gender" className="block text-sm font-medium text-gray-700">
               Gender (for frame size){' '}
-              <span className="text-gray-400">— optional</span>
+              <span className="text-gray-400">(optional)</span>
             </label>
             <select
               id="bt-gender"
@@ -341,9 +341,9 @@ export function BodyTypeCalculator() {
                 {activeTab === 'Weekly Plan' && (
                   <div className="grid gap-3 sm:grid-cols-3">
                     {[
-                      { label: 'Cardio', value: advice?.weeklyPlan?.cardio ?? '—' },
-                      { label: 'Strength', value: advice?.weeklyPlan?.strength ?? '—' },
-                      { label: 'Rest', value: advice?.weeklyPlan?.rest ?? '—' },
+                      { label: 'Cardio', value: advice?.weeklyPlan?.cardio ?? 'N/A' },
+                      { label: 'Strength', value: advice?.weeklyPlan?.strength ?? 'N/A' },
+                      { label: 'Rest', value: advice?.weeklyPlan?.rest ?? 'N/A' },
                     ].map((item) => (
                       <div key={item.label} className="rounded-xl border border-gray-100 bg-cream-50 p-4 text-center">
                         <Calendar className="mx-auto h-4 w-4 text-brand-600" aria-hidden="true" />

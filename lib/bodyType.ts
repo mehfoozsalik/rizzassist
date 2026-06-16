@@ -65,18 +65,18 @@ export const BODY_TYPE_PROFILES: BodyTypeProfile[] = [
       'A naturally lean, narrow frame with fast metabolism. Ectomorphs tend to have smaller joints, narrow shoulders and hips, and find it harder to gain weight or muscle.',
     fitness: [
       'Prioritize heavy compound lifts (squats, deadlifts, bench press) over cardio',
-      'Keep sessions shorter and intense — excessive cardio burns precious calories',
+      'Keep sessions shorter and intense, since excessive cardio burns precious calories',
       'Allow longer rest between sets (90+ seconds) to maximize strength gains',
     ],
     diet: [
       'Eat in a calorie surplus with frequent meals (5-6 per day)',
       'Prioritize protein (1.6-2.2g per kg bodyweight) to support muscle growth',
-      "Don't skip carbs — they fuel the intensity needed to build mass",
+      "Don't skip carbs: they fuel the intensity needed to build mass",
     ],
     style: [
-      'Layering adds visual bulk — try jackets, layered tees, and textured fabrics',
+      'Layering adds visual bulk: try jackets, layered tees, and textured fabrics',
       'Horizontal stripes and structured shoulders create the illusion of width',
-      'Avoid overly baggy clothes that swallow your frame — go for slim, tailored fits',
+      'Avoid overly baggy clothes that swallow your frame, and go for slim, tailored fits instead',
     ],
     famous: ['Adrien Brody', 'Kate Moss', 'Cillian Murphy'],
   },
@@ -86,11 +86,11 @@ export const BODY_TYPE_PROFILES: BodyTypeProfile[] = [
       'An athletic, naturally muscular build with shoulders roughly as wide as the hips. Mesomorphs gain muscle and lose fat relatively easily compared to other types.',
     fitness: [
       'Mix strength training with moderate cardio for balanced conditioning',
-      'Respond well to varied training — change rep ranges every few weeks',
+      'Respond well to varied training: change rep ranges every few weeks',
       'Train 4-5x per week; recovery is generally faster than other types',
     ],
     diet: [
-      'Balanced macros work best — roughly even protein, carbs, and fats',
+      'Balanced macros work best: roughly even protein, carbs, and fats',
       'Calorie needs adjust quickly with activity level, so track and tweak often',
       'Time carbs around workouts for performance and recovery',
     ],
@@ -118,7 +118,7 @@ export const BODY_TYPE_PROFILES: BodyTypeProfile[] = [
     style: [
       'Monochrome outfits and vertical lines elongate and streamline your silhouette',
       'Structured blazers and tailored waistlines define your shape nicely',
-      'Avoid clingy fabrics around the midsection — opt for breathable, structured material',
+      'Avoid clingy fabrics around the midsection, opting instead for breathable, structured material',
     ],
     famous: ['Jack Black', 'Adele', 'Jonah Hill'],
   },

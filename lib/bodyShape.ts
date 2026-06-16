@@ -14,7 +14,7 @@ function detectBodyShape(bust: number, waist: number, hip: number): BodyShape {
   return 'Rectangle';
 }
 
-/** Measurements may be in cm or inches (per `unit`) — always compared in cm. */
+/** Measurements may be in cm or inches (per `unit`), always compared in cm. */
 export function calculateBodyShape(m: BodyShapeMeasurements): BodyShape {
   const toCm = (v: number) => (m.unit === 'imperial' ? v * IN_TO_CM : v);
   return detectBodyShape(toCm(m.bust), toCm(m.waist), toCm(m.hip));
@@ -46,13 +46,13 @@ export const BODY_SHAPE_PROFILES: BodyShapeProfile[] = [
     famous: ['Scarlett Johansson', 'Marilyn Monroe', 'Salma Hayek'],
     goals: [
       'Emphasize the waist with belts, seaming, or wrap styles',
-      'Keep proportions balanced — avoid overpowering shoulders or hips',
+      'Keep proportions balanced, avoiding overpowering shoulders or hips',
     ],
   },
   {
     shape: 'Pear',
     unique:
-      'Hips are noticeably wider than the bust, with a defined waist — weight tends to sit lower on the body.',
+      'Hips are noticeably wider than the bust, with a defined waist; weight tends to sit lower on the body.',
     wear: [
       'Structured or embellished tops that add width up top',
       'Boat-neck and off-shoulder tops to broaden the shoulder line',
@@ -71,7 +71,7 @@ export const BODY_SHAPE_PROFILES: BodyShapeProfile[] = [
   {
     shape: 'Apple',
     unique:
-      'The midsection — waist — is the widest part of the torso, with a less defined waistline relative to bust and hips.',
+      'The midsection (waist) is the widest part of the torso, with a less defined waistline relative to bust and hips.',
     wear: [
       'Empire-waist tops and dresses that flow from just under the bust',
       'V-necks to elongate the torso and draw the eye vertically',
@@ -98,7 +98,7 @@ export const BODY_SHAPE_PROFILES: BodyShapeProfile[] = [
     ],
     avoid: [
       'Completely straight-cut shift dresses with no shaping',
-      'Boxy tops paired with boxy bottoms — it flattens your shape further',
+      'Boxy tops paired with boxy bottoms, which flattens your shape further',
     ],
     famous: ['Cameron Diaz', 'Keira Knightley', 'Natalie Portman'],
     goals: [

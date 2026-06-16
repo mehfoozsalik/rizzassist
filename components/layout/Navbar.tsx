@@ -36,7 +36,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop nav — full link list, tablet/mobile use the hamburger menu instead */}
+        {/* Desktop nav: full link list. Tablet/mobile use the hamburger menu instead */}
         <ul className="hidden items-center gap-1 text-sm font-medium lg:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>

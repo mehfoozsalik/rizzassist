@@ -5,7 +5,7 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { Reveal } from '@/components/ui/Reveal';
 
 export const metadata: Metadata = {
-  title: 'How Rizz Assist Works — AI Pickup Lines, Style & Look Analysis Explained',
+  title: 'How Rizz Assist Works: AI Pickup Lines, Style & Look Analysis Explained',
   description:
     "Learn how Rizz Assist's AI analyzes your photo to generate pickup lines, style tips, shade recommendations, and face orientation feedback in seconds. No login required.",
   alternates: { canonical: `${SITE_URL}/how-it-works` },
@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 
 const STEPS = [
   {
-    title: 'Step 1 — Upload Your Photo',
+    title: 'Step 1: Upload Your Photo',
     text: 'Use a recent, well-lit photo where your face and outfit are visible. Selfies, half-body, or full-body shots all work. Drag and drop or browse to upload. Accepted: JPG, PNG, WebP up to 5MB.',
   },
   {
-    title: 'Step 2 — AI Analyzes Your Look',
+    title: 'Step 2: AI Analyzes Your Look',
     text: "Our vision model scans facial structure, grooming, expression, clothing colors, fit, and overall presentation. It identifies face shape for shades matching, detects style signals, and reads the confidence level you're projecting.",
   },
 ];
@@ -45,7 +45,7 @@ export default function HowItWorksPage() {
           How Rizz Assist Analyzes Your Look
         </h1>
         <p className="mt-4 text-lg text-gray-600">
-          Rizz Assist turns a single photo into a full Rizz Report — covering
+          Rizz Assist turns a single photo into a full Rizz Report, covering
           your style, grooming, best angles, shades that suit your face shape,
           personalized pickup lines, and the vibe you project. Here&apos;s exactly
           how it works.
@@ -65,7 +65,7 @@ export default function HowItWorksPage() {
         <Reveal>
           <div className="rounded-2xl border border-gray-200 bg-white p-6">
             <h2 className="text-lg font-semibold text-gray-900">
-              Step 3 — Your Rizz Report Is Generated
+              Step 3: Your Rizz Report Is Generated
             </h2>
             <p className="mt-2 text-gray-600">You receive:</p>
             <ul className="mt-3 space-y-2 text-gray-600">
@@ -73,8 +73,8 @@ export default function HowItWorksPage() {
                 <li key={label} className="flex gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true" />
                   <span>
-                    <strong className="font-semibold text-gray-900">{label}</strong>{' '}
-                    — {desc}
+                    <strong className="font-semibold text-gray-900">{label}</strong>
+                    : {desc}
                   </span>
                 </li>
               ))}
@@ -85,11 +85,11 @@ export default function HowItWorksPage() {
         <Reveal>
           <div className="rounded-2xl border border-gray-200 bg-white p-6">
             <h2 className="text-lg font-semibold text-gray-900">
-              Step 4 — Apply &amp; Level Up
+              Step 4: Apply &amp; Level Up
             </h2>
             <p className="mt-2 text-gray-600">
               Use the tips, try the lines, experiment with the looks. Come back
-              anytime — your photo is never stored, so every session is fresh.
+              anytime: your photo is never stored, so every session is fresh.
             </p>
           </div>
         </Reveal>
@@ -115,7 +115,7 @@ export default function HowItWorksPage() {
         <div className="mt-12 rounded-2xl bg-gradient-to-r from-brand-600 to-pink-600 p-8 text-center text-white">
           <h2 className="text-2xl font-bold">Ready? Upload your photo now</h2>
           <p className="mt-2 text-white/90">
-            Get your Rizz Report in seconds — free, no login.
+            Get your Rizz Report in seconds: free, no login.
           </p>
           <Link
             href="/"

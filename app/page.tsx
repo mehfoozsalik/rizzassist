@@ -31,7 +31,7 @@ const STEPS = [
   {
     icon: ImagePlus,
     title: "Upload your photo",
-    text: "Use a clear, well-lit selfie or full-body shot — the more Rizz Assist can see, the sharper the feedback.",
+    text: "Use a clear, well-lit selfie or full-body shot. The more Rizz Assist can see, the sharper the feedback.",
   },
   {
     icon: BarChart3,
@@ -54,7 +54,7 @@ const BENEFITS = [
   {
     icon: Flame,
     title: "Original Pickup Lines",
-    text: "AI generates lines matched to your exact look and vibe — not generic openers everyone's seen before.",
+    text: "AI generates lines matched to your exact look and vibe, not generic openers everyone's seen before.",
   },
   {
     icon: Crown,
@@ -69,7 +69,7 @@ const BENEFITS = [
   {
     icon: Glasses,
     title: "Shades Recommendations",
-    text: "Visual frame-by-frame recommendations matched to your face shape — see exactly what suits you.",
+    text: "Visual frame-by-frame recommendations matched to your face shape, so you see exactly what suits you.",
   },
   {
     icon: ScanFace,
@@ -79,7 +79,7 @@ const BENEFITS = [
   {
     icon: ShieldCheck,
     title: "100% Private",
-    text: "Photo analyzed in memory only — never stored, never shared. Zero data kept after your session.",
+    text: "Photo analyzed in memory only, never stored, never shared. Zero data kept after your session.",
   },
   {
     icon: Zap,
@@ -92,13 +92,13 @@ export default function HomePage() {
   return (
     <>
       <FaqSchema items={FAQS} />
-      <SkipToContent />
+      {/* <SkipToContent /> */}
       <Navbar />
 
       <main id="main-content">
         <AnimatedHero />
 
-        {/* ── Upload section ── */}
+        {/* Upload section */}
         <section
           id="upload"
           aria-labelledby="upload-heading"
@@ -120,7 +120,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── How it works ── */}
+        {/* How it works */}
         <section
           aria-labelledby="how-it-works"
           className="border-t border-gray-100 bg-white px-4 py-16"
@@ -146,7 +146,10 @@ export default function HomePage() {
                       {i + 1}
                     </span>
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600/10">
-                      <step.icon className="h-5 w-5 text-brand-600" aria-hidden="true" />
+                      <step.icon
+                        className="h-5 w-5 text-brand-600"
+                        aria-hidden="true"
+                      />
                     </div>
                     <h3 className="mt-4 text-sm font-semibold text-gray-900">
                       {step.title}
@@ -170,7 +173,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Benefits ── */}
+        {/* Benefits */}
         <section aria-labelledby="benefits" className="bg-cream-50 px-4 py-16">
           <div className="mx-auto max-w-5xl">
             <Reveal>
@@ -181,7 +184,8 @@ export default function HomePage() {
                 Why Rizz Assist Hits Different
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-500">
-                Everything you need to glow up — in one instant, AI-powered report.
+                Everything you need to glow up, in one instant, AI-powered
+                report.
               </p>
             </Reveal>
 
@@ -190,7 +194,10 @@ export default function HomePage() {
                 <Reveal key={benefit.title} delay={(i % 4) * 0.07}>
                   <article className="h-full rounded-2xl border border-gray-100 bg-white p-5 transition-shadow hover:shadow-md">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-900">
-                      <benefit.icon className="h-5 w-5 text-brand-400" aria-hidden="true" />
+                      <benefit.icon
+                        className="h-5 w-5 text-brand-400"
+                        aria-hidden="true"
+                      />
                     </div>
                     <h3 className="mt-4 text-sm font-semibold text-gray-900">
                       {benefit.title}
@@ -205,7 +212,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── FAQ ── */}
+        {/* FAQ */}
         <section
           aria-labelledby="faq-heading"
           className="border-t border-gray-100 bg-white px-4 py-16"

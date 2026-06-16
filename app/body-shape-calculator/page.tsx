@@ -51,12 +51,12 @@ const FAQ_ITEMS = [
   {
     question: 'How do I dress for my shape?',
     answer:
-      'The goal is balance — add visual volume where your frame is narrower and streamline where it is wider. Each shape profile below includes specific wear and avoid recommendations.',
+      'The goal is balance: add visual volume where your frame is narrower and streamline where it is wider. Each shape profile below includes specific wear and avoid recommendations.',
   },
   {
     question: 'Is one shape better?',
     answer:
-      'No — every body shape can look great with the right styling. This tool is about understanding your proportions so you can dress to highlight what you love, not about ranking shapes.',
+      'No, every body shape can look great with the right styling. This tool is about understanding your proportions so you can dress to highlight what you love, not about ranking shapes.',
   },
 ];
 
@@ -65,7 +65,7 @@ export default function BodyShapeCalculatorPage() {
     <>
       <ToolWebAppSchema
         name="Body Shape Calculator"
-        description="Free calculator that determines your body shape — Hourglass, Pear, Apple, Rectangle, or Inverted Triangle — based on bust, waist, and hip measurements."
+        description="Free calculator that determines your body shape (Hourglass, Pear, Apple, Rectangle, or Inverted Triangle) based on bust, waist, and hip measurements."
         url={PAGE_URL}
         featureList={[
           'Bust, waist, hip ratio analysis',
@@ -100,8 +100,8 @@ export default function BodyShapeCalculatorPage() {
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-base text-white/65">
                 Enter your bust, waist, and hip measurements to discover your
-                body shape — Hourglass, Pear, Apple, Rectangle, or Inverted
-                Triangle — with fashion tips made for your proportions.
+                body shape (Hourglass, Pear, Apple, Rectangle, or Inverted
+                Triangle) with fashion tips made for your proportions.
               </p>
             </Reveal>
           </div>
@@ -117,7 +117,7 @@ export default function BodyShapeCalculatorPage() {
               <h2 className="text-2xl font-bold text-gray-900">What Is a Body Shape?</h2>
               <p className="mt-3 text-gray-600">
                 Body shape describes the silhouette created by your bust,
-                waist, and hip proportions — Hourglass, Pear, Apple,
+                waist, and hip proportions: Hourglass, Pear, Apple,
                 Rectangle, or Inverted Triangle. Unlike body type (which
                 relates to metabolism and muscle gain), body shape is purely
                 about proportion, and it&apos;s the single most useful thing to
@@ -147,10 +147,10 @@ export default function BodyShapeCalculatorPage() {
               </h2>
               <ul className="mt-4 space-y-2.5 text-gray-600">
                 {[
-                  'Balance proportions — add visual volume where your frame is narrower and streamline where it is wider',
-                  'Shop with confidence — know which necklines, waistlines, and cuts to look for before you buy',
-                  'Skip the trial and error — stop guessing why certain styles never seem to fit right',
-                  'Style for any shape — every body shape can look great with the right approach',
+                  'Balance proportions: add visual volume where your frame is narrower and streamline where it is wider',
+                  'Shop with confidence: know which necklines, waistlines, and cuts to look for before you buy',
+                  'Skip the trial and error: stop guessing why certain styles never seem to fit right',
+                  'Style for any shape: every body shape can look great with the right approach',
                 ].map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true" />

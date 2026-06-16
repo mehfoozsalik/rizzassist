@@ -9,12 +9,12 @@ import { EyeShapeGuide } from '@/components/calculators/EyeShapeGuide';
 const PAGE_URL = `${SITE_URL}/features/eye-shape-detector`;
 
 export const metadata: Metadata = {
-  title: 'Eye Shapes Explained — Visual Guide to All 10 Eye Shapes',
+  title: 'Eye Shapes Explained: Visual Guide to All 10 Eye Shapes',
   description:
     'A visual guide to the 10 eye shapes, how AI detects eye shape from a photo, and makeup tips for each shape.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Eye Shapes Explained — Visual Guide to All 10 Eye Shapes',
+    title: 'Eye Shapes Explained: Visual Guide to All 10 Eye Shapes',
     description: 'A visual guide to the 10 eye shapes and how the AI detector works.',
     url: PAGE_URL,
     siteName: SITE_NAME,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Eye Shapes Explained — Visual Guide to All 10 Eye Shapes',
+    title: 'Eye Shapes Explained: Visual Guide to All 10 Eye Shapes',
     description: 'A visual guide to the 10 eye shapes and how the AI detector works.',
   },
 };
@@ -31,7 +31,7 @@ const FAQ_ITEMS = [
   {
     question: 'Can I change my eye shape?',
     answer:
-      'Your underlying eye shape is anatomical and stays fixed, but makeup techniques — like eyeliner placement and eyeshadow blending — can visually enhance or soften how your eye shape appears.',
+      'Your underlying eye shape is anatomical and stays fixed, but makeup techniques, like eyeliner placement and eyeshadow blending, can visually enhance or soften how your eye shape appears.',
   },
   {
     question: "What's the most common eye shape?",
@@ -41,7 +41,7 @@ const FAQ_ITEMS = [
   {
     question: 'Does eye shape affect makeup?',
     answer:
-      'Yes — the techniques that make eyeliner and eyeshadow look best vary significantly by eye shape. What enhances hooded eyes can look very different from what works for round or upturned eyes.',
+      'Yes, the techniques that make eyeliner and eyeshadow look best vary significantly by eye shape. What enhances hooded eyes can look very different from what works for round or upturned eyes.',
   },
 ];
 

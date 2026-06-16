@@ -387,8 +387,8 @@ export function BodyShapeCalculator() {
             <div className="mb-5 flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-xs text-amber-700">
               <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
               {lowConfidence
-                ? 'Pose detection confidence was low — measurements are a rough estimate.'
-                : 'Measurements estimated from photo pose — waist is approximated, not directly measured.'}
+                ? 'Pose detection confidence was low, so measurements are a rough estimate.'
+                : 'Measurements estimated from photo pose. Waist is approximated, not directly measured.'}
             </div>
           )}
           {aiUnavailable && (

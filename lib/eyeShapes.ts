@@ -12,9 +12,9 @@ export const EYE_SHAPE_GUIDE: EyeShapeGuideEntry[] = [
   {
     name: 'Almond',
     description:
-      'Tapered, pointed corners with visible crease — often considered the most balanced and versatile eye shape.',
+      'Tapered, pointed corners with visible crease, often considered the most balanced and versatile eye shape.',
     tips: [
-      'Most eyeliner and eyeshadow styles work well — experiment freely',
+      'Most eyeliner and eyeshadow styles work well, so experiment freely',
       'Winged liner following the natural lift of the outer corner looks great',
       'Define the crease with a mid-tone shade for added dimension',
     ],
@@ -30,7 +30,7 @@ export const EYE_SHAPE_GUIDE: EyeShapeGuideEntry[] = [
     tips: [
       'Extend liner slightly past the outer corner to elongate the eye',
       'Apply darker shadow at the outer V to add length',
-      'Avoid heavy liner all the way around — it can make eyes look smaller',
+      'Avoid heavy liner all the way around, as it can make eyes look smaller',
     ],
     tilt: 0,
     widthRatio: 0.85,
@@ -71,7 +71,7 @@ export const EYE_SHAPE_GUIDE: EyeShapeGuideEntry[] = [
       'Eyes sit further back in the socket, often appearing more shadowed with a prominent brow bone.',
     tips: [
       'Light, shimmery shades on the lid help bring eyes forward',
-      'Avoid heavy dark shadow in the crease — it can look sunken',
+      'Avoid heavy dark shadow in the crease, as it can look sunken',
       'Highlight the inner corner and brow bone for a brightening effect',
     ],
     tilt: 0,
@@ -142,7 +142,7 @@ export const EYE_SHAPE_GUIDE: EyeShapeGuideEntry[] = [
     tips: [
       'Matte, darker shades on the lid help recede the eye visually',
       'Smoky, blended definition along the crease adds depth without emphasizing protrusion',
-      'Avoid frosted or light shimmer all over the lid — it draws more attention forward',
+      'Avoid frosted or light shimmer all over the lid, as it draws more attention forward',
     ],
     tilt: 0,
     widthRatio: 1,

@@ -21,7 +21,10 @@ export function AnimatedHero() {
       className="relative overflow-hidden bg-ink-900"
     >
       {/* Subtle ambient blobs */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
         <div className="absolute -left-32 -top-16 h-96 w-96 rounded-full bg-brand-600/10 blur-3xl animate-blob" />
         <div className="absolute right-0 top-24 h-80 w-80 rounded-full bg-brand-400/8 blur-3xl animate-blob [animation-delay:4s]" />
         <div className="absolute bottom-0 left-1/2 h-72 w-72 rounded-full bg-ink-700/60 blur-3xl animate-blob [animation-delay:8s]" />
@@ -38,7 +41,7 @@ export function AnimatedHero() {
         }}
       />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:py-28 lg:grid-cols-2">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-10 sm:py-18 lg:grid-cols-2">
         {/* Text column */}
         <motion.div
           variants={container}
@@ -59,8 +62,7 @@ export function AnimatedHero() {
             id="hero-heading"
             className="mt-6 text-balance text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            Unlock Your{" "}
-            <span className="gold-text">Inner Rizz</span>
+            Unlock Your <span className="gold-text">Inner Rizz</span>
             <br />
             <span className="text-white/90">with AI.</span>
           </motion.h1>
@@ -69,7 +71,7 @@ export function AnimatedHero() {
             variants={item}
             className="mx-auto mt-5 max-w-xl text-balance text-base leading-relaxed text-white/60 sm:text-lg lg:mx-0"
           >
-            Upload a photo — get personalized pickup lines, style upgrades,
+            Upload a photo to get personalized pickup lines, style upgrades,
             shade recommendations, and confidence tips built around your look.
           </motion.p>
 
@@ -94,12 +96,15 @@ export function AnimatedHero() {
             className="mt-6 flex flex-wrap items-center justify-center gap-4 lg:justify-start"
           >
             <span className="flex items-center gap-1.5 text-xs text-white/40">
-              <ShieldCheck className="h-3.5 w-3.5 text-brand-500" aria-hidden="true" />
-              100% private — photo never stored
+              <ShieldCheck
+                className="h-3.5 w-3.5 text-brand-500"
+                aria-hidden="true"
+              />
+              100% private, photo never stored
             </span>
             <span className="flex items-center gap-1.5 text-xs text-white/40">
               <Zap className="h-3.5 w-3.5 text-brand-500" aria-hidden="true" />
-              Instant results — no waitlist
+              Instant results, no waitlist
             </span>
           </motion.div>
         </motion.div>

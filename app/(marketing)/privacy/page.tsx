@@ -5,9 +5,9 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { Reveal } from '@/components/ui/Reveal';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Rizz Assist | No Photo Storage, No Data Selling',
+  title: 'Privacy Policy: Rizz Assist | No Photo Storage, No Data Selling',
   description:
-    'Rizz Assist never stores your photos. Learn exactly how your data is handled — processed in memory, discarded instantly, never shared or sold.',
+    'Rizz Assist never stores your photos. Learn exactly how your data is handled: processed in memory, discarded instantly, never shared or sold.',
   alternates: { canonical: `${SITE_URL}/privacy` },
 };
 

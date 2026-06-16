@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Script from 'next/script';
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from '@/lib/config';
 import { WebAppSchema } from '@/components/seo/SchemaMarkup';
+import { CookieConsent } from '@/components/ui/CookieConsent';
 import './globals.css';
 
 const inter = Inter({
@@ -16,7 +16,7 @@ const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID;
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Rizz Assist — AI Rizz Coach | Pickup Lines, Style Tips & Look Analysis',
+    default: 'Rizz Assist: AI Rizz Coach | Pickup Lines, Style Tips & Look Analysis',
     template: '%s | Rizz Assist',
   },
   description: SITE_DESCRIPTION,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: 'Rizz Assist — AI Rizz Coach & Pickup Line Generator',
+    title: 'Rizz Assist: AI Rizz Coach & Pickup Line Generator',
     description:
       'Upload a photo. Get pickup lines, style tips, shades recs, and your personal Rizz Score. Free. Instant. Private.',
     url: SITE_URL,
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rizz Assist — AI Rizz Coach & Pickup Line Generator',
+    title: 'Rizz Assist: AI Rizz Coach & Pickup Line Generator',
     description:
       'Upload a photo. Get pickup lines, style tips, shades recs, and your personal Rizz Score. Free. Instant. Private.',
     images: ['/twitter-image.png'],
@@ -90,22 +90,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-white text-gray-900 antialiased">
         <WebAppSchema />
         {children}
-        {GA_MEASUREMENT_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_MEASUREMENT_ID}');
-              `}
-            </Script>
-          </>
-        )}
+        <CookieConsent gaId={GA_MEASUREMENT_ID} />
       </body>
     </html>
   );

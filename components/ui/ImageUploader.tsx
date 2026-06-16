@@ -172,7 +172,7 @@ export function ImageUploader() {
               )}
             </div>
             <figcaption className="mt-2 text-center text-xs text-gray-400">
-              Preview — your photo stays on your device until you analyze.
+              Preview: your photo stays on your device until you analyze.
             </figcaption>
           </figure>
 

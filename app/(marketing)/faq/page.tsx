@@ -7,7 +7,7 @@ import { FaqSchema } from '@/components/seo/SchemaMarkup';
 import { Reveal } from '@/components/ui/Reveal';
 
 export const metadata: Metadata = {
-  title: 'FAQ — Rizz Assist | AI Pickup Lines, Style Tips & Photo Analysis',
+  title: 'FAQ: Rizz Assist | AI Pickup Lines, Style Tips & Photo Analysis',
   description:
     'Got questions about Rizz Assist? Find out how the AI generates pickup lines, analyzes your style, recommends shades, and what happens to your photo after analysis.',
   alternates: { canonical: `${SITE_URL}/faq` },
@@ -60,7 +60,7 @@ export default function FaqPage() {
 
       <p className="mt-10 text-center text-gray-600">
         <Link href="/" className="font-medium text-brand-600 underline hover:no-underline">
-          Try it free — no login needed &rarr;
+          Try it free, no login needed &rarr;
         </Link>
       </p>
     </article>
