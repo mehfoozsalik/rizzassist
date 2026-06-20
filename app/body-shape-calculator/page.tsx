@@ -5,7 +5,7 @@ import { SkipToContent } from '@/components/seo/SkipToContent';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import { ToolWebAppSchema, FaqSchema } from '@/components/seo/SchemaMarkup';
+import { ToolWebAppSchema, FaqSchema, BreadcrumbSchema } from '@/components/seo/SchemaMarkup';
 import { Reveal } from '@/components/ui/Reveal';
 import { BodyShapeCalculator } from '@/components/calculators/BodyShapeCalculator';
 import { ShapeSilhouette } from '@/components/calculators/ShapeSilhouette';
@@ -14,9 +14,9 @@ import { BODY_SHAPE_PROFILES } from '@/lib/bodyShape';
 const PAGE_URL = `${SITE_URL}/body-shape-calculator`;
 
 export const metadata: Metadata = {
-  title: 'Body Shape Calculator | Hourglass, Pear, Apple, Rectangle or Inverted Triangle',
+  title: 'Body Shape Calculator: Find Your Body Shape | Rizz Assist',
   description:
-    'Discover your body shape in seconds. Enter bust, waist, and hip measurements to get personalized fashion and styling recommendations.',
+    'Discover your body shape in seconds. Enter bust, waist, and hip measurements to get personalized fashion and styling recommendations for your figure.',
   keywords: [
     'body shape calculator',
     'hourglass body shape',
@@ -24,21 +24,32 @@ export const metadata: Metadata = {
     'apple body shape',
     'body shape test',
     'what is my body shape',
+    'inverted triangle body shape',
+    'rectangle body shape',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Body Shape Calculator | Hourglass, Pear, Apple, Rectangle or Inverted Triangle',
+    title: 'Body Shape Calculator: Find Your Body Shape | Rizz Assist',
     description:
-      'Enter bust, waist, and hip measurements to get personalized fashion and styling recommendations.',
+      'Discover your body shape in seconds. Enter bust, waist, and hip measurements to get personalized fashion and styling recommendations for your figure.',
     url: PAGE_URL,
     siteName: SITE_NAME,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Rizz Assist Body Shape Calculator showing hourglass, pear, apple, and rectangle shape results',
+      },
+    ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Body Shape Calculator | Hourglass, Pear, Apple, Rectangle or Inverted Triangle',
+    title: 'Body Shape Calculator: Find Your Body Shape | Rizz Assist',
     description:
-      'Enter bust, waist, and hip measurements to get personalized fashion and styling recommendations.',
+      'Discover your body shape in seconds. Enter bust, waist, and hip measurements to get personalized fashion and styling recommendations for your figure.',
+    images: ['/twitter-image.png'],
   },
 };
 
@@ -63,6 +74,12 @@ const FAQ_ITEMS = [
 export default function BodyShapeCalculatorPage() {
   return (
     <>
+      <BreadcrumbSchema
+        crumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Body Shape Calculator', item: PAGE_URL },
+        ]}
+      />
       <ToolWebAppSchema
         name="Body Shape Calculator"
         description="Free calculator that determines your body shape (Hourglass, Pear, Apple, Rectangle, or Inverted Triangle) based on bust, waist, and hip measurements."
@@ -184,6 +201,23 @@ export default function BodyShapeCalculatorPage() {
                   Read the full guide
                 </Link>
               </p>
+            </Reveal>
+
+            <Reveal>
+              <div className="mt-6 border-t border-gray-100 pt-6 text-center text-sm text-gray-500">
+                Also try:{' '}
+                <Link href="/body-type-calculator" className="font-medium text-brand-600 underline hover:no-underline">
+                  Body Type Calculator
+                </Link>
+                {' · '}
+                <Link href="/eye-shape-detector" className="font-medium text-brand-600 underline hover:no-underline">
+                  Eye Shape Detector
+                </Link>
+                {' · '}
+                <Link href="/" className="font-medium text-brand-600 underline hover:no-underline">
+                  AI Look Analyzer
+                </Link>
+              </div>
             </Reveal>
           </div>
         </section>

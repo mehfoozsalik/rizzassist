@@ -5,7 +5,7 @@ import { SkipToContent } from '@/components/seo/SkipToContent';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import { ToolWebAppSchema, FaqSchema } from '@/components/seo/SchemaMarkup';
+import { ToolWebAppSchema, FaqSchema, BreadcrumbSchema } from '@/components/seo/SchemaMarkup';
 import { Reveal } from '@/components/ui/Reveal';
 import { EyeShapeDetector } from '@/components/calculators/EyeShapeDetector';
 import { EYE_SHAPE_GUIDE } from '@/lib/eyeShapes';
@@ -13,9 +13,9 @@ import { EYE_SHAPE_GUIDE } from '@/lib/eyeShapes';
 const PAGE_URL = `${SITE_URL}/eye-shape-detector`;
 
 export const metadata: Metadata = {
-  title: 'Eye Shape Detector | AI-Powered Eye Shape Analysis & Makeup Tips',
+  title: 'Eye Shape Detector: Find Your Eye Shape Free | Rizz Assist',
   description:
-    'Upload a photo and let AI identify your eye shape (almond, round, hooded, monolid, and more) with expert makeup tips tailored to your eyes.',
+    'Upload a photo and let AI identify your eye shape (almond, round, hooded, monolid, and more) with expert makeup and eyeliner tips tailored to your eyes.',
   keywords: [
     'eye shape detector',
     'what is my eye shape',
@@ -23,21 +23,31 @@ export const metadata: Metadata = {
     'hooded eyes makeup',
     'almond eye shape',
     'monolid makeup tips',
+    'eye shape quiz',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Eye Shape Detector | AI-Powered Eye Shape Analysis & Makeup Tips',
+    title: 'Eye Shape Detector: Find Your Eye Shape Free | Rizz Assist',
     description:
-      'Upload a photo and let AI identify your eye shape with expert makeup tips tailored to your eyes.',
+      'Upload a photo and let AI identify your eye shape (almond, round, hooded, monolid, and more) with expert makeup and eyeliner tips tailored to your eyes.',
     url: PAGE_URL,
     siteName: SITE_NAME,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Rizz Assist Eye Shape Detector showing AI-powered eye shape analysis and makeup tips',
+      },
+    ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Eye Shape Detector | AI-Powered Eye Shape Analysis & Makeup Tips',
+    title: 'Eye Shape Detector: Find Your Eye Shape Free | Rizz Assist',
     description:
-      'Upload a photo and let AI identify your eye shape with expert makeup tips tailored to your eyes.',
+      'Upload a photo and let AI identify your eye shape (almond, round, hooded, monolid, and more) with expert makeup and eyeliner tips tailored to your eyes.',
+    images: ['/twitter-image.png'],
   },
 };
 
@@ -62,6 +72,12 @@ const FAQ_ITEMS = [
 export default function EyeShapeDetectorPage() {
   return (
     <>
+      <BreadcrumbSchema
+        crumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Eye Shape Detector', item: PAGE_URL },
+        ]}
+      />
       <ToolWebAppSchema
         name="Eye Shape Detector"
         description="AI-powered tool that analyzes a photo to identify eye shape and provide tailored makeup recommendations."
@@ -180,6 +196,23 @@ export default function EyeShapeDetectorPage() {
                   Read the full guide
                 </Link>
               </p>
+            </Reveal>
+
+            <Reveal>
+              <div className="mt-6 border-t border-gray-100 pt-6 text-center text-sm text-gray-500">
+                Also try:{' '}
+                <Link href="/body-type-calculator" className="font-medium text-brand-600 underline hover:no-underline">
+                  Body Type Calculator
+                </Link>
+                {' · '}
+                <Link href="/body-shape-calculator" className="font-medium text-brand-600 underline hover:no-underline">
+                  Body Shape Calculator
+                </Link>
+                {' · '}
+                <Link href="/" className="font-medium text-brand-600 underline hover:no-underline">
+                  AI Look Analyzer
+                </Link>
+              </div>
             </Reveal>
           </div>
         </section>

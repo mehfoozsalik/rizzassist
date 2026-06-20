@@ -5,7 +5,7 @@ import { SkipToContent } from '@/components/seo/SkipToContent';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import { ToolWebAppSchema, FaqSchema } from '@/components/seo/SchemaMarkup';
+import { ToolWebAppSchema, FaqSchema, BreadcrumbSchema } from '@/components/seo/SchemaMarkup';
 import { Reveal } from '@/components/ui/Reveal';
 import { BodyTypeCalculator } from '@/components/calculators/BodyTypeCalculator';
 import { BODY_TYPE_PROFILES } from '@/lib/bodyType';
@@ -13,7 +13,7 @@ import { BODY_TYPE_PROFILES } from '@/lib/bodyType';
 const PAGE_URL = `${SITE_URL}/body-type-calculator`;
 
 export const metadata: Metadata = {
-  title: 'Body Type Calculator | Find Your Ectomorph, Mesomorph or Endomorph Type',
+  title: 'Body Type Calculator: Find Your Body Type Free | Rizz Assist',
   description:
     "Free body type calculator. Enter your measurements to discover if you're an ectomorph, mesomorph, or endomorph, with personalized fitness and style tips.",
   keywords: [
@@ -22,21 +22,32 @@ export const metadata: Metadata = {
     'body type test',
     'find my body type',
     'fitness body type',
+    'somatotype calculator',
+    'ectomorph calculator',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Body Type Calculator | Ectomorph, Mesomorph or Endomorph',
+    title: 'Body Type Calculator: Find Your Body Type Free | Rizz Assist',
     description:
-      "Enter your measurements to discover your body type, with personalized fitness, diet, and style tips.",
+      "Free body type calculator. Enter your measurements to discover if you're an ectomorph, mesomorph, or endomorph, with personalized fitness and style tips.",
     url: PAGE_URL,
     siteName: SITE_NAME,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Rizz Assist Body Type Calculator showing ectomorph, mesomorph, and endomorph results',
+      },
+    ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Body Type Calculator | Ectomorph, Mesomorph or Endomorph',
+    title: 'Body Type Calculator: Find Your Body Type Free | Rizz Assist',
     description:
-      "Enter your measurements to discover your body type, with personalized fitness, diet, and style tips.",
+      "Free body type calculator. Enter your measurements to discover if you're an ectomorph, mesomorph, or endomorph, with personalized fitness and style tips.",
+    images: ['/twitter-image.png'],
   },
 };
 
@@ -61,6 +72,12 @@ const FAQ_ITEMS = [
 export default function BodyTypeCalculatorPage() {
   return (
     <>
+      <BreadcrumbSchema
+        crumbs={[
+          { name: 'Home', item: SITE_URL },
+          { name: 'Body Type Calculator', item: PAGE_URL },
+        ]}
+      />
       <ToolWebAppSchema
         name="Body Type Calculator"
         description="Free calculator that determines whether you're an ectomorph, mesomorph, or endomorph based on your measurements."
@@ -177,6 +194,23 @@ export default function BodyTypeCalculatorPage() {
                   Read the full guide
                 </Link>
               </p>
+            </Reveal>
+
+            <Reveal>
+              <div className="mt-6 border-t border-gray-100 pt-6 text-center text-sm text-gray-500">
+                Also try:{' '}
+                <Link href="/body-shape-calculator" className="font-medium text-brand-600 underline hover:no-underline">
+                  Body Shape Calculator
+                </Link>
+                {' · '}
+                <Link href="/eye-shape-detector" className="font-medium text-brand-600 underline hover:no-underline">
+                  Eye Shape Detector
+                </Link>
+                {' · '}
+                <Link href="/" className="font-medium text-brand-600 underline hover:no-underline">
+                  AI Look Analyzer
+                </Link>
+              </div>
             </Reveal>
           </div>
         </section>

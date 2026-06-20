@@ -13,7 +13,7 @@ import {
   Rocket,
   Crown,
 } from "lucide-react";
-import { SITE_URL } from "@/lib/config";
+import { SITE_URL, SITE_NAME } from "@/lib/config";
 import { FAQS } from "@/lib/faq";
 import { SkipToContent } from "@/components/seo/SkipToContent";
 import { FaqSchema } from "@/components/seo/SchemaMarkup";
@@ -24,7 +24,42 @@ import { AnimatedHero } from "@/components/ui/AnimatedHero";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
+  title: "AI Look Analyzer: Pickup Lines & Style Tips | Rizz Assist",
+  description:
+    "Upload one photo to get a free Rizz Report: personalized pickup lines, style tips, shades recs, and AI confidence advice tailored to your exact look. No login.",
+  keywords: [
+    "AI look analyzer",
+    "rizz score calculator",
+    "AI pickup line generator",
+    "free style analyzer",
+    "photo rizz analysis",
+    "AI confidence coach",
+    "shades recommendation AI",
+  ],
   alternates: { canonical: SITE_URL },
+  openGraph: {
+    title: "AI Look Analyzer: Pickup Lines & Style Tips | Rizz Assist",
+    description:
+      "Upload one photo to get a free Rizz Report: personalized pickup lines, style tips, shades recs, and AI confidence advice tailored to your exact look. No login.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Rizz Assist AI look analyzer showing a rizz score, pickup lines, and style recommendations",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Look Analyzer: Pickup Lines & Style Tips | Rizz Assist",
+    description:
+      "Upload one photo to get a free Rizz Report: personalized pickup lines, style tips, shades recs, and AI confidence advice tailored to your exact look. No login.",
+    images: ["/twitter-image.png"],
+  },
 };
 
 const STEPS = [
