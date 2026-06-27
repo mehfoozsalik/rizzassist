@@ -137,17 +137,17 @@ export default function HomePage() {
         <section
           id="upload"
           aria-labelledby="upload-heading"
-          className="scroll-mt-20 bg-cream-50 px-4 py-16"
+          className="scroll-mt-20 bg-cream-50 px-4 py-16 dark:bg-ink-800"
         >
           <div className="mx-auto max-w-2xl">
             <Reveal>
               <h2
                 id="upload-heading"
-                className="mb-2 text-center text-2xl font-bold text-gray-900"
+                className="mb-2 text-center text-2xl font-bold text-gray-900 dark:text-white"
               >
                 Upload Your Photo
               </h2>
-              <p className="mb-8 text-center text-sm text-gray-500">
+              <p className="mb-8 text-center text-sm text-gray-500 dark:text-white/50">
                 One selfie is all it takes to unlock your full Rizz Report.
               </p>
             </Reveal>
@@ -158,17 +158,17 @@ export default function HomePage() {
         {/* How it works */}
         <section
           aria-labelledby="how-it-works"
-          className="border-t border-gray-100 bg-white px-4 py-16"
+          className="border-t border-gray-100 bg-white px-4 py-16 dark:border-white/5 dark:bg-ink-900"
         >
           <div className="mx-auto max-w-5xl">
             <Reveal>
               <h2
                 id="how-it-works"
-                className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
+                className="text-center text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white"
               >
                 How Rizz Assist Works
               </h2>
-              <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-500">
+              <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-500 dark:text-white/50">
                 Four steps from photo to full-on swagger.
               </p>
             </Reveal>
@@ -176,8 +176,8 @@ export default function HomePage() {
             <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {STEPS.map((step, i) => (
                 <Reveal key={step.title} delay={i * 0.08}>
-                  <li className="relative h-full rounded-2xl border border-gray-100 bg-cream-50 p-6 transition-shadow hover:shadow-md">
-                    <span className="absolute -top-3.5 left-5 flex h-7 w-7 items-center justify-center rounded-full bg-ink-900 text-xs font-bold text-white shadow-sm">
+                  <li className="relative h-full rounded-2xl border border-gray-100 bg-cream-50 p-6 transition-shadow hover:shadow-md dark:border-white/5 dark:bg-ink-800 dark:hover:shadow-black/30">
+                    <span className="absolute -top-3.5 left-5 flex h-7 w-7 items-center justify-center rounded-full bg-ink-900 text-xs font-bold text-white shadow-sm dark:bg-ink-700">
                       {i + 1}
                     </span>
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600/10">
@@ -186,10 +186,10 @@ export default function HomePage() {
                         aria-hidden="true"
                       />
                     </div>
-                    <h3 className="mt-4 text-sm font-semibold text-gray-900">
+                    <h3 className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
                       {step.title}
                     </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-gray-500">
+                    <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-white/50">
                       {step.text}
                     </p>
                   </li>
@@ -209,16 +209,16 @@ export default function HomePage() {
         </section>
 
         {/* Benefits */}
-        <section aria-labelledby="benefits" className="bg-cream-50 px-4 py-16">
+        <section aria-labelledby="benefits" className="bg-cream-50 px-4 py-16 dark:bg-ink-800">
           <div className="mx-auto max-w-5xl">
             <Reveal>
               <h2
                 id="benefits"
-                className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
+                className="text-center text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white"
               >
                 Why Rizz Assist Hits Different
               </h2>
-              <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-500">
+              <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-500 dark:text-white/50">
                 Everything you need to glow up, in one instant, AI-powered
                 report.
               </p>
@@ -227,17 +227,17 @@ export default function HomePage() {
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {BENEFITS.map((benefit, i) => (
                 <Reveal key={benefit.title} delay={(i % 4) * 0.07}>
-                  <article className="h-full rounded-2xl border border-gray-100 bg-white p-5 transition-shadow hover:shadow-md">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-900">
+                  <article className="h-full rounded-2xl border border-gray-100 bg-white p-5 transition-shadow hover:shadow-md dark:border-white/5 dark:bg-ink-900 dark:hover:shadow-black/30">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-900 dark:bg-ink-700">
                       <benefit.icon
                         className="h-5 w-5 text-brand-400"
                         aria-hidden="true"
                       />
                     </div>
-                    <h3 className="mt-4 text-sm font-semibold text-gray-900">
+                    <h3 className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
                       {benefit.title}
                     </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-gray-500">
+                    <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-white/50">
                       {benefit.text}
                     </p>
                   </article>
@@ -250,13 +250,13 @@ export default function HomePage() {
         {/* FAQ */}
         <section
           aria-labelledby="faq-heading"
-          className="border-t border-gray-100 bg-white px-4 py-16"
+          className="border-t border-gray-100 bg-white px-4 py-16 dark:border-white/5 dark:bg-ink-900"
         >
           <div className="mx-auto max-w-3xl">
             <Reveal>
               <h2
                 id="faq-heading"
-                className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
+                className="text-center text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white"
               >
                 Frequently Asked Questions
               </h2>
@@ -265,11 +265,11 @@ export default function HomePage() {
             <div className="mt-10 space-y-2">
               {FAQS.map((faq, i) => (
                 <Reveal key={faq.question} delay={i * 0.05}>
-                  <details className="group rounded-xl border border-gray-100 bg-cream-50 p-5 open:border-brand-200 open:bg-white transition-colors">
-                    <summary className="cursor-pointer list-none text-sm font-semibold text-gray-900 marker:hidden">
+                  <details className="group rounded-xl border border-gray-100 bg-cream-50 p-5 open:border-brand-200 open:bg-white transition-colors dark:border-white/5 dark:bg-ink-800 dark:open:border-brand-600/30 dark:open:bg-ink-700">
+                    <summary className="cursor-pointer list-none text-sm font-semibold text-gray-900 marker:hidden dark:text-white">
                       {faq.question}
                     </summary>
-                    <p className="mt-3 text-sm leading-relaxed text-gray-500">
+                    <p className="mt-3 text-sm leading-relaxed text-gray-500 dark:text-white/50">
                       {faq.answer}
                     </p>
                   </details>

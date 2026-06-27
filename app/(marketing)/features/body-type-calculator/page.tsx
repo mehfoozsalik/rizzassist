@@ -58,10 +58,10 @@ export default function BodyTypeFeaturePage() {
         ]}
       />
       <Reveal>
-        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
           Body Types Explained: Ectomorph, Mesomorph &amp; Endomorph
         </h1>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-4 text-lg text-gray-600 dark:text-white/60">
           Body type theory groups people into three broad somatotypes based on
           skeletal frame, metabolism, and how the body tends to store fat and
           build muscle. Understanding yours helps you train and eat smarter.
@@ -71,9 +71,9 @@ export default function BodyTypeFeaturePage() {
       <div className="mt-10 space-y-6">
         {BODY_TYPE_PROFILES.map((profile, i) => (
           <Reveal key={profile.type} delay={i * 0.06}>
-            <div className="rounded-2xl border border-gray-200 bg-white p-6">
-              <h2 className="text-lg font-semibold text-gray-900">{profile.type}</h2>
-              <p className="mt-2 text-gray-600">{profile.description}</p>
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-white/5 dark:bg-ink-800">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{profile.type}</h2>
+              <p className="mt-2 text-gray-600 dark:text-white/60">{profile.description}</p>
             </div>
           </Reveal>
         ))}
@@ -81,16 +81,16 @@ export default function BodyTypeFeaturePage() {
 
       <Reveal>
         <section aria-labelledby="how-it-works" className="mt-12">
-          <h2 id="how-it-works" className="text-2xl font-bold text-gray-900">
+          <h2 id="how-it-works" className="text-2xl font-bold text-gray-900 dark:text-white">
             How the calculator works
           </h2>
-          <p className="mt-3 text-gray-600">
+          <p className="mt-3 text-gray-600 dark:text-white/60">
             Enter your height, weight, shoulder width, chest, waist, and hip
             measurements. We calculate your BMI (weight in kg divided by
             height in meters squared) and compare your shoulder-to-hip
             proportions:
           </p>
-          <ul className="mt-3 space-y-2 text-gray-600">
+          <ul className="mt-3 space-y-2 text-gray-600 dark:text-white/60">
             <li className="flex gap-2">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true" />
               <span>BMI under 18.5 with a narrow frame typically indicates an Ectomorph</span>
@@ -104,7 +104,7 @@ export default function BodyTypeFeaturePage() {
               <span>BMI over 25 with a wider hip-to-waist ratio typically indicates an Endomorph</span>
             </li>
           </ul>
-          <p className="mt-3 text-gray-600">
+          <p className="mt-3 text-gray-600 dark:text-white/60">
             Everything runs in your browser. No photo or measurement data is
             ever sent to a server.
           </p>
@@ -113,14 +113,14 @@ export default function BodyTypeFeaturePage() {
 
       <Reveal>
         <section aria-labelledby="faq" className="mt-12">
-          <h2 id="faq" className="text-2xl font-bold text-gray-900">
+          <h2 id="faq" className="text-2xl font-bold text-gray-900 dark:text-white">
             Frequently asked questions
           </h2>
           <div className="mt-4 space-y-5">
             {FAQ_ITEMS.map((item) => (
               <div key={item.question}>
-                <h3 className="font-semibold text-gray-900">{item.question}</h3>
-                <p className="mt-1.5 text-gray-600">{item.answer}</p>
+                <h3 className="font-semibold text-gray-900 dark:text-white">{item.question}</h3>
+                <p className="mt-1.5 text-gray-600 dark:text-white/60">{item.answer}</p>
               </div>
             ))}
           </div>

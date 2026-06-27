@@ -7,7 +7,7 @@ export function CookieSettingsButton() {
     <button
       type="button"
       onClick={openCookieSettings}
-      className="text-white/60 transition-colors hover:text-brand-400"
+      className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400"
     >
       Cookie Settings
     </button>

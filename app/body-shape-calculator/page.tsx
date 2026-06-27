@@ -98,7 +98,7 @@ export default function BodyShapeCalculatorPage() {
       <Navbar />
 
       <main id="main-content">
-        <div className="border-b border-gray-100 bg-white px-4 py-3">
+        <div className="border-b border-gray-100 bg-white px-4 py-3 dark:border-white/5 dark:bg-ink-900">
           <div className="mx-auto max-w-3xl">
             <Breadcrumbs
               crumbs={[
@@ -109,7 +109,7 @@ export default function BodyShapeCalculatorPage() {
           </div>
         </div>
 
-        <section className="bg-ink-900 px-4 py-12 text-center sm:py-16">
+        <section className="bg-ink-900 px-4 py-12 text-center sm:py-16 dark:bg-ink-900">
           <div className="mx-auto max-w-3xl">
             <Reveal>
               <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
@@ -124,15 +124,15 @@ export default function BodyShapeCalculatorPage() {
           </div>
         </section>
 
-        <section className="bg-cream-50 px-4 py-12 sm:py-16">
+        <section className="bg-cream-50 px-4 py-12 sm:py-16 dark:bg-ink-800">
           <BodyShapeCalculator />
         </section>
 
-        <section className="px-4 py-12 sm:py-16">
+        <section className="bg-white px-4 py-12 sm:py-16 dark:bg-ink-900">
           <div className="mx-auto max-w-3xl">
             <Reveal>
-              <h2 className="text-2xl font-bold text-gray-900">What Is a Body Shape?</h2>
-              <p className="mt-3 text-gray-600">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">What Is a Body Shape?</h2>
+              <p className="mt-3 text-gray-600 dark:text-white/60">
                 Body shape describes the silhouette created by your bust,
                 waist, and hip proportions: Hourglass, Pear, Apple,
                 Rectangle, or Inverted Triangle. Unlike body type (which
@@ -145,13 +145,13 @@ export default function BodyShapeCalculatorPage() {
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {BODY_SHAPE_PROFILES.map((profile, i) => (
                 <Reveal key={profile.shape} delay={i * 0.05}>
-                  <div className="flex h-full gap-4 rounded-2xl border border-gray-200 bg-white p-5">
-                    <div className="shrink-0 rounded-xl bg-ink-900 p-3">
+                  <div className="flex h-full gap-4 rounded-2xl border border-gray-200 bg-white p-5 dark:border-white/5 dark:bg-ink-800">
+                    <div className="shrink-0 rounded-xl bg-ink-900 p-3 dark:bg-ink-700">
                       <ShapeSilhouette shape={profile.shape} active size={48} />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">{profile.shape}</h3>
-                      <p className="mt-1.5 text-sm text-gray-600">{profile.unique}</p>
+                      <h3 className="font-semibold text-gray-900 dark:text-white">{profile.shape}</h3>
+                      <p className="mt-1.5 text-sm text-gray-600 dark:text-white/60">{profile.unique}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -159,10 +159,10 @@ export default function BodyShapeCalculatorPage() {
             </div>
 
             <Reveal>
-              <h2 className="mt-10 text-2xl font-bold text-gray-900">
+              <h2 className="mt-10 text-2xl font-bold text-gray-900 dark:text-white">
                 Why Dressing for Your Shape Matters
               </h2>
-              <ul className="mt-4 space-y-2.5 text-gray-600">
+              <ul className="mt-4 space-y-2.5 text-gray-600 dark:text-white/60">
                 {[
                   'Balance proportions: add visual volume where your frame is narrower and streamline where it is wider',
                   'Shop with confidence: know which necklines, waistlines, and cuts to look for before you buy',
@@ -178,21 +178,21 @@ export default function BodyShapeCalculatorPage() {
             </Reveal>
 
             <Reveal>
-              <h2 className="mt-10 text-2xl font-bold text-gray-900">
+              <h2 className="mt-10 text-2xl font-bold text-gray-900 dark:text-white">
                 Frequently Asked Questions
               </h2>
               <div className="mt-4 space-y-5">
                 {FAQ_ITEMS.map((item) => (
                   <div key={item.question}>
-                    <h3 className="font-semibold text-gray-900">{item.question}</h3>
-                    <p className="mt-1.5 text-gray-600">{item.answer}</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">{item.question}</h3>
+                    <p className="mt-1.5 text-gray-600 dark:text-white/60">{item.answer}</p>
                   </div>
                 ))}
               </div>
             </Reveal>
 
             <Reveal>
-              <p className="mt-10 text-center text-sm text-gray-500">
+              <p className="mt-10 text-center text-sm text-gray-500 dark:text-white/40">
                 Want styling tips for every shape?{' '}
                 <Link
                   href="/features/body-shape-calculator"
@@ -204,7 +204,7 @@ export default function BodyShapeCalculatorPage() {
             </Reveal>
 
             <Reveal>
-              <div className="mt-6 border-t border-gray-100 pt-6 text-center text-sm text-gray-500">
+              <div className="mt-6 border-t border-gray-100 pt-6 text-center text-sm text-gray-500 dark:border-white/5 dark:text-white/40">
                 Also try:{' '}
                 <Link href="/body-type-calculator" className="font-medium text-brand-600 underline hover:no-underline">
                   Body Type Calculator

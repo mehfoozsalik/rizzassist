@@ -23,7 +23,7 @@ export function BMIGauge({ bmi }: { bmi: number }) {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center text-gray-900 dark:text-white">
       <svg width="200" height="120" viewBox="0 0 200 120">
         {zones.map((z) => {
           const start = arcPoint(z.from);
@@ -45,14 +45,14 @@ export function BMIGauge({ bmi }: { bmi: number }) {
           y1={cy}
           x2={cx + (r - 18) * Math.cos((angle * Math.PI) / 180)}
           y2={cy + (r - 18) * Math.sin((angle * Math.PI) / 180)}
-          stroke="#0e0e1a"
+          stroke="currentColor"
           strokeWidth="3"
           strokeLinecap="round"
         />
-        <circle cx={cx} cy={cy} r="5" fill="#0e0e1a" />
+        <circle cx={cx} cy={cy} r="5" fill="currentColor" />
       </svg>
-      <p className="-mt-2 text-2xl font-extrabold text-gray-900">{bmi}</p>
-      <p className="text-xs text-gray-400">BMI</p>
+      <p className="-mt-2 text-2xl font-extrabold">{bmi}</p>
+      <p className="text-xs text-gray-400 dark:text-white/40">BMI</p>
     </div>
   );
 }

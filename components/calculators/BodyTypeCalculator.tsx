@@ -138,10 +138,10 @@ export function BodyTypeCalculator() {
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <form onSubmit={onSubmit} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+      <form onSubmit={onSubmit} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 dark:border-white/5 dark:bg-ink-800">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <h2 className="text-lg font-semibold text-gray-900">Your measurements</h2>
-          <div className="inline-flex rounded-lg border border-gray-200 p-0.5 text-sm">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Your measurements</h2>
+          <div className="inline-flex rounded-lg border border-gray-200 p-0.5 text-sm dark:border-white/10">
             {(['metric', 'imperial'] as const).map((u) => (
               <button
                 key={u}
@@ -149,7 +149,7 @@ export function BodyTypeCalculator() {
                 onClick={() => setUnit(u)}
                 aria-pressed={unit === u}
                 className={`rounded-md px-3 py-1.5 font-medium transition-colors ${
-                  unit === u ? 'bg-ink-900 text-white' : 'text-gray-500 hover:text-gray-900'
+                  unit === u ? 'bg-ink-900 text-white dark:bg-ink-700' : 'text-gray-500 hover:text-gray-900 dark:text-white/50 dark:hover:text-white'
                 }`}
               >
                 {u === 'metric' ? 'cm / kg' : 'in / lb'}
@@ -164,7 +164,7 @@ export function BodyTypeCalculator() {
             const u = isWeight ? weightUnit : lengthUnit;
             return (
               <div key={f.key}>
-                <label htmlFor={`bt-${f.key}`} className="block text-sm font-medium text-gray-700">
+                <label htmlFor={`bt-${f.key}`} className="block text-sm font-medium text-gray-700 dark:text-white/70">
                   {f.label} ({u})
                 </label>
                 <input
@@ -176,9 +176,9 @@ export function BodyTypeCalculator() {
                   aria-describedby={`bt-${f.key}-help`}
                   value={values[f.key] ?? ''}
                   onChange={(e) => setValues((v) => ({ ...v, [f.key]: e.target.value }))}
-                  className="mt-1.5 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-gray-900 outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+                  className="mt-1.5 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-gray-900 outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100 dark:border-white/10 dark:bg-ink-700 dark:text-white dark:focus:ring-brand-600/20"
                 />
-                <p id={`bt-${f.key}-help`} className="mt-1 text-xs text-gray-400">
+                <p id={`bt-${f.key}-help`} className="mt-1 text-xs text-gray-400 dark:text-white/30">
                   Enter your {f.label.toLowerCase()} in {u}
                 </p>
               </div>
@@ -186,15 +186,15 @@ export function BodyTypeCalculator() {
           })}
 
           <div>
-            <label htmlFor="bt-gender" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="bt-gender" className="block text-sm font-medium text-gray-700 dark:text-white/70">
               Gender (for frame size){' '}
-              <span className="text-gray-400">(optional)</span>
+              <span className="text-gray-400 dark:text-white/30">(optional)</span>
             </label>
             <select
               id="bt-gender"
               value={gender}
               onChange={(e) => setGender(e.target.value as 'male' | 'female')}
-              className="mt-1.5 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-gray-900 outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+              className="mt-1.5 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-gray-900 outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100 dark:border-white/10 dark:bg-ink-700 dark:text-white"
             >
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -202,14 +202,14 @@ export function BodyTypeCalculator() {
           </div>
 
           <div>
-            <label htmlFor="bt-activity" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="bt-activity" className="block text-sm font-medium text-gray-700 dark:text-white/70">
               Activity level
             </label>
             <select
               id="bt-activity"
               value={activityLevel}
               onChange={(e) => setActivityLevel(e.target.value as ActivityLevel)}
-              className="mt-1.5 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-gray-900 outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
+              className="mt-1.5 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-gray-900 outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-100 dark:border-white/10 dark:bg-ink-700 dark:text-white"
             >
               {ACTIVITY_LEVELS.map((level) => (
                 <option key={level} value={level}>
@@ -235,7 +235,7 @@ export function BodyTypeCalculator() {
           Calculate My Body Type
         </button>
 
-        <p className="mt-4 text-xs text-gray-400">
+        <p className="mt-4 text-xs text-gray-400 dark:text-white/30">
           Body type is an estimate based on your measurements. Consult a fitness
           professional for a precise assessment.
         </p>
@@ -250,17 +250,17 @@ export function BodyTypeCalculator() {
             </div>
           )}
 
-          <div className="flex flex-col items-center gap-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:flex-row sm:justify-center">
+          <div className="flex flex-col items-center gap-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:flex-row sm:justify-center dark:border-white/5 dark:bg-ink-800">
             <BMIGauge bmi={advice?.bmi ?? result.bmi} />
             <div className="text-center sm:text-left">
-              <p className="text-sm text-gray-500">
-                BMI Category: <strong className="text-gray-900">{advice?.bmiCategory ?? bmiCategory(result.bmi)}</strong>
+              <p className="text-sm text-gray-500 dark:text-white/50">
+                BMI Category: <strong className="text-gray-900 dark:text-white">{advice?.bmiCategory ?? bmiCategory(result.bmi)}</strong>
               </p>
-              <p className="mt-1 text-sm text-gray-500">
-                Frame size: <strong className="text-gray-900 capitalize">{result.frameSize}</strong>
+              <p className="mt-1 text-sm text-gray-500 dark:text-white/50">
+                Frame size: <strong className="text-gray-900 capitalize dark:text-white">{result.frameSize}</strong>
               </p>
-              <p className="mt-1 text-sm text-gray-500">
-                Shoulder/Hip ratio: <strong className="text-gray-900">{result.shoulderHipRatio}</strong>
+              <p className="mt-1 text-sm text-gray-500 dark:text-white/50">
+                Shoulder/Hip ratio: <strong className="text-gray-900 dark:text-white">{result.shoulderHipRatio}</strong>
               </p>
             </div>
           </div>
@@ -274,7 +274,7 @@ export function BodyTypeCalculator() {
                   className={`rounded-2xl border p-5 transition-all ${
                     isMatch
                       ? 'border-brand-400 bg-ink-900 text-white shadow-xl ring-2 ring-brand-400'
-                      : 'border-gray-200 bg-white text-gray-900'
+                      : 'border-gray-200 bg-white text-gray-900 dark:border-white/5 dark:bg-ink-800 dark:text-white'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -286,7 +286,7 @@ export function BodyTypeCalculator() {
                       </span>
                     )}
                   </div>
-                  <p className={`mt-2 text-sm leading-relaxed ${isMatch ? 'text-white/70' : 'text-gray-600'}`}>
+                  <p className={`mt-2 text-sm leading-relaxed ${isMatch ? 'text-white/70' : 'text-gray-600 dark:text-white/60'}`}>
                     {isMatch && advice ? advice.description : profile.description}
                   </p>
                 </div>
@@ -295,9 +295,9 @@ export function BodyTypeCalculator() {
           </div>
 
           {fallbackProfile && (
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 dark:border-white/5 dark:bg-ink-800">
               {advice?.fitnessGoal && (
-                <p className="mb-4 rounded-xl bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700">
+                <p className="mb-4 rounded-xl bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700 dark:bg-brand-600/10 dark:text-brand-400">
                   <Apple className="mr-1.5 inline h-4 w-4" aria-hidden="true" />
                   {advice.fitnessGoal}
                 </p>
@@ -312,7 +312,7 @@ export function BodyTypeCalculator() {
                     aria-selected={activeTab === tab}
                     onClick={() => setActiveTab(tab)}
                     className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-                      activeTab === tab ? 'bg-ink-900 text-white' : 'border border-gray-200 text-gray-600 hover:bg-gray-50'
+                      activeTab === tab ? 'bg-ink-900 text-white dark:bg-ink-700' : 'border border-gray-200 text-gray-600 hover:bg-gray-50 dark:border-white/10 dark:text-white/60 dark:hover:bg-white/5'
                     }`}
                   >
                     {tab}

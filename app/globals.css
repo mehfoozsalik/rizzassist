@@ -9,6 +9,11 @@
   --ink: 14 14 26;
 }
 
+.dark {
+  --background: 14 14 26;
+  --foreground: 240 240 255;
+}
+
 * {
   box-sizing: border-box;
 }

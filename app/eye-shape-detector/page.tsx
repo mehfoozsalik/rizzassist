@@ -96,7 +96,7 @@ export default function EyeShapeDetectorPage() {
       <Navbar />
 
       <main id="main-content">
-        <div className="border-b border-gray-100 bg-white px-4 py-3">
+        <div className="border-b border-gray-100 bg-white px-4 py-3 dark:border-white/5 dark:bg-ink-900">
           <div className="mx-auto max-w-3xl">
             <Breadcrumbs
               crumbs={[
@@ -122,17 +122,17 @@ export default function EyeShapeDetectorPage() {
           </div>
         </section>
 
-        <section className="bg-cream-50 px-4 py-12 sm:py-16">
+        <section className="bg-cream-50 px-4 py-12 sm:py-16 dark:bg-ink-800">
           <EyeShapeDetector />
         </section>
 
-        <section className="px-4 py-12 sm:py-16">
+        <section className="bg-white px-4 py-12 sm:py-16 dark:bg-ink-900">
           <div className="mx-auto max-w-3xl">
             <Reveal>
-              <h2 className="text-2xl font-bold text-gray-900">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                 What Is Eye Shape Detection?
               </h2>
-              <p className="mt-3 text-gray-600">
+              <p className="mt-3 text-gray-600 dark:text-white/60">
                 Eye shape is determined by lid structure, crease depth, corner
                 tilt, and spacing, and it&apos;s one of the biggest factors in
                 whether a makeup look actually suits you. Our AI analyzes
@@ -145,19 +145,19 @@ export default function EyeShapeDetectorPage() {
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {EYE_SHAPE_GUIDE.map((entry, i) => (
                 <Reveal key={entry.name} delay={i * 0.03}>
-                  <div className="h-full rounded-2xl border border-gray-200 bg-white p-4">
-                    <h3 className="font-semibold text-gray-900">{entry.name}</h3>
-                    <p className="mt-1 text-sm text-gray-600">{entry.description}</p>
+                  <div className="h-full rounded-2xl border border-gray-200 bg-white p-4 dark:border-white/5 dark:bg-ink-800">
+                    <h3 className="font-semibold text-gray-900 dark:text-white">{entry.name}</h3>
+                    <p className="mt-1 text-sm text-gray-600 dark:text-white/60">{entry.description}</p>
                   </div>
                 </Reveal>
               ))}
             </div>
 
             <Reveal>
-              <h2 className="mt-10 text-2xl font-bold text-gray-900">
+              <h2 className="mt-10 text-2xl font-bold text-gray-900 dark:text-white">
                 Why Your Eye Shape Matters for Makeup
               </h2>
-              <ul className="mt-4 space-y-2.5 text-gray-600">
+              <ul className="mt-4 space-y-2.5 text-gray-600 dark:text-white/60">
                 {[
                   'Apply eyeliner where it actually enhances your shape, instead of guessing',
                   'Choose eyeshadow placement and blending techniques suited to your lid space',
@@ -173,21 +173,21 @@ export default function EyeShapeDetectorPage() {
             </Reveal>
 
             <Reveal>
-              <h2 className="mt-10 text-2xl font-bold text-gray-900">
+              <h2 className="mt-10 text-2xl font-bold text-gray-900 dark:text-white">
                 Frequently Asked Questions
               </h2>
               <div className="mt-4 space-y-5">
                 {FAQ_ITEMS.map((item) => (
                   <div key={item.question}>
-                    <h3 className="font-semibold text-gray-900">{item.question}</h3>
-                    <p className="mt-1.5 text-gray-600">{item.answer}</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">{item.question}</h3>
+                    <p className="mt-1.5 text-gray-600 dark:text-white/60">{item.answer}</p>
                   </div>
                 ))}
               </div>
             </Reveal>
 
             <Reveal>
-              <p className="mt-10 text-center text-sm text-gray-500">
+              <p className="mt-10 text-center text-sm text-gray-500 dark:text-white/40">
                 Want makeup tips for every eye shape?{' '}
                 <Link
                   href="/features/eye-shape-detector"
@@ -199,7 +199,7 @@ export default function EyeShapeDetectorPage() {
             </Reveal>
 
             <Reveal>
-              <div className="mt-6 border-t border-gray-100 pt-6 text-center text-sm text-gray-500">
+              <div className="mt-6 border-t border-gray-100 pt-6 text-center text-sm text-gray-500 dark:border-white/5 dark:text-white/40">
                 Also try:{' '}
                 <Link href="/body-type-calculator" className="font-medium text-brand-600 underline hover:no-underline">
                   Body Type Calculator

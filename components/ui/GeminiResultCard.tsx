@@ -11,14 +11,14 @@ export function GeminiResultCard({
 }) {
   if (!items?.length) return null;
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-      <h3 className="flex items-center gap-2 text-sm font-semibold text-gray-900">
-        <span className={tone === 'avoid' ? 'text-red-500' : 'text-brand-600'} aria-hidden="true">
+    <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm dark:border-white/5 dark:bg-ink-800">
+      <h3 className="flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white">
+        <span className={tone === 'avoid' ? 'text-red-500' : 'text-brand-600 dark:text-brand-400'} aria-hidden="true">
           {icon}
         </span>
         {title}
       </h3>
-      <ul className="mt-3 space-y-2 text-sm text-gray-600">
+      <ul className="mt-3 space-y-2 text-sm text-gray-600 dark:text-white/60">
         {items.map((item, i) => (
           <li key={i} className="flex gap-2">
             <span

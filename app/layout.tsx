@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/config";
 import { WebAppSchema } from "@/components/seo/SchemaMarkup";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -117,12 +118,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <meta name="apple-mobile-web-app-title" content="Rizz Assist" />
-      <body className="min-h-screen bg-white text-gray-900 antialiased">
-        <WebAppSchema />
-        {children}
-        <CookieConsent gaId={GA_MEASUREMENT_ID} />
+      <body className="min-h-screen bg-white text-gray-900 antialiased dark:bg-ink-900 dark:text-white">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <WebAppSchema />
+          {children}
+          <CookieConsent gaId={GA_MEASUREMENT_ID} />
+        </ThemeProvider>
       </body>
     </html>
   );

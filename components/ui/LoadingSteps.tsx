@@ -13,7 +13,7 @@ export function LoadingSteps({
     <div
       role="status"
       aria-live="polite"
-      className="mx-auto w-full max-w-sm rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
+      className="mx-auto w-full max-w-sm rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-white/5 dark:bg-ink-800"
     >
       <ul className="space-y-3">
         {steps.map((step, i) => {
@@ -27,7 +27,7 @@ export function LoadingSteps({
                     ? 'bg-green-500 text-white'
                     : active
                       ? 'bg-ink-900 text-white'
-                      : 'bg-gray-100 text-gray-400'
+                      : 'bg-gray-100 text-gray-400 dark:bg-ink-700 dark:text-white/40'
                 }`}
               >
                 {done ? (
@@ -40,7 +40,7 @@ export function LoadingSteps({
               </span>
               <span
                 className={`text-sm ${
-                  active ? 'font-semibold text-gray-900' : done ? 'text-gray-500' : 'text-gray-400'
+                  active ? 'font-semibold text-gray-900 dark:text-white' : done ? 'text-gray-500 dark:text-white/50' : 'text-gray-400 dark:text-white/30'
                 }`}
               >
                 {step}

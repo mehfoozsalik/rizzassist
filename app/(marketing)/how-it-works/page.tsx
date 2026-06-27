@@ -41,10 +41,10 @@ export default function HowItWorksPage() {
         ]}
       />
       <Reveal>
-        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
           How Rizz Assist Analyzes Your Look
         </h1>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-4 text-lg text-gray-600 dark:text-white/60">
           Rizz Assist turns a single photo into a full Rizz Report, covering
           your style, grooming, best angles, shades that suit your face shape,
           personalized pickup lines, and the vibe you project. Here&apos;s exactly
@@ -55,25 +55,25 @@ export default function HowItWorksPage() {
       <div className="mt-10 space-y-6">
         {STEPS.map((step, i) => (
           <Reveal key={step.title} delay={i * 0.06}>
-            <div className="rounded-2xl border border-gray-200 bg-white p-6">
-              <h2 className="text-lg font-semibold text-gray-900">{step.title}</h2>
-              <p className="mt-2 text-gray-600">{step.text}</p>
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-white/5 dark:bg-ink-800">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{step.title}</h2>
+              <p className="mt-2 text-gray-600 dark:text-white/60">{step.text}</p>
             </div>
           </Reveal>
         ))}
 
         <Reveal>
-          <div className="rounded-2xl border border-gray-200 bg-white p-6">
-            <h2 className="text-lg font-semibold text-gray-900">
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-white/5 dark:bg-ink-800">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
               Step 3: Your Rizz Report Is Generated
             </h2>
-            <p className="mt-2 text-gray-600">You receive:</p>
-            <ul className="mt-3 space-y-2 text-gray-600">
+            <p className="mt-2 text-gray-600 dark:text-white/60">You receive:</p>
+            <ul className="mt-3 space-y-2 text-gray-600 dark:text-white/60">
               {REPORT_ITEMS.map(([label, desc]) => (
                 <li key={label} className="flex gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true" />
                   <span>
-                    <strong className="font-semibold text-gray-900">{label}</strong>
+                    <strong className="font-semibold text-gray-900 dark:text-white">{label}</strong>
                     : {desc}
                   </span>
                 </li>
@@ -83,11 +83,11 @@ export default function HowItWorksPage() {
         </Reveal>
 
         <Reveal>
-          <div className="rounded-2xl border border-gray-200 bg-white p-6">
-            <h2 className="text-lg font-semibold text-gray-900">
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-white/5 dark:bg-ink-800">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
               Step 4: Apply &amp; Level Up
             </h2>
-            <p className="mt-2 text-gray-600">
+            <p className="mt-2 text-gray-600 dark:text-white/60">
               Use the tips, try the lines, experiment with the looks. Come back
               anytime: your photo is never stored, so every session is fresh.
             </p>
@@ -97,10 +97,10 @@ export default function HowItWorksPage() {
 
       <Reveal>
         <section aria-labelledby="privacy-note" className="mt-12">
-          <h2 id="privacy-note" className="text-2xl font-bold text-gray-900">
+          <h2 id="privacy-note" className="text-2xl font-bold text-gray-900 dark:text-white">
             Your privacy comes first
           </h2>
-          <p className="mt-3 text-gray-600">
+          <p className="mt-3 text-gray-600 dark:text-white/60">
             Your photo is processed in memory only and never written to a
             database or shared. See our{' '}
             <Link href="/privacy" className="font-medium text-brand-600 underline hover:no-underline">

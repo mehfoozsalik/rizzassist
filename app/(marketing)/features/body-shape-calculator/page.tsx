@@ -57,10 +57,10 @@ export default function BodyShapeFeaturePage() {
         ]}
       />
       <Reveal>
-        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
           Body Shapes Explained: A Visual Guide
         </h1>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-4 text-lg text-gray-600 dark:text-white/60">
           Body shape describes the silhouette created by your bust, waist,
           and hip proportions. Unlike body type (which relates to
           metabolism), body shape is about styling and proportion.
@@ -70,13 +70,13 @@ export default function BodyShapeFeaturePage() {
       <div className="mt-10 grid gap-6 sm:grid-cols-2">
         {BODY_SHAPE_PROFILES.map((profile, i) => (
           <Reveal key={profile.shape} delay={i * 0.05}>
-            <div className="flex gap-4 rounded-2xl border border-gray-200 bg-white p-6">
-              <div className="shrink-0 rounded-xl bg-ink-900 p-3">
+            <div className="flex gap-4 rounded-2xl border border-gray-200 bg-white p-6 dark:border-white/5 dark:bg-ink-800">
+              <div className="shrink-0 rounded-xl bg-ink-900 p-3 dark:bg-ink-700">
                 <ShapeSilhouette shape={profile.shape} active size={56} />
               </div>
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">{profile.shape}</h2>
-                <p className="mt-1.5 text-sm text-gray-600">{profile.unique}</p>
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{profile.shape}</h2>
+                <p className="mt-1.5 text-sm text-gray-600 dark:text-white/60">{profile.unique}</p>
               </div>
             </div>
           </Reveal>
@@ -85,10 +85,10 @@ export default function BodyShapeFeaturePage() {
 
       <Reveal>
         <section aria-labelledby="type-vs-shape" className="mt-12">
-          <h2 id="type-vs-shape" className="text-2xl font-bold text-gray-900">
+          <h2 id="type-vs-shape" className="text-2xl font-bold text-gray-900 dark:text-white">
             Body shape vs. body type
           </h2>
-          <p className="mt-3 text-gray-600">
+          <p className="mt-3 text-gray-600 dark:text-white/60">
             Body <strong>type</strong> (ectomorph, mesomorph, endomorph)
             describes your metabolism and how easily you gain or lose weight
             and muscle. Body <strong>shape</strong> (hourglass, pear, apple,
@@ -101,10 +101,10 @@ export default function BodyShapeFeaturePage() {
 
       <Reveal>
         <section aria-labelledby="how-it-works" className="mt-12">
-          <h2 id="how-it-works" className="text-2xl font-bold text-gray-900">
+          <h2 id="how-it-works" className="text-2xl font-bold text-gray-900 dark:text-white">
             How the calculator works
           </h2>
-          <p className="mt-3 text-gray-600">
+          <p className="mt-3 text-gray-600 dark:text-white/60">
             Enter your bust/chest, waist, and hip measurements. We compare
             the ratios between them (how close your bust and hips are in
             width, and how much smaller your waist is) to classify your
@@ -116,14 +116,14 @@ export default function BodyShapeFeaturePage() {
 
       <Reveal>
         <section aria-labelledby="faq" className="mt-12">
-          <h2 id="faq" className="text-2xl font-bold text-gray-900">
+          <h2 id="faq" className="text-2xl font-bold text-gray-900 dark:text-white">
             Frequently asked questions
           </h2>
           <div className="mt-4 space-y-5">
             {FAQ_ITEMS.map((item) => (
               <div key={item.question}>
-                <h3 className="font-semibold text-gray-900">{item.question}</h3>
-                <p className="mt-1.5 text-gray-600">{item.answer}</p>
+                <h3 className="font-semibold text-gray-900 dark:text-white">{item.question}</h3>
+                <p className="mt-1.5 text-gray-600 dark:text-white/60">{item.answer}</p>
               </div>
             ))}
           </div>

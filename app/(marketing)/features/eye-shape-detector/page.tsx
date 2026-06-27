@@ -56,10 +56,10 @@ export default function EyeShapeFeaturePage() {
         ]}
       />
       <Reveal>
-        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
           Eye Shapes Explained: A Visual Guide
         </h1>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-4 text-lg text-gray-600 dark:text-white/60">
           Eye shape is determined by lid structure, tilt, and spacing.
           Knowing yours helps you pick eyeliner styles and eyeshadow
           techniques that genuinely flatter your eyes. Tap any shape below
@@ -75,10 +75,10 @@ export default function EyeShapeFeaturePage() {
 
       <Reveal>
         <section aria-labelledby="how-it-works" className="mt-12">
-          <h2 id="how-it-works" className="text-2xl font-bold text-gray-900">
+          <h2 id="how-it-works" className="text-2xl font-bold text-gray-900 dark:text-white">
             How the AI detects eye shape
           </h2>
-          <p className="mt-3 text-gray-600">
+          <p className="mt-3 text-gray-600 dark:text-white/60">
             Upload a clear, well-lit close-up of your eyes or face. Our AI
             vision model analyzes lid structure, crease visibility, corner
             tilt, and spacing to match your eyes against the 10 shape
@@ -90,14 +90,14 @@ export default function EyeShapeFeaturePage() {
 
       <Reveal>
         <section aria-labelledby="faq" className="mt-12">
-          <h2 id="faq" className="text-2xl font-bold text-gray-900">
+          <h2 id="faq" className="text-2xl font-bold text-gray-900 dark:text-white">
             Frequently asked questions
           </h2>
           <div className="mt-4 space-y-5">
             {FAQ_ITEMS.map((item) => (
               <div key={item.question}>
-                <h3 className="font-semibold text-gray-900">{item.question}</h3>
-                <p className="mt-1.5 text-gray-600">{item.answer}</p>
+                <h3 className="font-semibold text-gray-900 dark:text-white">{item.question}</h3>
+                <p className="mt-1.5 text-gray-600 dark:text-white/60">{item.answer}</p>
               </div>
             ))}
           </div>

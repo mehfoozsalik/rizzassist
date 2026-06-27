@@ -48,10 +48,10 @@ export default function PrivacyPage() {
         ]}
       />
       <Reveal>
-        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
           Privacy Policy
         </h1>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-4 text-lg text-gray-600 dark:text-white/60">
           Your privacy is the foundation of Rizz Assist. Here is a plain-language
           explanation of how we handle your data.
         </p>
@@ -61,16 +61,16 @@ export default function PrivacyPage() {
         {SECTIONS.map((section, i) => (
           <Reveal key={section.heading} delay={(i % 3) * 0.05}>
             <section aria-label={section.heading}>
-              <h2 className="text-xl font-semibold text-gray-900">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                 {section.heading}
               </h2>
-              <p className="mt-2 text-gray-600">{section.body}</p>
+              <p className="mt-2 text-gray-600 dark:text-white/60">{section.body}</p>
             </section>
           </Reveal>
         ))}
       </div>
 
-      <p className="mt-12 text-sm text-gray-500">
+      <p className="mt-12 text-sm text-gray-500 dark:text-white/40">
         Rizz Assist provides feedback for entertainment and self-improvement
         purposes only and does not constitute professional advice.
       </p>

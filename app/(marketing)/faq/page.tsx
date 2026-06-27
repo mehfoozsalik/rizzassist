@@ -24,10 +24,10 @@ export default function FaqPage() {
       />
       <FaqSchema items={ALL_FAQS} />
       <Reveal>
-        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
           Frequently Asked Questions
         </h1>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-4 text-lg text-gray-600 dark:text-white/60">
           Everything you need to know about how Rizz Assist works, what it can do,
           and how we protect your privacy.
         </p>
@@ -44,12 +44,12 @@ export default function FaqPage() {
                 {group.items.map((faq) => (
                   <div
                     key={faq.question}
-                    className="rounded-2xl border border-gray-200 bg-white p-6"
+                    className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-white/5 dark:bg-ink-800"
                   >
-                    <dt className="text-lg font-semibold text-gray-900">
+                    <dt className="text-lg font-semibold text-gray-900 dark:text-white">
                       {faq.question}
                     </dt>
-                    <dd className="mt-2 text-gray-600">{faq.answer}</dd>
+                    <dd className="mt-2 text-gray-600 dark:text-white/60">{faq.answer}</dd>
                   </div>
                 ))}
               </dl>
@@ -58,7 +58,7 @@ export default function FaqPage() {
         ))}
       </div>
 
-      <p className="mt-10 text-center text-gray-600">
+      <p className="mt-10 text-center text-gray-600 dark:text-white/60">
         <Link href="/" className="font-medium text-brand-600 underline hover:no-underline">
           Try it free, no login needed &rarr;
         </Link>

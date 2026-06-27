@@ -109,31 +109,31 @@ export function ImageUploader() {
           onDrop={onDrop}
           className={`relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-12 text-center transition-all ${
             dragging
-              ? 'border-brand-500 bg-brand-50/60 shadow-inner'
-              : 'border-gray-200 bg-white hover:border-brand-400 hover:bg-brand-50/30'
+              ? 'border-brand-500 bg-brand-50/60 dark:bg-brand-600/10'
+              : 'border-gray-200 bg-white hover:border-brand-400 hover:bg-brand-50/30 dark:border-white/10 dark:bg-ink-800 dark:hover:border-brand-500 dark:hover:bg-ink-700/50'
           }`}
         >
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-ink-900 shadow-lg">
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-ink-900 shadow-lg dark:bg-ink-700">
             <ImagePlus className="h-7 w-7 text-brand-400" aria-hidden="true" />
           </div>
 
-          <p className="mt-5 text-base font-semibold text-gray-900">
+          <p className="mt-5 text-base font-semibold text-gray-900 dark:text-white">
             Drop your photo here
           </p>
-          <p className="mt-1.5 text-sm text-gray-500">
+          <p className="mt-1.5 text-sm text-gray-500 dark:text-white/50">
             JPG, PNG or WebP &middot; up to 5MB &middot; 100% private
           </p>
 
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
-            className="mt-6 rounded-xl bg-ink-900 px-7 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-ink-800"
+            className="mt-6 rounded-xl bg-ink-900 px-7 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-ink-800 dark:bg-ink-700 dark:hover:bg-ink-600"
             aria-label="Choose a photo to upload"
           >
             Choose Photo
           </button>
 
-          <p className="mt-3 text-xs text-gray-400">
+          <p className="mt-3 text-xs text-gray-400 dark:text-white/30">
             or drag &amp; drop
           </p>
 
@@ -149,9 +149,9 @@ export function ImageUploader() {
       )}
 
       {(status === 'preview' || status === 'loading') && previewUrl && (
-        <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+        <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-white/5 dark:bg-ink-800">
           <figure className="relative mx-auto w-full max-w-sm p-5">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-gray-100">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-gray-100 dark:bg-ink-700">
               <Image
                 src={previewUrl}
                 alt="Your uploaded photo preview for your Rizz Report"
@@ -171,18 +171,18 @@ export function ImageUploader() {
                 </button>
               )}
             </div>
-            <figcaption className="mt-2 text-center text-xs text-gray-400">
+            <figcaption className="mt-2 text-center text-xs text-gray-400 dark:text-white/30">
               Preview: your photo stays on your device until you analyze.
             </figcaption>
           </figure>
 
-          <div className="border-t border-gray-100 px-5 py-4">
+          <div className="border-t border-gray-100 px-5 py-4 dark:border-white/5">
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
               <button
                 type="button"
                 onClick={analyze}
                 disabled={status === 'loading'}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-ink-900 px-7 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-ink-800 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-ink-900 px-7 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-ink-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-ink-700 dark:hover:bg-ink-600"
               >
                 {status === 'loading' ? (
                   <>
@@ -197,7 +197,7 @@ export function ImageUploader() {
                 <button
                   type="button"
                   onClick={reset}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-200 px-6 py-3 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-200 px-6 py-3 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 dark:border-white/10 dark:text-white/60 dark:hover:bg-white/5"
                 >
                   <RotateCcw className="h-4 w-4" aria-hidden="true" />
                   Start Over
@@ -211,7 +211,7 @@ export function ImageUploader() {
       {error && (
         <div
           role="alert"
-          className="mt-4 flex items-start gap-3 rounded-xl border border-red-100 bg-red-50 p-4 text-sm text-red-700"
+          className="mt-4 flex items-start gap-3 rounded-xl border border-red-100 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-900/20 dark:text-red-300"
         >
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
           <div className="flex-1">
@@ -219,7 +219,7 @@ export function ImageUploader() {
             <button
               type="button"
               onClick={reset}
-              className="mt-2 font-semibold text-red-800 underline hover:no-underline"
+              className="mt-2 font-semibold text-red-800 underline hover:no-underline dark:text-red-300"
             >
               Try another photo
             </button>
@@ -235,7 +235,7 @@ export function ImageUploader() {
               <button
                 type="button"
                 onClick={reset}
-                className="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-6 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"
+                className="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-6 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 dark:border-white/10 dark:text-white/60 dark:hover:bg-white/5"
               >
                 <RotateCcw className="h-4 w-4" aria-hidden="true" />
                 Try Another Photo

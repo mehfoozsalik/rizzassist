@@ -59,13 +59,13 @@ export function CookieConsent({ gaId }: { gaId?: string }) {
         <div
           role="dialog"
           aria-label="Cookie settings"
-          className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-ink-900 px-4 py-5 shadow-2xl"
+          className="fixed inset-x-0 bottom-0 z-50 border-t border-gray-200 bg-white px-4 py-5 shadow-2xl dark:border-white/10 dark:bg-ink-900"
         >
           <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 sm:flex-row sm:justify-between">
-            <p className="text-sm text-white/70">
+            <p className="text-sm text-gray-600 dark:text-white/70">
               We use cookies for basic analytics to understand site usage. No photos or
               personal data are ever stored. See our{' '}
-              <Link href="/privacy" className="text-brand-400 underline hover:no-underline">
+              <Link href="/privacy" className="text-brand-600 underline hover:no-underline dark:text-brand-400">
                 Privacy Policy
               </Link>
               .
@@ -74,7 +74,7 @@ export function CookieConsent({ gaId }: { gaId?: string }) {
               <button
                 type="button"
                 onClick={() => choose('rejected')}
-                className="rounded-lg px-4 py-2 text-sm font-medium text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white"
               >
                 Reject
               </button>

@@ -22,8 +22,8 @@ export function MacroDonut({
 
   return (
     <div className="flex items-center gap-5">
-      <svg width="100" height="100" viewBox="0 0 100 100" className="-rotate-90">
-        <circle cx="50" cy="50" r={r} fill="none" stroke="#f3f4f6" strokeWidth="14" />
+      <svg width="100" height="100" viewBox="0 0 100 100" className="-rotate-90 [&_.track]:stroke-gray-100 dark:[&_.track]:stroke-ink-700">
+        <circle cx="50" cy="50" r={r} fill="none" strokeWidth="14" className="track" />
         {segments.map((s) => {
           const length = (s.value / total) * circumference;
           const dasharray = `${length} ${circumference - length}`;
@@ -48,8 +48,8 @@ export function MacroDonut({
         {segments.map((s) => (
           <li key={s.label} className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: s.color }} aria-hidden="true" />
-            <span className="text-gray-600">
-              {s.label}: <strong className="text-gray-900">{s.value}%</strong>
+            <span className="text-gray-600 dark:text-white/60">
+              {s.label}: <strong className="text-gray-900 dark:text-white">{s.value}%</strong>
             </span>
           </li>
         ))}

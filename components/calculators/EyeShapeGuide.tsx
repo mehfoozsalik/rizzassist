@@ -23,7 +23,7 @@ function EyeIcon({ entry }: { entry: EyeShapeGuideEntry }) {
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
-            className="text-gray-300"
+            className="text-gray-300 dark:text-white/20"
           />
         )}
         <circle cx="0" cy="0" r={Math.min(h * 0.6, 8)} className="fill-ink-900" />
@@ -42,7 +42,7 @@ export function EyeShapeGuide() {
         return (
           <div
             key={entry.name}
-            className="overflow-hidden rounded-2xl border border-gray-200 bg-white"
+            className="overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-white/5 dark:bg-ink-800"
           >
             <button
               type="button"
@@ -53,19 +53,19 @@ export function EyeShapeGuide() {
             >
               <span className="flex items-center gap-4">
                 <EyeIcon entry={entry} />
-                <span className="font-semibold text-gray-900">{entry.name}</span>
+                <span className="font-semibold text-gray-900 dark:text-white">{entry.name}</span>
               </span>
               <ChevronDown
-                className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${
+                className={`h-4 w-4 shrink-0 text-gray-400 transition-transform dark:text-white/40 ${
                   isOpen ? 'rotate-180' : ''
                 }`}
                 aria-hidden="true"
               />
             </button>
             {isOpen && (
-              <div id={`eye-shape-${entry.name}`} className="border-t border-gray-100 px-5 py-4">
-                <p className="text-sm text-gray-600">{entry.description}</p>
-                <ul className="mt-3 space-y-1.5 text-sm text-gray-600">
+              <div id={`eye-shape-${entry.name}`} className="border-t border-gray-100 px-5 py-4 dark:border-white/5">
+                <p className="text-sm text-gray-600 dark:text-white/60">{entry.description}</p>
+                <ul className="mt-3 space-y-1.5 text-sm text-gray-600 dark:text-white/60">
                   {entry.tips.map((tip, i) => (
                     <li key={i} className="flex gap-2">
                       <span

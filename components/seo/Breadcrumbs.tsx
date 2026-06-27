@@ -17,25 +17,25 @@ export function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
           item: `${SITE_URL}${c.href === '/' ? '' : c.href}`,
         }))}
       />
-      <ol className="flex flex-wrap items-center gap-1 text-gray-500">
+      <ol className="flex flex-wrap items-center gap-1 text-gray-500 dark:text-white/40">
         {crumbs.map((crumb, index) => {
           const isLast = index === crumbs.length - 1;
           return (
             <li key={crumb.href} className="flex items-center gap-1">
               {isLast ? (
-                <span aria-current="page" className="font-medium text-gray-700">
+                <span aria-current="page" className="font-medium text-gray-700 dark:text-white/70">
                   {crumb.name}
                 </span>
               ) : (
                 <Link
                   href={crumb.href}
-                  className="transition-colors hover:text-brand-600"
+                  className="transition-colors hover:text-brand-600 dark:hover:text-brand-400"
                 >
                   {crumb.name}
                 </Link>
               )}
               {!isLast && (
-                <ChevronRight className="h-4 w-4 text-gray-400" aria-hidden="true" />
+                <ChevronRight className="h-4 w-4 text-gray-400 dark:text-white/30" aria-hidden="true" />
               )}
             </li>
           );
