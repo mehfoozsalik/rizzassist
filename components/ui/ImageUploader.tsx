@@ -216,8 +216,8 @@ export function ImageUploader() {
             };
 
       const bodyData: BodyData =
-        poseResults.poseLandmarks && poseResults.poseLandmarks.length > 0
-          ? extractBodyData(poseResults.poseLandmarks[0], w, h)
+        poseResults.landmarks && poseResults.landmarks.length > 0
+          ? extractBodyData(poseResults.landmarks[0], w, h)
           : { detected: false, shoulderHipRatio: 0, bodyTendency: 'Unknown' };
 
       setLoadingStep('Generating your Rizz Report...');
