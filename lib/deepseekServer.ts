@@ -41,7 +41,7 @@ export async function callDeepSeek(
   messages: DeepSeekMessage[],
   options?: { temperature?: number; maxTokens?: number; jsonMode?: boolean }
 ): Promise<string> {
-  const apiKey = process.env.DEEPSEEK_API_KEY;
+  const apiKey = process.env.DEEPSEEK_API_KEY?.trim();
   if (!apiKey) throw new Error('Server is not configured. Missing DEEPSEEK_API_KEY.');
 
   const controller = new AbortController();
