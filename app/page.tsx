@@ -6,12 +6,14 @@ import {
   Glasses,
   ScanFace,
   ShieldCheck,
-  Zap,
   ImagePlus,
   BarChart3,
   FileText,
   Rocket,
-  Crown,
+  Eye,
+  Dumbbell,
+  Sparkles,
+  Activity,
 } from "lucide-react";
 import { SITE_URL, SITE_NAME } from "@/lib/config";
 import { FAQS } from "@/lib/faq";
@@ -71,7 +73,7 @@ const STEPS = [
   {
     icon: BarChart3,
     title: "AI reads your vibe",
-    text: "Our vision AI analyzes face shape, expression, grooming, outfit colors, and your overall alpha presence.",
+    text: "Our vision AI analyzes face shape, expression, grooming, outfit colors, and your overall presence.",
   },
   {
     icon: FileText,
@@ -85,41 +87,54 @@ const STEPS = [
   },
 ];
 
-const BENEFITS = [
+const CAPABILITIES = [
   {
     icon: Flame,
-    title: "Original Pickup Lines",
-    text: "AI generates lines matched to your exact look and vibe, not generic openers everyone's seen before.",
-  },
-  {
-    icon: Crown,
-    title: "Alpha Presence Score",
-    text: "Discover how commanding and magnetic your energy is, and get tips to amplify it.",
+    title: "Pickup Lines",
+    href: null,
+    text: "The AI writes original lines matched to your exact look and vibe, not recycled openers from a list. Each one is tailored to what it actually sees in your photo.",
   },
   {
     icon: Shirt,
-    title: "Outfit & Style Upgrades",
-    text: "Specific suggestions on colors, fits, and styles that complement your face and body type.",
+    title: "Style Tips",
+    href: null,
+    text: "Get specific suggestions on colors, fits, and clothing categories that complement your face shape and body proportions, not generic advice.",
   },
   {
     icon: Glasses,
-    title: "Shades Recommendations",
-    text: "Visual frame-by-frame recommendations matched to your face shape, so you see exactly what suits you.",
+    title: "Shade Recommendations",
+    href: null,
+    text: "Frame-by-frame sunglasses recommendations matched to your detected face shape, so you can see exactly what suits you before you buy.",
+  },
+  {
+    icon: Activity,
+    title: "Body Type Calculator",
+    href: "/body-type-calculator",
+    text: "Find out whether you are an ectomorph, mesomorph, or endomorph from your measurements. Comes with fitness, diet, and style tips tailored to your build.",
+  },
+  {
+    icon: Dumbbell,
+    title: "Body Shape Calculator",
+    href: "/body-shape-calculator",
+    text: "Classify your silhouette (hourglass, pear, apple, rectangle, or inverted triangle) from your bust, waist, and hip measurements, with fashion tips for each shape.",
+  },
+  {
+    icon: Eye,
+    title: "Eye Shape Analysis",
+    href: "/eye-shape-detector",
+    text: "Identify your exact eye shape using the same landmark-based eye matching techniques that eye models and makeup professionals use, then get personalized eyeliner and eyeshadow tips for your shape.",
   },
   {
     icon: ScanFace,
     title: "Face Orientation Tips",
-    text: "Learn the angles, expressions, and grooming tweaks that sharpen your look in any photo.",
+    href: null,
+    text: "Learn the best camera angles, jaw positions, and grooming tweaks that make your face shape look its best in any photo or in person.",
   },
   {
-    icon: ShieldCheck,
-    title: "100% Private",
-    text: "Photo analyzed in memory only, never stored, never shared. Zero data kept after your session.",
-  },
-  {
-    icon: Zap,
-    title: "Instant Results",
-    text: "No login, no waitlist. Upload and get your full Rizz Report in under 30 seconds.",
+    icon: Sparkles,
+    title: "Confidence Tips",
+    href: null,
+    text: "Actionable posture, mindset, and daily habit recommendations tied to your strongest visible traits, so the glow-up goes beyond the outfit.",
   },
 ];
 
@@ -148,17 +163,85 @@ export default function HomePage() {
                 Upload Your Photo
               </h2>
               <p className="mb-8 text-center text-sm text-gray-500 dark:text-white/50">
-                One selfie is all it takes to unlock your full Rizz Report.
+                AI-powered photo analysis across face, eye, and body shape, delivering personalized style and confidence feedback in under 30 seconds.
               </p>
             </Reveal>
             <ImageUploader />
           </div>
         </section>
 
+        {/* What Rizz Assist Does */}
+        <section
+          aria-labelledby="what-we-do"
+          className="border-t border-gray-100 bg-white px-4 py-16 dark:border-white/5 dark:bg-ink-900"
+        >
+          <div className="mx-auto max-w-5xl">
+            <Reveal>
+              <h2
+                id="what-we-do"
+                className="text-center text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white"
+              >
+                What Rizz Assist Does
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-500 dark:text-white/50">
+                Every tool in one place, from instant photo analysis to dedicated calculators for body type, body shape, and eye shape.
+              </p>
+            </Reveal>
+
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {CAPABILITIES.map((cap, i) => (
+                <Reveal key={cap.title} delay={(i % 4) * 0.07}>
+                  {cap.href ? (
+                    <Link
+                      href={cap.href}
+                      className="group block h-full rounded-2xl border border-gray-100 bg-cream-50 p-5 transition-all hover:border-brand-200 hover:shadow-md dark:border-white/5 dark:bg-ink-800 dark:hover:border-brand-600/30 dark:hover:shadow-black/30"
+                    >
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-900 transition-transform duration-200 group-hover:scale-105 dark:bg-ink-700">
+                        <cap.icon
+                          className="h-5 w-5 text-brand-400"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <h3 className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
+                        {cap.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-white/50">
+                        {cap.text}
+                      </p>
+                    </Link>
+                  ) : (
+                    <article className="h-full rounded-2xl border border-gray-100 bg-cream-50 p-5 dark:border-white/5 dark:bg-ink-800">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-900 dark:bg-ink-700">
+                        <cap.icon
+                          className="h-5 w-5 text-brand-400"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <h3 className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
+                        {cap.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-white/50">
+                        {cap.text}
+                      </p>
+                    </article>
+                  )}
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal>
+              <p className="mt-10 text-center text-sm text-gray-500 dark:text-white/40">
+                <ShieldCheck className="mr-1.5 inline h-4 w-4 text-brand-600" aria-hidden="true" />
+                Your photos are analyzed in memory only and never stored. Zero data is kept after your session.
+              </p>
+            </Reveal>
+          </div>
+        </section>
+
         {/* How it works */}
         <section
           aria-labelledby="how-it-works"
-          className="border-t border-gray-100 bg-white px-4 py-16 dark:border-white/5 dark:bg-ink-900"
+          className="border-t border-gray-100 bg-cream-50 px-4 py-16 dark:border-white/5 dark:bg-ink-800"
         >
           <div className="mx-auto max-w-5xl">
             <Reveal>
@@ -176,7 +259,7 @@ export default function HomePage() {
             <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {STEPS.map((step, i) => (
                 <Reveal key={step.title} delay={i * 0.08}>
-                  <li className="relative h-full rounded-2xl border border-gray-100 bg-cream-50 p-6 transition-shadow hover:shadow-md dark:border-white/5 dark:bg-ink-800 dark:hover:shadow-black/30">
+                  <li className="relative h-full rounded-2xl border border-gray-100 bg-white p-6 transition-shadow hover:shadow-md dark:border-white/5 dark:bg-ink-900 dark:hover:shadow-black/30">
                     <span className="absolute -top-3.5 left-5 flex h-7 w-7 items-center justify-center rounded-full bg-ink-900 text-xs font-bold text-white shadow-sm dark:bg-ink-700">
                       {i + 1}
                     </span>
@@ -205,45 +288,6 @@ export default function HomePage() {
                 See exactly how your Rizz Report is built &rarr;
               </Link>
             </p>
-          </div>
-        </section>
-
-        {/* Benefits */}
-        <section aria-labelledby="benefits" className="bg-cream-50 px-4 py-16 dark:bg-ink-800">
-          <div className="mx-auto max-w-5xl">
-            <Reveal>
-              <h2
-                id="benefits"
-                className="text-center text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white"
-              >
-                Why Rizz Assist Hits Different
-              </h2>
-              <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-500 dark:text-white/50">
-                Everything you need to glow up, in one instant, AI-powered
-                report.
-              </p>
-            </Reveal>
-
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {BENEFITS.map((benefit, i) => (
-                <Reveal key={benefit.title} delay={(i % 4) * 0.07}>
-                  <article className="h-full rounded-2xl border border-gray-100 bg-white p-5 transition-shadow hover:shadow-md dark:border-white/5 dark:bg-ink-900 dark:hover:shadow-black/30">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-900 dark:bg-ink-700">
-                      <benefit.icon
-                        className="h-5 w-5 text-brand-400"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <h3 className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
-                      {benefit.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-white/50">
-                      {benefit.text}
-                    </p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
           </div>
         </section>
 

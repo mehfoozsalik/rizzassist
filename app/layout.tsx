@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/config";
 import { WebAppSchema } from "@/components/seo/SchemaMarkup";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import { InstallPrompt } from "@/components/ui/InstallPrompt";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "./globals.css";
 
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Rizz Assist",
   },
   description: SITE_DESCRIPTION,
+  manifest: "/manifest.json",
   keywords: [
     "rizz assistant",
     "AI rizz coach",
@@ -34,32 +36,8 @@ export const metadata: Metadata = {
     "shades recommendation AI",
     "how to improve rizz",
     "body shape analysis",
-    "body shape analysis AI",
-    "body shape analysis tool",
-    "body shape analysis app",
-    "body shape analysis software",
-    "body shape analysis service",
-    "body shape analysis provider",
-    "body shape analysis company",
-    "body shape analysis provider",
     "body type analysis",
-    "body type analysis AI",
-    "body type analysis tool",
-    "body type analysis app",
-    "body type analysis software",
-    "body type analysis service",
-    "body type analysis provider",
-    "body type analysis company",
-    "body type analysis provider",
     "eye shape analysis",
-    "eye shape analysis AI",
-    "eye shape analysis tool",
-    "eye shape analysis app",
-    "eye shape analysis software",
-    "eye shape analysis service",
-    "eye shape analysis provider",
-    "eye shape analysis company",
-    "eye shape analysis provider",
   ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
@@ -110,6 +88,10 @@ export const metadata: Metadata = {
   verification: {
     google: "google52c30d45ed78593f",
   },
+  other: {
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+  },
 };
 
 export default function RootLayout({
@@ -130,6 +112,7 @@ export default function RootLayout({
           <WebAppSchema />
           {children}
           <CookieConsent gaId={GA_MEASUREMENT_ID} />
+          <InstallPrompt />
         </ThemeProvider>
       </body>
     </html>

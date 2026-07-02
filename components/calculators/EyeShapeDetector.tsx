@@ -14,7 +14,7 @@ import {
   XCircle,
 } from 'lucide-react';
 import type { EyeRatios, EyeShapeResult } from '@/lib/types';
-import { fetchGeminiJson, GeminiNetworkError } from '@/lib/geminiClient';
+import { EYE_SHAPE_GUIDE } from '@/lib/eyeShapes';
 import { LoadingSteps } from '@/components/ui/LoadingSteps';
 import { MediaPipeCanvas, type NormalizedPoint } from '@/components/ui/MediaPipeCanvas';
 import { GeminiResultCard } from '@/components/ui/GeminiResultCard';
@@ -22,7 +22,7 @@ import { GeminiResultCard } from '@/components/ui/GeminiResultCard';
 const MAX_SIZE = 5 * 1024 * 1024;
 const MIN_SIZE = 10 * 1024;
 const ACCEPTED = ['image/jpeg', 'image/png', 'image/webp'];
-const STEPS = ['Loading AI models…', 'Analyzing photo…', 'Getting advice from Gemini…'];
+const STEPS = ['Loading AI models...', 'Analyzing your eyes...'];
 
 const TABS = ['Makeup Tips', 'Eyeliner', 'Eyeshadow', 'Colors'] as const;
 type Tab = (typeof TABS)[number];
@@ -46,11 +46,70 @@ const EYE_LANDMARKS = {
   faceRightEdge: 454,
 };
 
-function dist(a: { x: number; y: number }, b: { x: number; y: number }): number {
-  const dx = a.x - b.x;
-  const dy = a.y - b.y;
-  return Math.sqrt(dx * dx + dy * dy);
-}
+const EYE_EXTRA_ADVICE: Record<string, {
+  eyelinerStyles: string[];
+  eyeshadowTechniques: string[];
+  famousExamples: string[];
+  colorRecommendations: string[];
+  avoidThese: string[];
+}> = {
+  Almond: {
+    eyelinerStyles: ['Classic winged liner', 'Tightlining the upper lash', 'Smudged kohl on the lower lash'],
+    eyeshadowTechniques: ['Cut crease for definition', 'Halo eye with a shimmery center', 'Gradient blend from lash line upward'],
+    famousExamples: ['Mila Kunis', 'Penelope Cruz'],
+    colorRecommendations: ['Warm terracotta', 'Deep plum', 'Bronze shimmer'],
+    avoidThese: ['Heavy liner closing the eye all the way around', 'Thick lower lash line that shrinks the eye'],
+  },
+  Round: {
+    eyelinerStyles: ['Elongating wing extending past the outer corner', 'Lower liner on the outer third only', 'Thin upper lash line'],
+    eyeshadowTechniques: ['Outer V in a deeper shade', 'Horizontal gradient blended outward', 'Inner corner highlight'],
+    famousExamples: ['Katy Perry', 'Zooey Deschanel'],
+    colorRecommendations: ['Taupe and warm brown', 'Forest green', 'Warm rust'],
+    avoidThese: ['All-around tight liner', 'Pale shimmer across the entire lid'],
+  },
+  Monolid: {
+    eyelinerStyles: ['Thicker upper lash wing', 'Double-wing liner', 'Graphic liner'],
+    eyeshadowTechniques: ['Gradient from dark at the lash line to lighter shades above', 'Bold cut crease drawn higher', 'Tight tightlining of the upper lash'],
+    famousExamples: ['Lucy Liu', 'Sandara Park'],
+    colorRecommendations: ['Deep navy', 'Rich forest green', 'Matte burgundy'],
+    avoidThese: ['Crease-focused blending that disappears on the lid', 'Frosty shimmer all over'],
+  },
+  Hooded: {
+    eyelinerStyles: ['Flick upward at the outer corner', 'Thin liner applied with eyes open', 'Invisible liner at the lash base'],
+    eyeshadowTechniques: ['Apply shadow with eyes open so the placement stays visible', 'Focus color above the crease line', 'Matte transition shades that blend cleanly'],
+    famousExamples: ['Blake Lively', 'Jennifer Lawrence'],
+    colorRecommendations: ['Matte browns and taupes', 'Burnt orange', 'Slate grey'],
+    avoidThese: ['Shimmer-heavy lids that settle into the crease', 'Heavy lower lash liner'],
+  },
+  Upturned: {
+    eyelinerStyles: ['Classic cat-eye wing following the natural angle', 'Feline flick', 'Lower liner on the outer half only'],
+    eyeshadowTechniques: ['Classic smoky eye', 'Drama concentrated at the outer V', 'Halo technique centered on the lid'],
+    famousExamples: ['Kendall Jenner', 'Bella Hadid'],
+    colorRecommendations: ['Smoky charcoal', 'Warm bronze', 'Burnt sienna'],
+    avoidThese: ['Heavy downward-pointing liner that fights the natural lift', 'Lower lid liner that drags the corner down'],
+  },
+  Downturned: {
+    eyelinerStyles: ['Upward flick at the outer corner', 'Liner along the upper lash only', 'Avoid lower outer lash liner'],
+    eyeshadowTechniques: ['Concentrate color mid-lid to outer corner angled upward', 'Bright inner corner highlight', 'Avoid shadow drooping at corners'],
+    famousExamples: ['Anne Hathaway', 'Camilla Belle'],
+    colorRecommendations: ['Warm peach', 'Copper shimmer', 'Champagne highlight'],
+    avoidThese: ['Lower lash liner at outer corners', 'Downward-dragging smoky effects'],
+  },
+  'Wide-set': {
+    eyelinerStyles: ['Tightline the inner corner', 'Define inner corner with a dark pencil', 'Bring liner closer to the inner edge'],
+    eyeshadowTechniques: ['Darker shade toward the inner corner', 'Inner corner definition', 'Keep outer corner relatively light'],
+    famousExamples: ['Solange Knowles', 'Dakota Fanning'],
+    colorRecommendations: ['Deep eggplant at the inner corner', 'Soft rose', 'Taupe transition shade'],
+    avoidThese: ['Outer corner focus only', 'Pale or bright inner corners that push eyes further apart'],
+  },
+  'Close-set': {
+    eyelinerStyles: ['Wing starting from center extending outward', 'Light and bright inner corner', 'Extend liner past the outer corner'],
+    eyeshadowTechniques: ['Focus darker shades outward', 'Shimmer or highlight on the inner corner', 'Blend outward and upward'],
+    famousExamples: ['Meryl Streep', 'Jennifer Aniston'],
+    colorRecommendations: ['Warm gold for the inner corner', 'Deep plum at the outer corner', 'Neutral mid-lid'],
+    avoidThese: ['Starting liner at the inner corner', 'Heavy inner corner definition'],
+  },
+};
 
 function detectEyeShape(ratios: EyeRatios): string {
   const { widthHeightRatio, creaseDepth, cornerTilt, eyeSpacing } = ratios;
@@ -65,6 +124,17 @@ function detectEyeShape(ratios: EyeRatios): string {
   return 'Almond';
 }
 
+function buildEyeShapeResult(shape: string): EyeShapeResult {
+  const guide = EYE_SHAPE_GUIDE.find((e) => e.name === shape);
+  const extra = EYE_EXTRA_ADVICE[shape] ?? EYE_EXTRA_ADVICE['Almond'];
+  return {
+    eyeShape: shape,
+    description: guide?.description ?? `Your eyes have been identified as ${shape} based on landmark analysis.`,
+    makeupTips: guide?.tips ?? [],
+    ...extra,
+  };
+}
+
 export function EyeShapeDetector() {
   const [status, setStatus] = useState<Status>('idle');
   const [loadingStep, setLoadingStep] = useState(0);
@@ -74,7 +144,6 @@ export function EyeShapeDetector() {
   const [points, setPoints] = useState<NormalizedPoint[]>([]);
   const [result, setResult] = useState<EyeShapeResult | null>(null);
   const [lowConfidence, setLowConfidence] = useState(false);
-  const [aiUnavailable, setAiUnavailable] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
   const [activeTab, setActiveTab] = useState<Tab>('Makeup Tips');
@@ -90,7 +159,6 @@ export function EyeShapeDetector() {
     setPoints([]);
     setResult(null);
     setLowConfidence(false);
-    setAiUnavailable(false);
     setError(null);
     if (inputRef.current) inputRef.current.value = '';
   }, [previewUrl]);
@@ -133,11 +201,10 @@ export function EyeShapeDetector() {
     if (!file) return;
     setStatus('loading');
     setError(null);
-    setAiUnavailable(false);
 
     try {
       setLoadingStep(0);
-      const [{ getFaceLandmarker, loadImage, imageElementToBase64, landmarkDistance }] =
+      const [{ getFaceLandmarker, loadImage, landmarkDistance }] =
         await Promise.all([import('@/lib/mediapipe')]);
       const faceLandmarker = await getFaceLandmarker();
       const img = await loadImage(file);
@@ -185,44 +252,7 @@ export function EyeShapeDetector() {
           .map((idx) => ({ x: landmarks[idx].x, y: landmarks[idx].y }))
       );
 
-      setLoadingStep(2);
-      const { base64 } = imageElementToBase64(img);
-      const prompt = `You are a professional makeup artist. The user has ${shape} shaped eyes. Analyze their eye photo and give personalized advice. Respond ONLY in this exact JSON format with no extra text or markdown:
-{
-  "eyeShape": "${shape}",
-  "description": "What makes their eyes this shape in 2 sentences",
-  "makeupTips": ["tip1", "tip2", "tip3", "tip4"],
-  "eyelinerStyles": ["style1", "style2", "style3"],
-  "eyeshadowTechniques": ["technique1", "technique2", "technique3"],
-  "famousExamples": ["celebrity1", "celebrity2"],
-  "colorRecommendations": ["color1", "color2", "color3"],
-  "avoidThese": ["avoid1", "avoid2"]
-}`;
-
-      try {
-        const advice = await fetchGeminiJson<EyeShapeResult>(prompt, {
-          imageBase64: base64,
-          mimeType: 'image/jpeg',
-        });
-        setResult(advice);
-      } catch (err) {
-        if (err instanceof GeminiNetworkError) {
-          setAiUnavailable(true);
-          setResult({
-            eyeShape: shape,
-            description: `Your eyes were detected as ${shape} based on landmark analysis.`,
-            makeupTips: [],
-            eyelinerStyles: [],
-            eyeshadowTechniques: [],
-            famousExamples: [],
-            colorRecommendations: [],
-            avoidThese: [],
-          });
-        } else {
-          throw err;
-        }
-      }
-
+      setResult(buildEyeShapeResult(shape));
       setStatus('done');
     } catch (err) {
       setStatus('error');
@@ -346,12 +376,6 @@ export function EyeShapeDetector() {
                 <div className="flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-xs text-amber-700">
                   <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   Landmark confidence was low. For best accuracy, use a brighter, more direct photo.
-                </div>
-              )}
-              {aiUnavailable && (
-                <div className="flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-xs text-amber-700">
-                  <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                  Could not connect to AI. Showing basic results only.
                 </div>
               )}
 

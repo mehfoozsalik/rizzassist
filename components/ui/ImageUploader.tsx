@@ -5,12 +5,114 @@ import Image from 'next/image';
 import { AlertCircle, ImagePlus, Loader2, RotateCcw, X } from 'lucide-react';
 import type { AnalysisResult } from '@/lib/types';
 import { AnalysisCard } from './AnalysisCard';
+import { getFaceLandmarker, getPoseLandmarker, landmarkDistance } from '@/lib/mediapipe';
 
 const MAX_SIZE = 5 * 1024 * 1024;
 const MIN_SIZE = 10 * 1024;
 const ACCEPTED = ['image/jpeg', 'image/png', 'image/webp'];
 
 type Status = 'idle' | 'preview' | 'loading' | 'done' | 'error';
+
+interface FaceData {
+  detected: boolean;
+  faceShape: string;
+  faceLengthRatio: number;
+  jawToCheekRatio: number;
+  foreheadToJawRatio: number;
+  symmetryScore: number;
+  eyeShape: string;
+  eyeAspectRatio: number;
+  cornerTilt: string;
+}
+
+interface BodyData {
+  detected: boolean;
+  shoulderHipRatio: number;
+  bodyTendency: string;
+}
+
+function loadImgFromDataUrl(src: string): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const el = new window.Image();
+    el.onload = () => resolve(el);
+    el.onerror = () => reject(new Error('Could not load image for analysis.'));
+    el.src = src;
+  });
+}
+
+function extractFaceData(
+  landmarks: Array<{ x: number; y: number; z: number }>,
+  w: number,
+  h: number
+): FaceData {
+  const lm = landmarks;
+
+  const faceHeight = landmarkDistance(lm[10], lm[152], w, h);
+  const cheekboneWidth = landmarkDistance(lm[234], lm[454], w, h);
+  const jawWidth = landmarkDistance(lm[172], lm[397], w, h);
+  const foreheadWidth = landmarkDistance(lm[54], lm[284], w, h);
+
+  const faceLengthRatio = faceHeight / cheekboneWidth;
+  const jawToCheekRatio = jawWidth / cheekboneWidth;
+  const foreheadToJawRatio = foreheadWidth / jawWidth;
+
+  let faceShape = 'Oval';
+  if (faceLengthRatio > 1.55) faceShape = 'Oblong';
+  else if (faceLengthRatio < 1.1) faceShape = 'Round';
+  else if (foreheadToJawRatio > 1.25 && jawToCheekRatio < 0.82) faceShape = 'Heart';
+  else if (foreheadWidth < cheekboneWidth * 0.85 && jawWidth < cheekboneWidth * 0.85) faceShape = 'Diamond';
+  else if (jawToCheekRatio > 0.88 && faceLengthRatio < 1.35) faceShape = 'Square';
+
+  // Eye measurements (viewer perspective: lm[33] = viewer's left outer = person's right eye outer)
+  const leftEyeWidth = landmarkDistance(lm[33], lm[133], w, h);
+  const leftEyeHeight = landmarkDistance(lm[159], lm[145], w, h);
+  const rightEyeWidth = landmarkDistance(lm[362], lm[263], w, h);
+  const rightEyeHeight = landmarkDistance(lm[386], lm[374], w, h);
+
+  const eyeAspectRatio = (leftEyeHeight / leftEyeWidth + rightEyeHeight / rightEyeWidth) / 2;
+
+  // In normalized y-down coordinates: outer.y < inner.y means outer is higher = upturned (negative)
+  const avgTilt = ((lm[33].y - lm[133].y) + (lm[362].y - lm[263].y)) / 2;
+  const cornerTilt = avgTilt < -0.02 ? 'upturned' : avgTilt > 0.02 ? 'downturned' : 'neutral';
+
+  const widthDiff = Math.abs(leftEyeWidth - rightEyeWidth) / Math.max(leftEyeWidth, rightEyeWidth);
+  const symmetryScore = Math.max(0, 1 - widthDiff);
+
+  let eyeShape = 'Almond';
+  if (eyeAspectRatio < 0.22) eyeShape = 'Monolid';
+  else if (eyeAspectRatio < 0.28 && cornerTilt === 'neutral') eyeShape = 'Hooded';
+  else if (eyeAspectRatio > 0.40) eyeShape = 'Round';
+  else if (cornerTilt === 'upturned') eyeShape = 'Upturned';
+  else if (cornerTilt === 'downturned') eyeShape = 'Downturned';
+
+  return {
+    detected: true,
+    faceShape,
+    faceLengthRatio,
+    jawToCheekRatio,
+    foreheadToJawRatio,
+    symmetryScore,
+    eyeShape,
+    eyeAspectRatio,
+    cornerTilt,
+  };
+}
+
+function extractBodyData(
+  landmarks: Array<{ x: number; y: number; z: number }>,
+  w: number,
+  h: number
+): BodyData {
+  const shoulderWidth = landmarkDistance(landmarks[11], landmarks[12], w, h);
+  const hipWidth = landmarkDistance(landmarks[23], landmarks[24], w, h);
+  const shoulderHipRatio = shoulderWidth / hipWidth;
+
+  let bodyTendency = 'Balanced / Rectangle (Mesomorph)';
+  if (shoulderHipRatio > 1.25) bodyTendency = 'Athletic / Inverted Triangle (V-taper)';
+  else if (shoulderHipRatio < 0.85) bodyTendency = 'Pear / Endomorph tendency (wider hips)';
+
+  return { detected: true, shoulderHipRatio, bodyTendency };
+}
 
 export function ImageUploader() {
   const [status, setStatus] = useState<Status>('idle');
@@ -19,6 +121,7 @@ export function ImageUploader() {
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
+  const [loadingStep, setLoadingStep] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   const reset = useCallback(() => {
@@ -28,6 +131,7 @@ export function ImageUploader() {
     setDataUrl(null);
     setResult(null);
     setError(null);
+    setLoadingStep('');
     if (inputRef.current) inputRef.current.value = '';
   }, [previewUrl]);
 
@@ -80,11 +184,48 @@ export function ImageUploader() {
     if (!dataUrl) return;
     setStatus('loading');
     setError(null);
+
     try {
+      const img = await loadImgFromDataUrl(dataUrl);
+      const w = img.naturalWidth;
+      const h = img.naturalHeight;
+
+      setLoadingStep('Loading AI models...');
+      const [faceLandmarker, poseLandmarker] = await Promise.all([
+        getFaceLandmarker(),
+        getPoseLandmarker(),
+      ]);
+
+      setLoadingStep('Analyzing your face and body...');
+      const faceResults = faceLandmarker.detect(img);
+      const poseResults = poseLandmarker.detect(img);
+
+      const faceData: FaceData =
+        faceResults.faceLandmarks && faceResults.faceLandmarks.length > 0
+          ? extractFaceData(faceResults.faceLandmarks[0], w, h)
+          : {
+              detected: false,
+              faceShape: 'Unknown',
+              faceLengthRatio: 0,
+              jawToCheekRatio: 0,
+              foreheadToJawRatio: 0,
+              symmetryScore: 0,
+              eyeShape: 'Unknown',
+              eyeAspectRatio: 0,
+              cornerTilt: 'neutral',
+            };
+
+      const bodyData: BodyData =
+        poseResults.poseLandmarks && poseResults.poseLandmarks.length > 0
+          ? extractBodyData(poseResults.poseLandmarks[0], w, h)
+          : { detected: false, shoulderHipRatio: 0, bodyTendency: 'Unknown' };
+
+      setLoadingStep('Generating your Rizz Report...');
+
       const res = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image: dataUrl }),
+        body: JSON.stringify({ faceData, bodyData }),
       });
       const json = await res.json();
       if (!res.ok) {
@@ -172,7 +313,7 @@ export function ImageUploader() {
               )}
             </div>
             <figcaption className="mt-2 text-center text-xs text-gray-400 dark:text-white/30">
-              Preview: your photo stays on your device until you analyze.
+              Your photo stays on your device. Only derived measurements are sent for analysis.
             </figcaption>
           </figure>
 
@@ -187,7 +328,7 @@ export function ImageUploader() {
                 {status === 'loading' ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                    Cooking your Rizz Report…
+                    {loadingStep || 'Analyzing...'}
                   </>
                 ) : (
                   'Get My Rizz Report'

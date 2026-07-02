@@ -14,53 +14,30 @@ import {
   X,
   XCircle,
 } from 'lucide-react';
-import type { BodyShape, BodyShapeAdvice } from '@/lib/types';
+import type { BodyShape } from '@/lib/types';
 import { calculateBodyShape, getBodyShapeProfile } from '@/lib/bodyShape';
-import { fetchGeminiJson, GeminiNetworkError } from '@/lib/geminiClient';
 import { ShapeSilhouette } from './ShapeSilhouette';
 import { LoadingSteps } from '@/components/ui/LoadingSteps';
 
 const ALL_SHAPES: BodyShape[] = ['Hourglass', 'Pear', 'Apple', 'Rectangle', 'Inverted Triangle'];
 const ASSUMED_SHOULDER_CM = 40;
-const PHOTO_STEPS = ['Loading AI models…', 'Analyzing photo…', 'Getting styling advice…'];
+const PHOTO_STEPS = ['Loading AI models...', 'Analyzing body pose...'];
 
 type Mode = 'manual' | 'photo';
-
-function geminiPrompt(shape: BodyShape, bust: number, waist: number, hip: number) {
-  return `You are a professional fashion stylist. The user has a ${shape} body shape with measurements: Bust ${bust}cm, Waist ${waist}cm, Hips ${hip}cm.
-Respond ONLY in this exact JSON with no extra text:
-{
-  "bodyShape": "${shape}",
-  "description": "What defines this body shape in 2 sentences",
-  "keyFeature": "One sentence highlight of their best feature",
-  "whatToWear": ["item1", "item2", "item3", "item4", "item5"],
-  "whatToAvoid": ["item1", "item2", "item3"],
-  "dressingGoal": "One sentence styling goal",
-  "bestNecklines": ["neckline1", "neckline2", "neckline3"],
-  "bestBottoms": ["bottom1", "bottom2", "bottom3"],
-  "celebrities": ["celeb1", "celeb2", "celeb3"],
-  "outfitIdeas": ["idea1", "idea2", "idea3"]
-}`;
-}
 
 export function BodyShapeCalculator() {
   const [mode, setMode] = useState<Mode>('manual');
 
-  // Manual mode
   const [unit, setUnit] = useState<'metric' | 'imperial'>('metric');
   const [values, setValues] = useState<Record<string, string>>({});
 
-  // Shared result state
   const [shape, setShape] = useState<BodyShape | null>(null);
-  const [advice, setAdvice] = useState<BodyShapeAdvice | null>(null);
-  const [aiUnavailable, setAiUnavailable] = useState(false);
   const [poseEstimated, setPoseEstimated] = useState(false);
   const [lowConfidence, setLowConfidence] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
 
-  // Photo mode
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [dragging, setDragging] = useState(false);
@@ -68,24 +45,7 @@ export function BodyShapeCalculator() {
 
   const lengthUnit = unit === 'metric' ? 'cm' : 'in';
 
-  const fetchAdvice = async (detectedShape: BodyShape, bust: number, waist: number, hip: number) => {
-    try {
-      const result = await fetchGeminiJson<BodyShapeAdvice>(
-        geminiPrompt(detectedShape, Math.round(bust), Math.round(waist), Math.round(hip))
-      );
-      setAdvice(result);
-      setAiUnavailable(false);
-    } catch (err) {
-      if (err instanceof GeminiNetworkError) {
-        setAiUnavailable(true);
-        setAdvice(null);
-      } else {
-        throw err;
-      }
-    }
-  };
-
-  const onManualSubmit = async (e: React.FormEvent) => {
+  const onManualSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const FIELDS = ['bust', 'waist', 'hip'] as const;
     const parsed: Record<string, number> = {};
@@ -103,15 +63,6 @@ export function BodyShapeCalculator() {
     setLowConfidence(false);
     const detected = calculateBodyShape({ bust: parsed.bust, waist: parsed.waist, hip: parsed.hip, unit });
     setShape(detected);
-    setAdvice(null);
-    setLoading(true);
-    try {
-      await fetchAdvice(detected, parsed.bust, parsed.waist, parsed.hip);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong. Try again.');
-    } finally {
-      setLoading(false);
-    }
   };
 
   const handleFile = useCallback((f: File) => {
@@ -128,7 +79,6 @@ export function BodyShapeCalculator() {
     setFile(f);
     setPreviewUrl(URL.createObjectURL(f));
     setShape(null);
-    setAdvice(null);
   }, []);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -177,9 +127,6 @@ export function BodyShapeCalculator() {
       setPoseEstimated(true);
       const detected = calculateBodyShape({ bust: bustCm, waist: waistCm, hip: hipCm, unit: 'metric' });
       setShape(detected);
-
-      setLoadingStep(2);
-      await fetchAdvice(detected, bustCm, waistCm, hipCm);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong. Try again.');
     } finally {
@@ -192,14 +139,13 @@ export function BodyShapeCalculator() {
     setPreviewUrl(null);
     setFile(null);
     setShape(null);
-    setAdvice(null);
     setError(null);
     setPoseEstimated(false);
     setLowConfidence(false);
     if (inputRef.current) inputRef.current.value = '';
   };
 
-  const fallbackProfile = shape ? getBodyShapeProfile(shape) : null;
+  const profile = shape ? getBodyShapeProfile(shape) : null;
 
   return (
     <div className="mx-auto w-full max-w-3xl">
@@ -281,10 +227,8 @@ export function BodyShapeCalculator() {
 
           <button
             type="submit"
-            disabled={loading}
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-ink-800 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-ink-800 sm:w-auto"
           >
-            {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
             Calculate My Body Shape
           </button>
         </form>
@@ -351,6 +295,7 @@ export function BodyShapeCalculator() {
                   disabled={loading}
                   className="inline-flex items-center gap-2 rounded-xl bg-ink-900 px-6 py-2.5 text-sm font-semibold text-white hover:bg-ink-800 disabled:opacity-60"
                 >
+                  {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
                   Detect My Body Shape
                 </button>
               </div>
@@ -381,7 +326,7 @@ export function BodyShapeCalculator() {
         ))}
       </div>
 
-      {shape && fallbackProfile && (
+      {shape && profile && (
         <div role="alert" aria-live="polite" className="mt-8 rounded-2xl border border-brand-300 bg-white p-6 shadow-sm sm:p-8 dark:border-brand-600/30 dark:bg-ink-800">
           {poseEstimated && (
             <div className="mb-5 flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-xs text-amber-700">
@@ -389,12 +334,6 @@ export function BodyShapeCalculator() {
               {lowConfidence
                 ? 'Pose detection confidence was low, so measurements are a rough estimate.'
                 : 'Measurements estimated from photo pose. Waist is approximated, not directly measured.'}
-            </div>
-          )}
-          {aiUnavailable && (
-            <div className="mb-5 flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-xs text-amber-700">
-              <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-              Could not connect to AI. Showing basic results only.
             </div>
           )}
 
@@ -406,11 +345,8 @@ export function BodyShapeCalculator() {
               <p className="text-xs font-semibold uppercase tracking-widest text-brand-600">Your Body Shape</p>
               <h3 className="mt-1 text-2xl font-extrabold text-gray-900 dark:text-white">{shape}</h3>
               <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-white/60">
-                {advice?.description ?? fallbackProfile.unique}
+                {profile.unique}
               </p>
-              {advice?.keyFeature && (
-                <p className="mt-2 text-sm font-medium text-brand-700 dark:text-brand-400">{advice.keyFeature}</p>
-              )}
             </div>
           </div>
 
@@ -421,7 +357,7 @@ export function BodyShapeCalculator() {
                 What to Wear
               </h4>
               <ul className="mt-2 space-y-1.5 text-sm text-gray-600 dark:text-white/60">
-                {(advice?.whatToWear ?? fallbackProfile.wear).map((item, i) => (
+                {profile.wear.map((item, i) => (
                   <li key={i} className="flex gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green-500" aria-hidden="true" />
                     <span>{item}</span>
@@ -435,7 +371,7 @@ export function BodyShapeCalculator() {
                 What to Avoid
               </h4>
               <ul className="mt-2 space-y-1.5 text-sm text-gray-600 dark:text-white/60">
-                {(advice?.whatToAvoid ?? fallbackProfile.avoid).map((item, i) => (
+                {profile.avoid.map((item, i) => (
                   <li key={i} className="flex gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" aria-hidden="true" />
                     <span>{item}</span>
@@ -445,19 +381,6 @@ export function BodyShapeCalculator() {
             </div>
           </div>
 
-          {advice && (
-            <div className="mt-6 grid gap-5 sm:grid-cols-2">
-              <div>
-                <h4 className="text-xs font-semibold uppercase tracking-wide text-brand-600">Best Necklines</h4>
-                <p className="mt-2 text-sm text-gray-600">{advice.bestNecklines.join(' · ')}</p>
-              </div>
-              <div>
-                <h4 className="text-xs font-semibold uppercase tracking-wide text-brand-600">Best Bottoms</h4>
-                <p className="mt-2 text-sm text-gray-600 dark:text-white/60">{advice.bestBottoms.join(' · ')}</p>
-              </div>
-            </div>
-          )}
-
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             <div>
               <h4 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-brand-600">
@@ -465,7 +388,7 @@ export function BodyShapeCalculator() {
                 Styling Goal
               </h4>
               <p className="mt-2 text-sm text-gray-600 dark:text-white/60">
-                {advice?.dressingGoal ?? fallbackProfile.goals.join(' ')}
+                {profile.goals.join(' ')}
               </p>
             </div>
             <div>
@@ -474,7 +397,7 @@ export function BodyShapeCalculator() {
                 Celebrity Examples
               </h4>
               <p className="mt-2 text-sm text-gray-600 dark:text-white/60">
-                {(advice?.celebrities ?? fallbackProfile.famous).join(' · ')}
+                {profile.famous.join(' · ')}
               </p>
             </div>
           </div>

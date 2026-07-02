@@ -13,23 +13,28 @@ import { EYE_SHAPE_GUIDE } from '@/lib/eyeShapes';
 const PAGE_URL = `${SITE_URL}/eye-shape-detector`;
 
 export const metadata: Metadata = {
-  title: 'Eye Shape Detector: Find Your Eye Shape Free | Rizz Assist',
+  title: 'Eye Shape Chart and Detector: Find Your Eye Shape Free | Rizz Assist',
   description:
-    'Upload a photo and let AI identify your eye shape (almond, round, hooded, monolid, and more) with expert makeup and eyeliner tips tailored to your eyes.',
+    'Use our free eye shape chart to identify your eye shapes and finally answer "what\'s my eye shape?" Upload a photo for instant AI detection, plus expert makeup tips for every eye type.',
   keywords: [
+    'eye shape chart',
+    'eye shapes',
+    "what's my eye shape",
+    'eye type chart',
     'eye shape detector',
-    'what is my eye shape',
+    'find eye shape',
+    'different eye styles',
+    'eyeball shapes',
     'eye shape analyzer',
-    'hooded eyes makeup',
     'almond eye shape',
+    'hooded eyes makeup',
     'monolid makeup tips',
-    'eye shape quiz',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Eye Shape Detector: Find Your Eye Shape Free | Rizz Assist',
+    title: 'Eye Shape Chart and Detector: Find Your Eye Shape Free | Rizz Assist',
     description:
-      'Upload a photo and let AI identify your eye shape (almond, round, hooded, monolid, and more) with expert makeup and eyeliner tips tailored to your eyes.',
+      'Use our free eye shape chart to identify your eye shapes and finally answer "what\'s my eye shape?" Upload a photo for instant AI detection, plus expert makeup tips for every eye type.',
     url: PAGE_URL,
     siteName: SITE_NAME,
     images: [
@@ -37,25 +42,40 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Rizz Assist Eye Shape Detector showing AI-powered eye shape analysis and makeup tips',
+        alt: 'Rizz Assist Eye Shape Chart and Detector showing AI-powered eye shape analysis and makeup tips',
       },
     ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Eye Shape Detector: Find Your Eye Shape Free | Rizz Assist',
+    title: 'Eye Shape Chart and Detector: Find Your Eye Shape Free | Rizz Assist',
     description:
-      'Upload a photo and let AI identify your eye shape (almond, round, hooded, monolid, and more) with expert makeup and eyeliner tips tailored to your eyes.',
+      'Use our free eye shape chart to identify your eye shapes and finally answer "what\'s my eye shape?" Upload a photo for instant AI detection, plus expert makeup tips for every eye type.',
     images: ['/twitter-image.png'],
   },
 };
 
 const FAQ_ITEMS = [
   {
+    question: "What's my eye shape?",
+    answer:
+      "Your eye shape is determined by how your eyelid, crease, and corner are structured. Upload a close-up photo above and our AI will identify it for you instantly, matching it against the eye shape chart. Common results include almond, round, hooded, monolid, upturned, and downturned.",
+  },
+  {
+    question: 'What type of eyes do I have?',
+    answer:
+      'There are six main eyes types people identify with: almond, round, monolid, hooded, upturned, and downturned. Spacing also plays a role, so you might be wide-set or close-set on top of your primary shape. The detector above analyzes all of these factors from your photo.',
+  },
+  {
+    question: 'How do I find my eye shape?',
+    answer:
+      'The easiest way to find your eye shape is to upload a clear, well-lit face photo to the detector above. Alternatively, look straight into a mirror and check whether the outer corners point up or down, whether you have a visible crease, and how much white shows above and below your iris.',
+  },
+  {
     question: 'Can I change my eye shape?',
     answer:
-      'Your underlying eye shape is anatomical and stays fixed, but makeup techniques, like eyeliner placement and eyeshadow blending, can visually enhance or soften how your eye shape appears.',
+      'Your underlying eye shape is anatomical and stays fixed, but makeup techniques like eyeliner placement and eyeshadow blending can visually enhance or soften how the look of your eyes appears.',
   },
   {
     question: "What's the most common eye shape?",
@@ -80,12 +100,12 @@ export default function EyeShapeDetectorPage() {
       />
       <ToolWebAppSchema
         name="Eye Shape Detector"
-        description="AI-powered tool that analyzes a photo to identify eye shape and provide tailored makeup recommendations."
+        description="AI-powered tool that analyzes a photo to identify eye shape and provide tailored makeup recommendations, with a complete eye shape chart."
         url={PAGE_URL}
         featureList={[
           'AI vision-based eye shape detection',
-          '10 eye shape categories',
-          'Personalized makeup tips',
+          'Complete eye shape chart with 10 categories',
+          'Personalized makeup tips per shape',
           'Eyeliner and eyeshadow technique recommendations',
           'Famous examples per eye shape',
           'No login required',
@@ -111,12 +131,12 @@ export default function EyeShapeDetectorPage() {
           <div className="mx-auto max-w-3xl">
             <Reveal>
               <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                Eye Shape Detector
+                Eye Shape Detector and Chart
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-base text-white/65">
                 Upload a close-up photo and our AI will identify your eye
-                shape (almond, round, hooded, monolid, and more) with
-                expert makeup tips made for your eyes.
+                shape from the full eye type chart, almond, round, hooded, monolid,
+                and more, with expert makeup tips made for your eyes.
               </p>
             </Reveal>
           </div>
@@ -134,11 +154,24 @@ export default function EyeShapeDetectorPage() {
               </h2>
               <p className="mt-3 text-gray-600 dark:text-white/60">
                 Eye shape is determined by lid structure, crease depth, corner
-                tilt, and spacing, and it&apos;s one of the biggest factors in
+                tilt, and spacing, and it is one of the biggest factors in
                 whether a makeup look actually suits you. Our AI analyzes
-                your photo against 10 recognized eye shape categories and
-                returns tailored eyeliner, eyeshadow, and color
-                recommendations for your specific eyes.
+                your photo against the full eye type chart with 10 recognized
+                categories and returns tailored eyeliner, eyeshadow, and color
+                recommendations. Whether you want to find your eye shape from a
+                photo or just understand different eye styles, the results are
+                matched to your specific eyes.
+              </p>
+            </Reveal>
+
+            <Reveal>
+              <h2 className="mt-10 text-2xl font-bold text-gray-900 dark:text-white">
+                Eye Shape Chart: All Eye Types Explained
+              </h2>
+              <p className="mt-3 text-gray-600 dark:text-white/60">
+                Use this eye shape chart as a reference before or after running the detector.
+                Each entry describes the defining characteristics of that eye shape, which
+                you can compare to the look of your eyes in a mirror or photo.
               </p>
             </Reveal>
 
@@ -155,13 +188,19 @@ export default function EyeShapeDetectorPage() {
 
             <Reveal>
               <h2 className="mt-10 text-2xl font-bold text-gray-900 dark:text-white">
-                Why Your Eye Shape Matters for Makeup
+                Why Knowing Your Eye Shape Matters for Makeup
               </h2>
+              <p className="mt-3 text-gray-600 dark:text-white/60">
+                Different eye styles call for different approaches. What flatters almond eyes
+                may close off round eyes, and techniques designed for monolids often look
+                heavy on hooded lids. Knowing your shape is the starting point for makeup
+                that actually works with the natural look of your eyes, not against them.
+              </p>
               <ul className="mt-4 space-y-2.5 text-gray-600 dark:text-white/60">
                 {[
                   'Apply eyeliner where it actually enhances your shape, instead of guessing',
                   'Choose eyeshadow placement and blending techniques suited to your lid space',
-                  'Avoid techniques that work for influencers but not your specific eye shape',
+                  'Avoid techniques that work for eye models but not your specific eye shape',
                   'Get a starting point, then adjust the tips to your personal style',
                 ].map((item) => (
                   <li key={item} className="flex gap-2">

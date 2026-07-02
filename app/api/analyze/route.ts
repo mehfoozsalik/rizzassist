@@ -1,11 +1,8 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { AnalysisResult, ShadeItem } from '@/lib/types';
-import { generateContentWithFallback, isGeminiOverloaded } from '@/lib/geminiServer';
+import { callDeepSeek, isDeepSeekOverloaded, isInsufficientBalance, isBadApiKey, isRateLimit } from '@/lib/deepseekServer';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-
-const MAX_BYTES = 6 * 1024 * 1024; // ~6MB base64 ceiling
 
 const SEO_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -13,85 +10,121 @@ const SEO_HEADERS = {
   'X-Robots-Tag': 'noindex',
 };
 
-const VALID_SHADE_STYLES = ['Aviator', 'Wayfarer', 'Round', 'Cat-Eye', 'Clubmaster', 'Square', 'Rectangular', 'Oval', 'Geometric', 'Butterfly'] as const;
+const VALID_SHADE_STYLES = [
+  'Aviator', 'Wayfarer', 'Round', 'Cat-Eye', 'Clubmaster',
+  'Square', 'Rectangular', 'Oval', 'Geometric', 'Butterfly',
+] as const;
 
-const SYSTEM_PROMPT = `You are Rizz Assist, an elite AI image coach and wingman with razor-sharp style sense and an unbeatable eye for what makes someone irresistibly magnetic. Analyze the person in the photo and deliver a powerful, personalized "Rizz Report."
+interface FaceData {
+  detected: boolean;
+  faceShape: string;
+  faceLengthRatio: number;
+  jawToCheekRatio: number;
+  foreheadToJawRatio: number;
+  symmetryScore: number;
+  eyeShape: string;
+  eyeAspectRatio: number;
+  cornerTilt: string;
+}
 
-Tone: confident hype-man meets sophisticated style consultant, Gen-Z savvy but classy. Think GQ magazine meets your most charismatic friend. Never cruel, always elevating.
+interface BodyData {
+  detected: boolean;
+  shoulderHipRatio: number;
+  bodyTendency: string;
+}
 
-RULES:
-- Be honest but constructive. Frame everything as a glow-up opportunity, never an insult.
-- Do NOT guess or comment on race, exact age, health conditions, religion, or sexual orientation.
-- Focus ONLY on changeable presentation: grooming, outfit colors/fit/style, accessories, shades, face angles, expression, posture, and overall vibe.
-- Pickup lines must be original, clever, flirty-but-classy, and safe-for-work. No generic openers. No crude content.
-- If no clear face/person is visible, acknowledge warmly in overallImpression and provide brief general tips.
+function buildPrompt(faceData: FaceData | null, bodyData: BodyData | null): string {
+  const faceSection = faceData?.detected
+    ? `FACE ANALYSIS (MediaPipe Face Landmarker):
+- Face shape: ${faceData.faceShape}
+- Face length to width ratio: ${faceData.faceLengthRatio.toFixed(2)}
+- Jaw to cheekbone ratio: ${faceData.jawToCheekRatio.toFixed(2)}
+- Forehead to jaw ratio: ${faceData.foreheadToJawRatio.toFixed(2)}
+- Facial symmetry score: ${faceData.symmetryScore.toFixed(2)} (0 to 1, higher is more symmetric)
+- Eye shape: ${faceData.eyeShape}
+- Eye aspect ratio: ${faceData.eyeAspectRatio.toFixed(2)}
+- Eye corner tilt: ${faceData.cornerTilt}`
+    : 'FACE ANALYSIS: No face clearly detected in this photo.';
 
-SCORE DEFINITIONS (use EXACTLY these labels):
-- "Style": outfit quality, color coordination, fit, fashion sense (0=fashion disaster, 100=runway ready)
-- "Grooming": hair, skin, beard/makeup, overall hygiene presentation (0=needs significant work, 100=immaculate)
-- "Alpha Presence": commanding energy, dominant body language, magnetic "main character" aura (0=wallflower, 100=commands every room they enter)
-- "Edge Factor": mysterious/rebellious magnetism, the bad boy/girl intrigue that makes people curious (0=safe/conventional, 100=dangerously captivating edge)
-- "Photo Quality": lighting, angle, background, image clarity (0=poor, 100=professional)
+  const bodySection = bodyData?.detected
+    ? `BODY ANALYSIS (MediaPipe Pose Landmarker):
+- Shoulder to hip ratio: ${bodyData.shoulderHipRatio.toFixed(2)}
+- Body build tendency: ${bodyData.bodyTendency}`
+    : 'BODY ANALYSIS: No full body clearly detected in this photo.';
 
-Return ONLY valid JSON, with no markdown and no code fences, exactly in this shape:
+  return `You are Rizz Assist, an elite AI style coach and confidence expert. A user submitted a photo that was analyzed locally by AI landmark detection. Their photo never left their device. Use only the extracted measurements below to write a personalized Rizz Report.
+
+${faceSection}
+
+${bodySection}
+
+Tone: confident hype-man meets sophisticated style consultant, GQ-meets-your-most-charismatic-friend energy. Frame everything as opportunity, never criticism.
+
+INSTRUCTIONS:
+- Reference the detected face shape explicitly when recommending shade styles and hairstyles.
+- Reference the eye shape in faceOrientation tips.
+- Reference the body build tendency in style and fit suggestions.
+- For Style, score 65-80 as a motivating baseline since you cannot see the outfit.
+- For Grooming, use symmetry score as a guide: symmetryScore > 0.85 suggests 75+, below 0.7 suggests 60-70.
+- For Photo Quality, always set 75 with a note that the photo was processed locally.
+- Alpha Presence and Edge Factor reflect face shape and bone structure projections.
+- Pickup lines must be clever, tasteful, and SFW. Reference their best detected feature subtly.
+- If no face was detected, acknowledge the photo was unclear and give warm general tips.
+
+SCORE DEFINITIONS:
+- "Style": inferred from body build tendency (0=fashion disaster, 100=runway ready)
+- "Grooming": estimated from face symmetry score (0=needs work, 100=immaculate)
+- "Alpha Presence": commanding energy from face shape and proportions (0=wallflower, 100=commands every room)
+- "Edge Factor": mysterious magnetism from facial features (0=safe, 100=dangerously captivating)
+- "Photo Quality": always 75, processed locally
+
+Return ONLY valid JSON, no markdown, no code fences, exactly this shape:
 {
-  "rizzScore": <overall 0-100, weighted average biased toward Alpha Presence and Edge Factor>,
-  "overallImpression": "<2-3 sentences: lead with their strongest quality, name their vibe archetype (e.g. 'effortless James Dean energy'), end with excitement about their potential>",
+  "rizzScore": <0-100, weighted average biased toward Alpha Presence and Edge Factor>,
+  "overallImpression": "<2-3 sentences: lead with their strongest quality from the measurements, name their vibe archetype, end with excitement about their potential>",
   "scores": [
-    { "label": "Style", "score": <0-100>, "note": "<specific actionable observation>" },
-    { "label": "Grooming", "score": <0-100>, "note": "<specific observation>" },
-    { "label": "Alpha Presence", "score": <0-100>, "note": "<observation about commanding energy or how to build it>" },
-    { "label": "Edge Factor", "score": <0-100>, "note": "<observation about mysterious/rebel quality>" },
-    { "label": "Photo Quality", "score": <0-100>, "note": "<lighting/angle/background note>" }
+    { "label": "Style", "score": <0-100>, "note": "<specific observation from body build>" },
+    { "label": "Grooming", "score": <0-100>, "note": "<observation from symmetry score>" },
+    { "label": "Alpha Presence", "score": <0-100>, "note": "<observation from face shape strength>" },
+    { "label": "Edge Factor", "score": <0-100>, "note": "<observation from detected features>" },
+    { "label": "Photo Quality", "score": 75, "note": "Photo processed locally on device for privacy." }
   ],
   "styleTips": [
-    "<specific color or outfit suggestion>",
-    "<accessory or layering tip>",
-    "<specific clothing category or brand-style recommendation>",
-    "<something to avoid or upgrade>",
+    "<color or outfit suggestion matched to body build tendency>",
+    "<accessory tip that complements the detected face shape>",
+    "<clothing fit recommendation>",
+    "<something to avoid based on the measurements>",
     "<signature look suggestion>"
   ],
   "shades": [
-    { "style": "<MUST be exactly one of: Aviator, Wayfarer, Round, Cat-Eye, Clubmaster, Square, Rectangular, Oval, Geometric, Butterfly>", "description": "<why this frame style suits them, referencing their face shape>", "faceShape": "<detected face shape: oval, round, square, heart, oblong, or diamond>" },
-    { "style": "<second recommendation, different from first>", "description": "<why>", "faceShape": "<same face shape as above>" }
+    { "style": "<MUST be exactly one of: Aviator, Wayfarer, Round, Cat-Eye, Clubmaster, Square, Rectangular, Oval, Geometric, Butterfly>", "description": "<why this frame suits the detected face shape>", "faceShape": "<the detected face shape in lowercase>" },
+    { "style": "<second recommendation, different from first>", "description": "<why>", "faceShape": "<same face shape>" }
   ],
   "faceOrientation": [
-    "<best camera angle for their face shape>",
-    "<expression tip: jaw, eyes, lips>",
-    "<grooming enhancement for their face shape>",
-    "<lighting tip for their complexion>"
+    "<best camera angle for the detected face shape>",
+    "<expression tip referencing the detected eye shape>",
+    "<grooming tip for the detected face shape>",
+    "<lighting tip>"
   ],
   "pickupLines": [
-    "<witty/intellectual line, referencing something about their look>",
-    "<playful/teasing line, light and fun>",
-    "<smooth/suave line, timeless class>",
-    "<bold/confident line, slightly daring but classy>",
-    "<mysterious/intriguing line, leaves them wanting more>"
+    "<witty line with subtle nod to their best detected feature>",
+    "<playful teasing line>",
+    "<smooth and suave line, timeless class>",
+    "<bold line, slightly daring but classy>",
+    "<mysterious line that leaves them wanting more>"
   ],
   "confidenceTips": [
-    "<specific posture or body language upgrade>",
-    "<mindset shift for social confidence>",
-    "<one daily habit that builds magnetic confidence>",
-    "<their strongest visible trait to lean into>"
+    "<posture or body language upgrade for their build>",
+    "<mindset shift that leverages their face shape strength>",
+    "<daily habit that builds magnetic confidence>",
+    "<their strongest detected trait to lean into>"
   ]
 }`;
-
-function parseDataUrl(image: string): { mimeType: string; data: string } | null {
-  const match = /^data:(image\/(?:jpeg|png|webp));base64,(.+)$/i.exec(image);
-  if (!match) return null;
-  return { mimeType: match[1], data: match[2] };
 }
 
 function extractJson(text: string): AnalysisResult | null {
-  const cleaned = text
-    .replace(/```json/gi, '')
-    .replace(/```/g, '')
-    .trim();
-  const start = cleaned.indexOf('{');
-  const end = cleaned.lastIndexOf('}');
-  if (start === -1 || end === -1) return null;
   try {
-    return JSON.parse(cleaned.slice(start, end + 1)) as AnalysisResult;
+    return JSON.parse(text) as AnalysisResult;
   } catch {
     return null;
   }
@@ -105,10 +138,7 @@ function sanitize(raw: AnalysisResult): AnalysisResult {
   const scores = Array.isArray(raw.scores) ? raw.scores : [];
   const avg =
     scores.length > 0
-      ? Math.round(
-          scores.reduce((sum, s) => sum + clampScore(s?.score), 0) /
-            scores.length
-        )
+      ? Math.round(scores.reduce((sum, s) => sum + clampScore(s?.score), 0) / scores.length)
       : 0;
   const rizzScore = clampScore(raw.rizzScore) || avg;
 
@@ -118,9 +148,9 @@ function sanitize(raw: AnalysisResult): AnalysisResult {
       .filter((x) => x && typeof x === 'object')
       .slice(0, 4)
       .map((x: Record<string, unknown>) => {
-        const raw = typeof x.style === 'string' ? x.style.trim() : '';
+        const rawStyle = typeof x.style === 'string' ? x.style.trim() : '';
         const matched = VALID_SHADE_STYLES.find(
-          (s) => s.toLowerCase() === raw.toLowerCase()
+          (s) => s.toLowerCase() === rawStyle.toLowerCase()
         );
         return {
           style: matched ?? 'Wayfarer',
@@ -133,9 +163,7 @@ function sanitize(raw: AnalysisResult): AnalysisResult {
   return {
     rizzScore,
     overallImpression:
-      typeof raw.overallImpression === 'string'
-        ? raw.overallImpression
-        : 'Rizz Report complete.',
+      typeof raw.overallImpression === 'string' ? raw.overallImpression : 'Rizz Report complete.',
     scores: Array.isArray(raw.scores)
       ? raw.scores
           .filter((s) => s && typeof s.label === 'string')
@@ -156,48 +184,36 @@ function sanitize(raw: AnalysisResult): AnalysisResult {
 
 export async function POST(request: Request) {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
+    if (!process.env.DEEPSEEK_API_KEY) {
       return Response.json(
-        { error: 'Server is not configured. Missing GEMINI_API_KEY.' },
+        { error: 'Server is not configured. Missing DEEPSEEK_API_KEY.' },
         { status: 500, headers: SEO_HEADERS }
       );
     }
 
     const body = await request.json().catch(() => null);
-    const image: unknown = body?.image;
-    if (typeof image !== 'string' || !image.startsWith('data:image/')) {
+    if (!body || typeof body !== 'object') {
       return Response.json(
-        { error: 'Invalid request. Expected a base64 image data URL.' },
-        { status: 400, headers: SEO_HEADERS }
-      );
-    }
-    if (image.length > MAX_BYTES * 1.4) {
-      return Response.json(
-        { error: 'Image is too large. Maximum size is 5MB.' },
-        { status: 413, headers: SEO_HEADERS }
-      );
-    }
-
-    const parsed = parseDataUrl(image);
-    if (!parsed) {
-      return Response.json(
-        { error: 'Unsupported image format. Use JPG, PNG, or WebP.' },
+        { error: 'Invalid request. Expected JSON with faceData and/or bodyData.' },
         { status: 400, headers: SEO_HEADERS }
       );
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const result = await generateContentWithFallback(
-      genAI,
-      [
-        { text: SYSTEM_PROMPT },
-        { inlineData: { mimeType: parsed.mimeType, data: parsed.data } },
-      ],
-      { temperature: 0.7, responseMimeType: 'application/json' }
+    const faceData = (body.faceData && typeof body.faceData === 'object') ? body.faceData as FaceData : null;
+    const bodyData = (body.bodyData && typeof body.bodyData === 'object') ? body.bodyData as BodyData : null;
+
+    if (!faceData && !bodyData) {
+      return Response.json(
+        { error: 'No analysis data provided. Please upload a photo and try again.' },
+        { status: 400, headers: SEO_HEADERS }
+      );
+    }
+
+    const text = await callDeepSeek(
+      [{ role: 'user', content: buildPrompt(faceData, bodyData) }],
+      { temperature: 0.75, maxTokens: 2048, jsonMode: true }
     );
 
-    const text = result.response.text();
     const parsedResult = extractJson(text);
     if (!parsedResult) {
       return Response.json(
@@ -206,23 +222,40 @@ export async function POST(request: Request) {
       );
     }
 
-    return Response.json(
-      { feedback: sanitize(parsedResult) },
-      { headers: SEO_HEADERS }
-    );
+    return Response.json({ feedback: sanitize(parsedResult) }, { headers: SEO_HEADERS });
   } catch (err) {
-    if (isGeminiOverloaded(err)) {
+    if (isBadApiKey(err)) {
+      return Response.json(
+        { error: 'Invalid DeepSeek API key. Check your server configuration.' },
+        { status: 401, headers: SEO_HEADERS }
+      );
+    }
+    if (isInsufficientBalance(err)) {
+      return Response.json(
+        { error: 'Insufficient DeepSeek credits. Top up your account at platform.deepseek.com.' },
+        { status: 402, headers: SEO_HEADERS }
+      );
+    }
+    if (isRateLimit(err)) {
+      return Response.json(
+        { error: 'AI rate limit reached. Please wait a moment and try again.' },
+        { status: 429, headers: SEO_HEADERS }
+      );
+    }
+    if (isDeepSeekOverloaded(err)) {
       return Response.json(
         { error: 'Our AI is experiencing high demand right now. Please try again in a moment.' },
         { status: 503, headers: SEO_HEADERS }
       );
     }
-    const message =
-      err instanceof Error ? err.message : 'Unexpected server error.';
-    return Response.json(
-      { error: `Analysis failed: ${message}` },
-      { status: 500, headers: SEO_HEADERS }
-    );
+    const message = err instanceof Error ? err.message : 'Unexpected server error.';
+    if (/abort|timeout/i.test(message)) {
+      return Response.json(
+        { error: 'Analysis took too long. Please try again.' },
+        { status: 504, headers: SEO_HEADERS }
+      );
+    }
+    return Response.json({ error: message }, { status: 500, headers: SEO_HEADERS });
   }
 }
 

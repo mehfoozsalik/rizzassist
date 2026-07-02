@@ -2,21 +2,18 @@
 
 import { useState } from 'react';
 import {
-  AlertTriangle,
   Apple,
   Calendar,
   Dumbbell,
-  Loader2,
+  Flame,
   Salad,
   Shirt,
   Sparkles,
   Users,
 } from 'lucide-react';
-import type { ActivityLevel, BodyTypeAdvice, BodyTypeMeasurements } from '@/lib/types';
+import type { ActivityLevel, BodyTypeMeasurements } from '@/lib/types';
 import { BODY_TYPE_PROFILES, bmiCategory, calculateBodyType } from '@/lib/bodyType';
-import { fetchGeminiJson, GeminiNetworkError } from '@/lib/geminiClient';
 import { BMIGauge } from './BMIGauge';
-import { MacroDonut } from './MacroDonut';
 
 const FIELDS: { key: keyof Omit<BodyTypeMeasurements, 'unit' | 'gender' | 'activityLevel'>; label: string }[] = [
   { key: 'height', label: 'Height' },
@@ -32,32 +29,11 @@ const ACTIVITY_LEVELS: ActivityLevel[] = ['Sedentary', 'Lightly Active', 'Modera
 const TABS = ['Fitness', 'Diet', 'Style', 'Weekly Plan'] as const;
 type Tab = (typeof TABS)[number];
 
-function geminiPrompt(
-  bodyType: string,
-  height: number,
-  weight: number,
-  bmi: number,
-  waist: number,
-  hip: number,
-  activityLevel: ActivityLevel
-) {
-  return `You are a certified fitness coach and nutritionist. The user is a ${bodyType} with these stats: Height ${height}cm, Weight ${weight}kg, BMI ${bmi}, Waist ${waist}cm, Hip ${hip}cm, Activity level: ${activityLevel}.
-Respond ONLY in this exact JSON with no extra text:
-{
-  "bodyType": "${bodyType}",
-  "bmi": ${bmi},
-  "bmiCategory": "Underweight/Normal/Overweight/Obese",
-  "description": "What defines this body type metabolically in 2 sentences",
-  "fitnessGoal": "Recommended primary fitness goal in 1 sentence",
-  "workoutPlan": ["exercise1", "exercise2", "exercise3", "exercise4"],
-  "workoutsToAvoid": ["avoid1", "avoid2"],
-  "dietTips": ["tip1", "tip2", "tip3", "tip4"],
-  "macroSplit": { "protein": "30%", "carbs": "40%", "fats": "30%" },
-  "styleTips": ["tip1", "tip2", "tip3"],
-  "celebrities": ["celeb1", "celeb2"],
-  "weeklyPlan": { "cardio": "3x per week", "strength": "4x per week", "rest": "1 day" }
-}`;
-}
+const WEEKLY_PLANS: Record<string, { cardio: string; strength: string; rest: string }> = {
+  Ectomorph: { cardio: '2x per week', strength: '4x per week', rest: '1 day' },
+  Mesomorph: { cardio: '3x per week', strength: '4x per week', rest: '1 day' },
+  Endomorph: { cardio: '4x per week', strength: '3x per week', rest: '1 day' },
+};
 
 export function BodyTypeCalculator() {
   const [unit, setUnit] = useState<'metric' | 'imperial'>('metric');
@@ -65,16 +41,13 @@ export function BodyTypeCalculator() {
   const [activityLevel, setActivityLevel] = useState<ActivityLevel>('Moderately Active');
   const [values, setValues] = useState<Record<string, string>>({});
   const [result, setResult] = useState<ReturnType<typeof calculateBodyType> | null>(null);
-  const [advice, setAdvice] = useState<BodyTypeAdvice | null>(null);
-  const [aiUnavailable, setAiUnavailable] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<Tab>('Fitness');
 
   const lengthUnit = unit === 'metric' ? 'cm' : 'in';
   const weightUnit = unit === 'metric' ? 'kg' : 'lb';
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const parsed: Record<string, number> = {};
     for (const f of FIELDS) {
@@ -99,42 +72,11 @@ export function BodyTypeCalculator() {
       activityLevel,
       unit,
     };
-    const calc = calculateBodyType(measurements);
-    setResult(calc);
-    setAdvice(null);
-    setAiUnavailable(false);
-    setLoading(true);
-
-    const heightCm = unit === 'imperial' ? parsed.height * 2.54 : parsed.height;
-    const weightKg = unit === 'imperial' ? parsed.weight * 0.45359237 : parsed.weight;
-    const waistCm = unit === 'imperial' ? parsed.waist * 2.54 : parsed.waist;
-    const hipCm = unit === 'imperial' ? parsed.hip * 2.54 : parsed.hip;
-
-    try {
-      const result = await fetchGeminiJson<BodyTypeAdvice>(
-        geminiPrompt(
-          calc.type,
-          Math.round(heightCm),
-          Math.round(weightKg),
-          calc.bmi,
-          Math.round(waistCm),
-          Math.round(hipCm),
-          activityLevel
-        )
-      );
-      setAdvice(result);
-    } catch (err) {
-      if (err instanceof GeminiNetworkError) {
-        setAiUnavailable(true);
-      } else {
-        setError(err instanceof Error ? err.message : 'Something went wrong. Try again.');
-      }
-    } finally {
-      setLoading(false);
-    }
+    setResult(calculateBodyType(measurements));
   };
 
   const fallbackProfile = result ? BODY_TYPE_PROFILES.find((p) => p.type === result.type) : null;
+  const weeklyPlan = result ? WEEKLY_PLANS[result.type] : null;
 
   return (
     <div className="mx-auto w-full max-w-3xl">
@@ -228,10 +170,8 @@ export function BodyTypeCalculator() {
 
         <button
           type="submit"
-          disabled={loading}
-          className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-ink-800 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+          className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-ink-800 sm:w-auto"
         >
-          {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
           Calculate My Body Type
         </button>
 
@@ -243,18 +183,11 @@ export function BodyTypeCalculator() {
 
       {result && (
         <div role="alert" aria-live="polite" className="mt-8 space-y-6">
-          {aiUnavailable && (
-            <div className="flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-xs text-amber-700">
-              <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-              Could not connect to AI. Showing basic results only.
-            </div>
-          )}
-
           <div className="flex flex-col items-center gap-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:flex-row sm:justify-center dark:border-white/5 dark:bg-ink-800">
-            <BMIGauge bmi={advice?.bmi ?? result.bmi} />
+            <BMIGauge bmi={result.bmi} />
             <div className="text-center sm:text-left">
               <p className="text-sm text-gray-500 dark:text-white/50">
-                BMI Category: <strong className="text-gray-900 dark:text-white">{advice?.bmiCategory ?? bmiCategory(result.bmi)}</strong>
+                BMI Category: <strong className="text-gray-900 dark:text-white">{bmiCategory(result.bmi)}</strong>
               </p>
               <p className="mt-1 text-sm text-gray-500 dark:text-white/50">
                 Frame size: <strong className="text-gray-900 capitalize dark:text-white">{result.frameSize}</strong>
@@ -287,7 +220,7 @@ export function BodyTypeCalculator() {
                     )}
                   </div>
                   <p className={`mt-2 text-sm leading-relaxed ${isMatch ? 'text-white/70' : 'text-gray-600 dark:text-white/60'}`}>
-                    {isMatch && advice ? advice.description : profile.description}
+                    {profile.description}
                   </p>
                 </div>
               );
@@ -296,13 +229,6 @@ export function BodyTypeCalculator() {
 
           {fallbackProfile && (
             <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 dark:border-white/5 dark:bg-ink-800">
-              {advice?.fitnessGoal && (
-                <p className="mb-4 rounded-xl bg-brand-50 px-4 py-3 text-sm font-medium text-brand-700 dark:bg-brand-600/10 dark:text-brand-400">
-                  <Apple className="mr-1.5 inline h-4 w-4" aria-hidden="true" />
-                  {advice.fitnessGoal}
-                </p>
-              )}
-
               <div className="flex flex-wrap gap-2" role="tablist" aria-label="Body type advice categories">
                 {TABS.map((tab) => (
                   <button
@@ -322,28 +248,20 @@ export function BodyTypeCalculator() {
 
               <div className="mt-5">
                 {activeTab === 'Fitness' && (
-                  <div className="space-y-4">
-                    <Section icon={<Dumbbell className="h-3.5 w-3.5" />} title="Workout Plan" items={advice?.workoutPlan ?? fallbackProfile.fitness} />
-                    {advice?.workoutsToAvoid && advice.workoutsToAvoid.length > 0 && (
-                      <Section icon={<AlertTriangle className="h-3.5 w-3.5" />} title="Avoid" items={advice.workoutsToAvoid} tone="avoid" />
-                    )}
-                  </div>
+                  <Section icon={<Dumbbell className="h-3.5 w-3.5" />} title="Workout Plan" items={fallbackProfile.fitness} />
                 )}
                 {activeTab === 'Diet' && (
-                  <div className="space-y-5">
-                    <Section icon={<Salad className="h-3.5 w-3.5" />} title="Diet Tips" items={advice?.dietTips ?? fallbackProfile.diet} />
-                    {advice?.macroSplit && <MacroDonut macroSplit={advice.macroSplit} />}
-                  </div>
+                  <Section icon={<Salad className="h-3.5 w-3.5" />} title="Diet Tips" items={fallbackProfile.diet} />
                 )}
                 {activeTab === 'Style' && (
-                  <Section icon={<Shirt className="h-3.5 w-3.5" />} title="Style Tips" items={advice?.styleTips ?? fallbackProfile.style} />
+                  <Section icon={<Shirt className="h-3.5 w-3.5" />} title="Style Tips" items={fallbackProfile.style} />
                 )}
-                {activeTab === 'Weekly Plan' && (
+                {activeTab === 'Weekly Plan' && weeklyPlan && (
                   <div className="grid gap-3 sm:grid-cols-3">
                     {[
-                      { label: 'Cardio', value: advice?.weeklyPlan?.cardio ?? 'N/A' },
-                      { label: 'Strength', value: advice?.weeklyPlan?.strength ?? 'N/A' },
-                      { label: 'Rest', value: advice?.weeklyPlan?.rest ?? 'N/A' },
+                      { label: 'Cardio', value: weeklyPlan.cardio },
+                      { label: 'Strength', value: weeklyPlan.strength },
+                      { label: 'Rest', value: weeklyPlan.rest },
                     ].map((item) => (
                       <div key={item.label} className="rounded-xl border border-gray-100 bg-cream-50 p-4 text-center">
                         <Calendar className="mx-auto h-4 w-4 text-brand-600" aria-hidden="true" />
@@ -357,7 +275,7 @@ export function BodyTypeCalculator() {
 
               <div className="mt-5 flex items-center gap-2 border-t border-gray-100 pt-4 text-xs text-gray-500">
                 <Users className="h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
-                {(advice?.celebrities ?? fallbackProfile.famous).join(' · ')}
+                {fallbackProfile.famous.join(' · ')}
               </div>
             </div>
           )}

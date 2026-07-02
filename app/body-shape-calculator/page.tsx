@@ -14,24 +14,25 @@ import { BODY_SHAPE_PROFILES } from '@/lib/bodyShape';
 const PAGE_URL = `${SITE_URL}/body-shape-calculator`;
 
 export const metadata: Metadata = {
-  title: 'Body Shape Calculator: Find Your Body Shape | Rizz Assist',
+  title: 'Body Shape Calculator: Free Body Shape Type Calculator | Rizz Assist',
   description:
-    'Discover your body shape in seconds. Enter bust, waist, and hip measurements to get personalized fashion and styling recommendations for your figure.',
+    'Use this free body shape calculator to find your body shape type. Enter bust, waist, and hip measurements for instant hourglass, pear, apple, rectangle, or inverted triangle results with fashion tips.',
   keywords: [
     'body shape calculator',
+    'body shape type calculator',
+    'what is my body shape',
     'hourglass body shape',
     'pear shape body',
     'apple body shape',
     'body shape test',
-    'what is my body shape',
     'inverted triangle body shape',
     'rectangle body shape',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Body Shape Calculator: Find Your Body Shape | Rizz Assist',
+    title: 'Body Shape Calculator: Free Body Shape Type Calculator | Rizz Assist',
     description:
-      'Discover your body shape in seconds. Enter bust, waist, and hip measurements to get personalized fashion and styling recommendations for your figure.',
+      'Use this free body shape calculator to find your body shape type. Enter bust, waist, and hip measurements for instant hourglass, pear, apple, rectangle, or inverted triangle results with fashion tips.',
     url: PAGE_URL,
     siteName: SITE_NAME,
     images: [
@@ -46,9 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Body Shape Calculator: Find Your Body Shape | Rizz Assist',
+    title: 'Body Shape Calculator: Free Body Shape Type Calculator | Rizz Assist',
     description:
-      'Discover your body shape in seconds. Enter bust, waist, and hip measurements to get personalized fashion and styling recommendations for your figure.',
+      'Use this free body shape calculator to find your body shape type. Enter bust, waist, and hip measurements for instant hourglass, pear, apple, rectangle, or inverted triangle results with fashion tips.',
     images: ['/twitter-image.png'],
   },
 };

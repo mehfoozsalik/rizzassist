@@ -1,6 +1,13 @@
 {
   "name": "Rizz Assist",
   "short_name": "RizzAssist",
+  "description": "AI-powered photo analysis for pickup lines, style tips, body shape, eye shape, and confidence coaching.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#9644ff",
+  "background_color": "#f5deff",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -13,9 +20,19 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
-  "theme_color": "#9644ff",
-  "background_color": "#f5deff",
-  "display": "standalone"
+  "categories": ["lifestyle", "utilities"]
 }
