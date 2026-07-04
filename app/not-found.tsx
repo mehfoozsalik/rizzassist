@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Home, Search } from 'lucide-react';
-import { SkipToContent } from '@/components/seo/SkipToContent';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 
@@ -13,7 +12,6 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      <SkipToContent />
       <Navbar />
       <main
         id="main-content"

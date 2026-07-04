@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 import { SITE_URL, SITE_NAME } from "@/lib/config";
 import { FAQS } from "@/lib/faq";
-import { SkipToContent } from "@/components/seo/SkipToContent";
 import { FaqSchema } from "@/components/seo/SchemaMarkup";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -142,7 +141,6 @@ export default function HomePage() {
   return (
     <>
       <FaqSchema items={FAQS} />
-      {/* <SkipToContent /> */}
       <Navbar />
 
       <main id="main-content">

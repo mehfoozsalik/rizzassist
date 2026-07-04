@@ -16,7 +16,6 @@ import {
   Zap,
 } from 'lucide-react';
 import { SITE_URL, SITE_NAME } from '@/lib/config';
-import { SkipToContent } from '@/components/seo/SkipToContent';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
@@ -173,7 +172,6 @@ export default function BodyTypeCalculatorPage() {
         ]}
       />
       <FaqSchema items={FAQ_ITEMS} />
-      <SkipToContent />
       <Navbar />
 
       <main id="main-content">
