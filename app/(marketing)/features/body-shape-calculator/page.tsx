@@ -10,21 +10,29 @@ import { BODY_SHAPE_PROFILES } from '@/lib/bodyShape';
 const PAGE_URL = `${SITE_URL}/features/body-shape-calculator`;
 
 export const metadata: Metadata = {
-  title: 'Body Shapes Explained: Hourglass, Pear, Apple, Rectangle & Inverted Triangle',
+  title: 'Body Shapes Explained for Men & Women: Hourglass, Pear, Apple & More',
   description:
-    'A visual guide to the 5 body shapes, how the body shape calculator works, and the difference between body shape and body type.',
+    'Visual guide to the 5 body shapes for men and women. How our body shape and body figure calculator works, and the difference between body shape and body type.',
+  keywords: [
+    'body shapes explained',
+    'body shape calculator men',
+    'body figure calculator',
+    'hourglass vs pear',
+    'body shapes for men',
+    'body shapes for women',
+  ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Body Shapes Explained: Hourglass, Pear, Apple, Rectangle & Inverted Triangle',
-    description: 'A visual guide to the 5 body shapes and how the calculator works.',
+    title: 'Body Shapes Explained for Men & Women: Hourglass, Pear, Apple & More',
+    description: 'Visual guide to the 5 body shapes for men and women and how the calculator works.',
     url: PAGE_URL,
     siteName: SITE_NAME,
     type: 'article',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Body Shapes Explained: Hourglass, Pear, Apple, Rectangle & Inverted Triangle',
-    description: 'A visual guide to the 5 body shapes and how the calculator works.',
+    title: 'Body Shapes Explained for Men & Women: Hourglass, Pear, Apple & More',
+    description: 'Visual guide to the 5 body shapes for men and women and how the calculator works.',
   },
 };
 

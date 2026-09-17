@@ -30,12 +30,17 @@ export const metadata: Metadata = {
     "Upload one photo to get a free Rizz Report: personalized pickup lines, style tips, shades recs, and AI confidence advice tailored to your exact look. No login.",
   keywords: [
     "AI look analyzer",
+    "rizz assist",
+    "rizzassist",
     "rizz score calculator",
     "AI pickup line generator",
     "free style analyzer",
     "photo rizz analysis",
     "AI confidence coach",
     "shades recommendation AI",
+    "body shape calculator",
+    "body type calculator",
+    "AI eye shape analyzer",
   ],
   alternates: { canonical: SITE_URL },
   openGraph: {

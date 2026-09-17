@@ -12,28 +12,32 @@ import { EYE_SHAPE_GUIDE } from '@/lib/eyeShapes';
 const PAGE_URL = `${SITE_URL}/eye-shape-detector`;
 
 export const metadata: Metadata = {
-  title: 'Eye Shape Chart and Detector: Find Your Eye Shape Free | Rizz Assist',
+  title: 'AI Eye Shape Analyzer & Chart: Find Your Eye Shape Free',
   description:
-    'Use our free eye shape chart to identify your eye shapes and finally answer "what\'s my eye shape?" Upload a photo for instant AI detection, plus expert makeup tips for every eye type.',
+    'Free AI eye shape analyzer and detector. Upload a photo to identify your eye shape from the full chart — almond, hooded, monolid, and more — plus makeup tips for your eyes. No login.',
   keywords: [
+    'AI eye shape analyzer',
+    'ai eye shape detector',
+    'eye shape scanner',
+    'what is my eye shape scanner',
     'eye shape chart',
     'eye shapes',
     "what's my eye shape",
     'eye type chart',
     'eye shape detector',
     'find eye shape',
-    'different eye styles',
-    'eyeball shapes',
     'eye shape analyzer',
+    'are my eyes big',
+    'bedroom eye shape',
     'almond eye shape',
     'hooded eyes makeup',
     'monolid makeup tips',
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Eye Shape Chart and Detector: Find Your Eye Shape Free | Rizz Assist',
+    title: 'AI Eye Shape Analyzer & Chart: Find Your Eye Shape Free | Rizz Assist',
     description:
-      'Use our free eye shape chart to identify your eye shapes and finally answer "what\'s my eye shape?" Upload a photo for instant AI detection, plus expert makeup tips for every eye type.',
+      'Free AI eye shape analyzer and detector. Upload a photo to identify your eye shape from the full chart — almond, hooded, monolid, and more — plus makeup tips for your eyes. No login.',
     url: PAGE_URL,
     siteName: SITE_NAME,
     images: [
@@ -41,16 +45,16 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Rizz Assist Eye Shape Chart and Detector showing AI-powered eye shape analysis and makeup tips',
+        alt: 'Rizz Assist AI eye shape analyzer showing detector results and makeup tips',
       },
     ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Eye Shape Chart and Detector: Find Your Eye Shape Free | Rizz Assist',
+    title: 'AI Eye Shape Analyzer & Chart: Find Your Eye Shape Free | Rizz Assist',
     description:
-      'Use our free eye shape chart to identify your eye shapes and finally answer "what\'s my eye shape?" Upload a photo for instant AI detection, plus expert makeup tips for every eye type.',
+      'Free AI eye shape analyzer and detector. Upload a photo to identify your eye shape from the full chart — almond, hooded, monolid, and more — plus makeup tips for your eyes. No login.',
     images: ['/twitter-image.png'],
   },
 };
@@ -98,10 +102,11 @@ export default function EyeShapeDetectorPage() {
         ]}
       />
       <ToolWebAppSchema
-        name="Eye Shape Detector"
-        description="AI-powered tool that analyzes a photo to identify eye shape and provide tailored makeup recommendations, with a complete eye shape chart."
+        name="AI Eye Shape Analyzer"
+        description="AI eye shape analyzer and detector that identifies your eye shape from a photo and provides tailored makeup recommendations, with a complete eye shape chart."
         url={PAGE_URL}
         featureList={[
+          'AI eye shape analyzer and scanner',
           'AI vision-based eye shape detection',
           'Complete eye shape chart with 10 categories',
           'Personalized makeup tips per shape',
@@ -129,12 +134,13 @@ export default function EyeShapeDetectorPage() {
           <div className="mx-auto max-w-3xl">
             <Reveal>
               <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                Eye Shape Detector and Chart
+                AI Eye Shape Analyzer &amp; Chart
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-base text-white/65">
-                Upload a close-up photo and our AI will identify your eye
-                shape from the full eye type chart, almond, round, hooded, monolid,
-                and more, with expert makeup tips made for your eyes.
+                Free AI eye shape scanner: upload a close-up photo and our
+                detector identifies your eye shape from the full chart —
+                almond, round, hooded, monolid, and more — with makeup tips
+                made for your eyes.
               </p>
             </Reveal>
           </div>
@@ -148,17 +154,17 @@ export default function EyeShapeDetectorPage() {
           <div className="mx-auto max-w-3xl">
             <Reveal>
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                What Is Eye Shape Detection?
+                What Is an AI Eye Shape Analyzer?
               </h2>
               <p className="mt-3 text-gray-600 dark:text-white/60">
-                Eye shape is determined by lid structure, crease depth, corner
-                tilt, and spacing, and it is one of the biggest factors in
-                whether a makeup look actually suits you. Our AI analyzes
-                your photo against the full eye type chart with 10 recognized
-                categories and returns tailored eyeliner, eyeshadow, and color
-                recommendations. Whether you want to find your eye shape from a
-                photo or just understand different eye styles, the results are
-                matched to your specific eyes.
+                An AI eye shape analyzer (or eye shape detector/scanner) reads
+                lid structure, crease depth, corner tilt, and spacing from a
+                photo — one of the biggest factors in whether a makeup look
+                suits you. Our tool matches your face against a full eye type
+                chart with 10 categories and returns tailored eyeliner,
+                eyeshadow, and color recommendations. Whether you want to find
+                your eye shape from a photo or understand different eye styles,
+                results are matched to your specific eyes.
               </p>
             </Reveal>
 

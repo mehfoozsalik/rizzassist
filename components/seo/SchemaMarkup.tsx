@@ -21,7 +21,7 @@ export function WebAppSchema() {
         '@type': 'WebApplication',
         name: SITE_NAME,
         description:
-          'AI-powered rizz coach that analyzes your photo to generate pickup lines, style tips, shades recommendations, and confidence advice.',
+          'AI-powered rizz coach with pickup lines, style tips, body shape calculator, body type calculator, and AI eye shape analyzer.',
         url: SITE_URL,
         applicationCategory: 'LifestyleApplication',
         operatingSystem: 'Web',
@@ -35,6 +35,9 @@ export function WebAppSchema() {
           'Personalized pickup lines',
           'Style & outfit upgrades',
           'Shades recommendations',
+          'Body shape calculator for men and women',
+          'Body type calculator',
+          'AI eye shape analyzer',
           'Face orientation tips',
           'Confidence coaching',
           'No login required',

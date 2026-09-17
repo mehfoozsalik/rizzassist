@@ -13,13 +13,24 @@ import { BODY_SHAPE_PROFILES } from '@/lib/bodyShape';
 const PAGE_URL = `${SITE_URL}/body-shape-calculator`;
 
 export const metadata: Metadata = {
-  title: 'Body Shape Calculator: Free Body Shape Type Calculator | Rizz Assist',
+  title: 'Body Shape Calculator for Men & Women | Free Body Figure Calculator',
   description:
-    'Use this free body shape calculator to find your body shape type. Enter bust, waist, and hip measurements for instant hourglass, pear, apple, rectangle, or inverted triangle results with fashion tips.',
+    'Free body shape calculator for men and women. Enter chest/bust, waist, and hip measurements to find your body figure — hourglass, pear, apple, rectangle, or inverted triangle — with style tips.',
   keywords: [
     'body shape calculator',
+    'body shape calculator male',
+    'body shape calculator men',
+    'body shape calculator for male',
+    'body shape calculator for men',
+    'body shape male calculator',
+    'body shape calculator for women',
+    'body figure calculator',
+    'body calculator',
     'body shape type calculator',
+    'body proportions calculator',
+    'body shape visualizer',
     'what is my body shape',
+    'am I hourglass or pear',
     'hourglass body shape',
     'pear shape body',
     'apple body shape',
@@ -29,9 +40,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Body Shape Calculator: Free Body Shape Type Calculator | Rizz Assist',
+    title: 'Body Shape Calculator for Men & Women | Free Body Figure Calculator | Rizz Assist',
     description:
-      'Use this free body shape calculator to find your body shape type. Enter bust, waist, and hip measurements for instant hourglass, pear, apple, rectangle, or inverted triangle results with fashion tips.',
+      'Free body shape calculator for men and women. Enter chest/bust, waist, and hip measurements to find your body figure — hourglass, pear, apple, rectangle, or inverted triangle — with style tips.',
     url: PAGE_URL,
     siteName: SITE_NAME,
     images: [
@@ -39,21 +50,36 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Rizz Assist Body Shape Calculator showing hourglass, pear, apple, and rectangle shape results',
+        alt: 'Rizz Assist body shape calculator for men and women showing hourglass, pear, apple, and rectangle figure results',
       },
     ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Body Shape Calculator: Free Body Shape Type Calculator | Rizz Assist',
+    title: 'Body Shape Calculator for Men & Women | Free Body Figure Calculator | Rizz Assist',
     description:
-      'Use this free body shape calculator to find your body shape type. Enter bust, waist, and hip measurements for instant hourglass, pear, apple, rectangle, or inverted triangle results with fashion tips.',
+      'Free body shape calculator for men and women. Enter chest/bust, waist, and hip measurements to find your body figure — hourglass, pear, apple, rectangle, or inverted triangle — with style tips.',
     images: ['/twitter-image.png'],
   },
 };
 
 const FAQ_ITEMS = [
+  {
+    question: 'Does this body shape calculator work for men?',
+    answer:
+      'Yes. Men use the same chest, waist, and hip ratios — enter chest instead of bust. Common male results include inverted triangle, rectangle, and oval/apple proportions, with style tips that fit menswear cuts.',
+  },
+  {
+    question: 'What is a body figure calculator?',
+    answer:
+      'A body figure calculator (also called a body shape calculator) maps your measurements to a silhouette like hourglass, pear, apple, rectangle, or inverted triangle so you can dress for your proportions.',
+  },
+  {
+    question: 'Am I an hourglass or pear?',
+    answer:
+      'Hourglass has a defined waist with bust and hips roughly balanced. Pear (triangle) has hips noticeably wider than the bust/chest. Enter your three measurements above for an instant answer.',
+  },
   {
     question: 'Can my shape change?',
     answer:
@@ -81,11 +107,13 @@ export default function BodyShapeCalculatorPage() {
         ]}
       />
       <ToolWebAppSchema
-        name="Body Shape Calculator"
-        description="Free calculator that determines your body shape (Hourglass, Pear, Apple, Rectangle, or Inverted Triangle) based on bust, waist, and hip measurements."
+        name="Body Shape Calculator for Men and Women"
+        description="Free body shape and body figure calculator for men and women. Determines Hourglass, Pear, Apple, Rectangle, or Inverted Triangle from chest/bust, waist, and hip measurements."
         url={PAGE_URL}
         featureList={[
-          'Bust, waist, hip ratio analysis',
+          'Body shape calculator for men and women',
+          'Chest/bust, waist, hip ratio analysis',
+          'Body figure and proportions results',
           'Five body shape classifications',
           'Visual silhouette illustrations',
           'Personalized fashion tips',
@@ -112,12 +140,13 @@ export default function BodyShapeCalculatorPage() {
           <div className="mx-auto max-w-3xl">
             <Reveal>
               <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-                Body Shape Calculator
+                Body Shape Calculator for Men &amp; Women
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-base text-white/65">
-                Enter your bust, waist, and hip measurements to discover your
-                body shape (Hourglass, Pear, Apple, Rectangle, or Inverted
-                Triangle) with fashion tips made for your proportions.
+                Free body figure calculator: enter chest or bust, waist, and hip
+                measurements to find your body shape (Hourglass, Pear, Apple,
+                Rectangle, or Inverted Triangle) with fashion tips for your
+                proportions.
               </p>
             </Reveal>
           </div>
@@ -130,14 +159,15 @@ export default function BodyShapeCalculatorPage() {
         <section className="bg-white px-4 py-12 sm:py-16 dark:bg-ink-900">
           <div className="mx-auto max-w-3xl">
             <Reveal>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">What Is a Body Shape?</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">What Is a Body Shape Calculator?</h2>
               <p className="mt-3 text-gray-600 dark:text-white/60">
-                Body shape describes the silhouette created by your bust,
-                waist, and hip proportions: Hourglass, Pear, Apple,
-                Rectangle, or Inverted Triangle. Unlike body type (which
-                relates to metabolism and muscle gain), body shape is purely
-                about proportion, and it&apos;s the single most useful thing to
-                know when choosing flattering cuts, necklines, and silhouettes.
+                A body shape calculator (or body figure calculator) maps your
+                chest/bust, waist, and hip proportions to a silhouette:
+                Hourglass, Pear, Apple, Rectangle, or Inverted Triangle. It
+                works for men and women — men typically enter chest instead of
+                bust. Unlike body type (metabolism and muscle gain), body shape
+                is about proportion, and it&apos;s the most useful signal when
+                choosing flattering cuts, necklines, and silhouettes.
               </p>
             </Reveal>
 

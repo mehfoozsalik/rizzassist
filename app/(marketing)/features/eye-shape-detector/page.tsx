@@ -9,21 +9,27 @@ import { EyeShapeGuide } from '@/components/calculators/EyeShapeGuide';
 const PAGE_URL = `${SITE_URL}/features/eye-shape-detector`;
 
 export const metadata: Metadata = {
-  title: 'Eye Shapes Explained: Visual Guide to All 10 Eye Shapes',
+  title: 'Eye Shapes Explained: AI Eye Shape Analyzer Guide to All 10 Shapes',
   description:
-    'A visual guide to the 10 eye shapes, how AI detects eye shape from a photo, and makeup tips for each shape.',
+    'Visual guide to 10 eye shapes. How our AI eye shape analyzer detects your shape from a photo, plus makeup tips for each type.',
+  keywords: [
+    'AI eye shape analyzer',
+    'eye shapes explained',
+    'eye shape chart',
+    'eye shape detector guide',
+  ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: 'Eye Shapes Explained: Visual Guide to All 10 Eye Shapes',
-    description: 'A visual guide to the 10 eye shapes and how the AI detector works.',
+    title: 'Eye Shapes Explained: AI Eye Shape Analyzer Guide to All 10 Shapes',
+    description: 'Visual guide to 10 eye shapes and how the AI eye shape analyzer works.',
     url: PAGE_URL,
     siteName: SITE_NAME,
     type: 'article',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Eye Shapes Explained: Visual Guide to All 10 Eye Shapes',
-    description: 'A visual guide to the 10 eye shapes and how the AI detector works.',
+    title: 'Eye Shapes Explained: AI Eye Shape Analyzer Guide to All 10 Shapes',
+    description: 'Visual guide to 10 eye shapes and how the AI eye shape analyzer works.',
   },
 };
 
