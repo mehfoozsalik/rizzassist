@@ -18,6 +18,8 @@ import { EYE_SHAPE_GUIDE } from '@/lib/eyeShapes';
 import { LoadingSteps } from '@/components/ui/LoadingSteps';
 import { MediaPipeCanvas, type NormalizedPoint } from '@/components/ui/MediaPipeCanvas';
 import { GeminiResultCard } from '@/components/ui/GeminiResultCard';
+import { DownloadPdfButton } from '@/components/ui/DownloadPdfButton';
+import { toastUploadGuide } from '@/lib/toast';
 
 const MAX_SIZE = 5 * 1024 * 1024;
 const MIN_SIZE = 10 * 1024;
@@ -168,16 +170,19 @@ export function EyeShapeDetector() {
     if (!ACCEPTED.includes(f.type)) {
       setStatus('error');
       setError('Please upload a JPG, PNG, or WebP image.');
+      toastUploadGuide('eye', 'Please upload a JPG, PNG, or WebP image.');
       return;
     }
     if (f.size > MAX_SIZE) {
       setStatus('error');
       setError('Image is too large. Maximum size is 5MB.');
+      toastUploadGuide('eye', 'Image is too large (max 5MB).');
       return;
     }
     if (f.size < MIN_SIZE) {
       setStatus('error');
       setError('Image is too small or corrupted. Please try another photo.');
+      toastUploadGuide('eye', 'Image is too small or corrupted.');
       return;
     }
     setFile(f);
@@ -214,7 +219,10 @@ export function EyeShapeDetector() {
       const landmarks = detection.faceLandmarks?.[0];
       if (!landmarks || landmarks.length === 0) {
         setStatus('error');
-        setError('No face detected. Please upload a clear, well-lit photo facing the camera.');
+        setError(
+          'No face or eyes detected. Upload a clear close-up of your face or eyes facing the camera — avoid sunglasses, dark photos, and extreme angles.'
+        );
+        toastUploadGuide('eye');
         return;
       }
       setLowConfidence(landmarks.length < 400);
@@ -256,7 +264,9 @@ export function EyeShapeDetector() {
       setStatus('done');
     } catch (err) {
       setStatus('error');
-      setError(err instanceof Error ? err.message : 'Something went wrong. Try again.');
+      const message = err instanceof Error ? err.message : 'Something went wrong. Try again.';
+      setError(message);
+      toastUploadGuide('eye', message);
     }
   };
 
@@ -455,6 +465,22 @@ export function EyeShapeDetector() {
                   <p className="mt-2 text-sm text-gray-600 dark:text-white/60">{result.famousExamples.join(' · ')}</p>
                 </div>
               )}
+
+              <div className="flex justify-center sm:justify-end">
+                <DownloadPdfButton
+                  title={`Eye Shape Report: ${eyeShape}`}
+                  subtitle={result.description}
+                  filename={`eye-shape-${eyeShape}`}
+                  sections={[
+                    { title: 'Makeup Tips', lines: result.makeupTips },
+                    { title: 'Eyeliner Styles', lines: result.eyelinerStyles },
+                    { title: 'Eyeshadow Techniques', lines: result.eyeshadowTechniques },
+                    { title: 'Color Recommendations', lines: result.colorRecommendations },
+                    { title: 'What to Avoid', lines: result.avoidThese },
+                    { title: 'Famous Examples', lines: result.famousExamples },
+                  ]}
+                />
+              </div>
             </div>
 
             <div className="mt-8 text-center">

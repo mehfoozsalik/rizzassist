@@ -111,7 +111,7 @@ export default function EyeShapeFeaturePage() {
       </Reveal>
 
       <Reveal>
-        <div className="mt-12 rounded-2xl bg-gradient-to-r from-brand-600 to-pink-600 p-8 text-center text-white">
+        <div className="mt-12 rounded-2xl bg-gradient-to-r from-brand-600 to-orange-500 p-8 text-center text-white">
           <h2 className="text-2xl font-bold">Detect your eye shape now</h2>
           <p className="mt-2 text-white/90">
             Upload a photo and get AI-powered makeup tips in seconds.

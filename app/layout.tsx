@@ -4,6 +4,7 @@ import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/config";
 import { WebAppSchema } from "@/components/seo/SchemaMarkup";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 import { InstallPrompt } from "@/components/ui/InstallPrompt";
+import { AppToaster } from "@/components/ui/AppToaster";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "./globals.css";
 
@@ -107,7 +108,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <meta name="apple-mobile-web-app-title" content="Rizz Assist" />
-      <body className="min-h-screen bg-white text-gray-900 antialiased dark:bg-ink-900 dark:text-white">
+      <body className="min-h-screen bg-cream-50 text-gray-900 antialiased dark:bg-ink-900 dark:text-white">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -115,6 +116,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <WebAppSchema />
+          <AppToaster />
           {children}
           <CookieConsent gaId={GA_MEASUREMENT_ID} />
           <InstallPrompt />

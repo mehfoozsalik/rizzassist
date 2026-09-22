@@ -1,5 +1,6 @@
-import type { AnalysisResult, ShadeItem } from '@/lib/types';
+import type { AnalysisResult, ShadeItem, ClothingColor } from '@/lib/types';
 import { callDeepSeek, isDeepSeekOverloaded, isInsufficientBalance, isBadApiKey, isRateLimit } from '@/lib/deepseekServer';
+import { fallbackClothesByFaceShape, normalizeHex } from '@/lib/clothesAdvice';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -61,9 +62,14 @@ ${bodySection}
 Tone: confident hype-man meets sophisticated style consultant, GQ-meets-your-most-charismatic-friend energy. Frame everything as opportunity, never criticism.
 
 INSTRUCTIONS:
-- Reference the detected face shape explicitly when recommending shade styles and hairstyles.
+- Reference the detected face shape explicitly when recommending shades, hairstyles, clothing colors, and clothes.
+- ALWAYS include clothingColors (with real hex codes) and clothesSuggestions — these are required sections of the Rizz Report.
+- clothingColors: 4–5 specific wearable colors (tops, jackets, shirts) that flatter this face shape. Each must include name, hex (#RRGGBB), and a short why.
+- clothesSuggestions: 5 concrete clothing items / outfits to wear (e.g. "navy crew-neck tee", "tailored charcoal blazer", "dark wash straight jeans") matched to face shape + body build.
+- Also fill dressColors and dressStyles as short string lists (colors + silhouettes/necklines).
+- Recommend haircut styles that suit the detected face shape.
 - Reference the eye shape in faceOrientation tips.
-- Reference the body build tendency in style and fit suggestions.
+- Reference the body build tendency in fit and silhouette suggestions.
 - For Style, score 65-80 as a motivating baseline since you cannot see the outfit.
 - For Grooming, use symmetry score as a guide: symmetryScore > 0.85 suggests 75+, below 0.7 suggests 60-70.
 - For Photo Quality, always set 75 with a note that the photo was processed locally.
@@ -95,6 +101,36 @@ Return ONLY valid JSON, no markdown, no code fences, exactly this shape:
     "<clothing fit recommendation>",
     "<something to avoid based on the measurements>",
     "<signature look suggestion>"
+  ],
+  "clothingColors": [
+    { "name": "<color name e.g. Navy>", "hex": "<#RRGGBB>", "why": "<why this clothing color flatters their face>" },
+    { "name": "<second color>", "hex": "<#RRGGBB>", "why": "<why>" },
+    { "name": "<third color>", "hex": "<#RRGGBB>", "why": "<why>" },
+    { "name": "<fourth color>", "hex": "<#RRGGBB>", "why": "<why>" }
+  ],
+  "clothesSuggestions": [
+    "<specific top or shirt to wear>",
+    "<jacket / outerwear suggestion>",
+    "<bottoms suggestion>",
+    "<full casual outfit idea>",
+    "<date-night or elevated outfit idea>"
+  ],
+  "dressColors": [
+    "<color name that flatters this face, with a short why>",
+    "<second color>",
+    "<third color>",
+    "<accent combo to try>"
+  ],
+  "dressStyles": [
+    "<silhouette or cut that suits face + body>",
+    "<neckline or collar that flatters the face>",
+    "<formal look suggestion>",
+    "<casual everyday style suggestion>"
+  ],
+  "haircutStyles": [
+    "<haircut that suits the detected face shape, with a short why>",
+    "<second haircut option>",
+    "<third option or styling tip (length, fringe, fade, layers)>"
   ],
   "shades": [
     { "style": "<MUST be exactly one of: Aviator, Wayfarer, Round, Cat-Eye, Clubmaster, Square, Rectangular, Oval, Geometric, Butterfly>", "description": "<why this frame suits the detected face shape>", "faceShape": "<the detected face shape in lowercase>" },
@@ -130,7 +166,7 @@ function extractJson(text: string): AnalysisResult | null {
   }
 }
 
-function sanitize(raw: AnalysisResult): AnalysisResult {
+function sanitize(raw: AnalysisResult, faceShapeHint = 'oval'): AnalysisResult {
   const toStrings = (v: unknown): string[] =>
     Array.isArray(v) ? v.filter((x) => typeof x === 'string').slice(0, 6) : [];
   const clampScore = (n: unknown) =>
@@ -160,6 +196,47 @@ function sanitize(raw: AnalysisResult): AnalysisResult {
       });
   };
 
+  const toClothingColors = (v: unknown): ClothingColor[] => {
+    if (!Array.isArray(v)) return [];
+    return v
+      .filter((x) => x && typeof x === 'object')
+      .slice(0, 6)
+      .map((x: Record<string, unknown>) => ({
+        name: typeof x.name === 'string' && x.name.trim() ? x.name.trim() : 'Accent',
+        hex: normalizeHex(x.hex),
+        why: typeof x.why === 'string' ? x.why : '',
+      }));
+  };
+
+  const fallback = fallbackClothesByFaceShape(faceShapeHint);
+  let clothingColors = toClothingColors((raw as AnalysisResult).clothingColors);
+  let clothesSuggestions = toStrings((raw as AnalysisResult).clothesSuggestions);
+  let dressColors = toStrings((raw as AnalysisResult).dressColors);
+  let dressStyles = toStrings((raw as AnalysisResult).dressStyles);
+
+  // If AI returned plain dressColors but no structured clothingColors, promote them
+  if (!clothingColors.length && dressColors.length) {
+    clothingColors = dressColors.slice(0, 4).map((line, i) => {
+      const name = line.split(/[:—-]/)[0]?.trim() || `Color ${i + 1}`;
+      return {
+        name: name.slice(0, 32),
+        hex: fallback.clothingColors[i % fallback.clothingColors.length].hex,
+        why: line,
+      };
+    });
+  }
+
+  if (!clothesSuggestions.length && dressStyles.length) {
+    clothesSuggestions = dressStyles;
+  }
+
+  if (!clothingColors.length) clothingColors = fallback.clothingColors;
+  if (!clothesSuggestions.length) clothesSuggestions = fallback.clothesSuggestions;
+  if (!dressColors.length) {
+    dressColors = clothingColors.map((c) => `${c.name}: ${c.why || 'Flattering wardrobe color.'}`);
+  }
+  if (!dressStyles.length) dressStyles = clothesSuggestions.slice(0, 4);
+
   return {
     rizzScore,
     overallImpression:
@@ -175,6 +252,11 @@ function sanitize(raw: AnalysisResult): AnalysisResult {
           }))
       : [],
     styleTips: toStrings(raw.styleTips),
+    dressColors,
+    dressStyles,
+    clothingColors,
+    clothesSuggestions,
+    haircutStyles: toStrings((raw as AnalysisResult).haircutStyles),
     shades: toShades(raw.shades),
     faceOrientation: toStrings(raw.faceOrientation),
     pickupLines: toStrings(raw.pickupLines),
@@ -209,9 +291,20 @@ export async function POST(request: Request) {
       );
     }
 
+    if (faceData && !faceData.detected && (!bodyData || !bodyData.detected)) {
+      return Response.json(
+        {
+          error:
+            'No face detected. Upload a clear, well-lit photo of your face looking at the camera — avoid sunglasses, blur, or cropped shots.',
+          code: 'NO_FACE',
+        },
+        { status: 422, headers: SEO_HEADERS }
+      );
+    }
+
     const text = await callDeepSeek(
       [{ role: 'user', content: buildPrompt(faceData, bodyData) }],
-      { temperature: 0.75, maxTokens: 2048, jsonMode: true }
+      { temperature: 0.75, maxTokens: 3200, jsonMode: true }
     );
 
     const parsedResult = extractJson(text);
@@ -222,7 +315,15 @@ export async function POST(request: Request) {
       );
     }
 
-    return Response.json({ feedback: sanitize(parsedResult) }, { headers: SEO_HEADERS });
+    return Response.json(
+      {
+        feedback: sanitize(
+          parsedResult,
+          faceData?.detected ? faceData.faceShape : 'oval'
+        ),
+      },
+      { headers: SEO_HEADERS }
+    );
   } catch (err) {
     if (isBadApiKey(err)) {
       return Response.json(

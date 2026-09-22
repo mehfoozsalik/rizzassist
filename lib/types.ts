@@ -10,11 +10,22 @@ export interface ShadeItem {
   faceShape: string;
 }
 
+export interface ClothingColor {
+  name: string;
+  hex: string;
+  why: string;
+}
+
 export interface AnalysisResult {
   rizzScore: number;
   overallImpression: string;
   scores: ScoreItem[];
   styleTips: string[];
+  dressColors: string[];
+  dressStyles: string[];
+  clothesSuggestions: string[];
+  clothingColors: ClothingColor[];
+  haircutStyles: string[];
   shades: ShadeItem[];
   faceOrientation: string[];
   pickupLines: string[];

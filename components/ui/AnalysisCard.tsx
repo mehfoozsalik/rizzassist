@@ -13,9 +13,12 @@ import {
   TrendingUp,
   Zap,
   Crown,
+  Scissors,
 } from 'lucide-react';
 import type { AnalysisResult } from '@/lib/types';
 import { ShadesCard } from './ShadesCard';
+import { ClothesCard } from './ClothesCard';
+import { DownloadPdfButton } from './DownloadPdfButton';
 
 function rizzTier(score: number) {
   if (score >= 90) return { label: 'Legendary Rizz', color: 'text-yellow-400' };
@@ -28,7 +31,7 @@ function rizzTier(score: number) {
 
 function scoreColor(score: number) {
   if (score >= 80) return '#22c55e';
-  if (score >= 60) return '#d4a030';
+  if (score >= 60) return '#f43f5e';
   if (score >= 40) return '#f59e0b';
   return '#f43f5e';
 }
@@ -184,7 +187,6 @@ function TipCard({
   );
 }
 
-/* ─── Score label icon map ─── */
 function ScoreLabelIcon({ label }: { label: string }) {
   const l = label.toLowerCase();
   if (l.includes('style')) return <Palette className="h-3.5 w-3.5" aria-hidden="true" />;
@@ -192,6 +194,32 @@ function ScoreLabelIcon({ label }: { label: string }) {
   if (l.includes('edge')) return <Zap className="h-3.5 w-3.5" aria-hidden="true" />;
   if (l.includes('groom')) return <ScanFace className="h-3.5 w-3.5" aria-hidden="true" />;
   return <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />;
+}
+
+function buildPdfSections(content: AnalysisResult) {
+  return [
+    {
+      title: `Rizz Score: ${content.rizzScore}/100`,
+      lines: [content.overallImpression],
+    },
+    {
+      title: 'Score Breakdown',
+      lines: (content.scores ?? []).map((s) => `${s.label}: ${s.score}/100 — ${s.note}`),
+    },
+    { title: 'Best Clothing Colors', lines: (content.clothingColors ?? []).map((c) => `${c.name} (${c.hex}): ${c.why}`) },
+    { title: 'Clothes to Wear', lines: content.clothesSuggestions ?? [] },
+    { title: 'Dress Colors', lines: content.dressColors ?? [] },
+    { title: 'Dress & Outfit Styles', lines: content.dressStyles ?? [] },
+    { title: 'Haircut Styles', lines: content.haircutStyles ?? [] },
+    { title: 'Style & Outfit Tips', lines: content.styleTips ?? [] },
+    {
+      title: 'Recommended Shades',
+      lines: (content.shades ?? []).map((s) => `${s.style}: ${s.description}`),
+    },
+    { title: 'Best Angles & Expression', lines: content.faceOrientation ?? [] },
+    { title: 'Pickup Lines', lines: content.pickupLines ?? [] },
+    { title: 'Confidence Boosters', lines: content.confidenceTips ?? [] },
+  ];
 }
 
 export function AnalysisCard({
@@ -210,7 +238,6 @@ export function AnalysisCard({
       variants={{ show: { transition: { staggerChildren: 0.09 } } }}
       className="space-y-5"
     >
-      {/* ── Hero score card ── */}
       <motion.div
         variants={fadeUp}
         className="overflow-hidden rounded-3xl bg-ink-900 p-6 shadow-xl sm:p-8"
@@ -259,7 +286,15 @@ export function AnalysisCard({
         </div>
       </motion.div>
 
-      {/* ── Score breakdown ── */}
+      <motion.div variants={fadeUp} className="flex justify-center sm:justify-end">
+        <DownloadPdfButton
+          title="Your Rizz Report"
+          subtitle={content.overallImpression}
+          filename={`rizz-report-${content.rizzScore}`}
+          sections={buildPdfSections(content)}
+        />
+      </motion.div>
+
       {content.scores?.length > 0 && (
         <motion.div variants={fadeUp}>
           <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-gray-400 dark:text-white/40">
@@ -288,16 +323,23 @@ export function AnalysisCard({
         </motion.div>
       )}
 
-      {/* ── Pickup lines ── */}
       <PickupLines lines={content.pickupLines} />
 
-      {/* ── Shades (visual) ── */}
+      <ClothesCard
+        colors={content.clothingColors ?? []}
+        suggestions={content.clothesSuggestions ?? []}
+      />
+
       <ShadesCard shades={content.shades} />
 
-      {/* ── Tip cards ── */}
       <div className="grid gap-4 sm:grid-cols-2">
         <TipCard
-          title="Style & Outfit"
+          title="Haircut Styles"
+          icon={<Scissors className="h-4 w-4" />}
+          tips={content.haircutStyles ?? []}
+        />
+        <TipCard
+          title="Style Tips"
           icon={<Palette className="h-4 w-4" />}
           tips={content.styleTips}
         />

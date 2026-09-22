@@ -12,7 +12,7 @@ export function MediaPipeCanvas({
   imageUrl,
   points,
   alt,
-  highlightColor = '#d4a030',
+  highlightColor = '#f43f5e',
 }: {
   imageUrl: string;
   points: NormalizedPoint[];

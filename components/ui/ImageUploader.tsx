@@ -6,6 +6,7 @@ import { AlertCircle, ImagePlus, Loader2, RotateCcw, X } from 'lucide-react';
 import type { AnalysisResult } from '@/lib/types';
 import { AnalysisCard } from './AnalysisCard';
 import { getFaceLandmarker, getPoseLandmarker, landmarkDistance } from '@/lib/mediapipe';
+import { toastUploadGuide } from '@/lib/toast';
 
 const MAX_SIZE = 5 * 1024 * 1024;
 const MIN_SIZE = 10 * 1024;
@@ -140,16 +141,19 @@ export function ImageUploader() {
     if (!ACCEPTED.includes(file.type)) {
       setStatus('error');
       setError('Please upload a JPG, PNG, or WebP image.');
+      toastUploadGuide('face', 'Please upload a JPG, PNG, or WebP image.');
       return;
     }
     if (file.size > MAX_SIZE) {
       setStatus('error');
       setError('Image is too large. Maximum size is 5MB.');
+      toastUploadGuide('face', 'Image is too large (max 5MB).');
       return;
     }
     if (file.size < MIN_SIZE) {
       setStatus('error');
       setError('Image is too small or corrupted. Please try another photo.');
+      toastUploadGuide('face', 'Image is too small or corrupted.');
       return;
     }
 
@@ -200,25 +204,23 @@ export function ImageUploader() {
       const faceResults = faceLandmarker.detect(img);
       const poseResults = poseLandmarker.detect(img);
 
-      const faceData: FaceData =
-        faceResults.faceLandmarks && faceResults.faceLandmarks.length > 0
-          ? extractFaceData(faceResults.faceLandmarks[0], w, h)
-          : {
-              detected: false,
-              faceShape: 'Unknown',
-              faceLengthRatio: 0,
-              jawToCheekRatio: 0,
-              foreheadToJawRatio: 0,
-              symmetryScore: 0,
-              eyeShape: 'Unknown',
-              eyeAspectRatio: 0,
-              cornerTilt: 'neutral',
-            };
+      const hasFace = !!(faceResults.faceLandmarks && faceResults.faceLandmarks.length > 0);
+      const hasBody = !!(poseResults.landmarks && poseResults.landmarks.length > 0);
 
-      const bodyData: BodyData =
-        poseResults.landmarks && poseResults.landmarks.length > 0
-          ? extractBodyData(poseResults.landmarks[0], w, h)
-          : { detected: false, shoulderHipRatio: 0, bodyTendency: 'Unknown' };
+      if (!hasFace) {
+        const message =
+          'No face detected. Upload a clear, well-lit photo of your face looking at the camera — avoid sunglasses, blur, group shots, or cropped images.';
+        toastUploadGuide('face');
+        setStatus('error');
+        setError(message);
+        return;
+      }
+
+      const faceData: FaceData = extractFaceData(faceResults.faceLandmarks![0], w, h);
+
+      const bodyData: BodyData = hasBody
+        ? extractBodyData(poseResults.landmarks![0], w, h)
+        : { detected: false, shoulderHipRatio: 0, bodyTendency: 'Unknown' };
 
       setLoadingStep('Generating your Rizz Report...');
 
@@ -229,15 +231,17 @@ export function ImageUploader() {
       });
       const json = await res.json();
       if (!res.ok) {
+        if (json?.code === 'NO_FACE') toastUploadGuide('face');
         throw new Error(json?.error || 'Analysis failed. Please try again.');
       }
       setResult(json.feedback as AnalysisResult);
       setStatus('done');
     } catch (err) {
       setStatus('error');
-      setError(
-        err instanceof Error ? err.message : 'Something went wrong. Try again.'
-      );
+      const message =
+        err instanceof Error ? err.message : 'Something went wrong. Try again.';
+      setError(message);
+      if (/face|photo|upload/i.test(message)) toastUploadGuide('face', message);
     }
   };
 
@@ -262,7 +266,7 @@ export function ImageUploader() {
             Drop your photo here
           </p>
           <p className="mt-1.5 text-sm text-gray-500 dark:text-white/50">
-            JPG, PNG or WebP &middot; up to 5MB &middot; 100% private
+            Clear face photo looking at the camera &middot; JPG, PNG or WebP &middot; up to 5MB
           </p>
 
           <button

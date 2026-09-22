@@ -18,6 +18,8 @@ import type { BodyShape } from '@/lib/types';
 import { calculateBodyShape, getBodyShapeProfile } from '@/lib/bodyShape';
 import { ShapeSilhouette } from './ShapeSilhouette';
 import { LoadingSteps } from '@/components/ui/LoadingSteps';
+import { DownloadPdfButton } from '@/components/ui/DownloadPdfButton';
+import { toastUploadGuide } from '@/lib/toast';
 
 const ALL_SHAPES: BodyShape[] = ['Hourglass', 'Pear', 'Apple', 'Rectangle', 'Inverted Triangle'];
 const ASSUMED_SHOULDER_CM = 40;
@@ -70,10 +72,12 @@ export function BodyShapeCalculator() {
     const ACCEPTED = ['image/jpeg', 'image/png', 'image/webp'];
     if (!ACCEPTED.includes(f.type)) {
       setError('Please upload a JPG, PNG, or WebP image.');
+      toastUploadGuide('body', 'Please upload a JPG, PNG, or WebP image.');
       return;
     }
     if (f.size > 5 * 1024 * 1024) {
       setError('Image is too large. Maximum size is 5MB.');
+      toastUploadGuide('body', 'Image is too large (max 5MB).');
       return;
     }
     setFile(f);
@@ -107,7 +111,39 @@ export function BodyShapeCalculator() {
       const detection = poseLandmarker.detect(img);
       const landmarks = detection.landmarks?.[0];
       if (!landmarks || landmarks.length === 0) {
-        setError('Could not detect body. Please upload a full-body photo with good lighting.');
+        const message =
+          'Could not detect body. Upload a full-body photo standing upright, head to toe visible, arms slightly away from your sides, with good lighting.';
+        setError(message);
+        toastUploadGuide('body');
+        setLoading(false);
+        return;
+      }
+
+      // Require visible hip landmarks so we aren't estimating from a selfie crop
+      const leftHip = landmarks[23];
+      const rightHip = landmarks[24];
+      const leftShoulder = landmarks[11];
+      const rightShoulder = landmarks[12];
+      const hipsVisible =
+        leftHip &&
+        rightHip &&
+        leftHip.visibility !== undefined &&
+        rightHip.visibility !== undefined
+          ? (leftHip.visibility ?? 0) > 0.4 && (rightHip.visibility ?? 0) > 0.4
+          : true;
+      const shouldersVisible =
+        leftShoulder &&
+        rightShoulder &&
+        leftShoulder.visibility !== undefined &&
+        rightShoulder.visibility !== undefined
+          ? (leftShoulder.visibility ?? 0) > 0.4 && (rightShoulder.visibility ?? 0) > 0.4
+          : true;
+
+      if (!hipsVisible || !shouldersVisible) {
+        const message =
+          'Body not fully visible. Upload a proper full-body photo (head to toe) with shoulders and hips clearly in frame.';
+        setError(message);
+        toastUploadGuide('body', message);
         setLoading(false);
         return;
       }
@@ -128,7 +164,9 @@ export function BodyShapeCalculator() {
       const detected = calculateBodyShape({ bust: bustCm, waist: waistCm, hip: hipCm, unit: 'metric' });
       setShape(detected);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong. Try again.');
+      const message = err instanceof Error ? err.message : 'Something went wrong. Try again.';
+      setError(message);
+      toastUploadGuide('body', message);
     } finally {
       setLoading(false);
     }
@@ -400,6 +438,20 @@ export function BodyShapeCalculator() {
                 {profile.famous.join(' · ')}
               </p>
             </div>
+          </div>
+
+          <div className="mt-6 flex justify-center sm:justify-end">
+            <DownloadPdfButton
+              title={`Body Shape Report: ${shape}`}
+              subtitle={profile.unique}
+              filename={`body-shape-${shape}`}
+              sections={[
+                { title: 'What to Wear', lines: profile.wear },
+                { title: 'What to Avoid', lines: profile.avoid },
+                { title: 'Styling Goals', lines: profile.goals },
+                { title: 'Celebrity Examples', lines: profile.famous },
+              ]}
+            />
           </div>
         </div>
       )}

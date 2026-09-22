@@ -1,4 +1,4 @@
-const COLORS = { protein: '#d4a030', carbs: '#22c55e', fats: '#60a5fa' };
+const COLORS = { protein: '#f43f5e', carbs: '#22c55e', fats: '#60a5fa' };
 
 function parsePct(v: string): number {
   const n = Number(v.replace('%', '').trim());

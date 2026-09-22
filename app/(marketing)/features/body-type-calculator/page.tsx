@@ -128,7 +128,7 @@ export default function BodyTypeFeaturePage() {
       </Reveal>
 
       <Reveal>
-        <div className="mt-12 rounded-2xl bg-gradient-to-r from-brand-600 to-pink-600 p-8 text-center text-white">
+        <div className="mt-12 rounded-2xl bg-gradient-to-r from-brand-600 to-orange-500 p-8 text-center text-white">
           <h2 className="text-2xl font-bold">Find your body type now</h2>
           <p className="mt-2 text-white/90">
             Free, instant, and runs entirely in your browser.

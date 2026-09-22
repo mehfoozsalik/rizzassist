@@ -14,6 +14,7 @@ import {
 import type { ActivityLevel, BodyTypeMeasurements } from '@/lib/types';
 import { BODY_TYPE_PROFILES, bmiCategory, calculateBodyType } from '@/lib/bodyType';
 import { BMIGauge } from './BMIGauge';
+import { DownloadPdfButton } from '@/components/ui/DownloadPdfButton';
 
 const FIELDS: { key: keyof Omit<BodyTypeMeasurements, 'unit' | 'gender' | 'activityLevel'>; label: string }[] = [
   { key: 'height', label: 'Height' },
@@ -276,6 +277,40 @@ export function BodyTypeCalculator() {
               <div className="mt-5 flex items-center gap-2 border-t border-gray-100 pt-4 text-xs text-gray-500">
                 <Users className="h-3.5 w-3.5 text-gray-400" aria-hidden="true" />
                 {fallbackProfile.famous.join(' · ')}
+              </div>
+
+              <div className="mt-5 flex justify-center sm:justify-end">
+                <DownloadPdfButton
+                  title={`Body Type Report: ${result.type}`}
+                  subtitle={fallbackProfile.description}
+                  filename={`body-type-${result.type}`}
+                  sections={[
+                    {
+                      title: 'Stats',
+                      lines: [
+                        `BMI: ${result.bmi} (${bmiCategory(result.bmi)})`,
+                        `Frame size: ${result.frameSize}`,
+                        `Shoulder/Hip ratio: ${result.shoulderHipRatio}`,
+                      ],
+                    },
+                    { title: 'Fitness', lines: fallbackProfile.fitness },
+                    { title: 'Diet', lines: fallbackProfile.diet },
+                    { title: 'Style', lines: fallbackProfile.style },
+                    ...(weeklyPlan
+                      ? [
+                          {
+                            title: 'Weekly Plan',
+                            lines: [
+                              `Cardio: ${weeklyPlan.cardio}`,
+                              `Strength: ${weeklyPlan.strength}`,
+                              `Rest: ${weeklyPlan.rest}`,
+                            ],
+                          },
+                        ]
+                      : []),
+                    { title: 'Celebrity Examples', lines: fallbackProfile.famous },
+                  ]}
+                />
               </div>
             </div>
           )}
