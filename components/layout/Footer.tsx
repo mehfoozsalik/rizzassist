@@ -12,7 +12,7 @@ export function Footer() {
             <Link href="/" className="inline-flex items-center gap-2.5" aria-label="Return to Rizz Assist homepage">
               <Image
                 src="/assets/logo.svg"
-                alt=""
+                alt="Rizz Assist logo"
                 width={32}
                 height={32}
                 className="rounded-full"

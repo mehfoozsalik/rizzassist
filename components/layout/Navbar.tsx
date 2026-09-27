@@ -26,7 +26,7 @@ export function Navbar() {
         >
           <Image
             src="/assets/logo.svg"
-            alt=""
+            alt="Rizz Assist logo"
             width={36}
             height={36}
             className="rounded-full"
