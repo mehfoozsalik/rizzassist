@@ -330,7 +330,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="underline hover:text-brand-600"
               >
-                body types
+                somatotype science
               </a>{" "}
               and{" "}
               <a
@@ -339,7 +339,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="underline hover:text-brand-600"
               >
-                body shapes
+                figure shape guides
               </a>{" "}
               on Wikipedia.
             </p>

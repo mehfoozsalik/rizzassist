@@ -5,10 +5,10 @@ import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 const NAV_LINKS: NavLink[] = [
   { href: '/', label: 'Check Rizz' },
-  { href: '/body-type-calculator', label: 'Body Type' },
-  { href: '/body-shape-calculator', label: 'Body Shape' },
-  { href: '/eye-shape-detector', label: 'Eye Shape' },
-  { href: '/how-it-works', label: 'How it works' },
+  { href: '/body-type-calculator', label: 'Somatotype' },
+  { href: '/body-shape-calculator', label: 'Silhouette' },
+  { href: '/eye-shape-detector', label: 'Eyes' },
+  { href: '/how-it-works', label: 'Process' },
   { href: '/faq', label: 'Help' },
 ];
 
@@ -22,11 +22,11 @@ export function Navbar() {
         <Link
           href="/"
           className="flex items-center gap-2.5"
-          aria-label="Rizz Assist home"
+          aria-label="Rizz Assist brand home"
         >
           <Image
             src="/assets/logo.svg"
-            alt="Rizz Assist logo"
+            alt=""
             width={36}
             height={36}
             className="rounded-full"
@@ -54,7 +54,7 @@ export function Navbar() {
               href="/#upload"
               className="ml-2 rounded-lg bg-brand-600 px-4 py-1.5 font-semibold text-white transition-colors hover:bg-brand-500"
             >
-              Get Report
+              Get free report
             </Link>
           </li>
           <li>

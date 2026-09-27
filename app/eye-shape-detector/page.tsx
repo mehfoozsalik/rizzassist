@@ -236,7 +236,7 @@ export default function EyeShapeDetectorPage() {
                   href="/features/eye-shape-detector"
                   className="font-medium text-brand-600 underline hover:no-underline"
                 >
-                  Read the full guide
+                  Read the eye shape guide
                 </Link>
               </p>
             </Reveal>
@@ -245,15 +245,15 @@ export default function EyeShapeDetectorPage() {
               <div className="mt-6 border-t border-gray-100 pt-6 text-center text-sm text-gray-500 dark:border-white/5 dark:text-white/40">
                 Also try:{' '}
                 <Link href="/body-type-calculator" className="font-medium text-brand-600 underline hover:no-underline">
-                  Body Type Calculator
+                  Somatotype checker
                 </Link>
                 {' · '}
                 <Link href="/body-shape-calculator" className="font-medium text-brand-600 underline hover:no-underline">
-                  Body Shape Calculator
+                  Silhouette finder
                 </Link>
                 {' · '}
                 <Link href="/" className="font-medium text-brand-600 underline hover:no-underline">
-                  AI Look Analyzer
+                  Photo rizz report
                 </Link>
               </div>
             </Reveal>

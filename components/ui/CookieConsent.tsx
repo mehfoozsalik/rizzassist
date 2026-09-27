@@ -66,7 +66,7 @@ export function CookieConsent({ gaId }: { gaId?: string }) {
               We use cookies for basic analytics to understand site usage. No photos or
               personal data are ever stored. See our{' '}
               <Link href="/privacy" className="text-brand-600 underline hover:no-underline dark:text-brand-400">
-                Privacy Policy
+                privacy details
               </Link>
               .
             </p>

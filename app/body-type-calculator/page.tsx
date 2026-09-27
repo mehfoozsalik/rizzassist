@@ -297,14 +297,14 @@ export default function BodyTypeCalculatorPage() {
                 that actually fit your build, instead of following generic advice.
               </p>
               <p className="mt-3 text-sm text-gray-500 dark:text-white/40">
-                Looking for proportion-based or Kibbe-style results? The{' '}
+                Looking for proportion-based or Kibbe-style results? Try the{' '}
                 <Link
                   href="/body-shape-calculator"
                   className="font-medium text-brand-600 underline hover:no-underline"
                 >
-                  Body Shape Calculator
+                  bust-waist-hip shape tool
                 </Link>
-                {' '}covers bust, waist, and hip ratios, which overlaps with how Kibbe body types assess silhouette and frame.
+                {' '}— it covers ratios that overlap with how Kibbe body types assess silhouette and frame.
               </p>
             </Reveal>
 
@@ -391,7 +391,7 @@ export default function BodyTypeCalculatorPage() {
                   href="/features/body-type-calculator"
                   className="font-medium text-brand-600 underline hover:no-underline"
                 >
-                  Read the full guide
+                  Read the body type guide
                 </Link>
               </p>
             </Reveal>
@@ -403,21 +403,21 @@ export default function BodyTypeCalculatorPage() {
                   href="/body-shape-calculator"
                   className="font-medium text-brand-600 underline hover:no-underline"
                 >
-                  Body Shape Calculator
+                  Silhouette finder
                 </Link>
                 {' · '}
                 <Link
                   href="/eye-shape-detector"
                   className="font-medium text-brand-600 underline hover:no-underline"
                 >
-                  Eye Shape Detector
+                  Eye matching tool
                 </Link>
                 {' · '}
                 <Link
                   href="/"
                   className="font-medium text-brand-600 underline hover:no-underline"
                 >
-                  AI Look Analyzer
+                  Photo rizz report
                 </Link>
               </div>
             </Reveal>

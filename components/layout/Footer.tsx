@@ -9,16 +9,16 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5" aria-label="Rizz Assist home">
+            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="Return to Rizz Assist homepage">
               <Image
                 src="/assets/logo.svg"
-                alt="Rizz Assist logo"
+                alt=""
                 width={32}
                 height={32}
                 className="rounded-full"
               />
               <span className="text-base font-semibold text-ink-900 dark:text-white">
-                Rizz<span className="text-brand-600 dark:text-brand-400">Assist</span>
+                Home
               </span>
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-600 dark:text-white/50">
@@ -95,7 +95,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/privacy" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Privacy Policy
+                  Data &amp; privacy
                 </Link>
               </li>
               <li>
@@ -116,7 +116,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400"
                 >
-                  Somatotype overview
+                  Somatotype research
                 </a>
               </li>
               <li>
@@ -126,7 +126,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400"
                 >
-                  Body shape types
+                  Figure classification
                 </a>
               </li>
               <li>

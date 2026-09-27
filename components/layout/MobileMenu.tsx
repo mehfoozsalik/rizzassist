@@ -40,7 +40,7 @@ export function MobileMenu({ links }: { links: NavLink[] }) {
                   onClick={() => setOpen(false)}
                   className="block rounded-lg px-3 py-2.5 text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-900 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white"
                 >
-                  {link.label}
+                  {`Go to ${link.label}`}
                 </Link>
               </li>
             ))}
@@ -50,7 +50,7 @@ export function MobileMenu({ links }: { links: NavLink[] }) {
                 onClick={() => setOpen(false)}
                 className="block rounded-lg bg-brand-600 px-3 py-2.5 text-center font-semibold text-white transition-colors hover:bg-brand-500"
               >
-                Get Report
+                Start rizz check
               </Link>
             </li>
           </ul>
