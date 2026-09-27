@@ -80,8 +80,9 @@ export function AnimatedHero() {
             variants={item}
             className="mx-auto mt-5 max-w-xl text-balance text-base leading-relaxed text-ink-600 sm:text-lg lg:mx-0 dark:text-white/60"
           >
-            Upload a photo to get personalized pickup lines, style upgrades,
-            shade recommendations, and confidence tips built around your look.
+            Ready to unlock your inner rizz? Upload a photo and get personalized
+            pickup lines, style upgrades, shade recommendations, and confidence
+            tips built around your look.
           </motion.p>
 
           <motion.div

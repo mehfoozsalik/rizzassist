@@ -8,8 +8,8 @@ const NAV_LINKS: NavLink[] = [
   { href: '/body-type-calculator', label: 'Body Type' },
   { href: '/body-shape-calculator', label: 'Body Shape' },
   { href: '/eye-shape-detector', label: 'Eye Shape' },
-  { href: '/how-it-works', label: 'How It Works' },
-  { href: '/faq', label: 'FAQ' },
+  { href: '/how-it-works', label: 'How it works' },
+  { href: '/faq', label: 'Help' },
 ];
 
 export function Navbar() {

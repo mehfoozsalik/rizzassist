@@ -7,7 +7,7 @@ export const FAQS: FaqEntry[] = [
   {
     question: "What is Rizz Assist?",
     answer:
-      "Rizz Assist is a free AI tool that analyzes your photo and gives you personalized pickup lines, style tips, shade recommendations, face orientation feedback, and confidence-building advice all in one Rizz Report.",
+      "Rizz Assist is a free AI tool that helps you unlock your inner rizz. Upload a photo to get personalized pickup lines, style tips, shade recommendations, face orientation feedback, and confidence advice in one Rizz Report.",
   },
   {
     question: "Does it generate pickup lines?",

@@ -34,22 +34,22 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <Link href="/" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  AI Look Analyzer
+                  Free look analysis
                 </Link>
               </li>
               <li>
                 <Link href="/body-type-calculator" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Body Type Calculator
+                  Find your somatotype
                 </Link>
               </li>
               <li>
                 <Link href="/body-shape-calculator" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Body Shape Calculator
+                  Measure your silhouette
                 </Link>
               </li>
               <li>
                 <Link href="/eye-shape-detector" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Eye Shape Detector
+                  Detect eye shape
                 </Link>
               </li>
             </ul>
@@ -57,27 +57,27 @@ export function Footer() {
 
           <nav aria-label="Features info navigation">
             <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
-              Features Info
+              Guides
             </h2>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <Link href="/features/body-type-calculator" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  About Body Types
+                  Ecto, meso &amp; endo
                 </Link>
               </li>
               <li>
                 <Link href="/features/body-shape-calculator" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  About Body Shapes
+                  Hourglass to pear
                 </Link>
               </li>
               <li>
                 <Link href="/features/eye-shape-detector" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  About Eye Shapes
+                  Eye shape chart
                 </Link>
               </li>
               <li>
                 <Link href="/how-it-works" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  How It Works
+                  Analysis steps
                 </Link>
               </li>
             </ul>
@@ -85,12 +85,12 @@ export function Footer() {
 
           <nav aria-label="Footer navigation">
             <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
-              Explore
+              Help
             </h2>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <Link href="/faq" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  FAQ
+                  Common questions
                 </Link>
               </li>
               <li>
@@ -100,6 +100,44 @@ export function Footer() {
               </li>
               <li>
                 <CookieSettingsButton />
+              </li>
+            </ul>
+          </nav>
+
+          <nav aria-label="Resources">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
+              Resources
+            </h2>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li>
+                <a
+                  href="https://en.wikipedia.org/wiki/Somatotype_and_constitutional_psychology"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400"
+                >
+                  Somatotype overview
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://en.wikipedia.org/wiki/Female_body_shape"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400"
+                >
+                  Body shape types
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400"
+                >
+                  Face Landmarker docs
+                </a>
               </li>
             </ul>
           </nav>

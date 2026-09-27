@@ -22,6 +22,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ImageUploader } from "@/components/ui/ImageUploader";
 import { AnimatedHero } from "@/components/ui/AnimatedHero";
+import { ShareButtons } from "@/components/ui/ShareButtons";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
@@ -95,49 +96,57 @@ const CAPABILITIES = [
   {
     icon: Flame,
     title: "Pickup Lines",
-    href: null,
+    href: null as string | null,
+    cta: null as string | null,
     text: "The AI writes original lines matched to your exact look and vibe, not recycled openers from a list. Each one is tailored to what it actually sees in your photo.",
   },
   {
     icon: Shirt,
     title: "Style Tips",
     href: null,
+    cta: null,
     text: "Get specific suggestions on colors, fits, and clothing categories that complement your face shape and body proportions, not generic advice.",
   },
   {
     icon: Glasses,
     title: "Shade Recommendations",
     href: null,
+    cta: null,
     text: "Frame-by-frame sunglasses recommendations matched to your detected face shape, so you can see exactly what suits you before you buy.",
   },
   {
     icon: Activity,
     title: "Body Type Calculator",
     href: "/body-type-calculator",
+    cta: "Open body type tool",
     text: "Find out whether you are an ectomorph, mesomorph, or endomorph from your measurements. Comes with fitness, diet, and style tips tailored to your build.",
   },
   {
     icon: Dumbbell,
     title: "Body Shape Calculator",
     href: "/body-shape-calculator",
+    cta: "Open body shape tool",
     text: "Classify your silhouette (hourglass, pear, apple, rectangle, or inverted triangle) from your bust, waist, and hip measurements, with fashion tips for each shape.",
   },
   {
     icon: Eye,
     title: "Eye Shape Analysis",
     href: "/eye-shape-detector",
-    text: "Identify your exact eye shape using the same landmark-based eye matching techniques that eye models and makeup professionals use, then get personalized eyeliner and eyeshadow tips for your shape.",
+    cta: "Open eye analyzer",
+    text: "Identify your exact eye shape using landmark-based matching, then get personalized eyeliner and eyeshadow tips for your shape.",
   },
   {
     icon: ScanFace,
     title: "Face Orientation Tips",
     href: null,
+    cta: null,
     text: "Learn the best camera angles, jaw positions, and grooming tweaks that make your face shape look its best in any photo or in person.",
   },
   {
     icon: Sparkles,
     title: "Confidence Tips",
     href: null,
+    cta: null,
     text: "Actionable posture, mindset, and daily habit recommendations tied to your strongest visible traits, so the glow-up goes beyond the outfit.",
   },
 ];
@@ -186,48 +195,45 @@ export default function HomePage() {
               >
                 What Rizz Assist Does
               </h2>
-              <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-500 dark:text-white/50">
-                Every tool in one place, from instant photo analysis to dedicated calculators for body type, body shape, and eye shape.
+              <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-500 dark:text-white/50">
+                Rizz Assist helps you unlock your inner rizz with AI — from
+                instant photo analysis to dedicated calculators for body type,
+                body shape, and eye shape. Use the tools below to turn a single
+                photo into style, confidence, and conversation wins.
               </p>
             </Reveal>
 
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {CAPABILITIES.map((cap, i) => (
                 <Reveal key={cap.title} delay={(i % 4) * 0.07}>
-                  {cap.href ? (
-                    <Link
-                      href={cap.href}
-                      className="group block h-full rounded-2xl border border-gray-100 bg-cream-50 p-5 transition-all hover:border-brand-200 hover:shadow-md dark:border-white/5 dark:bg-ink-800 dark:hover:border-brand-600/30 dark:hover:shadow-black/30"
-                    >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-900 transition-transform duration-200 group-hover:scale-105 dark:bg-ink-700">
-                        <cap.icon
-                          className="h-5 w-5 text-brand-400"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <h3 className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
-                        {cap.title}
-                      </h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-white/50">
-                        {cap.text}
-                      </p>
-                    </Link>
-                  ) : (
-                    <article className="h-full rounded-2xl border border-gray-100 bg-cream-50 p-5 dark:border-white/5 dark:bg-ink-800">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-900 dark:bg-ink-700">
-                        <cap.icon
-                          className="h-5 w-5 text-brand-400"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <h3 className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
-                        {cap.title}
-                      </h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-white/50">
-                        {cap.text}
-                      </p>
-                    </article>
-                  )}
+                  <article
+                    className={`group flex h-full flex-col rounded-2xl border border-gray-100 bg-cream-50 p-5 transition-all dark:border-white/5 dark:bg-ink-800 ${
+                      cap.href
+                        ? "hover:border-brand-200 hover:shadow-md dark:hover:border-brand-600/30 dark:hover:shadow-black/30"
+                        : ""
+                    }`}
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-900 transition-transform duration-200 group-hover:scale-105 dark:bg-ink-700">
+                      <cap.icon
+                        className="h-5 w-5 text-brand-400"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <h3 className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
+                      {cap.title}
+                    </h3>
+                    <p className="mt-1.5 flex-1 text-sm leading-relaxed text-gray-500 dark:text-white/50">
+                      {cap.text}
+                    </p>
+                    {cap.href && cap.cta && (
+                      <Link
+                        href={cap.href}
+                        className="mt-4 inline-flex text-sm font-medium text-brand-600 underline-offset-2 hover:underline"
+                      >
+                        {cap.cta}
+                      </Link>
+                    )}
+                  </article>
                 </Reveal>
               ))}
             </div>
@@ -255,7 +261,8 @@ export default function HomePage() {
                 How Rizz Assist Works
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-500 dark:text-white/50">
-                Four steps from photo to full-on swagger.
+                Four steps from photo to full-on swagger — the same path that
+                helps you unlock your inner rizz with AI in under a minute.
               </p>
             </Reveal>
 
@@ -288,8 +295,53 @@ export default function HomePage() {
                 href="/how-it-works"
                 className="font-medium text-brand-600 underline hover:no-underline"
               >
-                See exactly how your Rizz Report is built &rarr;
+                Full walkthrough
               </Link>
+            </p>
+          </div>
+        </section>
+
+        {/* Share */}
+        <section
+          aria-labelledby="share-heading"
+          className="border-t border-gray-100 bg-white px-4 py-12 dark:border-white/5 dark:bg-ink-900"
+        >
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal>
+              <h2
+                id="share-heading"
+                className="text-xl font-bold text-gray-900 dark:text-white"
+              >
+                Share Rizz Assist
+              </h2>
+              <p className="mx-auto mt-2 max-w-lg text-sm text-gray-500 dark:text-white/50">
+                Know someone who wants to unlock their inner rizz? Pass the free
+                AI look analyzer along.
+              </p>
+            </Reveal>
+            <div className="mt-6">
+              <ShareButtons />
+            </div>
+            <p className="mt-4 text-xs text-gray-400 dark:text-white/30">
+              Learn more about{" "}
+              <a
+                href="https://en.wikipedia.org/wiki/Somatotype_and_constitutional_psychology"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-brand-600"
+              >
+                body types
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://en.wikipedia.org/wiki/Female_body_shape"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-brand-600"
+              >
+                body shapes
+              </a>{" "}
+              on Wikipedia.
             </p>
           </div>
         </section>
@@ -297,7 +349,7 @@ export default function HomePage() {
         {/* FAQ */}
         <section
           aria-labelledby="faq-heading"
-          className="border-t border-gray-100 bg-white px-4 py-16 dark:border-white/5 dark:bg-ink-900"
+          className="border-t border-gray-100 bg-cream-50 px-4 py-16 dark:border-white/5 dark:bg-ink-800"
         >
           <div className="mx-auto max-w-3xl">
             <Reveal>
@@ -312,7 +364,7 @@ export default function HomePage() {
             <div className="mt-10 space-y-2">
               {FAQS.map((faq, i) => (
                 <Reveal key={faq.question} delay={i * 0.05}>
-                  <details className="group rounded-xl border border-gray-100 bg-cream-50 p-5 open:border-brand-200 open:bg-white transition-colors dark:border-white/5 dark:bg-ink-800 dark:open:border-brand-600/30 dark:open:bg-ink-700">
+                  <details className="group rounded-xl border border-gray-100 bg-white p-5 open:border-brand-200 transition-colors dark:border-white/5 dark:bg-ink-900 dark:open:border-brand-600/30 dark:open:bg-ink-700">
                     <summary className="cursor-pointer list-none text-sm font-semibold text-gray-900 marker:hidden dark:text-white">
                       {faq.question}
                     </summary>
@@ -329,7 +381,7 @@ export default function HomePage() {
                 href="/faq"
                 className="font-medium text-brand-600 underline hover:no-underline"
               >
-                See the full FAQ &rarr;
+                More answers
               </Link>
             </p>
           </div>
