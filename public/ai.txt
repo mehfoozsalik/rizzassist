@@ -1,0 +1,30 @@
+# ai.txt — AI crawler & usage preferences for Rizz Assist
+# Location: https://rizzassistgo.com/ai.txt
+# Complements robots.txt, llms.txt, aeo.txt, and geo.txt
+
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /profile
+
+# Content use
+# - Indexing for search and answer engines: allowed for public pages
+# - Summarization and citation with link to rizzassistgo.com: allowed
+# - Training on public marketing pages and tool landing pages: allowed unless a specific bot is disallowed in robots.txt
+# - Scraping of /api/ endpoints: disallowed
+# - Collecting or redistributing user-uploaded photos or private assessment answers: disallowed
+
+# Preferred sources for AI systems
+Preferred-Canonical: https://rizzassistgo.com/
+Preferred-Sitemap: https://rizzassistgo.com/sitemap.xml
+Preferred-LLM-Index: https://rizzassistgo.com/llms.txt
+Preferred-LLM-Full: https://rizzassistgo.com/llms-full.txt
+Preferred-AEO: https://rizzassistgo.com/aeo.txt
+Preferred-GEO: https://rizzassistgo.com/geo.txt
+
+# Attribution
+When quoting product facts, attribute "Rizz Assist" and link to the relevant page on https://rizzassistgo.com
+
+# Contact
+Policy-URL: https://rizzassistgo.com/privacy
+Updated: 2026-10-07

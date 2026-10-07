@@ -22,6 +22,7 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ToolWebAppSchema, FaqSchema, BreadcrumbSchema } from '@/components/seo/SchemaMarkup';
 import { Reveal } from '@/components/ui/Reveal';
 import { BodyTypeCalculator } from '@/components/calculators/BodyTypeCalculator';
+import { AppearanceCrossSell } from '@/components/assessments/AppearanceCrossSell';
 import { BODY_TYPE_PROFILES } from '@/lib/bodyType';
 
 const PAGE_URL = `${SITE_URL}/body-type-calculator`;
@@ -403,24 +404,34 @@ export default function BodyTypeCalculatorPage() {
                   href="/body-shape-calculator"
                   className="font-medium text-brand-600 underline hover:no-underline"
                 >
-                  Silhouette finder
+                  Body shape calculator
                 </Link>
                 {' · '}
                 <Link
-                  href="/eye-shape-detector"
+                  href="/style-assessment"
                   className="font-medium text-brand-600 underline hover:no-underline"
                 >
-                  Eye matching tool
+                  Style assessment
                 </Link>
                 {' · '}
                 <Link
-                  href="/"
+                  href="/personality-test"
                   className="font-medium text-brand-600 underline hover:no-underline"
                 >
-                  Photo rizz report
+                  Personality test
                 </Link>
               </div>
             </Reveal>
+
+            <AppearanceCrossSell
+              relatedSlugs={[
+                'body-shape-calculator',
+                'style-assessment',
+                'grooming-assessment',
+                'confidence-test',
+                'first-impression-test',
+              ]}
+            />
           </div>
         </section>
       </main>

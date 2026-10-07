@@ -15,40 +15,70 @@ function JsonLd({ data }: JsonLdProps) {
 
 export function WebAppSchema() {
   return (
-    <JsonLd
-      data={{
-        '@context': 'https://schema.org',
-        '@type': 'WebApplication',
-        name: SITE_NAME,
-        description:
-          'AI-powered rizz coach with pickup lines, style tips, body shape calculator, body type calculator, and AI eye shape analyzer.',
-        url: SITE_URL,
-        applicationCategory: 'LifestyleApplication',
-        operatingSystem: 'Web',
-        offers: {
-          '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'USD',
-        },
-        featureList: [
-          'AI photo analysis',
-          'Personalized pickup lines',
-          'Style & outfit upgrades',
-          'Shades recommendations',
-          'Body shape calculator for men and women',
-          'Body type calculator',
-          'AI eye shape analyzer',
-          'Face orientation tips',
-          'Confidence coaching',
-          'No login required',
-        ],
-        screenshot: `${SITE_URL}/og-image.png`,
-        author: {
+    <>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
           '@type': 'Organization',
           name: SITE_NAME,
-        },
-      }}
-    />
+          url: SITE_URL,
+          logo: `${SITE_URL}/assets/logo.svg`,
+          description:
+            'Free AI self-improvement platform for personality, confidence, social skills, dating, and appearance tools.',
+          sameAs: [],
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: SITE_NAME,
+          url: SITE_URL,
+          description:
+            'Understand yourself. Improve your personality. Build confidence with free AI assessments and appearance tools.',
+          potentialAction: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${SITE_URL}/tools`,
+            name: 'Explore all tools',
+          },
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          name: SITE_NAME,
+          description:
+            'AI-powered self-improvement platform with personality tests, confidence assessments, social skills tools, rizz quizzes, face shape detector, and body calculators.',
+          url: SITE_URL,
+          applicationCategory: 'LifestyleApplication',
+          operatingSystem: 'Web',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD',
+          },
+          featureList: [
+            'Personality and confidence assessments',
+            'Social skills and charisma tests',
+            'Rizz and dating personality tools',
+            'Personality improvement report',
+            'AI photo analysis',
+            'Face shape detector',
+            'Body shape calculator for men and women',
+            'Body type calculator',
+            'AI eye shape analyzer',
+            'No login required',
+          ],
+          screenshot: `${SITE_URL}/og-image.png`,
+          author: {
+            '@type': 'Organization',
+            name: SITE_NAME,
+            url: SITE_URL,
+          },
+        }}
+      />
+    </>
   );
 }
 

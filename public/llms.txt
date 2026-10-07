@@ -1,0 +1,58 @@
+# Rizz Assist (rizzassistgo.com) — llms.txt
+# Structured site summary for large language models and answer engines.
+# Spec-inspired: https://llmstxt.org/
+# Also see: /llms-full.txt /ai.txt /aeo.txt /geo.txt /sitemap.xml
+
+> Rizz Assist is a free AI-powered self-improvement platform. Users take personality, confidence, social skills, and dating assessments, use appearance tools (face shape, eye shape, body calculators), and get practical recommendations to improve — without creating an account.
+
+## Primary pages
+
+- [Home](https://rizzassistgo.com/): Platform overview, photo Rizz Report upload, featured personality tools
+- [All Tools](https://rizzassistgo.com/tools): Searchable directory of assessments and appearance tools
+- [Personality Improvement Report](https://rizzassistgo.com/report): Combined free report from completed assessments
+- [How It Works](https://rizzassistgo.com/how-it-works): Product walkthrough
+- [FAQ](https://rizzassistgo.com/faq): Common questions
+- [Privacy](https://rizzassistgo.com/privacy): Data and photo privacy
+- [Blog](https://rizzassistgo.com/blog): Guides on confidence, personality, social skills, dating, grooming
+
+## Personality & confidence assessments
+
+- [Personality Test](https://rizzassistgo.com/personality-test)
+- [Communication Style Test](https://rizzassistgo.com/communication-style-test)
+- [Self-Awareness Assessment](https://rizzassistgo.com/self-awareness-test)
+- [Emotional Intelligence Test](https://rizzassistgo.com/emotional-intelligence-test)
+- [Confidence Test](https://rizzassistgo.com/confidence-test)
+- [Social Confidence Test](https://rizzassistgo.com/social-confidence-test)
+- [Dating Confidence Test](https://rizzassistgo.com/dating-confidence-test)
+- [First Impression Assessment](https://rizzassistgo.com/first-impression-test)
+
+## Social skills & dating
+
+- [Charisma Test](https://rizzassistgo.com/charisma-test)
+- [Social Skills Test](https://rizzassistgo.com/social-skills-test)
+- [Conversation Skills Assessment](https://rizzassistgo.com/conversation-skills-test)
+- [Social Awareness Test](https://rizzassistgo.com/social-awareness-test)
+- [Listening Skills Assessment](https://rizzassistgo.com/listening-skills-test)
+- [Rizz Test](https://rizzassistgo.com/rizz-test)
+- [Dating Personality Test](https://rizzassistgo.com/dating-personality-test)
+- [Flirting Style Test](https://rizzassistgo.com/flirting-style-test)
+- [Conversation Analyzer](https://rizzassistgo.com/conversation-analyzer)
+- [First Message Analyzer](https://rizzassistgo.com/first-message-analyzer)
+
+## Appearance tools
+
+- [Face Shape Detector](https://rizzassistgo.com/face-shape-detector)
+- [Eye Shape Detector](https://rizzassistgo.com/eye-shape-detector)
+- [Body Shape Calculator](https://rizzassistgo.com/body-shape-calculator)
+- [Body Type Calculator](https://rizzassistgo.com/body-type-calculator)
+- [Style Assessment](https://rizzassistgo.com/style-assessment)
+- [Grooming Assessment](https://rizzassistgo.com/grooming-assessment)
+- [Style Try-On](https://rizzassistgo.com/try-on)
+
+## Optional
+
+- [Full LLM index](https://rizzassistgo.com/llms-full.txt): Expanded descriptions and citation guidance
+- [AI policy](https://rizzassistgo.com/ai.txt): Crawler and training preferences
+- [AEO brief](https://rizzassistgo.com/aeo.txt): Answer-engine oriented facts
+- [GEO brief](https://rizzassistgo.com/geo.txt): Generative-engine oriented facts
+- [Sitemap](https://rizzassistgo.com/sitemap.xml)

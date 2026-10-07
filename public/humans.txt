@@ -1,0 +1,12 @@
+/* TEAM */
+Site: Rizz Assist
+URL: https://rizzassistgo.com
+Location: Worldwide (web)
+
+/* SITE */
+Standards: HTML5, Next.js, Schema.org JSON-LD
+SEO: /sitemap.xml /robots.txt
+AI discovery: /llms.txt /llms-full.txt /ai.txt /aeo.txt /geo.txt
+
+/* THANKS */
+Built for practical self-improvement — personality, confidence, social skills, and appearance tools.

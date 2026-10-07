@@ -7,6 +7,7 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ToolWebAppSchema, FaqSchema, BreadcrumbSchema } from '@/components/seo/SchemaMarkup';
 import { Reveal } from '@/components/ui/Reveal';
 import { BodyShapeCalculator } from '@/components/calculators/BodyShapeCalculator';
+import { AppearanceCrossSell } from '@/components/assessments/AppearanceCrossSell';
 import { ShapeSilhouette } from '@/components/calculators/ShapeSilhouette';
 import { BODY_SHAPE_PROFILES } from '@/lib/bodyShape';
 
@@ -236,18 +237,28 @@ export default function BodyShapeCalculatorPage() {
               <div className="mt-6 border-t border-gray-100 pt-6 text-center text-sm text-gray-500 dark:border-white/5 dark:text-white/40">
                 Also try:{' '}
                 <Link href="/body-type-calculator" className="font-medium text-brand-600 underline hover:no-underline">
-                  Somatotype checker
+                  Body type calculator
                 </Link>
                 {' · '}
-                <Link href="/eye-shape-detector" className="font-medium text-brand-600 underline hover:no-underline">
-                  Eye matching tool
+                <Link href="/style-assessment" className="font-medium text-brand-600 underline hover:no-underline">
+                  Style assessment
                 </Link>
                 {' · '}
-                <Link href="/" className="font-medium text-brand-600 underline hover:no-underline">
-                  Photo rizz report
+                <Link href="/confidence-test" className="font-medium text-brand-600 underline hover:no-underline">
+                  Confidence test
                 </Link>
               </div>
             </Reveal>
+
+            <AppearanceCrossSell
+              relatedSlugs={[
+                'body-type-calculator',
+                'style-assessment',
+                'first-impression-test',
+                'personality-test',
+                'confidence-test',
+              ]}
+            />
           </div>
         </section>
       </main>

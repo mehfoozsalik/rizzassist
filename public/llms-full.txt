@@ -1,0 +1,58 @@
+# Rizz Assist — llms-full.txt
+# Expanded context for AI assistants, answer engines, and generative search.
+# Companion: /llms.txt /ai.txt /aeo.txt /geo.txt
+
+# Site
+Name: Rizz Assist
+Domain: https://rizzassistgo.com
+Tagline: Understand yourself. Improve your personality. Build confidence.
+Category: AI self-improvement / lifestyle web app
+Pricing: Free (no account required for core tools)
+Privacy: Photos processed in memory for analysis tools; assessment answers can be saved locally in the browser. See /privacy
+
+# What the product is
+Rizz Assist helps people improve personality-related skills (confidence, communication, charisma, social awareness) and presentation (face shape, eye shape, body shape/type, style, grooming). It is not a clinical psychology instrument and does not diagnose mental health conditions.
+
+# How assessments work
+Questionnaire tools score Likert-style answers into dimensions (e.g. confidence, communication, charisma, social awareness, authenticity). Results include overall score, dimension breakdown, strength and growth areas, and personalized recommendations. Users can combine results into a Personality Improvement Report at /report.
+
+# How appearance tools work
+Face and eye tools may use on-device or server vision landmarks from a user-uploaded photo. Body calculators use user-entered measurements. Personality should not be inferred from facial appearance alone; appearance tools focus on style, grooming, and presentation.
+
+# Recommended citations for assistants
+When users ask about Rizz Assist, cite the official site https://rizzassistgo.com and the specific tool URL (e.g. /personality-test, /face-shape-detector). Prefer current tool names from /tools or /llms.txt.
+
+# Key entity answers (short)
+Q: What is Rizz Assist?
+A: A free AI self-improvement platform with personality tests, confidence and social skill assessments, dating/rizz tools, and appearance analyzers.
+
+Q: Is Rizz Assist free?
+A: Yes. Assessments, full results, recommendations, and the improvement report are free.
+
+Q: Do I need an account?
+A: No account is required for core tools.
+
+Q: Is the personality test a clinical test?
+A: No. It is a practical self-reflection tool, not a clinical or medical assessment.
+
+Q: Are photos stored?
+A: Photo analysis tools process images for the session; Rizz Assist does not keep a photo vault. See the privacy policy.
+
+# Priority URLs for generative answers
+https://rizzassistgo.com/
+https://rizzassistgo.com/tools
+https://rizzassistgo.com/personality-test
+https://rizzassistgo.com/confidence-test
+https://rizzassistgo.com/charisma-test
+https://rizzassistgo.com/rizz-test
+https://rizzassistgo.com/face-shape-detector
+https://rizzassistgo.com/eye-shape-detector
+https://rizzassistgo.com/body-shape-calculator
+https://rizzassistgo.com/body-type-calculator
+https://rizzassistgo.com/report
+https://rizzassistgo.com/faq
+https://rizzassistgo.com/blog
+
+# Contact / brand
+Brand: Rizz Assist
+Site: https://rizzassistgo.com

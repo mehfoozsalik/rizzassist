@@ -14,6 +14,7 @@ import {
   Dumbbell,
   Sparkles,
   Activity,
+  Scissors,
 } from "lucide-react";
 import { SITE_URL, SITE_NAME } from "@/lib/config";
 import { FAQS } from "@/lib/faq";
@@ -26,28 +27,27 @@ import { ShareButtons } from "@/components/ui/ShareButtons";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "AI Look Analyzer: Pickup Lines & Style Tips | Rizz Assist",
+  title: "Enhance Your Personality — AI Self-Improvement Platform | Rizz Assist",
   description:
-    "Upload one photo to get a free Rizz Report: personalized pickup lines, style tips, shades recs, and AI confidence advice tailored to your exact look. No login.",
+    "Understand yourself, improve your personality, and build confidence. Free personality tests, confidence assessments, social skills tools, rizz quizzes, plus face and body analyzers.",
   keywords: [
-    "AI look analyzer",
+    "personality test",
+    "confidence test",
+    "charisma test",
+    "social skills test",
+    "rizz test",
+    "AI self improvement",
     "rizz assist",
-    "rizzassist",
-    "rizz score calculator",
-    "AI pickup line generator",
-    "free style analyzer",
-    "photo rizz analysis",
-    "AI confidence coach",
-    "shades recommendation AI",
+    "face shape detector",
     "body shape calculator",
     "body type calculator",
-    "AI eye shape analyzer",
+    "eye shape detector",
   ],
   alternates: { canonical: SITE_URL },
   openGraph: {
-    title: "AI Look Analyzer: Pickup Lines & Style Tips | Rizz Assist",
+    title: "Enhance Your Personality | Rizz Assist",
     description:
-      "Upload one photo to get a free Rizz Report: personalized pickup lines, style tips, shades recs, and AI confidence advice tailored to your exact look. No login.",
+      "Personality, confidence, social skills, dating, and appearance tools — practical recommendations to improve.",
     url: SITE_URL,
     siteName: SITE_NAME,
     images: [
@@ -55,19 +55,46 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Rizz Assist AI look analyzer showing a rizz score, pickup lines, and style recommendations",
+        alt: "Rizz Assist AI self-improvement platform for personality and confidence",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Look Analyzer: Pickup Lines & Style Tips | Rizz Assist",
+    title: "Enhance Your Personality | Rizz Assist",
     description:
-      "Upload one photo to get a free Rizz Report: personalized pickup lines, style tips, shades recs, and AI confidence advice tailored to your exact look. No login.",
+      "Personality, confidence, social skills, dating, and appearance tools — practical recommendations to improve.",
     images: ["/twitter-image.png"],
   },
 };
+
+const PERSONALITY_TOOLS = [
+  {
+    href: "/personality-test",
+    title: "Personality Test",
+    text: "Understand your personality and behavioral tendencies.",
+    cta: "Start assessment",
+  },
+  {
+    href: "/confidence-test",
+    title: "Confidence Test",
+    text: "Discover how confident you are in social situations.",
+    cta: "Analyze confidence",
+  },
+  {
+    href: "/charisma-test",
+    title: "Charisma Test",
+    text: "Analyze your social presence and communication style.",
+    cta: "Analyze charisma",
+  },
+  {
+    href: "/rizz-test",
+    title: "Rizz Test",
+    text: "Understand your conversation and dating strengths.",
+    cta: "Take rizz test",
+  },
+];
 
 const STEPS = [
   {
@@ -115,6 +142,20 @@ const CAPABILITIES = [
     text: "Frame-by-frame sunglasses recommendations matched to your detected face shape, so you can see exactly what suits you before you buy.",
   },
   {
+    icon: ScanFace,
+    title: "Face Shape Detector",
+    href: "/face-shape-detector",
+    cta: "Detect face shape",
+    text: "Find oval, round, square, heart, diamond, oblong, or triangle — then get hairstyle, glasses, and presence tips for personality grooming.",
+  },
+  {
+    icon: Scissors,
+    title: "Style Try-On",
+    href: "/try-on",
+    cta: "Open try-on studio",
+    text: "Preview hairstyles and glasses on your selfie with private on-device overlays before you book a cut or buy frames.",
+  },
+  {
     icon: Activity,
     title: "Body Type Calculator",
     href: "/body-type-calculator",
@@ -136,18 +177,11 @@ const CAPABILITIES = [
     text: "Identify your exact eye shape using landmark-based matching, then get personalized eyeliner and eyeshadow tips for your shape.",
   },
   {
-    icon: ScanFace,
-    title: "Face Orientation Tips",
-    href: null,
-    cta: null,
-    text: "Learn the best camera angles, jaw positions, and grooming tweaks that make your face shape look its best in any photo or in person.",
-  },
-  {
     icon: Sparkles,
     title: "Confidence Tips",
-    href: null,
-    cta: null,
-    text: "Actionable posture, mindset, and daily habit recommendations tied to your strongest visible traits, so the glow-up goes beyond the outfit.",
+    href: "/blog",
+    cta: "Read grooming guides",
+    text: "Actionable posture, mindset, and grooming habits tied to your traits — personality improvement beyond the outfit.",
   },
 ];
 
@@ -159,6 +193,55 @@ export default function HomePage() {
 
       <main id="main-content">
         <AnimatedHero />
+
+        {/* Explore personality tools */}
+        <section
+          aria-labelledby="explore-personality"
+          className="border-t border-gray-100 bg-white px-4 py-16 dark:border-white/5 dark:bg-ink-900"
+        >
+          <div className="mx-auto max-w-5xl">
+            <Reveal>
+              <h2
+                id="explore-personality"
+                className="text-center text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white"
+              >
+                Explore Your Personality
+              </h2>
+              <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-500 dark:text-white/50">
+                Free assessments for personality, confidence, charisma, and rizz —
+                with personalized recommendations and a combined improvement report.
+              </p>
+            </Reveal>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {PERSONALITY_TOOLS.map((tool, i) => (
+                <Reveal key={tool.href} delay={i * 0.06}>
+                  <Link
+                    href={tool.href}
+                    className="flex h-full flex-col rounded-2xl border border-gray-100 bg-cream-50 p-5 transition hover:border-brand-200 hover:shadow-md dark:border-white/5 dark:bg-ink-800 dark:hover:border-brand-600/30"
+                  >
+                    <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+                      {tool.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-sm text-gray-500 dark:text-white/50">
+                      {tool.text}
+                    </p>
+                    <span className="mt-4 text-sm font-semibold text-brand-600">
+                      {tool.cta} →
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+            <p className="mt-8 text-center">
+              <Link
+                href="/tools"
+                className="inline-flex rounded-lg bg-ink-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-ink-800 dark:bg-white dark:text-ink-900"
+              >
+                Explore All Tools
+              </Link>
+            </p>
+          </div>
+        </section>
 
         {/* Upload section */}
         <section

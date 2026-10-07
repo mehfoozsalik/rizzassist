@@ -7,7 +7,12 @@ export const FAQS: FaqEntry[] = [
   {
     question: "What is Rizz Assist?",
     answer:
-      "Rizz Assist is a free AI tool that helps you unlock your inner rizz. Upload a photo to get personalized pickup lines, style tips, shade recommendations, face orientation feedback, and confidence advice in one Rizz Report.",
+      "Rizz Assist is an AI-powered self-improvement platform. Take personality, confidence, and social skills assessments, use appearance tools like face and body analyzers, and get practical recommendations plus a Personality Improvement Report.",
+  },
+  {
+    question: "Are the personality tests free?",
+    answer:
+      "Yes. Assessments, full results, recommendations, and the improvement report are free. No account required.",
   },
   {
     question: "Does it generate pickup lines?",
@@ -43,17 +48,42 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "What is Rizz Assist?",
         answer:
-          "Rizz Assist is a free AI-powered tool that analyzes your photo and generates a personalized Rizz Report including pickup lines, outfit suggestions, shades recommendations, face orientation tips, and confidence-building advice.",
+          "Rizz Assist is an AI-powered self-improvement platform for personality, confidence, social skills, dating communication, and appearance tools — including photo analysis and a Personality Improvement Report.",
       },
       {
         question: "Who is Rizz Assist for?",
         answer:
-          "Anyone who wants to level up their look, find better style direction, or get personalized opening lines. No experience needed just upload a photo.",
+          "Anyone who wants clearer self-awareness, stronger social confidence, better dating communication, or practical appearance/grooming guidance. No account required.",
       },
       {
         question: "Is Rizz Assist free?",
         answer:
-          "Yes, completely free. No subscription, no hidden fees, no login required.",
+          "Yes. Tools, assessments, full results, and the improvement report are free. No subscription required.",
+      },
+    ],
+  },
+  {
+    category: "Assessments",
+    items: [
+      {
+        question: "What do the personality and confidence tests measure?",
+        answer:
+          "They score patterns across dimensions like confidence, communication, charisma, social awareness, and authenticity based on your answers. They are practical reflection tools — not clinical diagnoses.",
+      },
+      {
+        question: "How long do assessments take?",
+        answer:
+          "Most take about 3–5 minutes. You answer one statement at a time with a progress indicator and can go back.",
+      },
+      {
+        question: "Can I retake assessments and track progress?",
+        answer:
+          "Yes. Results can be saved on your device in My Profile so you can compare scores over time.",
+      },
+      {
+        question: "Is my assessment data private?",
+        answer:
+          "Answers are scored in your browser. Saved results stay on your device unless you clear them.",
       },
     ],
   },

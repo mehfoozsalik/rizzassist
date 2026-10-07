@@ -7,6 +7,7 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ToolWebAppSchema, FaqSchema, BreadcrumbSchema } from '@/components/seo/SchemaMarkup';
 import { Reveal } from '@/components/ui/Reveal';
 import { EyeShapeDetector } from '@/components/calculators/EyeShapeDetector';
+import { AppearanceCrossSell } from '@/components/assessments/AppearanceCrossSell';
 import { EYE_SHAPE_GUIDE } from '@/lib/eyeShapes';
 
 const PAGE_URL = `${SITE_URL}/eye-shape-detector`;
@@ -244,19 +245,29 @@ export default function EyeShapeDetectorPage() {
             <Reveal>
               <div className="mt-6 border-t border-gray-100 pt-6 text-center text-sm text-gray-500 dark:border-white/5 dark:text-white/40">
                 Also try:{' '}
-                <Link href="/body-type-calculator" className="font-medium text-brand-600 underline hover:no-underline">
-                  Somatotype checker
+                <Link href="/face-shape-detector" className="font-medium text-brand-600 underline hover:no-underline">
+                  Face shape detector
                 </Link>
                 {' · '}
-                <Link href="/body-shape-calculator" className="font-medium text-brand-600 underline hover:no-underline">
-                  Silhouette finder
+                <Link href="/style-assessment" className="font-medium text-brand-600 underline hover:no-underline">
+                  Style assessment
                 </Link>
                 {' · '}
-                <Link href="/" className="font-medium text-brand-600 underline hover:no-underline">
-                  Photo rizz report
+                <Link href="/confidence-test" className="font-medium text-brand-600 underline hover:no-underline">
+                  Confidence test
                 </Link>
               </div>
             </Reveal>
+
+            <AppearanceCrossSell
+              relatedSlugs={[
+                'face-shape-detector',
+                'style-assessment',
+                'grooming-assessment',
+                'personality-test',
+                'confidence-test',
+              ]}
+            />
           </div>
         </section>
       </main>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Sparkles, ArrowDown, ShieldCheck, Zap } from "lucide-react";
 
@@ -63,7 +64,7 @@ export function AnimatedHero() {
             className="inline-flex items-center gap-1.5 rounded-full border border-brand-600/30 bg-brand-600/10 px-3 py-1 text-xs font-medium text-brand-700 backdrop-blur dark:text-brand-400"
           >
             <Sparkles className="h-3 w-3" aria-hidden="true" />
-            Free AI Rizz Coach &middot; No Login Required
+            AI Self-Improvement Platform &middot; Free to Start
           </motion.span>
 
           <motion.h1
@@ -71,31 +72,35 @@ export function AnimatedHero() {
             id="hero-heading"
             className="mt-6 text-balance text-4xl font-extrabold tracking-tight text-ink-900 sm:text-5xl lg:text-6xl dark:text-white"
           >
-            Unlock Your <span className="gold-text">Inner Rizz</span>
-            <br />
-            <span className="text-ink-700 dark:text-white/90">with AI.</span>
+            Enhance Your <span className="gold-text">Personality</span>
           </motion.h1>
 
           <motion.p
             variants={item}
             className="mx-auto mt-5 max-w-xl text-balance text-base leading-relaxed text-ink-600 sm:text-lg lg:mx-0 dark:text-white/60"
           >
-            Ready to unlock your inner rizz? Upload a photo and get personalized
-            pickup lines, style upgrades, shade recommendations, and confidence
-            tips built around your look.
+            Understand yourself. Improve your personality. Build confidence.
+            Take assessments, analyze your look, and get practical recommendations
+            to become a better version of yourself.
           </motion.p>
 
           <motion.div
             variants={item}
             className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start"
           >
-            <a
-              href="#upload"
+            <Link
+              href="/personality-test"
               className="group inline-flex items-center gap-2 rounded-xl bg-brand-600 px-7 py-3.5 font-semibold text-white shadow-lg shadow-brand-600/25 transition-all hover:bg-brand-500 hover:shadow-brand-500/30"
             >
-              Get Your Rizz Report
+              Start Personality Test
+            </Link>
+            <a
+              href="#upload"
+              className="inline-flex items-center gap-2 rounded-xl border border-ink-200 bg-white/80 px-6 py-3.5 font-semibold text-ink-800 transition hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-white"
+            >
+              Photo Rizz Report
               <ArrowDown
-                className="h-4 w-4 transition-transform group-hover:translate-y-0.5"
+                className="h-4 w-4"
                 aria-hidden="true"
               />
             </a>

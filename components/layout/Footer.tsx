@@ -22,8 +22,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-600 dark:text-white/50">
-              Your AI rizz coach: pickup lines, style upgrades, shade recs,
-              and confidence tips. No login. No photo storage.
+              AI self-improvement platform: personality, confidence, social skills,
+              dating tools, and appearance analyzers. Free to start. No photo vault.
             </p>
           </div>
 
@@ -33,23 +33,23 @@ export function Footer() {
             </h2>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
-                <Link href="/" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Free look analysis
+                <Link href="/tools" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
+                  All tools
                 </Link>
               </li>
               <li>
-                <Link href="/body-type-calculator" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Find your somatotype
+                <Link href="/personality-test" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
+                  Personality test
                 </Link>
               </li>
               <li>
-                <Link href="/body-shape-calculator" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Measure your silhouette
+                <Link href="/confidence-test" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
+                  Confidence test
                 </Link>
               </li>
               <li>
-                <Link href="/eye-shape-detector" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Detect eye shape
+                <Link href="/face-shape-detector" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
+                  Face shape detector
                 </Link>
               </li>
             </ul>
@@ -57,27 +57,27 @@ export function Footer() {
 
           <nav aria-label="Features info navigation">
             <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
-              Guides
+              Improve
             </h2>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
-                <Link href="/features/body-type-calculator" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Ecto, meso &amp; endo
+                <Link href="/report" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
+                  Personality report
                 </Link>
               </li>
               <li>
-                <Link href="/features/body-shape-calculator" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Hourglass to pear
+                <Link href="/profile" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
+                  My profile
                 </Link>
               </li>
               <li>
-                <Link href="/features/eye-shape-detector" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Eye shape chart
+                <Link href="/blog" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
+                  Guides &amp; articles
                 </Link>
               </li>
               <li>
                 <Link href="/how-it-works" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Analysis steps
+                  How it works
                 </Link>
               </li>
             </ul>
@@ -110,6 +110,21 @@ export function Footer() {
             </h2>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
+                <Link href="/sitemap.xml" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
+                  Sitemap
+                </Link>
+              </li>
+              <li>
+                <a href="/llms.txt" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
+                  LLMs.txt
+                </a>
+              </li>
+              <li>
+                <a href="/ai.txt" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
+                  AI policy
+                </a>
+              </li>
+              <li>
                 <a
                   href="https://en.wikipedia.org/wiki/Somatotype_and_constitutional_psychology"
                   target="_blank"
@@ -117,26 +132,6 @@ export function Footer() {
                   className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400"
                 >
                   Somatotype research
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://en.wikipedia.org/wiki/Female_body_shape"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400"
-                >
-                  Figure classification
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://ai.google.dev/edge/mediapipe/solutions/vision/face_landmarker"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400"
-                >
-                  Face Landmarker docs
                 </a>
               </li>
             </ul>

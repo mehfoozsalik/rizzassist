@@ -2,11 +2,12 @@
 
 import { useCallback, useRef, useState } from 'react';
 import Image from 'next/image';
-import { AlertCircle, ImagePlus, Loader2, RotateCcw, X } from 'lucide-react';
+import { AlertCircle, Camera, ImagePlus, Loader2, RotateCcw, X } from 'lucide-react';
 import type { AnalysisResult } from '@/lib/types';
 import { AnalysisCard } from './AnalysisCard';
 import { getFaceLandmarker, getPoseLandmarker, landmarkDistance } from '@/lib/mediapipe';
 import { toastUploadGuide } from '@/lib/toast';
+import { CameraCapture } from '@/components/ui/CameraCapture';
 
 const MAX_SIZE = 5 * 1024 * 1024;
 const MIN_SIZE = 10 * 1024;
@@ -123,6 +124,7 @@ export function ImageUploader() {
   const [error, setError] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
   const [loadingStep, setLoadingStep] = useState('');
+  const [cameraOpen, setCameraOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const reset = useCallback(() => {
@@ -247,6 +249,15 @@ export function ImageUploader() {
 
   return (
     <div className="mx-auto w-full max-w-2xl">
+      {cameraOpen && (
+        <CameraCapture
+          onCapture={(f) => {
+            setCameraOpen(false);
+            handleFile(f);
+          }}
+          onClose={() => setCameraOpen(false)}
+        />
+      )}
       {status === 'idle' && (
         <div
           onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
@@ -276,6 +287,14 @@ export function ImageUploader() {
             aria-label="Choose a photo to upload"
           >
             Choose Photo
+          </button>
+          <button
+            type="button"
+            onClick={() => setCameraOpen(true)}
+            className="mt-3 inline-flex items-center gap-2 rounded-xl border border-gray-200 px-6 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 dark:border-white/10 dark:text-white/80 dark:hover:bg-white/5"
+          >
+            <Camera className="h-4 w-4" aria-hidden="true" />
+            Use camera
           </button>
 
           <p className="mt-3 text-xs text-gray-400 dark:text-white/30">
