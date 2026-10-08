@@ -14,7 +14,8 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID;
+const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_ID?.trim() || 'G-37LW3P43T3';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
