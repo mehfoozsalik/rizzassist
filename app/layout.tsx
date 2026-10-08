@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/config";
 import { WebAppSchema } from "@/components/seo/SchemaMarkup";
-import { CookieConsent } from "@/components/ui/CookieConsent";
+import { GoogleAnalytics } from "@/components/ui/GoogleAnalytics";
 import { InstallPrompt } from "@/components/ui/InstallPrompt";
 import { AppToaster } from "@/components/ui/AppToaster";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
@@ -14,7 +14,8 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID?.trim();
+const GA_MEASUREMENT_ID =
+  process.env.NEXT_PUBLIC_GA_ID?.trim() || 'G-37LW3P43T3';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -113,7 +114,7 @@ export default function RootLayout({
           <WebAppSchema />
           <AppToaster />
           {children}
-          <CookieConsent gaId={GA_MEASUREMENT_ID} />
+          <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
           <InstallPrompt />
         </ThemeProvider>
       </body>

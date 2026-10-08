@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { CookieSettingsButton } from './CookieSettingsButton';
-
 export function Footer() {
   const year = new Date().getFullYear();
   return (
@@ -97,9 +95,6 @@ export function Footer() {
                 <Link href="/privacy" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
                   Data &amp; privacy
                 </Link>
-              </li>
-              <li>
-                <CookieSettingsButton />
               </li>
             </ul>
           </nav>
