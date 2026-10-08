@@ -79,7 +79,7 @@ export function AnimatedHero() {
             variants={item}
             className="mx-auto mt-5 max-w-xl text-balance text-base leading-relaxed text-ink-600 sm:text-lg lg:mx-0 dark:text-white/60"
           >
-            Understand yourself. Improve your personality. Build confidence.
+            Understand yourself, enhance your personality, and build confidence.
             Take assessments, analyze your look, and get practical recommendations
             to become a better version of yourself.
           </motion.p>
@@ -129,17 +129,18 @@ export function AnimatedHero() {
           initial={{ opacity: 0, scale: 0.92, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.75, ease: "easeOut", delay: 0.15 }}
-          className="relative mx-auto w-full max-w-lg"
+          className="relative mx-auto w-full max-w-xl lg:max-w-none lg:justify-self-end lg:w-[112%]"
         >
           <div className="animate-float">
-            <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-tr from-brand-600/20 to-brand-400/10 blur-2xl" />
+            <div className="absolute -inset-5 rounded-[2.5rem] bg-gradient-to-tr from-brand-600/20 to-brand-400/10 blur-2xl" />
             <Image
-              src="/hero.png"
-              alt="Rizz Assist AI analyzing a confident person's photo with rizz score, pickup line, and shades suggestions"
-              width={1024}
-              height={683}
+              src="/hero.jpg"
+              alt="Young adult reviewing a Rizz Assist personality improvement dashboard on a laptop, showing confidence scores and AI face shape analysis"
+              width={1152}
+              height={864}
+              sizes="(max-width: 1024px) 92vw, 620px"
               priority
-              className="relative rounded-[1.75rem] border border-ink-200/60 shadow-xl shadow-ink-300/20 dark:border-white/10 dark:shadow-2xl dark:shadow-black/50"
+              className="relative w-full rounded-[1.75rem] border border-ink-200/60 shadow-xl shadow-ink-300/20 dark:border-white/10 dark:shadow-2xl dark:shadow-black/50"
             />
           </div>
         </motion.figure>

@@ -85,7 +85,7 @@ export function MobileMenu({ links }: { links: NavLink[] }) {
                         onClick={close}
                         className="block cursor-pointer rounded-lg px-2 py-2.5 font-semibold text-brand-600 transition-colors duration-200 hover:bg-brand-50 dark:hover:bg-brand-500/10"
                       >
-                        Explore all tools →
+                        See full tool list →
                       </Link>
                     </div>
                   )}

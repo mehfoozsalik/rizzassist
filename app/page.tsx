@@ -27,9 +27,9 @@ import { ShareButtons } from "@/components/ui/ShareButtons";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Enhance Your Personality — AI Self-Improvement Platform | Rizz Assist",
+  title: "Enhance Your Personality | Rizz Assist",
   description:
-    "Understand yourself, improve your personality, and build confidence. Free personality tests, confidence assessments, social skills tools, rizz quizzes, plus face and body analyzers.",
+    "Free personality tests, confidence tools, and AI look analyzers to understand yourself and enhance your personality.",
   keywords: [
     "personality test",
     "confidence test",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Enhance Your Personality | Rizz Assist",
     description:
-      "Personality, confidence, social skills, dating, and appearance tools — practical recommendations to improve.",
+      "Free personality tests, confidence tools, and AI look analyzers to enhance your personality.",
     url: SITE_URL,
     siteName: SITE_NAME,
     images: [
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Enhance Your Personality | Rizz Assist",
     description:
-      "Personality, confidence, social skills, dating, and appearance tools — practical recommendations to improve.",
+      "Free personality tests, confidence tools, and AI look analyzers to enhance your personality.",
     images: ["/twitter-image.png"],
   },
 };
@@ -73,26 +73,26 @@ const PERSONALITY_TOOLS = [
   {
     href: "/personality-test",
     title: "Personality Test",
-    text: "Understand your personality and behavioral tendencies.",
-    cta: "Start assessment",
+    text: "Map traits and habits that help you enhance your personality over time.",
+    cta: "Start personality assessment",
   },
   {
     href: "/confidence-test",
     title: "Confidence Test",
     text: "Discover how confident you are in social situations.",
-    cta: "Analyze confidence",
+    cta: "Analyze your confidence",
   },
   {
     href: "/charisma-test",
     title: "Charisma Test",
     text: "Analyze your social presence and communication style.",
-    cta: "Analyze charisma",
+    cta: "Measure your charisma",
   },
   {
     href: "/rizz-test",
     title: "Rizz Test",
     text: "Understand your conversation and dating strengths.",
-    cta: "Take rizz test",
+    cta: "Check your rizz score",
   },
 ];
 
@@ -145,43 +145,43 @@ const CAPABILITIES = [
     icon: ScanFace,
     title: "Face Shape Detector",
     href: "/face-shape-detector",
-    cta: "Detect face shape",
+    cta: "Run face shape scan",
     text: "Find oval, round, square, heart, diamond, oblong, or triangle — then get hairstyle, glasses, and presence tips for personality grooming.",
   },
   {
     icon: Scissors,
     title: "Style Try-On",
     href: "/try-on",
-    cta: "Open try-on studio",
+    cta: "Try styles on your selfie",
     text: "Preview hairstyles and glasses on your selfie with private on-device overlays before you book a cut or buy frames.",
   },
   {
     icon: Activity,
     title: "Body Type Calculator",
     href: "/body-type-calculator",
-    cta: "Open body type tool",
+    cta: "Calculate body type",
     text: "Find out whether you are an ectomorph, mesomorph, or endomorph from your measurements. Comes with fitness, diet, and style tips tailored to your build.",
   },
   {
     icon: Dumbbell,
     title: "Body Shape Calculator",
     href: "/body-shape-calculator",
-    cta: "Open body shape tool",
+    cta: "Calculate body shape",
     text: "Classify your silhouette (hourglass, pear, apple, rectangle, or inverted triangle) from your bust, waist, and hip measurements, with fashion tips for each shape.",
   },
   {
     icon: Eye,
     title: "Eye Shape Analysis",
     href: "/eye-shape-detector",
-    cta: "Open eye analyzer",
+    cta: "Analyze eye shape",
     text: "Identify your exact eye shape using landmark-based matching, then get personalized eyeliner and eyeshadow tips for your shape.",
   },
   {
     icon: Sparkles,
     title: "Confidence Tips",
     href: "/blog",
-    cta: "Read grooming guides",
-    text: "Actionable posture, mindset, and grooming habits tied to your traits — personality improvement beyond the outfit.",
+    cta: "Browse confidence guides",
+    text: "Actionable posture, mindset, and grooming habits tied to your traits — ways to enhance your personality beyond the outfit.",
   },
 ];
 
@@ -208,27 +208,27 @@ export default function HomePage() {
                 Explore Your Personality
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-500 dark:text-white/50">
-                Free assessments for personality, confidence, charisma, and rizz —
-                with personalized recommendations and a combined improvement report.
+                Free assessments that help you enhance your personality —
+                covering confidence, charisma, and rizz, with a combined improvement report.
               </p>
             </Reveal>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {PERSONALITY_TOOLS.map((tool, i) => (
                 <Reveal key={tool.href} delay={i * 0.06}>
-                  <Link
-                    href={tool.href}
-                    className="flex h-full flex-col rounded-2xl border border-gray-100 bg-cream-50 p-5 transition hover:border-brand-200 hover:shadow-md dark:border-white/5 dark:bg-ink-800 dark:hover:border-brand-600/30"
-                  >
-                    <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+                  <article className="flex h-full flex-col rounded-2xl border border-gray-100 bg-cream-50 p-5 transition hover:border-brand-200 hover:shadow-md dark:border-white/5 dark:bg-ink-800 dark:hover:border-brand-600/30">
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">
                       {tool.title}
-                    </h3>
+                    </p>
                     <p className="mt-2 flex-1 text-sm text-gray-500 dark:text-white/50">
                       {tool.text}
                     </p>
-                    <span className="mt-4 text-sm font-semibold text-brand-600">
+                    <Link
+                      href={tool.href}
+                      className="mt-4 text-sm font-semibold text-brand-600 hover:underline"
+                    >
                       {tool.cta} →
-                    </span>
-                  </Link>
+                    </Link>
+                  </article>
                 </Reveal>
               ))}
             </div>
@@ -237,7 +237,7 @@ export default function HomePage() {
                 href="/tools"
                 className="inline-flex rounded-lg bg-ink-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-ink-800 dark:bg-white dark:text-ink-900"
               >
-                Explore All Tools
+                Browse every self-improvement tool
               </Link>
             </p>
           </div>
@@ -279,7 +279,7 @@ export default function HomePage() {
                 What Rizz Assist Does
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-500 dark:text-white/50">
-                Rizz Assist helps you unlock your inner rizz with AI — from
+                Rizz Assist helps you enhance your personality with AI — from
                 instant photo analysis to dedicated calculators for body type,
                 body shape, and eye shape. Use the tools below to turn a single
                 photo into style, confidence, and conversation wins.
@@ -302,9 +302,9 @@ export default function HomePage() {
                         aria-hidden="true"
                       />
                     </div>
-                    <h3 className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
+                    <p className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
                       {cap.title}
-                    </h3>
+                    </p>
                     <p className="mt-1.5 flex-1 text-sm leading-relaxed text-gray-500 dark:text-white/50">
                       {cap.text}
                     </p>
@@ -362,9 +362,9 @@ export default function HomePage() {
                         aria-hidden="true"
                       />
                     </div>
-                    <h3 className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
+                    <p className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
                       {step.title}
-                    </h3>
+                    </p>
                     <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-white/50">
                       {step.text}
                     </p>

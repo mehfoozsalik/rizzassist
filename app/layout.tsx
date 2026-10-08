@@ -19,8 +19,7 @@ const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID;
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default:
-      "Rizz Assist: Enhance Your Personality | Confidence & Self-Improvement",
+    default: "Enhance Your Personality | Rizz Assist",
     template: "%s | Rizz Assist",
   },
   description: SITE_DESCRIPTION,
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Rizz Assist: Enhance Your Personality | AI Self-Improvement",
+    title: "Enhance Your Personality | Rizz Assist",
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
@@ -67,7 +66,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rizz Assist: Enhance Your Personality | AI Self-Improvement",
+    title: "Enhance Your Personality | Rizz Assist",
     description: SITE_DESCRIPTION,
     images: ["/twitter-image.png"],
   },

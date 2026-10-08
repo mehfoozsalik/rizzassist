@@ -18,7 +18,7 @@ export function Footer() {
                 className="rounded-full"
               />
               <span className="text-base font-semibold text-ink-900 dark:text-white">
-                Home
+                Rizz Assist
               </span>
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-600 dark:text-white/50">
@@ -28,65 +28,65 @@ export function Footer() {
           </div>
 
           <nav aria-label="Tools navigation">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
+            <p className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
               Tools
-            </h2>
+            </p>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <Link href="/tools" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  All tools
+                  Browse the toolkit
                 </Link>
               </li>
               <li>
                 <Link href="/personality-test" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Personality test
+                  Take a personality quiz
                 </Link>
               </li>
               <li>
                 <Link href="/confidence-test" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Confidence test
+                  Rate your confidence
                 </Link>
               </li>
               <li>
                 <Link href="/face-shape-detector" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Face shape detector
+                  Find your face shape
                 </Link>
               </li>
             </ul>
           </nav>
 
           <nav aria-label="Features info navigation">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
+            <p className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
               Improve
-            </h2>
+            </p>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <Link href="/report" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Personality report
+                  View improvement report
                 </Link>
               </li>
               <li>
                 <Link href="/profile" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  My profile
+                  Open saved profile
                 </Link>
               </li>
               <li>
                 <Link href="/blog" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  Guides &amp; articles
+                  Read guides &amp; articles
                 </Link>
               </li>
               <li>
                 <Link href="/how-it-works" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
-                  How it works
+                  See the process
                 </Link>
               </li>
             </ul>
           </nav>
 
           <nav aria-label="Footer navigation">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
+            <p className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
               Help
-            </h2>
+            </p>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <Link href="/faq" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">
@@ -105,9 +105,9 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Resources">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
+            <p className="text-xs font-semibold uppercase tracking-widest text-ink-400 dark:text-white/40">
               Resources
-            </h2>
+            </p>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <Link href="/sitemap.xml" className="text-ink-600 transition-colors hover:text-brand-600 dark:text-white/60 dark:hover:text-brand-400">

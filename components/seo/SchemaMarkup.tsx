@@ -35,11 +35,11 @@ export function WebAppSchema() {
           name: SITE_NAME,
           url: SITE_URL,
           description:
-            'Understand yourself. Improve your personality. Build confidence with free AI assessments and appearance tools.',
+            'Free personality tests, confidence tools, and AI look analyzers to understand yourself and enhance your personality.',
           potentialAction: {
             '@type': 'EntryPoint',
             urlTemplate: `${SITE_URL}/tools`,
-            name: 'Explore all tools',
+            name: 'Browse self-improvement tools',
           },
         }}
       />
