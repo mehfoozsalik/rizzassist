@@ -27,27 +27,29 @@ import { ShareButtons } from "@/components/ui/ShareButtons";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Enhance Your Personality | Rizz Assist",
+  title: {
+    absolute:
+      "Rizz Assist — AI Rizz Coach | Pickup Lines, Style Tips & Look Analysis",
+  },
   description:
-    "Free personality tests, confidence tools, and AI look analyzers to understand yourself and enhance your personality.",
+    "Upload your photo and let Rizz Assist's AI analyze your look, suggest outfit upgrades, recommend shades, generate personalized pickup lines, and help you radiate confidence. Free. No login required.",
   keywords: [
-    "personality test",
-    "confidence test",
-    "charisma test",
-    "social skills test",
-    "rizz test",
-    "AI self improvement",
-    "rizz assist",
-    "face shape detector",
-    "body shape calculator",
-    "body type calculator",
-    "eye shape detector",
+    "rizz assistant",
+    "AI rizz coach",
+    "pickup line generator",
+    "AI style tips",
+    "face shape analysis",
+    "outfit suggestions AI",
+    "confidence coach",
+    "photo appearance analyzer",
+    "shades recommendation AI",
+    "how to improve rizz",
   ],
   alternates: { canonical: SITE_URL },
   openGraph: {
-    title: "Enhance Your Personality | Rizz Assist",
+    title: "Rizz Assist — AI Rizz Coach & Pickup Line Generator",
     description:
-      "Free personality tests, confidence tools, and AI look analyzers to enhance your personality.",
+      "Upload a photo. Get pickup lines, style tips, shades recs, and your personal Rizz Score. Free. Instant. Private.",
     url: SITE_URL,
     siteName: SITE_NAME,
     images: [
@@ -55,16 +57,16 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Rizz Assist AI self-improvement platform for personality and confidence",
+        alt: "Rizz Assist — AI rizz coach for pickup lines, style tips, and look analysis",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Enhance Your Personality | Rizz Assist",
+    title: "Rizz Assist — AI Rizz Coach & Pickup Line Generator",
     description:
-      "Free personality tests, confidence tools, and AI look analyzers to enhance your personality.",
+      "Upload a photo. Get pickup lines, style tips, shades recs, and your personal Rizz Score. Free. Instant. Private.",
     images: ["/twitter-image.png"],
   },
 };
@@ -100,53 +102,67 @@ const STEPS = [
   {
     icon: ImagePlus,
     title: "Upload your photo",
-    text: "Use a clear, well-lit selfie or full-body shot. The more Rizz Assist can see, the sharper the feedback.",
+    text: "Use a clear, well-lit selfie or full-body shot — the more Rizz Assist can see, the better the feedback.",
   },
   {
     icon: BarChart3,
     title: "AI reads your vibe",
-    text: "Our vision AI analyzes face shape, expression, grooming, outfit colors, and your overall presence.",
+    text: "Our vision AI analyzes face shape, expression, grooming, outfit colors, and overall presentation.",
   },
   {
     icon: FileText,
     title: "Get your Rizz Report",
-    text: "Receive a full score breakdown, original pickup lines, style tips, shade recs, and confidence boosters.",
+    text: "Receive a style score, pickup line suggestions, outfit tips, shades recommendations, and confidence boosters.",
   },
   {
     icon: Rocket,
     title: "Walk out with swagger",
-    text: "Apply the tips, deploy the lines, and let Rizz Assist turn heads everywhere you go.",
+    text: "Apply the tips, use the lines, and let Rizz Assist turn heads for you.",
   },
 ];
 
 const CAPABILITIES = [
   {
     icon: Flame,
-    title: "Pickup Lines",
+    title: "Personalized Pickup Lines",
     href: null as string | null,
     cta: null as string | null,
-    text: "The AI writes original lines matched to your exact look and vibe, not recycled openers from a list. Each one is tailored to what it actually sees in your photo.",
+    text: "AI generates lines matched to your look and the vibe you project — not generic openers.",
   },
   {
     icon: Shirt,
-    title: "Style Tips",
+    title: "Outfit & Style Upgrades",
     href: null,
     cta: null,
-    text: "Get specific suggestions on colors, fits, and clothing categories that complement your face shape and body proportions, not generic advice.",
+    text: "Get specific suggestions on colors, fits, and styles that complement your face and body type.",
   },
   {
     icon: Glasses,
-    title: "Shade Recommendations",
+    title: "Shades & Accessories",
     href: null,
     cta: null,
-    text: "Frame-by-frame sunglasses recommendations matched to your detected face shape, so you can see exactly what suits you before you buy.",
+    text: "Find out which sunglass frames and accessories suit your face shape.",
   },
   {
     icon: ScanFace,
-    title: "Face Shape Detector",
+    title: "Face Orientation Tips",
     href: "/face-shape-detector",
     cta: "Run face shape scan",
-    text: "Find oval, round, square, heart, diamond, oblong, or triangle — then get hairstyle, glasses, and presence tips for personality grooming.",
+    text: "Learn how angles, expression, and grooming can sharpen your look.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "100% Private",
+    href: "/privacy",
+    cta: "Read our privacy policy",
+    text: "Photo analyzed in memory and never stored. Zero data kept after your session.",
+  },
+  {
+    icon: Sparkles,
+    title: "Instant Results",
+    href: null,
+    cta: null,
+    text: "No login, no waitlist. Upload and get your Rizz Report in seconds.",
   },
   {
     icon: Scissors,
@@ -175,13 +191,6 @@ const CAPABILITIES = [
     href: "/eye-shape-detector",
     cta: "Analyze eye shape",
     text: "Identify your exact eye shape using landmark-based matching, then get personalized eyeliner and eyeshadow tips for your shape.",
-  },
-  {
-    icon: Sparkles,
-    title: "Confidence Tips",
-    href: "/blog",
-    cta: "Browse confidence guides",
-    text: "Actionable posture, mindset, and grooming habits tied to your traits — ways to enhance your personality beyond the outfit.",
   },
 ];
 
@@ -255,10 +264,10 @@ export default function HomePage() {
                 id="upload-heading"
                 className="mb-2 text-center text-2xl font-bold text-gray-900 dark:text-white"
               >
-                Upload Your Photo
+                Drop your photo here and let Rizz Assist do its thing
               </h2>
               <p className="mb-8 text-center text-sm text-gray-500 dark:text-white/50">
-                AI-powered photo analysis across face, eye, and body shape, delivering personalized style and confidence feedback in under 30 seconds.
+                JPG, PNG or WebP · up to 5MB · No login · 100% private
               </p>
             </Reveal>
             <ImageUploader />
@@ -276,13 +285,12 @@ export default function HomePage() {
                 id="what-we-do"
                 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white"
               >
-                What Rizz Assist Does
+                Why Rizz Assist Hits Different
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-500 dark:text-white/50">
-                Rizz Assist helps you enhance your personality with AI — from
-                instant photo analysis to dedicated calculators for body type,
-                body shape, and eye shape. Use the tools below to turn a single
-                photo into style, confidence, and conversation wins.
+                Personalized pickup lines, style upgrades, shades matched to your
+                face, and confidence tips — plus free calculators for body type,
+                body shape, and eye shape.
               </p>
             </Reveal>
 
@@ -378,7 +386,7 @@ export default function HomePage() {
                 href="/how-it-works"
                 className="font-medium text-brand-600 underline hover:no-underline"
               >
-                Full walkthrough
+                See exactly how your Rizz Report is built →
               </Link>
             </p>
           </div>
@@ -398,8 +406,8 @@ export default function HomePage() {
                 Share Rizz Assist
               </h2>
               <p className="mx-auto mt-2 max-w-lg text-sm text-gray-500 dark:text-white/50">
-                Know someone who wants to unlock their inner rizz? Pass the free
-                AI look analyzer along.
+                Know someone who wants to level up their rizz? Pass the free AI
+                coach along.
               </p>
             </Reveal>
             <div className="mt-6">
@@ -464,7 +472,7 @@ export default function HomePage() {
                 href="/faq"
                 className="font-medium text-brand-600 underline hover:no-underline"
               >
-                More answers
+                Questions? Check the FAQ →
               </Link>
             </p>
           </div>

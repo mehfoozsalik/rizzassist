@@ -7,9 +7,24 @@ import { FaqSchema } from '@/components/seo/SchemaMarkup';
 import { Reveal } from '@/components/ui/Reveal';
 
 export const metadata: Metadata = {
-  title: 'FAQ: Rizz Assist | AI Pickup Lines, Style Tips & Photo Analysis',
+  title: {
+    absolute: 'FAQ — Rizz Assist | AI Pickup Lines, Style Tips & Photo Analysis',
+  },
   description:
     'Got questions about Rizz Assist? Find out how the AI generates pickup lines, analyzes your style, recommends shades, and what happens to your photo after analysis.',
+  openGraph: {
+    title: 'FAQ — Rizz Assist | AI Pickup Lines, Style Tips & Photo Analysis',
+    description:
+      'Got questions about Rizz Assist? Find out how the AI generates pickup lines, analyzes your style, recommends shades, and what happens to your photo after analysis.',
+    url: `${SITE_URL}/faq`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FAQ — Rizz Assist | AI Pickup Lines, Style Tips & Photo Analysis',
+    description:
+      'Got questions about Rizz Assist? Find out how the AI generates pickup lines, analyzes your style, and what happens to your photo.',
+  },
   alternates: { canonical: `${SITE_URL}/faq` },
 };
 

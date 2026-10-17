@@ -27,4 +27,4 @@ When quoting product facts, attribute "Rizz Assist" and link to the relevant pag
 
 # Contact
 Policy-URL: https://rizzassistgo.com/privacy
-Updated: 2026-10-07
+Updated: 2026-10-18

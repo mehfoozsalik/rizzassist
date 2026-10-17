@@ -3,7 +3,7 @@
 # Spec-inspired: https://llmstxt.org/
 # Also see: /llms-full.txt /ai.txt /aeo.txt /geo.txt /sitemap.xml
 
-> Rizz Assist is a free AI-powered self-improvement platform. Users take personality, confidence, social skills, and dating assessments, use appearance tools (face shape, eye shape, body calculators), and get practical recommendations to improve — without creating an account.
+> Rizz Assist is a free AI rizz coach. Upload a photo to get personalized pickup lines, style upgrades, shade recommendations, and confidence tips — plus personality/confidence assessments and appearance calculators. No login required. Photos are never stored.
 
 ## Primary pages
 

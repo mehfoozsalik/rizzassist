@@ -5,9 +5,25 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { Reveal } from '@/components/ui/Reveal';
 
 export const metadata: Metadata = {
-  title: 'How Rizz Assist Works: AI Pickup Lines, Style & Look Analysis Explained',
+  title: {
+    absolute:
+      'How Rizz Assist Works — AI Pickup Lines, Style & Look Analysis Explained',
+  },
   description:
     "Learn how Rizz Assist's AI analyzes your photo to generate pickup lines, style tips, shade recommendations, and face orientation feedback in seconds. No login required.",
+  openGraph: {
+    title: 'How Rizz Assist Works — AI Pickup Lines, Style & Look Analysis Explained',
+    description:
+      "Learn how Rizz Assist's AI analyzes your photo to generate pickup lines, style tips, shade recommendations, and face orientation feedback in seconds. No login required.",
+    url: `${SITE_URL}/how-it-works`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'How Rizz Assist Works — AI Pickup Lines, Style & Look Analysis Explained',
+    description:
+      "Learn how Rizz Assist's AI analyzes your photo to generate pickup lines, style tips, shade recommendations, and face orientation feedback in seconds.",
+  },
   alternates: { canonical: `${SITE_URL}/how-it-works` },
 };
 

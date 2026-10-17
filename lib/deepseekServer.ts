@@ -39,13 +39,19 @@ export function isRateLimit(err: unknown): boolean {
 
 export async function callDeepSeek(
   messages: DeepSeekMessage[],
-  options?: { temperature?: number; maxTokens?: number; jsonMode?: boolean }
+  options?: {
+    temperature?: number;
+    maxTokens?: number;
+    jsonMode?: boolean;
+    /** Request timeout in ms (default 30s; use higher for long-form generation). */
+    timeoutMs?: number;
+  }
 ): Promise<string> {
   const apiKey = process.env.DEEPSEEK_API_KEY?.trim();
   if (!apiKey) throw new Error('Server is not configured. Missing DEEPSEEK_API_KEY.');
 
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 30_000);
+  const timer = setTimeout(() => controller.abort(), options?.timeoutMs ?? 30_000);
 
   let res: Response;
   try {

@@ -20,26 +20,28 @@ const GA_MEASUREMENT_ID =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Enhance Your Personality | Rizz Assist",
+    default:
+      "Rizz Assist — AI Rizz Coach | Pickup Lines, Style Tips & Look Analysis",
     template: "%s | Rizz Assist",
   },
   description: SITE_DESCRIPTION,
   manifest: "/manifest.json",
   keywords: [
-    "personality test",
-    "confidence test",
-    "charisma test",
-    "social skills test",
-    "rizz test",
+    "rizz assistant",
+    "AI rizz coach",
+    "pickup line generator",
+    "AI style tips",
+    "face shape analysis",
+    "outfit suggestions AI",
+    "confidence coach",
+    "photo appearance analyzer",
+    "shades recommendation AI",
+    "how to improve rizz",
     "rizz assist",
-    "AI self improvement",
-    "personality improvement",
+    "personality test",
     "face shape detector",
     "body shape calculator",
-    "body type calculator",
     "eye shape detector",
-    "dating personality test",
-    "communication style test",
   ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
@@ -50,8 +52,9 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Enhance Your Personality | Rizz Assist",
-    description: SITE_DESCRIPTION,
+    title: "Rizz Assist — AI Rizz Coach & Pickup Line Generator",
+    description:
+      "Upload a photo. Get pickup lines, style tips, shades recs, and your personal Rizz Score. Free. Instant. Private.",
     url: SITE_URL,
     siteName: SITE_NAME,
     images: [
@@ -59,7 +62,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Rizz Assist AI self-improvement platform for personality, confidence, and appearance",
+        alt: "Rizz Assist — AI rizz coach for pickup lines, style tips, and look analysis",
       },
     ],
     locale: "en_US",
@@ -67,8 +70,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Enhance Your Personality | Rizz Assist",
-    description: SITE_DESCRIPTION,
+    title: "Rizz Assist — AI Rizz Coach & Pickup Line Generator",
+    description:
+      "Upload a photo. Get pickup lines, style tips, shades recs, and your personal Rizz Score. Free. Instant. Private.",
     images: ["/twitter-image.png"],
   },
   robots: {

@@ -1,10 +1,11 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/config';
-import { BLOG_POSTS } from '@/lib/blog/posts';
+import { getAllPosts } from '@/lib/blog/posts';
 import { ASSESSMENTS, APPEARANCE_TOOLS } from '@/lib/assessments/registry';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
+  const blogPosts = await getAllPosts();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, lastModified: now, changeFrequency: 'weekly', priority: 1 },
@@ -53,9 +54,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  const posts = BLOG_POSTS.map((p) => ({
+  const posts = blogPosts.map((p) => ({
     url: `${SITE_URL}/blog/${p.slug}`,
-    lastModified: now,
+    lastModified: p.date ? new Date(p.date) : now,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));

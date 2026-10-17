@@ -274,10 +274,10 @@ export function ImageUploader() {
           </div>
 
           <p className="mt-5 text-base font-semibold text-gray-900 dark:text-white">
-            Drop your photo here
+            Drop your photo here and let Rizz Assist do its thing
           </p>
           <p className="mt-1.5 text-sm text-gray-500 dark:text-white/50">
-            Clear face photo looking at the camera &middot; JPG, PNG or WebP &middot; up to 5MB
+            JPG, PNG or WebP &middot; up to 5MB &middot; No login &middot; 100% private
           </p>
 
           <button
