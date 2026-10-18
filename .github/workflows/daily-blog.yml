@@ -20,15 +20,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: npm
 
-      - name: Install
-        run: npm ci
-
+      # Blog generator only uses Node builtins + local TS — no project install needed.
+      # Avoids npm ci lockfile failures blocking daily posts.
       - name: Generate blog post with DeepSeek
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          # Optional: skip GitHub Contents API inside the script (Action commits instead)
           GITHUB_TOKEN: ''
           GITHUB_REPO: ''
         run: npx --yes tsx scripts/generate-daily-blog.ts
