@@ -53,11 +53,35 @@ function BlockView({ block }: { block: BlogBlock }) {
               loading="lazy"
             />
           </div>
-          {block.caption ? (
-            <figcaption className="mt-2 text-center text-sm text-gray-500 dark:text-white/45">
-              {block.caption}
-            </figcaption>
-          ) : null}
+          <figcaption className="mt-2 text-center text-sm text-gray-500 dark:text-white/45">
+            {block.photographer && block.photographerUrl ? (
+              <>
+                Photo by{' '}
+                <a
+                  href={block.photographerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-brand-600"
+                >
+                  {block.photographer}
+                </a>
+                {' on '}
+                <a
+                  href={
+                    block.photoUrl ||
+                    'https://unsplash.com/?utm_source=rizzassist&utm_medium=referral'
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-brand-600"
+                >
+                  Unsplash
+                </a>
+              </>
+            ) : (
+              block.caption || null
+            )}
+          </figcaption>
         </figure>
       );
     default:

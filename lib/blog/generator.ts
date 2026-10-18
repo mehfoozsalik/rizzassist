@@ -1,5 +1,5 @@
 import { callDeepSeek } from '@/lib/deepseekServer';
-import { pickBlogImages } from './images';
+import { fetchBlogImages, toImageCredits } from './images';
 import { pickDailyTopic } from './topics';
 import {
   appendGeneratedPost,
@@ -8,7 +8,13 @@ import {
   todayKey,
   type GeneratedBlogIndex,
 } from './storage';
-import type { BlogBlock, BlogPost, BlogReference, BlogTopic } from './types';
+import type {
+  BlogBlock,
+  BlogImage,
+  BlogPost,
+  BlogReference,
+  BlogTopic,
+} from './types';
 
 type GeneratedPayload = {
   title: string;
@@ -32,6 +38,32 @@ function slugify(input: string): string {
     .slice(0, 80);
 }
 
+/** Strip em/en dashes and other AI-ish punctuation quirks. */
+export function humanizeText(input: string): string {
+  return input
+    .replace(/\u2014/g, ', ') // em dash —
+    .replace(/\u2013/g, ', ') // en dash –
+    .replace(/--+/g, ', ')
+    .replace(/\s+,/g, ',')
+    .replace(/,\s*,+/g, ',')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
+
+function humanizePayload(payload: GeneratedPayload): GeneratedPayload {
+  return {
+    ...payload,
+    title: humanizeText(payload.title),
+    excerpt: humanizeText(payload.excerpt),
+    sections: payload.sections.map((section) => ({
+      heading: humanizeText(section.heading),
+      paragraphs: (section.paragraphs || []).map(humanizeText),
+      bullets: section.bullets?.map(humanizeText),
+      quote: section.quote ? humanizeText(section.quote) : undefined,
+    })),
+  };
+}
+
 function estimateReadMinutes(blocks: BlogBlock[]): number {
   const words = blocks
     .map((b) => {
@@ -45,10 +77,7 @@ function estimateReadMinutes(blocks: BlogBlock[]): number {
   return Math.max(8, Math.round(words / 200));
 }
 
-function buildBlocks(
-  payload: GeneratedPayload,
-  images: { src: string; alt: string }[]
-): BlogBlock[] {
+function buildBlocks(payload: GeneratedPayload, images: BlogImage[]): BlogBlock[] {
   const blocks: BlogBlock[] = [];
   let imageIdx = 1; // 0 reserved for cover
 
@@ -60,19 +89,27 @@ function buildBlocks(
       if (para?.trim()) blocks.push({ type: 'paragraph', text: para.trim() });
     }
     if (section.bullets?.length) {
-      blocks.push({ type: 'list', items: section.bullets.map((i) => i.trim()).filter(Boolean) });
+      blocks.push({
+        type: 'list',
+        items: section.bullets.map((i) => i.trim()).filter(Boolean),
+      });
     }
     if (section.quote?.trim()) {
       blocks.push({ type: 'quote', text: section.quote.trim() });
     }
-    // Insert an image after every other section
     if (sectionIndex % 2 === 1 && images[imageIdx]) {
       const img = images[imageIdx];
+      const credit = img.photographer
+        ? `Photo by ${img.photographer} on Unsplash`
+        : img.alt;
       blocks.push({
         type: 'image',
         src: img.src,
         alt: img.alt,
-        caption: img.alt,
+        caption: credit,
+        photographer: img.photographer,
+        photographerUrl: img.photographerUrl,
+        photoUrl: img.photoUrl,
       });
       imageIdx += 1;
     }
@@ -85,8 +122,6 @@ function resolveAuthor(
   topic: BlogTopic,
   usedInspiration: boolean
 ): { author: string; references: BlogReference[] } {
-  // Referenced/adapted from an external guide → credit that author + link.
-  // Fully original automation → Author Rizz Assistant.
   if (usedInspiration && topic.inspiration?.author) {
     return {
       author: topic.inspiration.author,
@@ -95,7 +130,7 @@ function resolveAuthor(
           ...topic.inspiration,
           note:
             topic.inspiration.note ||
-            'Referenced for educational structure and topic framing. Article body is original AI writing for Rizz Assist.',
+            'Referenced for educational structure and topic framing. Article body is original writing for Rizz Assist.',
         },
       ],
     };
@@ -109,7 +144,7 @@ function resolveAuthor(
               ...topic.inspiration,
               note:
                 topic.inspiration.note ||
-                'Referenced for educational structure and topic framing. Article body is original AI writing for Rizz Assist.',
+                'Referenced for educational structure and topic framing. Article body is original writing for Rizz Assist.',
             },
           ]
         : [],
@@ -122,17 +157,28 @@ async function requestLongFormPost(topic: BlogTopic): Promise<GeneratedPayload> 
 - Title: ${topic.inspiration.title}
 - URL: ${topic.inspiration.url}
 - Author: ${topic.inspiration.author || 'unknown'}
-If you lean on this inspiration for structure/ideas, set usedInspiration=true. Otherwise false.`
+If you lean on this inspiration for structure or ideas, set usedInspiration=true. Otherwise false.`
     : 'No external inspiration for this topic. Set usedInspiration=false.';
 
-  const system = `You are the editorial AI for Rizz Assist (rizzassistgo.com) — AI rizz coach for style, pickup lines, confidence, dating communication, and appearance tools.
-Write long-form educational blog posts similar in depth to a thorough Medium guide (not a 3-paragraph tip list).
-Tone: warm, practical, specific, non-judgmental, Gen-Z friendly. No medical claims. No vanity scoring. No plagiarism.
-Always original wording. Mention "Rizz Assist" (two words) when naming the product — never "RizzAssist" as one word.
-Internally link ideas to Rizz Assist tools when natural.
+  const system = `You write long blog posts for Rizz Assist (rizzassistgo.com), an AI rizz coach for style, confidence, dating communication, and appearance tools.
+
+Voice:
+- Sound like a sharp, warm friend who has coached people through this in real life.
+- Natural, spoken English. Contractions are fine (you'll, don't, it's).
+- Mix short punchy lines with longer explanatory ones.
+- Use concrete scenes and small examples people can picture.
+- Be specific and practical. Skip fluff.
+
+Hard bans:
+- Never use em dashes (—) or en dashes (–). Use commas, periods, colons, or parentheses instead.
+- Avoid AI tells: "delve", "landscape", "robust", "in today's world", "it's important to note", "unlock your potential", "game-changer", "navigate the complexities".
+- No medical claims. No vanity scoring. No plagiarism.
+- Always original wording.
+- Say "Rizz Assist" (two words), never "RizzAssist".
+
 Return ONLY valid JSON.`;
 
-  const user = `Write one long blog post optimized for SEO and helpful search results.
+  const user = `Write one long, human-feeling blog post. Depth like a thorough Medium guide, not a tip list.
 
 Topic id: ${topic.id}
 Title hint: ${topic.titleHint}
@@ -143,18 +189,19 @@ Related tool: ${topic.relatedToolLabel || 'none'} (${topic.relatedToolHref || 'n
 ${inspirationBlock}
 
 Requirements:
-- 1,400–2,200 words worth of content across sections (aim for 8–12 min read)
-- 6–9 sections with clear H2 headings that include natural keywords (not stuffed)
-- Each section: 2–4 meaty paragraphs; add bullets or a short quote where helpful
-- Include a concrete “how to check yourself” or step-by-step practice section
-- Include common mistakes + fixes
+- About 1,400 to 2,200 words across sections (aim for an 8 to 12 minute read)
+- 6 to 9 sections with clear H2 headings and natural keywords (not stuffed)
+- Each section: 2 to 4 solid paragraphs; add bullets or one short quote where it helps
+- Include a concrete "how to check yourself" or step-by-step practice section
+- Include common mistakes and fixes
 - End with a practical action plan and a soft CTA to the related tool
-- title: 50–65 characters when possible; primary keyword near the front; no clickbait
-- excerpt: 140–160 characters, include primary benefit + keyword; written as a meta description
+- First section should answer the reader's main question quickly
+- title: roughly 50 to 65 characters when possible; primary keyword near the front; no clickbait
+- excerpt: 140 to 160 characters; benefit + keyword; usable as a meta description
 - slug: kebab-case, unique, no dates, keyword-rich
 - readMinutes: integer estimate
 - usedInspiration: boolean
-- First section should answer the reader’s core question quickly (featured-snippet friendly)
+- Absolutely no em dashes or en dashes anywhere in the JSON strings
 
 JSON shape:
 {
@@ -178,16 +225,17 @@ JSON shape:
       { role: 'system', content: system },
       { role: 'user', content: user },
     ],
-    { temperature: 0.85, maxTokens: 8192, jsonMode: true, timeoutMs: 120_000 }
+    { temperature: 0.9, maxTokens: 8192, jsonMode: true, timeoutMs: 120_000 }
   );
 
   const parsed = JSON.parse(raw) as GeneratedPayload;
   if (!parsed?.title || !Array.isArray(parsed.sections) || parsed.sections.length < 4) {
     throw new Error('DeepSeek returned an incomplete blog payload.');
   }
-  parsed.slug = slugify(parsed.slug || parsed.title);
-  parsed.usedInspiration = Boolean(parsed.usedInspiration);
-  return parsed;
+  const cleaned = humanizePayload(parsed);
+  cleaned.slug = slugify(cleaned.slug || cleaned.title);
+  cleaned.usedInspiration = Boolean(cleaned.usedInspiration);
+  return cleaned;
 }
 
 export type GenerateBlogResult = {
@@ -219,9 +267,10 @@ export async function generateDailyBlog(options?: {
 
   const topic = pickDailyTopic(index.topicHistory, date);
   const payload = await requestLongFormPost(topic);
-  const images = pickBlogImages(topic.imageQueries, 4, date.getDate());
+  const images = await fetchBlogImages(topic.imageQueries, 4, date.getDate());
   const blocks = buildBlocks(payload, images);
   const { author, references } = resolveAuthor(topic, payload.usedInspiration);
+  const imageCredits = toImageCredits(images);
 
   const content = blocks
     .filter((b): b is Extract<BlogBlock, { type: 'paragraph' }> => b.type === 'paragraph')
@@ -239,19 +288,18 @@ export async function generateDailyBlog(options?: {
     coverImage: images[0]?.src,
     blocks,
     references,
+    imageCredits,
     generated: true,
     relatedToolHref: topic.relatedToolHref,
     relatedToolLabel: topic.relatedToolLabel,
   };
 
-  // Local / writable filesystem persist
   let nextIndex: GeneratedBlogIndex;
   try {
     nextIndex = await appendGeneratedPost(post, topic.id, dateKey, {
       force: options?.force,
     });
   } catch {
-    // Read-only FS (e.g. some serverless hosts): keep in-memory merge for GitHub commit
     const prior = options?.force
       ? index.posts.filter((p) => p.date !== dateKey && p.slug !== post.slug)
       : index.posts.filter((p) => p.slug !== post.slug);

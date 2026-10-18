@@ -132,45 +132,110 @@ export default async function BlogPostPage({ params }: Props) {
           </p>
 
           {post.coverImage ? (
-            <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-ink-800">
-              <Image
-                src={post.coverImage}
-                alt={`Cover image for ${post.title}`}
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 768px"
-              />
-            </div>
+            <figure className="mt-8">
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-ink-800">
+                <Image
+                  src={post.coverImage}
+                  alt={`Cover image for ${post.title}`}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                />
+              </div>
+              {post.imageCredits?.[0] ? (
+                <figcaption className="mt-2 text-center text-sm text-gray-500 dark:text-white/45">
+                  Photo by{' '}
+                  <a
+                    href={post.imageCredits[0].photographerUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-brand-600"
+                  >
+                    {post.imageCredits[0].photographer}
+                  </a>
+                  {' on '}
+                  <a
+                    href={post.imageCredits[0].photoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-brand-600"
+                  >
+                    Unsplash
+                  </a>
+                </figcaption>
+              ) : null}
+            </figure>
           ) : null}
 
           <div itemProp="articleBody">
             <BlogPostContent post={post} />
           </div>
 
-          {post.references && post.references.length > 0 ? (
+          {(post.references && post.references.length > 0) ||
+          (post.imageCredits && post.imageCredits.length > 0) ? (
             <aside className="mt-12 rounded-2xl border border-gray-200 bg-white p-5 dark:border-white/10 dark:bg-ink-800">
               <h2 className="text-sm font-semibold uppercase tracking-widest text-brand-600">
-                References
+                Credits &amp; references
               </h2>
-              <ul className="mt-3 space-y-3 text-sm text-gray-600 dark:text-white/60">
-                {post.references.map((ref) => (
-                  <li key={ref.url}>
-                    <a
-                      href={ref.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium text-brand-600 underline"
-                    >
-                      {ref.title}
-                    </a>
-                    {ref.author ? ` — ${ref.author}` : ''}
-                    {ref.note ? (
-                      <p className="mt-1 text-xs text-gray-500 dark:text-white/40">{ref.note}</p>
-                    ) : null}
-                  </li>
-                ))}
-              </ul>
+
+              {post.references && post.references.length > 0 ? (
+                <div className="mt-4">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">
+                    Content sources
+                  </h3>
+                  <ul className="mt-2 space-y-3 text-sm text-gray-600 dark:text-white/60">
+                    {post.references.map((ref) => (
+                      <li key={ref.url}>
+                        <a
+                          href={ref.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-brand-600 underline"
+                        >
+                          {ref.title}
+                        </a>
+                        {ref.author ? ` · ${ref.author}` : ''}
+                        {ref.note ? (
+                          <p className="mt-1 text-xs text-gray-500 dark:text-white/40">{ref.note}</p>
+                        ) : null}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {post.imageCredits && post.imageCredits.length > 0 ? (
+                <div className={post.references?.length ? 'mt-6' : 'mt-4'}>
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">
+                    Photos
+                  </h3>
+                  <ul className="mt-2 space-y-2 text-sm text-gray-600 dark:text-white/60">
+                    {post.imageCredits.map((credit) => (
+                      <li key={credit.photoUrl}>
+                        Photo by{' '}
+                        <a
+                          href={credit.photographerUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-brand-600 underline"
+                        >
+                          {credit.photographer}
+                        </a>
+                        {' on '}
+                        <a
+                          href={credit.photoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-brand-600 underline"
+                        >
+                          Unsplash
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
             </aside>
           ) : null}
 
