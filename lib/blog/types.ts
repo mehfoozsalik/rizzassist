@@ -21,6 +21,11 @@ export type BlogImage = {
   photoUrl?: string;
   /** Unsplash download_location; ping when the photo is used (API guideline). */
   downloadLocation?: string;
+  /** Search query used to find this image. */
+  query?: string;
+  role?: 'cover' | 'inline';
+  /** Prefer inserting after this H2 when building the article. */
+  afterHeading?: string;
 };
 
 export type BlogBlock =

@@ -1,5 +1,9 @@
 import { callDeepSeek } from '@/lib/deepseekServer';
-import { fetchBlogImages, toImageCredits } from './images';
+import {
+  fetchBlogImagesFromBriefs,
+  toImageCredits,
+  type ImageBrief,
+} from './images';
 import { pickDailyTopic } from './topics';
 import {
   appendGeneratedPost,
@@ -41,8 +45,8 @@ function slugify(input: string): string {
 /** Strip em/en dashes and other AI-ish punctuation quirks. */
 export function humanizeText(input: string): string {
   return input
-    .replace(/\u2014/g, ', ') // em dash —
-    .replace(/\u2013/g, ', ') // en dash –
+    .replace(/\u2014/g, ', ')
+    .replace(/\u2013/g, ', ')
     .replace(/--+/g, ', ')
     .replace(/\s+,/g, ',')
     .replace(/,\s*,+/g, ',')
@@ -77,9 +81,30 @@ function estimateReadMinutes(blocks: BlogBlock[]): number {
   return Math.max(8, Math.round(words / 200));
 }
 
+function normalizeHeading(h: string): string {
+  return h.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
 function buildBlocks(payload: GeneratedPayload, images: BlogImage[]): BlogBlock[] {
   const blocks: BlogBlock[] = [];
-  let imageIdx = 1; // 0 reserved for cover
+  const cover = images.find((i) => i.role === 'cover') || images[0];
+  const inline = images.filter((i) => i !== cover);
+  const usedInline = new Set<number>();
+
+  const findInlineForHeading = (heading: string): BlogImage | undefined => {
+    const target = normalizeHeading(heading);
+    const byHeading = inline.findIndex(
+      (img, idx) =>
+        !usedInline.has(idx) &&
+        img.afterHeading &&
+        normalizeHeading(img.afterHeading) === target
+    );
+    if (byHeading >= 0) {
+      usedInline.add(byHeading);
+      return inline[byHeading];
+    }
+    return undefined;
+  };
 
   payload.sections.forEach((section, sectionIndex) => {
     if (section.heading) {
@@ -97,21 +122,29 @@ function buildBlocks(payload: GeneratedPayload, images: BlogImage[]): BlogBlock[
     if (section.quote?.trim()) {
       blocks.push({ type: 'quote', text: section.quote.trim() });
     }
-    if (sectionIndex % 2 === 1 && images[imageIdx]) {
-      const img = images[imageIdx];
-      const credit = img.photographer
-        ? `Photo by ${img.photographer} on Unsplash`
-        : img.alt;
+
+    let img = section.heading ? findInlineForHeading(section.heading) : undefined;
+    // Spread remaining images across odd sections if no heading match
+    if (!img && sectionIndex % 2 === 1) {
+      const nextIdx = inline.findIndex((_, idx) => !usedInline.has(idx));
+      if (nextIdx >= 0) {
+        usedInline.add(nextIdx);
+        img = inline[nextIdx];
+      }
+    }
+
+    if (img) {
       blocks.push({
         type: 'image',
         src: img.src,
         alt: img.alt,
-        caption: credit,
+        caption: img.photographer
+          ? `Photo by ${img.photographer} on Unsplash`
+          : img.alt,
         photographer: img.photographer,
         photographerUrl: img.photographerUrl,
         photoUrl: img.photoUrl,
       });
-      imageIdx += 1;
     }
   });
 
@@ -238,6 +271,86 @@ JSON shape:
   return cleaned;
 }
 
+/**
+ * Ask DeepSeek for Unsplash-ready visual search briefs from the finished outline.
+ * These drive relevant stock photos instead of vague topic keywords alone.
+ */
+async function requestImageBriefs(
+  topic: BlogTopic,
+  payload: GeneratedPayload
+): Promise<ImageBrief[]> {
+  const headings = payload.sections.map((s) => s.heading).filter(Boolean);
+  const system = `You plan stock photo searches for a blog on Unsplash.
+Return ONLY JSON. Queries must be concrete visual scenes a photographer would shoot.
+Never abstract (no "confidence", "growth", "journey"). Prefer people, objects, places, close-ups.
+No em dashes.`;
+
+  const user = `Article title: ${payload.title}
+Category: ${topic.category}
+Fallback topic queries: ${topic.imageQueries.join(', ')}
+Section headings:
+${headings.map((h, i) => `${i + 1}. ${h}`).join('\n')}
+
+Create exactly 4 image briefs:
+1) role "cover" (hero image for the whole article)
+2-4) role "inline" (each tied to a different section)
+
+Rules for each query:
+- 3 to 6 concrete words (example: "woman window natural light portrait", "barber trimming men's haircut", "eyeglasses on wooden table")
+- visual: one sentence describing what must appear in the frame
+- afterHeading: copy an exact section heading from the list for inline images (omit for cover)
+- Prefer editorial / lifestyle photography that matches the section topic
+
+JSON shape:
+{
+  "images": [
+    { "role": "cover", "query": string, "visual": string },
+    { "role": "inline", "query": string, "visual": string, "afterHeading": string }
+  ]
+}`;
+
+  try {
+    const raw = await callDeepSeek(
+      [
+        { role: 'system', content: system },
+        { role: 'user', content: user },
+      ],
+      { temperature: 0.4, maxTokens: 1024, jsonMode: true, timeoutMs: 45_000 }
+    );
+    const parsed = JSON.parse(raw) as { images?: ImageBrief[] };
+    const images = Array.isArray(parsed.images) ? parsed.images : [];
+    const cleaned = images
+      .filter((img) => img?.query && img?.visual)
+      .slice(0, 4)
+      .map((img, i) => ({
+        query: humanizeText(String(img.query)).slice(0, 80),
+        visual: humanizeText(String(img.visual)).slice(0, 160),
+        role: (img.role === 'cover' || i === 0 ? 'cover' : 'inline') as 'cover' | 'inline',
+        afterHeading: img.afterHeading
+          ? humanizeText(String(img.afterHeading))
+          : undefined,
+      }));
+
+    if (cleaned.length >= 2) {
+      // Ensure exactly one cover
+      const coverIdx = cleaned.findIndex((c) => c.role === 'cover');
+      cleaned.forEach((c, i) => {
+        c.role = i === (coverIdx >= 0 ? coverIdx : 0) ? 'cover' : 'inline';
+      });
+      return cleaned;
+    }
+  } catch (err) {
+    console.warn('Image brief generation failed, using topic queries:', err);
+  }
+
+  return topic.imageQueries.slice(0, 4).map((query, i) => ({
+    query,
+    visual: query,
+    role: (i === 0 ? 'cover' : 'inline') as 'cover' | 'inline',
+    afterHeading: i > 0 ? headings[Math.min(i * 2 - 1, headings.length - 1)] : undefined,
+  }));
+}
+
 export type GenerateBlogResult = {
   created: boolean;
   skipped?: boolean;
@@ -267,10 +380,12 @@ export async function generateDailyBlog(options?: {
 
   const topic = pickDailyTopic(index.topicHistory, date);
   const payload = await requestLongFormPost(topic);
-  const images = await fetchBlogImages(topic.imageQueries, 4, date.getDate());
+  const briefs = await requestImageBriefs(topic, payload);
+  const images = await fetchBlogImagesFromBriefs(briefs, topic.imageQueries);
   const blocks = buildBlocks(payload, images);
   const { author, references } = resolveAuthor(topic, payload.usedInspiration);
   const imageCredits = toImageCredits(images);
+  const cover = images.find((i) => i.role === 'cover') || images[0];
 
   const content = blocks
     .filter((b): b is Extract<BlogBlock, { type: 'paragraph' }> => b.type === 'paragraph')
@@ -285,7 +400,7 @@ export async function generateDailyBlog(options?: {
     readMinutes: payload.readMinutes || estimateReadMinutes(blocks),
     content: content.length ? content : [payload.excerpt],
     author,
-    coverImage: images[0]?.src,
+    coverImage: cover?.src,
     blocks,
     references,
     imageCredits,

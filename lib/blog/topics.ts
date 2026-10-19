@@ -19,7 +19,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       author: 'Novavii',
       note: 'Topic inspiration for structure and educational depth only',
     },
-    imageQueries: ['eye makeup', 'eyeliner close up', 'beauty portrait eyes'],
+    imageQueries: [
+      'woman applying eyeshadow close up',
+      'eyeliner brush on eyelid',
+      'beauty mirror eye makeup',
+      'almond eye makeup tutorial',
+    ],
   },
   {
     id: 'face-shape-hairstyles',
@@ -29,7 +34,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       'Map oval, round, square, heart, diamond, oblong, and triangle faces to hair length, volume placement, and barber talking points.',
     relatedToolHref: '/face-shape-detector',
     relatedToolLabel: 'Detect Your Face Shape',
-    imageQueries: ['mens haircut salon', 'hairstyle mirror', 'barber styling'],
+    imageQueries: [
+      'barber cutting mens hair salon',
+      'man looking in haircut mirror',
+      'stylist combing client hair',
+      'mens fade haircut close up',
+    ],
   },
   {
     id: 'body-shape-vs-type',
@@ -39,7 +49,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       'Explain silhouette ratios vs somatotypes, then give outfit formulas that support posture and presence.',
     relatedToolHref: '/body-shape-calculator',
     relatedToolLabel: 'Calculate Your Body Shape',
-    imageQueries: ['fashion outfit styling', 'wardrobe clothes rack', 'tailored jacket'],
+    imageQueries: [
+      'person trying on tailored jacket',
+      'clothing rack organized wardrobe',
+      'mannequin outfit styling studio',
+      'full length mirror outfit check',
+    ],
   },
   {
     id: 'social-confidence-habits',
@@ -49,7 +64,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       'Actionable micro-reps, recovery scripts after awkward moments, and how to measure progress without fake bravado.',
     relatedToolHref: '/social-confidence-test',
     relatedToolLabel: 'Take the Social Confidence Test',
-    imageQueries: ['friends conversation cafe', 'confident smile social', 'networking event'],
+    imageQueries: [
+      'friends talking laughing cafe',
+      'person greeting coworker hallway',
+      'small group conversation outdoors',
+      'confident handshake meeting',
+    ],
   },
   {
     id: 'first-message-dating',
@@ -59,7 +79,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       'Break down opener structure, specificity, follow-ups, and when to suggest a plan — with examples and anti-patterns.',
     relatedToolHref: '/first-message-analyzer',
     relatedToolLabel: 'Analyze a First Message',
-    imageQueries: ['phone texting coffee', 'dating conversation', 'smartphone messaging'],
+    imageQueries: [
+      'hands typing phone dating app',
+      'smartphone text messages screen',
+      'couple chatting cafe table',
+      'person smiling reading phone',
+    ],
   },
   {
     id: 'communication-styles',
@@ -69,7 +94,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       'How clarity, listening, and authenticity show up in first impressions; diagnose over-explaining, interviewing, and conflict avoidance.',
     relatedToolHref: '/communication-style-test',
     relatedToolLabel: 'Map Your Communication Style',
-    imageQueries: ['people talking meeting', 'active listening', 'conversation duo'],
+    imageQueries: [
+      'two people deep conversation cafe',
+      'active listening interview meeting',
+      'team discussion around table',
+      'friends talking on park bench',
+    ],
   },
   {
     id: 'eyebrow-grooming-presence',
@@ -79,7 +109,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       'Natural thickness norms, stray cleanup, what to tell a barber, and how brows frame eye contact.',
     relatedToolHref: '/grooming-assessment',
     relatedToolLabel: 'Start Grooming Assessment',
-    imageQueries: ['eyebrow grooming', 'mens grooming face', 'barber brow trim'],
+    imageQueries: [
+      'barber trimming eyebrows man',
+      'mens eyebrow grooming close up',
+      'tweezers brow grooming mirror',
+      'man skincare face grooming',
+    ],
   },
   {
     id: 'photo-setup-face-tools',
@@ -89,7 +124,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       'Lighting, angle, hair, expression, and resolution tips so detectors and try-ons produce cleaner advice.',
     relatedToolHref: '/face-shape-detector',
     relatedToolLabel: 'Try Face Shape Detection',
-    imageQueries: ['natural light selfie', 'portrait photography window', 'phone camera portrait'],
+    imageQueries: [
+      'front facing portrait window light',
+      'ring light selfie phone tripod',
+      'neutral expression headshot daylight',
+      'person taking mirror selfie clean',
+    ],
   },
   {
     id: 'charisma-conversation',
@@ -99,7 +139,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       'Warmth + competence signals, storytelling beats, exits, and how to practice without performing.',
     relatedToolHref: '/charisma-test',
     relatedToolLabel: 'Take the Charisma Test',
-    imageQueries: ['charismatic speaker', 'group laughing conversation', 'storytelling friends'],
+    imageQueries: [
+      'person storytelling friends dinner',
+      'speaker engaging small audience',
+      'group laughing conversation party',
+      'warm smile eye contact portrait',
+    ],
   },
   {
     id: 'color-analysis-wardrobe',
@@ -109,7 +154,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       'Seasonal color ideas explained simply, how undertones affect shirts and jackets, and linking colors to confidence.',
     relatedToolHref: '/color-analysis',
     relatedToolLabel: 'Run Color Analysis',
-    imageQueries: ['color swatches fabric', 'wardrobe color coordinated', 'fashion color palette'],
+    imageQueries: [
+      'fabric color swatches palette',
+      'person holding color drapes face',
+      'coordinated wardrobe shirts hangers',
+      'fashion color matching clothes',
+    ],
   },
   {
     id: 'dating-first-impressions',
@@ -119,7 +169,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       'Body language, pacing, curiosity questions, and recovering from silence without over-apologizing.',
     relatedToolHref: '/first-impression-test',
     relatedToolLabel: 'Assess First Impressions',
-    imageQueries: ['cafe date conversation', 'first date restaurant', 'smiling eye contact'],
+    imageQueries: [
+      'couple first date cafe conversation',
+      'two people smiling restaurant table',
+      'eye contact conversation outdoor',
+      'casual date walking city street',
+    ],
   },
   {
     id: 'glasses-for-face-shape',
@@ -129,7 +184,12 @@ export const BLOG_TOPICS: BlogTopic[] = [
       'Match frame geometry to face proportions; include try-on mindset and common mistakes.',
     relatedToolHref: '/try-on/glasses',
     relatedToolLabel: 'Try Glasses Virtually',
-    imageQueries: ['eyeglasses frames display', 'person wearing glasses', 'optical shop'],
+    imageQueries: [
+      'person trying on eyeglasses store',
+      'eyeglasses frames display shelf',
+      'portrait wearing stylish glasses',
+      'optical shop frames close up',
+    ],
   },
 ];
 

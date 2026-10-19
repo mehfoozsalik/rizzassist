@@ -78,12 +78,12 @@
         },
         {
           "type": "image",
-          "src": "https://images.unsplash.com/photo-1677083969186-9bf952940eb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTA2NTU5fDB8MXxzZWFyY2h8NXx8cG9ydHJhaXQlMjBwaG90b2dyYXBoeSUyMHdpbmRvd3xlbnwxfDB8fHwxNzkyNDE4NTM2fDA&ixlib=rb-4.1.0&q=80&w=1080&w=1400&q=80",
+          "src": "https://images.unsplash.com/photo-1636875236264-83819d223747?q=80&w=389&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
           "alt": "a woman standing in front of a window with her arms crossed",
-          "caption": "Photo by ANHELINA OSAULENKO on Unsplash",
-          "photographer": "ANHELINA OSAULENKO",
-          "photographerUrl": "https://unsplash.com/@linaos?utm_source=rizzassist&utm_medium=referral",
-          "photoUrl": "https://unsplash.com/photos/a-woman-standing-in-front-of-a-window-with-her-arms-crossed-dkYdODM2d5o?utm_source=rizzassist&utm_medium=referral"
+          "caption": "Photo by ahmet hamdi on Unsplash",
+          "photographer": "ahmet hamdi",
+          "photographerUrl": "https://unsplash.com/@neyn?utm_source=rizzassist&utm_medium=referral",
+          "photoUrl": "https://images.unsplash.com/photo-1636875236264-83819d223747?q=80&w=389&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
         },
         {
           "type": "heading",
@@ -126,12 +126,12 @@
         },
         {
           "type": "image",
-          "src": "https://images.unsplash.com/photo-1588348053586-7246f2bfdbbf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTA2NTU5fDB8MXxzZWFyY2h8Nnx8cGhvbmUlMjBjYW1lcmElMjBwb3J0cmFpdHxlbnwxfDB8fHwxNzkyNDE4NTM2fDA&ixlib=rb-4.1.0&q=80&w=1080&w=1400&q=80",
+          "src": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
           "alt": "iphone on brown wooden table",
-          "caption": "Photo by Anita Jankovic on Unsplash",
-          "photographer": "Anita Jankovic",
-          "photographerUrl": "https://unsplash.com/@dslr_newb?utm_source=rizzassist&utm_medium=referral",
-          "photoUrl": "https://unsplash.com/photos/iphone-on-brown-wooden-table-_yUykJ952eY?utm_source=rizzassist&utm_medium=referral"
+          "caption": "Photo by Albert Dera on Unsplash",
+          "photographer": "Albert Dera",
+          "photographerUrl": "https://unsplash.com/@albertdera?utm_source=rizzassist&utm_medium=referral",
+          "photoUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?utm_source=rizzassist&utm_medium=referral"
         },
         {
           "type": "heading",
