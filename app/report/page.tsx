@@ -49,7 +49,7 @@ export default function ReportPage() {
             </h1>
             <p className="mx-auto mt-3 max-w-xl text-sm text-ink-600 dark:text-white/55">
               Combine assessments into one overview of personality, confidence, communication,
-              social skills, and dating strengths — plus a practical improvement plan.
+              social skills, and dating strengths, plus a practical improvement plan.
             </p>
           </header>
 
@@ -145,19 +145,19 @@ export default function ReportPage() {
                 </h2>
                 <ul className="mt-4 space-y-3 text-sm text-ink-700 dark:text-white/70">
                   <li>
-                    <strong>Days 1–7:</strong> One low-stakes social rep daily (greeting, question,
+                    <strong>Days 1-7:</strong> One low-stakes social rep daily (greeting, question,
                     or compliment). Log how it felt.
                   </li>
                   <li>
-                    <strong>Days 8–14:</strong> Practice open questions and active listening in
+                    <strong>Days 8-14:</strong> Practice open questions and active listening in
                     every conversation over 5 minutes.
                   </li>
                   <li>
-                    <strong>Days 15–21:</strong> Focus on your growth dimension (
+                    <strong>Days 15-21:</strong> Focus on your growth dimension (
                     {growth?.label ?? 'awareness'}) with one deliberate drill from your recs.
                   </li>
                   <li>
-                    <strong>Days 22–30:</strong> Retake 2–3 assessments and compare scores in{' '}
+                    <strong>Days 22-30:</strong> Retake 2-3 assessments and compare scores in{' '}
                     <Link href="/profile" className="text-brand-600 underline">
                       My Profile
                     </Link>

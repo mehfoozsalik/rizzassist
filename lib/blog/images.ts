@@ -3,7 +3,7 @@ import type { BlogImage, BlogImageCredit } from './types';
 const UNSPLASH_SEARCH = 'https://api.unsplash.com/search/photos';
 
 export type ImageBrief = {
-  /** Short Unsplash search query (3–6 concrete visual words). */
+  /** Short Unsplash search query (3-6 concrete visual words). */
   query: string;
   /** What the photo should show, used for scoring + alt fallback. */
   visual: string;

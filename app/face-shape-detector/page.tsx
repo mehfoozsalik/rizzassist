@@ -15,7 +15,7 @@ const PAGE_URL = `${SITE_URL}/face-shape-detector`;
 export const metadata: Metadata = {
   title: 'Face Shape Detector: Free AI Face Shape Finder for Grooming',
   description:
-    'Free AI face shape detector for personality grooming. Upload a selfie to find oval, round, square, heart, diamond, oblong, or triangle — plus hairstyle, glasses, and presence tips. Private. No login.',
+    'Free AI face shape detector for personality grooming. Upload a selfie to find oval, round, square, heart, diamond, oblong, or triangle, plus hairstyle, glasses, and presence tips. Private. No login.',
   keywords: [
     'face shape detector',
     'what is my face shape',
@@ -40,12 +40,12 @@ const FAQ_ITEMS = [
   {
     question: 'What is my face shape?',
     answer:
-      'Your face shape comes from forehead, cheekbone, and jaw widths plus face length. Rizz Assist detects oval, round, square, heart, diamond, oblong, and triangle — then maps grooming tips that improve how you present yourself.',
+      'Your face shape comes from forehead, cheekbone, and jaw widths plus face length. Rizz Assist detects oval, round, square, heart, diamond, oblong, and triangle, then maps grooming tips that improve how you present yourself.',
   },
   {
     question: 'Is this for personality grooming or vanity scoring?',
     answer:
-      'Strictly personality improvement and grooming. We recommend hair, glasses, beard, and presence tips so you look intentional — we do not sell attractiveness scores.',
+      'Strictly personality improvement and grooming. We recommend hair, glasses, beard, and presence tips so you look intentional, we do not sell attractiveness scores.',
   },
   {
     question: 'Is my photo uploaded?',
@@ -98,7 +98,7 @@ export default function FaceShapeDetectorPage() {
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-base text-white/65">
                 Upload a selfie or use your camera. On-device AI finds your face
-                shape and gives hairstyle, glasses, and presence tips — so you
+                shape and gives hairstyle, glasses, and presence tips, so you
                 present yourself with intention.
               </p>
             </Reveal>
@@ -117,7 +117,7 @@ export default function FaceShapeDetectorPage() {
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-500 dark:text-white/50">
                 Each shape suggests different hair, frames, and presence habits.
-                Detection is the shortcut — grooming is the real upgrade.
+                Detection is the shortcut, grooming is the real upgrade.
               </p>
             </Reveal>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

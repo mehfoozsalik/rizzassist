@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { SITE_URL, SITE_NAME } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'My RizzAssist Profile — Scores & Progress',
+  title: 'My RizzAssist Profile: Scores & Progress',
   description:
     'View completed assessments, personality scores, and improvement progress saved on your device.',
   alternates: { canonical: `${SITE_URL}/profile` },

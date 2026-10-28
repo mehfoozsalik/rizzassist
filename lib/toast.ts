@@ -11,7 +11,7 @@ export const UPLOAD_GUIDES = {
   body: {
     title: 'Body not detected',
     description:
-      'Upload a full-body photo standing upright, arms slightly away from your sides, with good lighting. Head-to-toe visible works best — avoid selfies, sitting poses, or heavily cropped images.',
+      'Upload a full-body photo standing upright, arms slightly away from your sides, with good lighting. Head-to-toe visible works best, avoid selfies, sitting poses, or heavily cropped images.',
   },
   eye: {
     title: 'Eyes / face not detected',

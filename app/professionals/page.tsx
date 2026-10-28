@@ -15,7 +15,7 @@ import { Footer } from '@/components/layout/Footer';
 export const metadata: Metadata = {
   title: 'For Professionals: Grooming Tools for Stylists & Coaches',
   description:
-    'Rizz Assist tools for barbers, stylists, image consultants, and confidence coaches — face shape, try-on, body calculators, and eye analysis for client personality grooming.',
+    'Rizz Assist tools for barbers, stylists, image consultants, and confidence coaches, face shape, try-on, body calculators, and eye analysis for client personality grooming.',
   alternates: { canonical: `${SITE_URL}/professionals` },
   openGraph: {
     title: 'For Professionals | Rizz Assist',
@@ -34,7 +34,7 @@ const USE_CASES = [
   {
     icon: Eye,
     title: 'Makeup & brow artists',
-    text: 'Pair eye shape and face shape results with presence tips — keep the conversation on harmony, not harsh critique.',
+    text: 'Pair eye shape and face shape results with presence tips, keep the conversation on harmony, not harsh critique.',
   },
   {
     icon: Users,
@@ -61,8 +61,8 @@ export default function ProfessionalsPage() {
             Client grooming tools that stay private
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-white/65">
-            Help people improve how they present themselves — hair, frames,
-            clothes, presence — with on-device analysis and downloadable reports.
+            Help people improve how they present themselves, hair, frames,
+            clothes, presence, with on-device analysis and downloadable reports.
             No vanity scoring. No photo vaults.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -105,7 +105,7 @@ export default function ProfessionalsPage() {
             <p className="mt-3 text-sm text-gray-500 dark:text-white/50">
               Landmark detection runs in the browser. Encourage clients to use
               their own device during consultations. Download PDF reports when
-              they want a takeaway — without creating accounts.
+              they want a takeaway, without creating accounts.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm">
               <Link href="/try-on" className="font-medium text-brand-600 underline">

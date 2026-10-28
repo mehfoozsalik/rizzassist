@@ -10,7 +10,7 @@ const PAGE_URL = `${SITE_URL}/face-shape-calculator`;
 export const metadata: Metadata = {
   title: 'Face Shape Calculator: Measure Your Face for Grooming Tips',
   description:
-    'Free face shape calculator from forehead, cheekbone, jaw, and length measurements. Get personality grooming tips for hair and glasses — no photo required.',
+    'Free face shape calculator from forehead, cheekbone, jaw, and length measurements. Get personality grooming tips for hair and glasses, no photo required.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: 'Face Shape Calculator | Rizz Assist',

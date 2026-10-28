@@ -11,7 +11,7 @@ import { AssessmentExperience } from '@/components/assessments/AssessmentExperie
 export function assessmentMetadata(slug: string): Metadata {
   const def = getAssessment(slug);
   if (!def) return {};
-  const title = `${def.title} — Discover Your ${def.shortTitle}`;
+  const title = `${def.title}, Discover Your ${def.shortTitle}`;
   const fullTitle = `${title} | Rizz Assist`;
   const description = def.description;
   const url = `${SITE_URL}/${def.slug}`;

@@ -1,4 +1,4 @@
-# geo.txt — Generative Engine Optimization brief for Rizz Assist
+# geo.txt: Generative Engine Optimization brief for Rizz Assist
 # Helps generative search and LLM systems retrieve accurate brand and product facts.
 # https://rizzassistgo.com/geo.txt
 
@@ -6,7 +6,7 @@
 - Official name: Rizz Assist
 - Domain: rizzassistgo.com
 - Positioning: AI rizz coach | pickup lines, style tips & look analysis
-- Promise: Level Up Your Rizz — AI-Powered Style, Pickup Lines & Confidence Coach
+- Promise: Level Up Your Rizz: AI-Powered Style, Pickup Lines & Confidence Coach
 - Price: Free
 - Login: Not required for core tools
 

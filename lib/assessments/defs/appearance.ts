@@ -11,7 +11,7 @@ export const styleAssessment: AssessmentDefinition = {
   description:
     'Reflect on fit, color, grooming coordination, and presentation habits that shape first impressions.',
   whatItMeasures:
-    'Style here means intentional presentation — clothing fit, consistency, and alignment with the impression you want. It does not diagnose fashion taste scientifically.',
+    'Style here means intentional presentation, clothing fit, consistency, and alignment with the impression you want. It does not diagnose fashion taste scientifically.',
   minutes: 3,
   relatedSlugs: ['grooming-assessment', 'first-impression-test', 'face-shape-detector', 'confidence-test'],
   faqs: SHARED_FAQS,
@@ -38,7 +38,7 @@ export const groomingAssessment: AssessmentDefinition = {
   description:
     'Check consistency around hair, skin, scent, and daily grooming that support confidence.',
   whatItMeasures:
-    'Grooming habits that affect first impressions and self-confidence — practical check-in, not medical dermatology advice.',
+    'Grooming habits that affect first impressions and self-confidence, practical check-in, not medical dermatology advice.',
   minutes: 3,
   relatedSlugs: ['style-assessment', 'face-shape-detector', 'eye-shape-detector', 'first-impression-test'],
   faqs: SHARED_FAQS,

@@ -8,7 +8,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
     slug: 'how-to-become-more-confident-socially',
     title: 'How to Become More Confident Socially',
     excerpt:
-      'Practical habits for social confidence — then measure your baseline with the free Social Confidence Test on Rizz Assist.',
+      'Practical habits for social confidence, then measure your baseline with the free Social Confidence Test on Rizz Assist.',
     category: 'Confidence',
     date: '2026-10-05',
     readMinutes: 5,
@@ -48,7 +48,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'When you want a baseline, take the Rizz Assist Social Confidence Test and Confidence Test — then retest in a few weeks to see what improved.',
+        text: 'When you want a baseline, take the Rizz Assist Social Confidence Test and Confidence Test, then retest in a few weeks to see what improved.',
       },
     ],
     relatedToolHref: '/social-confidence-test',
@@ -58,7 +58,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
     slug: 'communication-styles-self-awareness',
     title: 'Communication Styles and Self-Awareness',
     excerpt:
-      'How clarity, listening, and authenticity shape first impressions — plus free tools on Rizz Assist to map your style.',
+      'How clarity, listening, and authenticity shape first impressions, plus free tools on Rizz Assist to map your style.',
     category: 'Personality',
     date: '2026-10-04',
     readMinutes: 5,
@@ -100,7 +100,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
     slug: 'how-to-start-conversations',
     title: 'How to Start Conversations That Feel Natural',
     excerpt:
-      'Openers, follow-ups, and exits that create real connection — without forced pickup lines. Practice with free Rizz Assist tools.',
+      'Openers, follow-ups, and exits that create real connection, without forced pickup lines. Practice with free Rizz Assist tools.',
     category: 'Social Skills',
     date: '2026-10-03',
     readMinutes: 4,
@@ -132,7 +132,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'Practice with the Conversation Skills Assessment and Charisma Test — or analyze dating openers with the First Message Analyzer.',
+        text: 'Practice with the Conversation Skills Assessment and Charisma Test, or analyze dating openers with the First Message Analyzer.',
       },
     ],
     relatedToolHref: '/conversation-skills-test',
@@ -142,7 +142,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
     slug: 'dating-communication-first-impressions',
     title: 'Dating Communication and First Impressions',
     excerpt:
-      'Show interest without intensity. Build first-date presence with clarity, curiosity, and calm — then check your patterns on Rizz Assist.',
+      'Show interest without intensity. Build first-date presence with clarity, curiosity, and calm, then check your patterns on Rizz Assist.',
     category: 'Dating',
     date: '2026-10-02',
     readMinutes: 5,
@@ -184,7 +184,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
     slug: 'face-shape-grooming-guide',
     title: 'Face Shape Grooming Guide: Present Yourself with Intention',
     excerpt:
-      'How oval, round, square, heart, diamond, oblong, and triangle faces guide hair, glasses, and presence — with Rizz Assist face tools.',
+      'How oval, round, square, heart, diamond, oblong, and triangle faces guide hair, glasses, and presence, with Rizz Assist face tools.',
     category: 'Grooming',
     date: '2026-10-01',
     readMinutes: 6,
@@ -198,7 +198,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'Personality grooming starts with understanding your proportions — not chasing a score. Your face shape tells you which hair lines, frames, and expressions make you look intentional.',
+        text: 'Personality grooming starts with understanding your proportions, not chasing a score. Your face shape tells you which hair lines, frames, and expressions make you look intentional.',
       },
       {
         type: 'heading',
@@ -226,7 +226,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
     slug: 'mens-eyebrow-grooming-presence',
     title: 'Men’s Eyebrow Grooming for Confident Presence',
     excerpt:
-      'Thickness norms, stray hairs, and how to talk to a barber — framed as presence and grooming, not trends.',
+      'Thickness norms, stray hairs, and how to talk to a barber, framed as presence and grooming, not trends.',
     category: "Men's Guide",
     date: '2026-09-20',
     readMinutes: 5,
@@ -240,7 +240,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'Brows frame eye contact — one of the fastest signals of presence. Keep them natural: clean the unibrow area, trim long strays, and avoid over-plucking into thin arches unless that matches your personal style.',
+        text: 'Brows frame eye contact, and that is one of the fastest signals of presence. Keep them natural: clean the unibrow area, trim long strays, and avoid over-plucking into thin arches unless that matches your personal style.',
       },
       {
         type: 'heading',
@@ -258,7 +258,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'Pair brow care with face shape tips — soft arches help square faces; fuller brows support heart and diamond mid-faces. Try the Rizz Assist Grooming Assessment for a fuller checklist.',
+        text: 'Pair brow care with face shape tips. Soft arches help square faces; fuller brows support heart and diamond mid-faces. Try the Rizz Assist Grooming Assessment for a fuller checklist.',
       },
     ],
     relatedToolHref: '/grooming-assessment',
@@ -268,7 +268,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
     slug: 'body-shape-vs-body-type-confidence',
     title: 'Body Shape vs Body Type: Dress for Confidence',
     excerpt:
-      'Silhouette ratios vs somatotypes — how both Rizz Assist calculators help you choose clothes that support confidence.',
+      'Silhouette ratios vs somatotypes, how both Rizz Assist calculators help you choose clothes that support confidence.',
     category: 'Style',
     date: '2026-09-10',
     readMinutes: 5,
@@ -291,7 +291,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'When clothes skim your shape correctly, posture and confidence follow — that is personality improvement through grooming and style.',
+        text: 'When clothes skim your shape correctly, posture and confidence follow, that is personality improvement through grooming and style.',
       },
       {
         type: 'heading',
@@ -342,7 +342,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'If detection fails, retake — don’t force a blurry crop. Good input = better grooming output from Rizz Assist tools.',
+        text: 'If detection fails, retake, don’t force a blurry crop. Good input = better grooming output from Rizz Assist tools.',
       },
     ],
     relatedToolHref: '/tools',
@@ -350,7 +350,7 @@ export const STATIC_BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-/** @deprecated Prefer getAllPosts() — kept for modules that import the static list synchronously. */
+/** @deprecated Prefer getAllPosts(), kept for modules that import the static list synchronously. */
 export const BLOG_POSTS = STATIC_BLOG_POSTS;
 
 function mergePosts(generated: BlogPost[]): BlogPost[] {

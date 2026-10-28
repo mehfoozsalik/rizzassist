@@ -8,9 +8,9 @@ export const rizzTest: AssessmentDefinition = {
   shortTitle: 'Rizz',
   category: 'dating',
   description:
-    'Understand your conversation chemistry, flirting comfort, and dating strengths — then get practical ways to improve.',
+    'Understand your conversation chemistry, flirting comfort, and dating strengths, then get practical ways to improve.',
   whatItMeasures:
-    '“Rizz” here means dating communication skill: timing, playfulness, authenticity, and confident interest — not manipulation.',
+    '“Rizz” here means dating communication skill: timing, playfulness, authenticity, and confident interest, not manipulation.',
   minutes: 4,
   relatedSlugs: ['dating-personality-test', 'flirting-style-test', 'dating-confidence-test', 'conversation-skills-test'],
   faqs: SHARED_FAQS,
@@ -37,7 +37,7 @@ export const datingPersonalityTest: AssessmentDefinition = {
   shortTitle: 'Dating Personality',
   category: 'dating',
   description:
-    'Map how you approach dating — attachment-style habits, communication, and what you need to feel secure.',
+    'Map how you approach dating, attachment-style habits, communication, and what you need to feel secure.',
   whatItMeasures:
     'Dating personality reflects patterns in closeness, communication, and decision-making. It is reflective guidance, not a clinical attachment diagnosis.',
   minutes: 4,
@@ -66,7 +66,7 @@ export const flirtingStyleTest: AssessmentDefinition = {
   shortTitle: 'Flirting Style',
   category: 'dating',
   description:
-    'Discover whether your flirting leans playful, sincere, bold, or reserved — and how to use it well.',
+    'Discover whether your flirting leans playful, sincere, bold, or reserved, and how to use it well.',
   whatItMeasures:
     'Flirting style looks at playfulness, sincerity, boldness, and comfort with mutual interest signals.',
   minutes: 3,
@@ -93,7 +93,7 @@ export const conversationAnalyzer: AssessmentDefinition = {
   shortTitle: 'Conversation Analyzer',
   category: 'dating',
   description:
-    'Reflect on how your chats land — clarity, curiosity, pacing, and whether you create real connection.',
+    'Reflect on how your chats land, clarity, curiosity, pacing, and whether you create real connection.',
   whatItMeasures:
     'This self-assessment mirrors how you analyze dating and social conversations: openings, reciprocity, and next-step clarity.',
   minutes: 3,
@@ -120,9 +120,9 @@ export const firstMessageAnalyzer: AssessmentDefinition = {
   shortTitle: 'First Message',
   category: 'dating',
   description:
-    'Assess the habits behind your openers — specificity, warmth, and whether you invite a real reply.',
+    'Assess the habits behind your openers, specificity, warmth, and whether you invite a real reply.',
   whatItMeasures:
-    'First-message quality: personalization, low-pressure curiosity, and clarity — scored from your habits, not a pasted message AI scan (unless you use the Rizz Report).',
+    'First-message quality: personalization, low-pressure curiosity, and clarity, scored from your habits, not a pasted message AI scan (unless you use the Rizz Report).',
   minutes: 3,
   relatedSlugs: ['conversation-analyzer', 'rizz-test', 'dating-confidence-test'],
   faqs: SHARED_FAQS,

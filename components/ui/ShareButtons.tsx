@@ -12,7 +12,7 @@ type ShareButtonsProps = {
 };
 
 export function ShareButtons({
-  title = 'Rizz Assist — AI Look Analyzer',
+  title = 'Rizz Assist: AI Look Analyzer',
   text = 'Unlock your inner rizz with free AI style tips, pickup lines, and look analysis.',
   path = '/',
   className = '',
@@ -77,7 +77,7 @@ export function ShareButtons({
         LinkedIn
       </a>
       <a
-        href={`https://wa.me/?text=${encodeURIComponent(`${title} — ${url}`)}`}
+        href={`https://wa.me/?text=${encodeURIComponent(`${title}, ${url}`)}`}
         target="_blank"
         rel="noopener noreferrer"
         className={btn}

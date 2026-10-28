@@ -193,9 +193,11 @@ export function Footer() {
               <img
                 src="https://submitaitools.org/static_submitaitools/images/submitaitools.png"
                 alt="Submit AI Tools"
-                width={50}
-                height={20}
-                className="h-[20px] w-[50px] rounded-[10px]"
+                width={200}
+                height={60}
+                loading="lazy"
+                decoding="async"
+                className="h-auto w-[140px] rounded-[10px] object-contain"
               />
             </a>
             <a
@@ -208,9 +210,11 @@ export function Footer() {
               <img
                 src="https://liftoapp.com/badges/featured-light.svg"
                 alt="Featured on Lifto"
-                width={60}
-                height={30}
-                className="h-[30px] w-[60px]"
+                width={200}
+                height={54}
+                loading="lazy"
+                decoding="async"
+                className="h-auto w-[140px] object-contain"
               />
             </a>
           </div>

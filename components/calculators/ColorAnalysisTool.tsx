@@ -40,7 +40,7 @@ export function ColorAnalysisTool() {
   return (
     <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-6 dark:border-white/5 dark:bg-ink-800">
       <p className="text-sm text-gray-500 dark:text-white/50">
-        Soft color-season check for clothing presence — helps you pick colors that
+        Soft color-season check for clothing presence, helps you pick colors that
         support personality grooming in outfits and photos.
       </p>
 
@@ -48,10 +48,10 @@ export function ColorAnalysisTool() {
         <div className="mt-5 space-y-2">
           <p className="text-sm font-semibold text-gray-900 dark:text-white">Vein / jewelry feel?</p>
           <button type="button" onClick={() => setUndertone('warm')} className="w-full rounded-xl border px-4 py-3 text-left text-sm dark:border-white/10">
-            Warm — gold jewelry / greenish veins feel natural
+            Warm, gold jewelry / greenish veins feel natural
           </button>
           <button type="button" onClick={() => setUndertone('cool')} className="w-full rounded-xl border px-4 py-3 text-left text-sm dark:border-white/10">
-            Cool — silver jewelry / bluish veins feel natural
+            Cool, silver jewelry / bluish veins feel natural
           </button>
         </div>
       )}

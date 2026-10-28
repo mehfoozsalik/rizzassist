@@ -94,7 +94,7 @@ export function FaceShapeDetector() {
       const landmarks = detection.faceLandmarks?.[0];
       if (!landmarks?.length) {
         const message =
-          'No face detected. Upload a clear, front-facing photo with even light — hair off the forehead, no sunglasses.';
+          'No face detected. Upload a clear, front-facing photo with even light, hair off the forehead, no sunglasses.';
         setStatus('error');
         setError(message);
         toastUploadGuide('face');

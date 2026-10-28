@@ -42,7 +42,7 @@ export function AssessmentResults({ result, related, onRetake }: Props) {
             <p className="text-sm text-ink-600 dark:text-white/60">
               Your responses suggest an overall score of{' '}
               <strong className="text-ink-900 dark:text-white">{result.overall}/100</strong>. This
-              reflects current patterns — not a fixed identity.
+              reflects current patterns, not a fixed identity.
             </p>
             <p className="mt-2 text-xs text-ink-500 dark:text-white/40">
               Completed {new Date(result.completedAt).toLocaleDateString()}
@@ -108,7 +108,7 @@ export function AssessmentResults({ result, related, onRetake }: Props) {
       <section className="rounded-2xl border border-gray-100 bg-white p-6 dark:border-white/5 dark:bg-ink-900">
         <h3 className="text-lg font-bold text-ink-900 dark:text-white">How you can improve</h3>
         <p className="mt-1 text-sm text-ink-600 dark:text-white/50">
-          Recommendations based on your weakest and strongest dimensions — not generic tips.
+          Recommendations based on your weakest and strongest dimensions, not generic tips.
         </p>
         <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm text-ink-700 dark:text-white/70">
           {result.recommendations.map((rec, i) => (
@@ -131,7 +131,7 @@ export function AssessmentResults({ result, related, onRetake }: Props) {
             harder conversations.
           </li>
           <li>
-            • Retake this assessment in 2–4 weeks and compare scores in{' '}
+            • Retake this assessment in 2-4 weeks and compare scores in{' '}
             <Link href="/profile" className="font-semibold text-brand-600">
               My Profile
             </Link>

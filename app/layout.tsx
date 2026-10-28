@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/config";
 import { WebAppSchema } from "@/components/seo/SchemaMarkup";
 import { GoogleAnalytics } from "@/components/ui/GoogleAnalytics";
-import { InstallPrompt } from "@/components/ui/InstallPrompt";
 import { AppToaster } from "@/components/ui/AppToaster";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "./globals.css";
+
+const InstallPrompt = dynamic(
+  () =>
+    import("@/components/ui/InstallPrompt").then((m) => ({
+      default: m.InstallPrompt,
+    })),
+  { ssr: false }
+);
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,7 +29,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Rizz Assist — AI Rizz Coach | Pickup Lines, Style Tips & Look Analysis",
+      "Rizz Assist: AI Rizz Coach | Pickup Lines, Style Tips & Look Analysis",
     template: "%s | Rizz Assist",
   },
   description: SITE_DESCRIPTION,
@@ -52,7 +60,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Rizz Assist — AI Rizz Coach & Pickup Line Generator",
+    title: "Rizz Assist: AI Rizz Coach & Pickup Line Generator",
     description:
       "Upload a photo. Get pickup lines, style tips, shades recs, and your personal Rizz Score. Free. Instant. Private.",
     url: SITE_URL,
@@ -62,7 +70,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Rizz Assist — AI rizz coach for pickup lines, style tips, and look analysis",
+        alt: "Rizz Assist: AI rizz coach for pickup lines, style tips, and look analysis",
       },
     ],
     locale: "en_US",
@@ -70,7 +78,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rizz Assist — AI Rizz Coach & Pickup Line Generator",
+    title: "Rizz Assist: AI Rizz Coach & Pickup Line Generator",
     description:
       "Upload a photo. Get pickup lines, style tips, shades recs, and your personal Rizz Score. Free. Instant. Private.",
     images: ["/twitter-image.png"],

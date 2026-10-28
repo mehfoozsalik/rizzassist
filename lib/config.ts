@@ -5,7 +5,7 @@ export const SITE_URL =
 export const SITE_NAME = 'Rizz Assist';
 
 export const SITE_TAGLINE =
-  'Level Up Your Rizz — AI-Powered Style, Pickup Lines & Confidence Coach';
+  'Level Up Your Rizz: AI-Powered Style, Pickup Lines & Confidence Coach';
 
 export const SITE_DESCRIPTION =
   "Upload your photo and let Rizz Assist's AI analyze your look, suggest outfit upgrades, recommend shades, generate personalized pickup lines, and help you radiate confidence. Free. No login required.";

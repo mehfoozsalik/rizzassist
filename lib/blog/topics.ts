@@ -2,7 +2,7 @@ import type { BlogTopic } from './types';
 
 /**
  * Rotating topic pool for daily automation.
- * Inspiration links are references only — posts must be original AI writing.
+ * Inspiration links are references only, posts must be original AI writing.
  */
 export const BLOG_TOPICS: BlogTopic[] = [
   {
@@ -10,11 +10,11 @@ export const BLOG_TOPICS: BlogTopic[] = [
     titleHint: 'Eye Makeup 101: Find Your Eye Shape and What Flatters It',
     category: 'Grooming',
     angle:
-      'Long educational guide covering almond, round, monolid, hooded, deep-set, and upturned/downturned eyes with practical makeup and grooming tips. Include a clear “how to check in a selfie” section and combinations of tilt, depth, and spacing — similar depth to a Medium 101 guide, but original to Rizz Assist.',
+      'Long educational guide covering almond, round, monolid, hooded, deep-set, and upturned/downturned eyes with practical makeup and grooming tips. Include a clear “how to check in a selfie” section and combinations of tilt, depth, and spacing, similar depth to a Medium 101 guide, but original to Rizz Assist.',
     relatedToolHref: '/eye-shape-detector',
     relatedToolLabel: 'Detect Your Eye Shape',
     inspiration: {
-      title: 'Eye-Makeup 101: What is your eye shape? — 32 combinations',
+      title: 'Eye-Makeup 101: What is your eye shape?, 32 combinations',
       url: 'https://novaviibeauty.medium.com/eye-makeup-101-what-is-your-eye-shape-32-combinations-which-one-are-you-28b95371c0e0',
       author: 'Novavii',
       note: 'Topic inspiration for structure and educational depth only',
@@ -76,7 +76,7 @@ export const BLOG_TOPICS: BlogTopic[] = [
     titleHint: 'First Messages That Feel Natural (And Why Clever Often Fails)',
     category: 'Dating',
     angle:
-      'Break down opener structure, specificity, follow-ups, and when to suggest a plan — with examples and anti-patterns.',
+      'Break down opener structure, specificity, follow-ups, and when to suggest a plan, with examples and anti-patterns.',
     relatedToolHref: '/first-message-analyzer',
     relatedToolLabel: 'Analyze a First Message',
     imageQueries: [

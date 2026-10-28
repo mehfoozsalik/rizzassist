@@ -10,7 +10,7 @@ const PAGE_URL = `${SITE_URL}/face-shape-quiz`;
 export const metadata: Metadata = {
   title: 'Face Shape Quiz: Find Your Shape for Personality Grooming',
   description:
-    'Quick 3-question face shape quiz for hairstyle and presence tips. No photo needed — built for personality improvement and grooming.',
+    'Quick 3-question face shape quiz for hairstyle and presence tips. No photo needed, built for personality improvement and grooming.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: 'Face Shape Quiz | Rizz Assist',
@@ -28,7 +28,7 @@ export default function FaceShapeQuizPage() {
         <section className="bg-ink-900 px-4 py-12 text-center">
           <h1 className="text-3xl font-extrabold text-white">Face Shape Quiz</h1>
           <p className="mx-auto mt-3 max-w-lg text-white/65">
-            Three quick questions — get a grooming-focused face shape estimate.
+            Three quick questions, get a grooming-focused face shape estimate.
           </p>
         </section>
         <section className="mx-auto max-w-lg px-4 py-12">

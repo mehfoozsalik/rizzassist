@@ -6,7 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import { ToolsHub } from '@/components/assessments/ToolsHub';
 
 export const metadata: Metadata = {
-  title: 'Explore All Tools — Personality, Confidence & Appearance',
+  title: 'Explore All Tools: Personality, Confidence & Appearance',
   description:
     'Browse RizzAssist tools: personality tests, confidence assessments, social skills, rizz & dating quizzes, face shape, eye shape, and body calculators.',
   alternates: { canonical: `${SITE_URL}/tools` },

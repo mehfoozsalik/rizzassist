@@ -1,17 +1,38 @@
 'use client';
 
 import { useCallback, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { AlertCircle, Camera, ImagePlus, Loader2, RotateCcw, X } from 'lucide-react';
 import type { AnalysisResult } from '@/lib/types';
-import { AnalysisCard } from './AnalysisCard';
-import { getFaceLandmarker, getPoseLandmarker, landmarkDistance } from '@/lib/mediapipe';
 import { toastUploadGuide } from '@/lib/toast';
-import { CameraCapture } from '@/components/ui/CameraCapture';
+
+const AnalysisCard = dynamic(
+  () => import('./AnalysisCard').then((m) => ({ default: m.AnalysisCard })),
+  { ssr: false }
+);
+const CameraCapture = dynamic(
+  () =>
+    import('@/components/ui/CameraCapture').then((m) => ({
+      default: m.CameraCapture,
+    })),
+  { ssr: false }
+);
 
 const MAX_SIZE = 5 * 1024 * 1024;
 const MIN_SIZE = 10 * 1024;
 const ACCEPTED = ['image/jpeg', 'image/png', 'image/webp'];
+
+function landmarkDistance(
+  a: { x: number; y: number },
+  b: { x: number; y: number },
+  imageWidth: number,
+  imageHeight: number
+): number {
+  const dx = (a.x - b.x) * imageWidth;
+  const dy = (a.y - b.y) * imageHeight;
+  return Math.sqrt(dx * dx + dy * dy);
+}
 
 type Status = 'idle' | 'preview' | 'loading' | 'done' | 'error';
 
@@ -197,6 +218,7 @@ export function ImageUploader() {
       const h = img.naturalHeight;
 
       setLoadingStep('Loading AI models...');
+      const { getFaceLandmarker, getPoseLandmarker } = await import('@/lib/mediapipe');
       const [faceLandmarker, poseLandmarker] = await Promise.all([
         getFaceLandmarker(),
         getPoseLandmarker(),
@@ -211,7 +233,7 @@ export function ImageUploader() {
 
       if (!hasFace) {
         const message =
-          'No face detected. Upload a clear, well-lit photo of your face looking at the camera — avoid sunglasses, blur, group shots, or cropped images.';
+          'No face detected. Upload a clear, well-lit photo of your face looking at the camera, avoid sunglasses, blur, group shots, or cropped images.';
         toastUploadGuide('face');
         setStatus('error');
         setError(message);

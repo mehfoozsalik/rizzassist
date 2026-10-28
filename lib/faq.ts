@@ -7,12 +7,12 @@ export const FAQS: FaqEntry[] = [
   {
     question: "What is Rizz Assist?",
     answer:
-      "Rizz Assist is a free AI tool that analyzes your photo and gives you personalized pickup lines, style tips, shade recommendations, face orientation feedback, and confidence-building advice — all in one Rizz Report.",
+      "Rizz Assist is a free AI tool that analyzes your photo and gives you personalized pickup lines, style tips, shade recommendations, face orientation feedback, and confidence-building advice, all in one Rizz Report.",
   },
   {
     question: "Does it generate pickup lines?",
     answer:
-      "Yes. Based on your look, style, and the vibe you project, Rizz Assist generates original pickup lines tailored to you — not copy-paste clichés.",
+      "Yes. Based on your look, style, and the vibe you project, Rizz Assist generates original pickup lines tailored to you, not copy-paste clichés.",
   },
   {
     question: "Is my photo stored?",
@@ -27,7 +27,7 @@ export const FAQS: FaqEntry[] = [
   {
     question: "Can it really improve my rizz?",
     answer:
-      "It gives you the tools — better styling, confidence cues, and personalized lines. What you do with them is on you.",
+      "It gives you the tools: better styling, confidence cues, and personalized lines. What you do with them is on you.",
   },
 ];
 
@@ -43,12 +43,12 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "What is Rizz Assist?",
         answer:
-          "Rizz Assist is a free AI-powered tool that analyzes your photo and generates a personalized Rizz Report — including pickup lines, outfit suggestions, shades recommendations, face orientation tips, and confidence-building advice.",
+          "Rizz Assist is a free AI-powered tool that analyzes your photo and generates a personalized Rizz Report, including pickup lines, outfit suggestions, shades recommendations, face orientation tips, and confidence-building advice.",
       },
       {
         question: "Who is Rizz Assist for?",
         answer:
-          "Anyone who wants to level up their look, find better style direction, or get personalized opening lines. No experience needed — just upload a photo.",
+          "Anyone who wants to level up their look, find better style direction, or get personalized opening lines. No experience needed, just upload a photo.",
       },
       {
         question: "Is Rizz Assist free?",
@@ -63,12 +63,12 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "What do the personality and confidence tests measure?",
         answer:
-          "They score patterns across dimensions like confidence, communication, charisma, social awareness, and authenticity based on your answers. They are practical reflection tools — not clinical diagnoses.",
+          "They score patterns across dimensions like confidence, communication, charisma, social awareness, and authenticity based on your answers. They are practical reflection tools, not clinical diagnoses.",
       },
       {
         question: "How long do assessments take?",
         answer:
-          "Most take about 3–5 minutes. You answer one statement at a time with a progress indicator and can go back.",
+          "Most take about 3-5 minutes. You answer one statement at a time with a progress indicator and can go back.",
       },
       {
         question: "Can I retake assessments and track progress?",
@@ -93,17 +93,17 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "How does it generate pickup lines?",
         answer:
-          "Based on the vibe, confidence level, and style signals your photo projects, the AI crafts personalized pickup lines suited to your look — not generic templates.",
+          "Based on the vibe, confidence level, and style signals your photo projects, the AI crafts personalized pickup lines suited to your look, not generic templates.",
       },
       {
         question: "How does it recommend shades?",
         answer:
-          "The AI identifies your face shape from the photo and matches it against frame styles known to complement that structure — oval, square, heart, round, and others.",
+          "The AI identifies your face shape from the photo and matches it against frame styles known to complement that structure, oval, square, heart, round, and others.",
       },
       {
         question: "How accurate is the style analysis?",
         answer:
-          "The AI applies visual styling principles consistently and objectively. Treat results as strong guidance rather than absolute rules — personal taste always has a seat at the table.",
+          "The AI applies visual styling principles consistently and objectively. Treat results as strong guidance rather than absolute rules, personal taste always has a seat at the table.",
       },
     ],
   },
@@ -133,7 +133,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "Can AI really improve my rizz?",
         answer:
-          "It gives you the ingredients — better styling, the right shades, sharper angles, and personalized lines. Your rizz is the multiplier.",
+          "It gives you the ingredients: better styling, the right shades, sharper angles, and personalized lines. Your rizz is the multiplier.",
       },
       {
         question: "Should I use these pickup lines exactly as written?",
@@ -143,7 +143,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       {
         question: "Is this better than asking a friend?",
         answer:
-          "Faster, unfiltered, and available 24/7. A great complement to honest friends — not a replacement.",
+          "Faster, unfiltered, and available 24/7. A great complement to honest friends, not a replacement.",
       },
     ],
   },

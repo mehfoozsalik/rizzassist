@@ -220,7 +220,7 @@ export function EyeShapeDetector() {
       if (!landmarks || landmarks.length === 0) {
         setStatus('error');
         setError(
-          'No face or eyes detected. Upload a clear close-up of your face or eyes facing the camera — avoid sunglasses, dark photos, and extreme angles.'
+          'No face or eyes detected. Upload a clear close-up of your face or eyes facing the camera, avoid sunglasses, dark photos, and extreme angles.'
         );
         toastUploadGuide('eye');
         return;

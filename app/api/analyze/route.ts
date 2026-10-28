@@ -63,8 +63,8 @@ Tone: confident hype-man meets sophisticated style consultant, GQ-meets-your-mos
 
 INSTRUCTIONS:
 - Reference the detected face shape explicitly when recommending shades, hairstyles, clothing colors, and clothes.
-- ALWAYS include clothingColors (with real hex codes) and clothesSuggestions — these are required sections of the Rizz Report.
-- clothingColors: 4–5 specific wearable colors (tops, jackets, shirts) that flatter this face shape. Each must include name, hex (#RRGGBB), and a short why.
+- ALWAYS include clothingColors (with real hex codes) and clothesSuggestions, these are required sections of the Rizz Report.
+- clothingColors: 4-5 specific wearable colors (tops, jackets, shirts) that flatter this face shape. Each must include name, hex (#RRGGBB), and a short why.
 - clothesSuggestions: 5 concrete clothing items / outfits to wear (e.g. "navy crew-neck tee", "tailored charcoal blazer", "dark wash straight jeans") matched to face shape + body build.
 - Also fill dressColors and dressStyles as short string lists (colors + silhouettes/necklines).
 - Recommend haircut styles that suit the detected face shape.
@@ -217,7 +217,7 @@ function sanitize(raw: AnalysisResult, faceShapeHint = 'oval'): AnalysisResult {
   // If AI returned plain dressColors but no structured clothingColors, promote them
   if (!clothingColors.length && dressColors.length) {
     clothingColors = dressColors.slice(0, 4).map((line, i) => {
-      const name = line.split(/[:—-]/)[0]?.trim() || `Color ${i + 1}`;
+      const name = line.split(/[:, -]/)[0]?.trim() || `Color ${i + 1}`;
       return {
         name: name.slice(0, 32),
         hex: fallback.clothingColors[i % fallback.clothingColors.length].hex,
@@ -295,7 +295,7 @@ export async function POST(request: Request) {
       return Response.json(
         {
           error:
-            'No face detected. Upload a clear, well-lit photo of your face looking at the camera — avoid sunglasses, blur, or cropped shots.',
+            'No face detected. Upload a clear, well-lit photo of your face looking at the camera, avoid sunglasses, blur, or cropped shots.',
           code: 'NO_FACE',
         },
         { status: 422, headers: SEO_HEADERS }

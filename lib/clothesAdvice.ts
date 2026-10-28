@@ -41,7 +41,7 @@ export function fallbackClothesByFaceShape(faceShape: string): {
         'V-neck tees and shirts to lengthen the neckline',
         'Vertical-stripe or lightly patterned button-downs',
         'Structured jacket with slight shoulder definition',
-        'Straight or slim trousers — avoid extreme baggy fits',
+        'Straight or slim trousers, avoid extreme baggy fits',
         'Open collar or deeper neckline for evening looks',
       ],
     },

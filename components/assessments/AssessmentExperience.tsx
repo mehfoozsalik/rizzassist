@@ -118,7 +118,7 @@ export function AssessmentExperience({ definition }: { definition: AssessmentDef
             {
               step: '1',
               title: 'Answer',
-              text: 'Answer a series of statements about your behavior and preferences — one at a time.',
+              text: 'Answer a series of statements about your behavior and preferences, one at a time.',
             },
             {
               step: '2',

@@ -9,4 +9,4 @@ SEO: /sitemap.xml /robots.txt
 AI discovery: /llms.txt /llms-full.txt /ai.txt /aeo.txt /geo.txt
 
 /* THANKS */
-Built for practical self-improvement — personality, confidence, social skills, and appearance tools.
+Built for practical self-improvement, personality, confidence, social skills, and appearance tools.

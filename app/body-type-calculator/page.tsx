@@ -305,7 +305,7 @@ export default function BodyTypeCalculatorPage() {
                 >
                   bust-waist-hip shape tool
                 </Link>
-                {' '}— it covers ratios that overlap with how Kibbe body types assess silhouette and frame.
+                {' '}, it covers ratios that overlap with how Kibbe body types assess silhouette and frame.
               </p>
             </Reveal>
 

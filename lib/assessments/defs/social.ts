@@ -10,7 +10,7 @@ export const charismaTest: AssessmentDefinition = {
   description:
     'Discover how naturally engaging, confident, and socially magnetic your communication style is.',
   whatItMeasures:
-    'Charisma here means presence, warmth, expressiveness, and the ability to make others feel engaged — built from habits you can practice, not mystique.',
+    'Charisma here means presence, warmth, expressiveness, and the ability to make others feel engaged, built from habits you can practice, not mystique.',
   minutes: 4,
   relatedSlugs: ['social-skills-test', 'conversation-skills-test', 'confidence-test', 'personality-test'],
   faqs: SHARED_FAQS,
@@ -39,7 +39,7 @@ export const socialSkillsTest: AssessmentDefinition = {
   shortTitle: 'Social Skills',
   category: 'social',
   description:
-    'Assess everyday social skills — reading situations, including others, and navigating group dynamics.',
+    'Assess everyday social skills, reading situations, including others, and navigating group dynamics.',
   whatItMeasures:
     'Social skills cover situational awareness, manners under pressure, inclusion, and flexible conversation habits.',
   minutes: 4,
@@ -124,7 +124,7 @@ export const listeningSkillsTest: AssessmentDefinition = {
   shortTitle: 'Listening Skills',
   category: 'social',
   description:
-    'Evaluate how actively you listen — and whether people feel heard when they talk to you.',
+    'Evaluate how actively you listen, and whether people feel heard when they talk to you.',
   whatItMeasures:
     'Listening skills cover attention, reflection, curiosity, and resisting the urge to redirect every story to yourself.',
   minutes: 3,

@@ -45,8 +45,7 @@ export function FaceShapeCalculator() {
         className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-white/5 dark:bg-ink-800"
       >
         <p className="text-sm text-gray-500 dark:text-white/50">
-          Measure with a soft tape or string. Use the same unit for all four —
-          only ratios matter for personality grooming recommendations.
+          Measure with a soft tape or string. Use the same unit for all four, only ratios matter for personality grooming recommendations.
         </p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
           {FIELDS.map((f) => (

@@ -1,9 +1,9 @@
-# Rizz Assist (rizzassistgo.com) — llms.txt
+# Rizz Assist (rizzassistgo.com), llms.txt
 # Structured site summary for large language models and answer engines.
 # Spec-inspired: https://llmstxt.org/
 # Also see: /llms-full.txt /ai.txt /aeo.txt /geo.txt /sitemap.xml
 
-> Rizz Assist is a free AI rizz coach. Upload a photo to get personalized pickup lines, style upgrades, shade recommendations, and confidence tips — plus personality/confidence assessments and appearance calculators. No login required. Photos are never stored.
+> Rizz Assist is a free AI rizz coach. Upload a photo to get personalized pickup lines, style upgrades, shade recommendations, and confidence tips, plus personality/confidence assessments and appearance calculators. No login required. Photos are never stored.
 
 ## Primary pages
 

@@ -97,7 +97,7 @@ export default function BodyTypeFeaturePage() {
             </li>
             <li className="flex gap-2">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true" />
-              <span>BMI between 18.5–24.9 with shoulders at or wider than hips typically indicates a Mesomorph</span>
+              <span>BMI between 18.5-24.9 with shoulders at or wider than hips typically indicates a Mesomorph</span>
             </li>
             <li className="flex gap-2">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" aria-hidden="true" />

@@ -29,23 +29,23 @@ export interface FaceShapeProfile {
 export const FACE_SHAPE_PROFILES: FaceShapeProfile[] = [
   {
     shape: 'Oval',
-    tagline: 'Balanced proportions — your most versatile canvas',
+    tagline: 'Balanced proportions, your most versatile canvas',
     description:
       'Cheekbones are usually the widest point, with a gentle taper to a soft chin and face length about 1.5× width. Oval faces suit almost every style, so grooming becomes about intention, not correction.',
     traits: ['Cheekbones widest', 'Length ~1.5× width', 'Soft jaw taper'],
     hairstyles: [
-      'Most cuts work — pick one that matches your personality energy',
+      'Most cuts work, pick one that matches your personality energy',
       'Medium layers or a clean fade for everyday confidence',
       'Side parts and curtain bangs both land well',
     ],
     glasses: ['Wayfarer', 'Aviator', 'Rectangular', 'Oval'],
     grooming: [
-      'Keep brows tidy but natural — oval already has balance',
+      'Keep brows tidy but natural, oval already has balance',
       'Beard: short boxed or light stubble frames without hiding the oval line',
       'Skincare glow matters more than contouring for presence',
     ],
     personalityPresence: [
-      'Lean into approachability — soft eye contact and open posture',
+      'Lean into approachability, soft eye contact and open posture',
       'Your face reads as balanced; let outfits and voice carry edge if you want it',
       'Photo tip: slight three-quarter angle still looks polished',
     ],
@@ -53,7 +53,7 @@ export const FACE_SHAPE_PROFILES: FaceShapeProfile[] = [
   },
   {
     shape: 'Round',
-    tagline: 'Soft curves — style that adds definition and length',
+    tagline: 'Soft curves, style that adds definition and length',
     description:
       'Width and length are nearly equal with soft jaw curves and full cheeks. Grooming that adds vertical lines helps your presence read sharper and more intentional.',
     traits: ['Width ≈ length', 'Full cheeks', 'Soft jaw curves'],
@@ -70,14 +70,14 @@ export const FACE_SHAPE_PROFILES: FaceShapeProfile[] = [
     ],
     personalityPresence: [
       'Use height in hair and vertical outfit lines to project polish',
-      'Stand tall — posture multiplies the elongating effect of your cut',
-      'Smile freely; soft features read warm — pair with crisp clothing for contrast',
+      'Stand tall, posture multiplies the elongating effect of your cut',
+      'Smile freely; soft features read warm, pair with crisp clothing for contrast',
     ],
     avoid: ['Ultra-round frames that echo cheek width', 'Flat hair with zero crown height'],
   },
   {
     shape: 'Square',
-    tagline: 'Strong angles — soften with contrast for magnetic presence',
+    tagline: 'Strong angles, soften with contrast for magnetic presence',
     description:
       'Forehead, cheekbones, and jaw are similar in width with a defined angular jaw. Softening styles create contrast and keep your presence powerful without looking severe.',
     traits: ['Equal widths', 'Angular jaw', 'Width ≈ length'],
@@ -93,7 +93,7 @@ export const FACE_SHAPE_PROFILES: FaceShapeProfile[] = [
       'Keep sideburns neat so the jaw remains intentional, not harsh',
     ],
     personalityPresence: [
-      'Your bone structure already signals confidence — soften with approachable expression',
+      'Your bone structure already signals confidence, soften with approachable expression',
       'Pair structured clothes with relaxed fabric (knit, linen) for balance',
       'Camera tip: slight smile reduces severity in still photos',
     ],
@@ -101,7 +101,7 @@ export const FACE_SHAPE_PROFILES: FaceShapeProfile[] = [
   },
   {
     shape: 'Heart',
-    tagline: 'Wide forehead, delicate chin — balance the silhouette',
+    tagline: 'Wide forehead, delicate chin, balance the silhouette',
     description:
       'Prominent forehead and high cheekbones taper to a narrower chin. Styles that add width at the jaw and soft volume near the chin create proportional harmony.',
     traits: ['Forehead widest', 'High cheekbones', 'Narrow chin'],
@@ -112,12 +112,12 @@ export const FACE_SHAPE_PROFILES: FaceShapeProfile[] = [
     ],
     glasses: ['Aviator', 'Bottom-heavy frames', 'Cat-Eye', 'Wayfarer'],
     grooming: [
-      'Brows not too thin at the outer edge — keep gentle fullness',
+      'Brows not too thin at the outer edge, keep gentle fullness',
       'Beard: fuller at the chin/cheeks to balance a narrower jaw',
       'Highlight mid-face; keep forehead makeup/matte so it doesn’t dominate',
     ],
     personalityPresence: [
-      'Your upper face draws attention — use eye contact and expressive brows',
+      'Your upper face draws attention, use eye contact and expressive brows',
       'Necklines and collars that widen the lower frame help outfit balance',
       'Lead with warmth; heart shapes often read expressive and engaging',
     ],
@@ -125,7 +125,7 @@ export const FACE_SHAPE_PROFILES: FaceShapeProfile[] = [
   },
   {
     shape: 'Diamond',
-    tagline: 'Striking cheekbones — frame temples and chin for balance',
+    tagline: 'Striking cheekbones, frame temples and chin for balance',
     description:
       'Narrow forehead and jaw with wide, prominent cheekbones. Volume at temples and soft width at the chin balances the standout mid-face.',
     traits: ['Cheekbones prominent', 'Narrow forehead', 'Pointed chin'],
@@ -136,12 +136,12 @@ export const FACE_SHAPE_PROFILES: FaceShapeProfile[] = [
     ],
     glasses: ['Oval', 'Cat-Eye', 'Rimless', 'Butterfly'],
     grooming: [
-      'Brows with soft peaks — don’t over-arch into severity',
+      'Brows with soft peaks, don’t over-arch into severity',
       'Beard: light fullness at the chin to widen a pointed jaw',
       'Makeup/contour: soften cheek apex; bring light to forehead and chin',
     ],
     personalityPresence: [
-      'High cheekbones read memorable — keep grooming precise, not busy',
+      'High cheekbones read memorable, keep grooming precise, not busy',
       'Minimal jewelry near the cheeks lets bone structure speak',
       'Confident stillness photographs well; avoid over-posing',
     ],
@@ -149,7 +149,7 @@ export const FACE_SHAPE_PROFILES: FaceShapeProfile[] = [
   },
   {
     shape: 'Oblong',
-    tagline: 'Elongated lines — add width and break vertical length',
+    tagline: 'Elongated lines, add width and break vertical length',
     description:
       'Face length exceeds width with relatively straight sides. Horizontal volume, bangs, and wider frames interrupt length and create a more grounded look.',
     traits: ['Length >> width', 'Straight sides', 'Minimal taper'],
@@ -173,9 +173,9 @@ export const FACE_SHAPE_PROFILES: FaceShapeProfile[] = [
   },
   {
     shape: 'Triangle',
-    tagline: 'Strong jaw base — build presence upward',
+    tagline: 'Strong jaw base, build presence upward',
     description:
-      'Widest at the jaw and narrower at the forehead — the inverse of heart. Volume at the crown and styles that widen the upper face create balance.',
+      'Widest at the jaw and narrower at the forehead, the inverse of heart. Volume at the crown and styles that widen the upper face create balance.',
     traits: ['Jaw widest', 'Narrow forehead', 'Bottom-heavy'],
     hairstyles: [
       'Volume and texture at the crown and temples',
@@ -189,7 +189,7 @@ export const FACE_SHAPE_PROFILES: FaceShapeProfile[] = [
       'Highlight forehead/temples; matte the jaw area in photos if using makeup',
     ],
     personalityPresence: [
-      'Your jaw already signals strength — soften with open expression',
+      'Your jaw already signals strength, soften with open expression',
       'Structured shoulders and open collars balance a wider lower face',
       'Lead with listening energy so strength doesn’t read as intensity',
     ],
@@ -248,7 +248,7 @@ export function detectFaceShapeFromLandmarks(
   return { shape: classifyFaceShape(measurements), measurements };
 }
 
-/** Manual calculator from four tape measurements (cm or inches — ratio only). */
+/** Manual calculator from four tape measurements (cm or inches, ratio only). */
 export function classifyFromManualMeasurements(input: {
   forehead: number;
   cheekbones: number;

@@ -165,7 +165,7 @@ export function StyleTryOn({ mode }: { mode: Mode }) {
             Upload a selfie to preview {mode === 'hairstyle' ? 'hairstyles' : 'glasses'}
           </p>
           <p className="mt-1 text-sm text-gray-500">
-            Illustration overlay aligned to your face — private, on-device, free.
+            Illustration overlay aligned to your face, private, on-device, free.
           </p>
           <button
             type="button"
@@ -200,7 +200,7 @@ export function StyleTryOn({ mode }: { mode: Mode }) {
           </div>
           {shape && profile && (
             <p className="text-center text-sm text-gray-600 dark:text-white/60">
-              Detected <strong className="text-brand-600">{shape}</strong> — {profile.tagline}
+              Detected <strong className="text-brand-600">{shape}</strong>, {profile.tagline}
             </p>
           )}
           <div className="flex flex-wrap justify-center gap-2">

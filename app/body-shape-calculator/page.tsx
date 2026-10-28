@@ -16,7 +16,7 @@ const PAGE_URL = `${SITE_URL}/body-shape-calculator`;
 export const metadata: Metadata = {
   title: 'Body Shape Calculator for Men & Women | Free Body Figure Calculator',
   description:
-    'Free body shape calculator for men and women. Enter chest/bust, waist, and hip measurements to find your body figure — hourglass, pear, apple, rectangle, or inverted triangle — with style tips.',
+    'Free body shape calculator for men and women. Enter chest/bust, waist, and hip measurements to find your body figure, hourglass, pear, apple, rectangle, or inverted triangle, with style tips.',
   keywords: [
     'body shape calculator',
     'body shape calculator male',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Body Shape Calculator for Men & Women | Free Body Figure Calculator | Rizz Assist',
     description:
-      'Free body shape calculator for men and women. Enter chest/bust, waist, and hip measurements to find your body figure — hourglass, pear, apple, rectangle, or inverted triangle — with style tips.',
+      'Free body shape calculator for men and women. Enter chest/bust, waist, and hip measurements to find your body figure, hourglass, pear, apple, rectangle, or inverted triangle, with style tips.',
     url: PAGE_URL,
     siteName: SITE_NAME,
     images: [
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Body Shape Calculator for Men & Women | Free Body Figure Calculator | Rizz Assist',
     description:
-      'Free body shape calculator for men and women. Enter chest/bust, waist, and hip measurements to find your body figure — hourglass, pear, apple, rectangle, or inverted triangle — with style tips.',
+      'Free body shape calculator for men and women. Enter chest/bust, waist, and hip measurements to find your body figure, hourglass, pear, apple, rectangle, or inverted triangle, with style tips.',
     images: ['/twitter-image.png'],
   },
 };
@@ -69,7 +69,7 @@ const FAQ_ITEMS = [
   {
     question: 'Does this body shape calculator work for men?',
     answer:
-      'Yes. Men use the same chest, waist, and hip ratios — enter chest instead of bust. Common male results include inverted triangle, rectangle, and oval/apple proportions, with style tips that fit menswear cuts.',
+      'Yes. Men use the same chest, waist, and hip ratios, enter chest instead of bust. Common male results include inverted triangle, rectangle, and oval/apple proportions, with style tips that fit menswear cuts.',
   },
   {
     question: 'What is a body figure calculator?',
@@ -165,7 +165,7 @@ export default function BodyShapeCalculatorPage() {
                 A body shape calculator (or body figure calculator) maps your
                 chest/bust, waist, and hip proportions to a silhouette:
                 Hourglass, Pear, Apple, Rectangle, or Inverted Triangle. It
-                works for men and women — men typically enter chest instead of
+                works for men and women, men typically enter chest instead of
                 bust. Unlike body type (metabolism and muscle gain), body shape
                 is about proportion, and it&apos;s the most useful signal when
                 choosing flattering cuts, necklines, and silhouettes.

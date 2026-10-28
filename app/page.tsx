@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import {
   Flame,
@@ -21,15 +22,34 @@ import { FAQS } from "@/lib/faq";
 import { FaqSchema } from "@/components/seo/SchemaMarkup";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { ImageUploader } from "@/components/ui/ImageUploader";
 import { AnimatedHero } from "@/components/ui/AnimatedHero";
 import { ShareButtons } from "@/components/ui/ShareButtons";
 import { Reveal } from "@/components/ui/Reveal";
 
+const ImageUploader = dynamic(
+  () =>
+    import("@/components/ui/ImageUploader").then((m) => ({
+      default: m.ImageUploader,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        className="mx-auto flex min-h-[280px] w-full max-w-2xl animate-pulse flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-200 bg-white dark:border-white/10 dark:bg-ink-800"
+        aria-hidden="true"
+      >
+        <div className="h-16 w-16 rounded-2xl bg-gray-100 dark:bg-ink-700" />
+        <div className="mt-5 h-4 w-56 rounded bg-gray-100 dark:bg-ink-700" />
+        <div className="mt-2 h-3 w-40 rounded bg-gray-100 dark:bg-ink-700" />
+      </div>
+    ),
+  }
+);
+
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Rizz Assist — AI Rizz Coach | Pickup Lines, Style Tips & Look Analysis",
+      "Rizz Assist: AI Rizz Coach | Pickup Lines, Style Tips & Look Analysis",
   },
   description:
     "Upload your photo and let Rizz Assist's AI analyze your look, suggest outfit upgrades, recommend shades, generate personalized pickup lines, and help you radiate confidence. Free. No login required.",
@@ -47,7 +67,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: SITE_URL },
   openGraph: {
-    title: "Rizz Assist — AI Rizz Coach & Pickup Line Generator",
+    title: "Rizz Assist: AI Rizz Coach & Pickup Line Generator",
     description:
       "Upload a photo. Get pickup lines, style tips, shades recs, and your personal Rizz Score. Free. Instant. Private.",
     url: SITE_URL,
@@ -57,14 +77,14 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Rizz Assist — AI rizz coach for pickup lines, style tips, and look analysis",
+        alt: "Rizz Assist: AI rizz coach for pickup lines, style tips, and look analysis",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rizz Assist — AI Rizz Coach & Pickup Line Generator",
+    title: "Rizz Assist: AI Rizz Coach & Pickup Line Generator",
     description:
       "Upload a photo. Get pickup lines, style tips, shades recs, and your personal Rizz Score. Free. Instant. Private.",
     images: ["/twitter-image.png"],
@@ -102,7 +122,7 @@ const STEPS = [
   {
     icon: ImagePlus,
     title: "Upload your photo",
-    text: "Use a clear, well-lit selfie or full-body shot — the more Rizz Assist can see, the better the feedback.",
+    text: "Use a clear, well-lit selfie or full-body shot. The more Rizz Assist can see, the better the feedback.",
   },
   {
     icon: BarChart3,
@@ -127,7 +147,7 @@ const CAPABILITIES = [
     title: "Personalized Pickup Lines",
     href: null as string | null,
     cta: null as string | null,
-    text: "AI generates lines matched to your look and the vibe you project — not generic openers.",
+    text: "AI generates lines matched to your look and the vibe you project, not generic openers.",
   },
   {
     icon: Shirt,
@@ -217,8 +237,7 @@ export default function HomePage() {
                 Explore Your Personality
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-500 dark:text-white/50">
-                Free assessments that help you enhance your personality —
-                covering confidence, charisma, and rizz, with a combined improvement report.
+                Free assessments that help you enhance your personality. Cover confidence, charisma, and rizz, then open a combined improvement report.
               </p>
             </Reveal>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -289,7 +308,7 @@ export default function HomePage() {
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-500 dark:text-white/50">
                 Personalized pickup lines, style upgrades, shades matched to your
-                face, and confidence tips — plus free calculators for body type,
+                face, and confidence tips, plus free calculators for body type,
                 body shape, and eye shape.
               </p>
             </Reveal>
@@ -352,32 +371,34 @@ export default function HomePage() {
                 How Rizz Assist Works
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-500 dark:text-white/50">
-                Four steps from photo to full-on swagger — the same path that
+                Four steps from photo to full-on swagger. It is the same path that
                 helps you unlock your inner rizz with AI in under a minute.
               </p>
             </Reveal>
 
-            <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <ol className="mt-12 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {STEPS.map((step, i) => (
-                <Reveal key={step.title} delay={i * 0.08}>
-                  <li className="relative h-full rounded-2xl border border-gray-100 bg-white p-6 transition-shadow hover:shadow-md dark:border-white/5 dark:bg-ink-900 dark:hover:shadow-black/30">
-                    <span className="absolute -top-3.5 left-5 flex h-7 w-7 items-center justify-center rounded-full bg-ink-900 text-xs font-bold text-white shadow-sm dark:bg-ink-700">
-                      {i + 1}
-                    </span>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600/10">
-                      <step.icon
-                        className="h-5 w-5 text-brand-600"
-                        aria-hidden="true"
-                      />
+                <li key={step.title} className="h-full">
+                  <Reveal delay={i * 0.08} className="h-full">
+                    <div className="relative h-full rounded-2xl border border-gray-100 bg-white p-6 transition-shadow hover:shadow-md dark:border-white/5 dark:bg-ink-900 dark:hover:shadow-black/30">
+                      <span className="absolute -top-3.5 left-5 flex h-7 w-7 items-center justify-center rounded-full bg-ink-900 text-xs font-bold text-white shadow-sm dark:bg-ink-700">
+                        {i + 1}
+                      </span>
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600/10">
+                        <step.icon
+                          className="h-5 w-5 text-brand-600"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <p className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
+                        {step.title}
+                      </p>
+                      <p className="mt-1.5 text-sm leading-relaxed text-gray-600 dark:text-white/55">
+                        {step.text}
+                      </p>
                     </div>
-                    <p className="mt-4 text-sm font-semibold text-gray-900 dark:text-white">
-                      {step.title}
-                    </p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-gray-500 dark:text-white/50">
-                      {step.text}
-                    </p>
-                  </li>
-                </Reveal>
+                  </Reveal>
+                </li>
               ))}
             </ol>
 

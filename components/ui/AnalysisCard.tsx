@@ -204,7 +204,7 @@ function buildPdfSections(content: AnalysisResult) {
     },
     {
       title: 'Score Breakdown',
-      lines: (content.scores ?? []).map((s) => `${s.label}: ${s.score}/100 — ${s.note}`),
+      lines: (content.scores ?? []).map((s) => `${s.label}: ${s.score}/100, ${s.note}`),
     },
     { title: 'Best Clothing Colors', lines: (content.clothingColors ?? []).map((c) => `${c.name} (${c.hex}): ${c.why}`) },
     { title: 'Clothes to Wear', lines: content.clothesSuggestions ?? [] },

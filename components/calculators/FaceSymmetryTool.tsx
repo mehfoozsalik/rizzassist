@@ -58,7 +58,7 @@ export function FaceSymmetryTool() {
     <div className="mx-auto max-w-xl">
       <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-white/5 dark:bg-ink-800">
         <p className="text-sm text-gray-500 dark:text-white/50">
-          This is a <strong>balance check for grooming</strong> — not an attractiveness
+          This is a <strong>balance check for grooming</strong>, not an attractiveness
           score. Use it to notice lighting, brow tidy-up, or hair parting that
           improves how balanced you look in photos.
         </p>
@@ -99,10 +99,10 @@ export function FaceSymmetryTool() {
             <p className="mt-1 text-4xl font-extrabold text-brand-300">{score}</p>
             <p className="mt-3 text-sm text-white/65">
               {score >= 80
-                ? 'Strong balance — keep grooming even (brows, sideburns, parting).'
+                ? 'Strong balance, keep grooming even (brows, sideburns, parting).'
                 : score >= 60
                   ? 'Good balance. Soft lighting and even brows usually lift photo presence.'
-                  : 'Try retaking with straight head posture and even light — then tidy brows/hair parting.'}
+                  : 'Try retaking with straight head posture and even light, then tidy brows/hair parting.'}
             </p>
           </div>
         )}

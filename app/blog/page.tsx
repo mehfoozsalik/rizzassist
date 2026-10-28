@@ -10,10 +10,10 @@ import { getAllPosts } from '@/lib/blog/posts';
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Rizz Assist Blog — Style, Confidence, Pickup Lines & Grooming Guides',
+    absolute: 'Rizz Assist Blog: Style, Confidence, Pickup Lines & Grooming Guides',
   },
   description:
-    'Free guides on pickup lines, style upgrades, social confidence, face shape grooming, dating communication, and photo setup — from the Rizz Assist AI coach.',
+    'Free guides on pickup lines, style upgrades, social confidence, face shape grooming, dating communication, and photo setup, from the Rizz Assist AI coach.',
   keywords: [
     'rizz tips',
     'pickup line guide',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
-    title: 'Rizz Assist Blog — Style, Confidence & Grooming Guides',
+    title: 'Rizz Assist Blog: Style, Confidence & Grooming Guides',
     description:
       'Practical guides on pickup lines, style, confidence, face shape, and dating communication.',
     url: `${SITE_URL}/blog`,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rizz Assist Blog — Style, Confidence & Grooming Guides',
+    title: 'Rizz Assist Blog: Style, Confidence & Grooming Guides',
     description:
       'Practical guides on pickup lines, style, confidence, face shape, and dating communication.',
     images: ['/twitter-image.png'],
@@ -65,7 +65,7 @@ export default async function BlogIndexPage() {
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-white/65">
             Practical guides for style, confidence, pickup lines, face shape
-            grooming, and dating communication — so you show up with intention.
+            grooming, and dating communication, so you show up with intention.
           </p>
         </section>
         <section className="bg-cream-50 px-4 py-14 dark:bg-ink-800" aria-label="Blog posts">

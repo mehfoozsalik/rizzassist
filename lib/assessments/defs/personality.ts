@@ -10,7 +10,7 @@ export const personalityTest: AssessmentDefinition = {
   description:
     'Discover your personality traits, communication style, social strengths, and areas for improvement with our AI-powered assessment.',
   whatItMeasures:
-    'The RizzAssist Personality Assessment looks at how you communicate, show up socially, and approach relationships across confidence, authenticity, awareness, and emotional skills. It is a practical reflection tool — not a clinical personality inventory.',
+    'The RizzAssist Personality Assessment looks at how you communicate, show up socially, and approach relationships across confidence, authenticity, awareness, and emotional skills. It is a practical reflection tool, not a clinical personality inventory.',
   minutes: 5,
   relatedSlugs: ['confidence-test', 'communication-style-test', 'charisma-test', 'emotional-intelligence-test'],
   faqs: [
@@ -56,7 +56,7 @@ export const communicationStyleTest: AssessmentDefinition = {
   shortTitle: 'Communication Style',
   category: 'personality',
   description:
-    'Understand how you express yourself, listen, and connect — and where your style helps or holds you back.',
+    'Understand how you express yourself, listen, and connect, and where your style helps or holds you back.',
   whatItMeasures:
     'This assessment maps your communication habits: clarity, listening, emotional tone, and conversational balance. Results suggest style preferences, not fixed labels.',
   minutes: 4,
@@ -91,7 +91,7 @@ export const selfAwarenessTest: AssessmentDefinition = {
   description:
     'See how clearly you understand your habits, triggers, strengths, and social impact on others.',
   whatItMeasures:
-    'Self-awareness here means recognizing your patterns under social pressure — energy, emotions, and how others may experience you. It is reflective, not diagnostic.',
+    'Self-awareness here means recognizing your patterns under social pressure, energy, emotions, and how others may experience you. It is reflective, not diagnostic.',
   minutes: 4,
   relatedSlugs: ['personality-test', 'emotional-intelligence-test', 'confidence-test'],
   faqs: SHARED_FAQS,
@@ -118,7 +118,7 @@ export const emotionalIntelligenceTest: AssessmentDefinition = {
   shortTitle: 'Emotional Intelligence',
   category: 'personality',
   description:
-    'Assess how well you recognize emotions in yourself and others — and how you respond under social pressure.',
+    'Assess how well you recognize emotions in yourself and others, and how you respond under social pressure.',
   whatItMeasures:
     'This tool reflects everyday emotional skills: noticing feelings, regulating reactions, and responding with empathy. It is not a clinical EQ diagnosis.',
   minutes: 4,

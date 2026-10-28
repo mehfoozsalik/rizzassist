@@ -10,7 +10,7 @@ const PAGE_URL = `${SITE_URL}/try-on`;
 export const metadata: Metadata = {
   title: 'Style Try-On: Hairstyles & Glasses on Your Photo',
   description:
-    'Free private try-on for hairstyles and glasses. Preview grooming looks on your selfie — on-device AI, no login. Built for personality improvement.',
+    'Free private try-on for hairstyles and glasses. Preview grooming looks on your selfie, on-device AI, no login. Built for personality improvement.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: 'Style Try-On | Rizz Assist',
@@ -28,8 +28,7 @@ export default function TryOnHubPage() {
         <section className="bg-ink-900 px-4 py-14 text-center">
           <h1 className="text-3xl font-extrabold text-white sm:text-4xl">Style Try-On</h1>
           <p className="mx-auto mt-4 max-w-xl text-white/65">
-            Preview hairstyles and glasses on your own photo before you commit —
-            private, free, and focused on how you present yourself.
+            Preview hairstyles and glasses on your own photo before you commit, private, free, and focused on how you present yourself.
           </p>
         </section>
         <section className="bg-cream-50 px-4 py-14 dark:bg-ink-800">

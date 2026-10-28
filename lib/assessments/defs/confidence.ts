@@ -8,7 +8,7 @@ export const confidenceTest: AssessmentDefinition = {
   shortTitle: 'Confidence',
   category: 'confidence',
   description:
-    'Discover how confident you feel in social situations — and which habits quietly drain or boost that confidence.',
+    'Discover how confident you feel in social situations, and which habits quietly drain or boost that confidence.',
   whatItMeasures:
     'This assessment looks at social confidence: initiating, recovering from awkwardness, self-trust, and presence. Scores reflect current patterns, not a fixed identity.',
   minutes: 4,

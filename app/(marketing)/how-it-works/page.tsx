@@ -7,12 +7,12 @@ import { Reveal } from '@/components/ui/Reveal';
 export const metadata: Metadata = {
   title: {
     absolute:
-      'How Rizz Assist Works — AI Pickup Lines, Style & Look Analysis Explained',
+      'How Rizz Assist Works: AI Pickup Lines, Style & Look Analysis Explained',
   },
   description:
     "Learn how Rizz Assist's AI analyzes your photo to generate pickup lines, style tips, shade recommendations, and face orientation feedback in seconds. No login required.",
   openGraph: {
-    title: 'How Rizz Assist Works — AI Pickup Lines, Style & Look Analysis Explained',
+    title: 'How Rizz Assist Works: AI Pickup Lines, Style & Look Analysis Explained',
     description:
       "Learn how Rizz Assist's AI analyzes your photo to generate pickup lines, style tips, shade recommendations, and face orientation feedback in seconds. No login required.",
     url: `${SITE_URL}/how-it-works`,
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'How Rizz Assist Works — AI Pickup Lines, Style & Look Analysis Explained',
+    title: 'How Rizz Assist Works: AI Pickup Lines, Style & Look Analysis Explained',
     description:
       "Learn how Rizz Assist's AI analyzes your photo to generate pickup lines, style tips, shade recommendations, and face orientation feedback in seconds.",
   },

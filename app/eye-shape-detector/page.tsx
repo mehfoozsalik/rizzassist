@@ -15,7 +15,7 @@ const PAGE_URL = `${SITE_URL}/eye-shape-detector`;
 export const metadata: Metadata = {
   title: 'AI Eye Shape Analyzer & Chart: Find Your Eye Shape Free',
   description:
-    'Free AI eye shape analyzer and detector. Upload a photo to identify your eye shape from the full chart — almond, hooded, monolid, and more — plus makeup tips for your eyes. No login.',
+    'Free AI eye shape analyzer and detector. Upload a photo to identify your eye shape from the full chart, almond, hooded, monolid, and more, plus makeup tips for your eyes. No login.',
   keywords: [
     'AI eye shape analyzer',
     'ai eye shape detector',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AI Eye Shape Analyzer & Chart: Find Your Eye Shape Free | Rizz Assist',
     description:
-      'Free AI eye shape analyzer and detector. Upload a photo to identify your eye shape from the full chart — almond, hooded, monolid, and more — plus makeup tips for your eyes. No login.',
+      'Free AI eye shape analyzer and detector. Upload a photo to identify your eye shape from the full chart, almond, hooded, monolid, and more, plus makeup tips for your eyes. No login.',
     url: PAGE_URL,
     siteName: SITE_NAME,
     images: [
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI Eye Shape Analyzer & Chart: Find Your Eye Shape Free | Rizz Assist',
     description:
-      'Free AI eye shape analyzer and detector. Upload a photo to identify your eye shape from the full chart — almond, hooded, monolid, and more — plus makeup tips for your eyes. No login.',
+      'Free AI eye shape analyzer and detector. Upload a photo to identify your eye shape from the full chart, almond, hooded, monolid, and more, plus makeup tips for your eyes. No login.',
     images: ['/twitter-image.png'],
   },
 };
@@ -139,8 +139,7 @@ export default function EyeShapeDetectorPage() {
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-base text-white/65">
                 Free AI eye shape scanner: upload a close-up photo and our
-                detector identifies your eye shape from the full chart —
-                almond, round, hooded, monolid, and more — with makeup tips
+                detector identifies your eye shape from the full chart, almond, round, hooded, monolid, and more, with makeup tips
                 made for your eyes.
               </p>
             </Reveal>
@@ -160,7 +159,7 @@ export default function EyeShapeDetectorPage() {
               <p className="mt-3 text-gray-600 dark:text-white/60">
                 An AI eye shape analyzer (or eye shape detector/scanner) reads
                 lid structure, crease depth, corner tilt, and spacing from a
-                photo — one of the biggest factors in whether a makeup look
+                photo, one of the biggest factors in whether a makeup look
                 suits you. Our tool matches your face against a full eye type
                 chart with 10 categories and returns tailored eyeliner,
                 eyeshadow, and color recommendations. Whether you want to find

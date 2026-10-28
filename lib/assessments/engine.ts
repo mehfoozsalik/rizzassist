@@ -16,7 +16,7 @@ export const LIKERT_OPTIONS = [
 
 const REC_BANK: Partial<Record<DimensionId, string[]>> = {
   confidence: [
-    'Practice speaking 10% slower in your next three conversations — calm pacing often reads as confidence.',
+    'Practice speaking 10% slower in your next three conversations, calm pacing often reads as confidence.',
     'Before social events, prepare two open questions you can ask anyone; preparation reduces freeze.',
     'Stand with both feet planted and shoulders open for 30 seconds before introductions.',
   ],
@@ -26,17 +26,17 @@ const REC_BANK: Partial<Record<DimensionId, string[]>> = {
     'Summarize what you heard in one sentence before giving advice.',
   ],
   charisma: [
-    'Lead with genuine curiosity — one specific compliment or observation beats rehearsed lines.',
+    'Lead with genuine curiosity, one specific compliment or observation beats rehearsed lines.',
     'Use people’s names once in conversation; it raises engagement without feeling forced.',
     'Match energy lightly: if they are calm, don’t over-hype; if animated, smile and lean in.',
   ],
   socialAwareness: [
     'Watch for exit cues (short answers, looking away) and offer a graceful pause or topic change.',
-    'Notice volume and proximity — dial both down slightly in quiet settings.',
+    'Notice volume and proximity, dial both down slightly in quiet settings.',
     'In groups, invite quieter people in with a direct, low-pressure question.',
   ],
   emotionalIntelligence: [
-    'Name your feeling privately before reacting (“I’m annoyed”) — naming reduces overreaction.',
+    'Name your feeling privately before reacting (“I’m annoyed”), naming reduces overreaction.',
     'Ask “Do you want ideas or just someone to listen?” before problem-solving.',
     'Journal one social interaction daily: what you felt, what they might have felt.',
   ],
@@ -52,7 +52,7 @@ const REC_BANK: Partial<Record<DimensionId, string[]>> = {
   ],
   datingConfidence: [
     'Send one low-stakes message that shows curiosity, not performance, today.',
-    'Plan date ideas you’d enjoy even if chemistry is average — authenticity reduces pressure.',
+    'Plan date ideas you’d enjoy even if chemistry is average, authenticity reduces pressure.',
     'After a rejection or silence, write one learning note, then move on within 24 hours.',
   ],
   listening: [
@@ -61,8 +61,8 @@ const REC_BANK: Partial<Record<DimensionId, string[]>> = {
     'Reflect emotion (“that sounds frustrating”) before content.',
   ],
   selfAwareness: [
-    'Rate your energy 1–10 before social plans and choose environments that fit.',
-    'Ask a trusted friend for one strength and one blind spot — write both down.',
+    'Rate your energy 1-10 before social plans and choose environments that fit.',
+    'Ask a trusted friend for one strength and one blind spot, write both down.',
     'After tough talks, note your default reaction pattern without judging it.',
   ],
 };
@@ -139,7 +139,7 @@ export function buildRecommendations(dimensions: DimensionScore[], limit = 6): s
   const top = [...dimensions].sort((a, b) => b.score - a.score)[0];
   if (top && top.score >= 75) {
     picks.unshift(
-      `Lean into your ${top.label.toLowerCase()} (${top.score}/100) — it’s already a social advantage; use it deliberately this week.`
+      `Lean into your ${top.label.toLowerCase()} (${top.score}/100), it’s already a social advantage; use it deliberately this week.`
     );
   }
   return picks.slice(0, limit);
@@ -149,5 +149,5 @@ export function interpretationFor(score: number): string {
   if (score >= 85) return 'a clear strength in your current profile';
   if (score >= 70) return 'a solid area with room to refine under pressure';
   if (score >= 55) return 'a developing area that improves quickly with deliberate practice';
-  return 'an opportunity area — small weekly habits can move this noticeably';
+  return 'an opportunity area, small weekly habits can move this noticeably';
 }
