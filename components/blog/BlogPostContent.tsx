@@ -1,6 +1,37 @@
 import Image from 'next/image';
 import type { BlogBlock, BlogPost } from '@/lib/blog/types';
 
+/** Render plain text with optional markdown links: [label](https://...). */
+function LinkedText({ text }: { text: string }) {
+  const parts: React.ReactNode[] = [];
+  const re = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g;
+  let last = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+
+  while ((match = re.exec(text)) !== null) {
+    if (match.index > last) {
+      parts.push(text.slice(last, match.index));
+    }
+    parts.push(
+      <a
+        key={`lnk-${key++}`}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-brand-600 underline underline-offset-2 hover:text-brand-500"
+      >
+        {match[1]}
+      </a>
+    );
+    last = match.index + match[0].length;
+  }
+
+  if (last < text.length) parts.push(text.slice(last));
+  if (!parts.length) return <>{text}</>;
+  return <>{parts}</>;
+}
+
 function BlockView({ block }: { block: BlogBlock }) {
   switch (block.type) {
     case 'heading':
@@ -18,12 +49,14 @@ function BlockView({ block }: { block: BlogBlock }) {
       );
     case 'paragraph':
       return (
-        <p className="mt-5 text-base leading-relaxed text-gray-700 dark:text-white/70">{block.text}</p>
+        <p className="mt-5 text-base leading-relaxed text-gray-700 dark:text-white/70">
+          <LinkedText text={block.text} />
+        </p>
       );
     case 'quote':
       return (
         <blockquote className="mt-8 border-l-4 border-brand-500 pl-4 text-lg italic leading-relaxed text-gray-800 dark:text-white/80">
-          {block.text}
+          <LinkedText text={block.text} />
         </blockquote>
       );
     case 'list': {
@@ -35,7 +68,9 @@ function BlockView({ block }: { block: BlogBlock }) {
           }`}
         >
           {block.items.map((item) => (
-            <li key={item.slice(0, 48)}>{item}</li>
+            <li key={item.slice(0, 48)}>
+              <LinkedText text={item} />
+            </li>
           ))}
         </Tag>
       );
@@ -103,7 +138,9 @@ export function BlogPostContent({ post }: { post: BlogPost }) {
   return (
     <div className="mt-8 space-y-5 text-base leading-relaxed text-gray-700 dark:text-white/70">
       {post.content.map((para) => (
-        <p key={para.slice(0, 24)}>{para}</p>
+        <p key={para.slice(0, 24)}>
+          <LinkedText text={para} />
+        </p>
       ))}
     </div>
   );

@@ -6,6 +6,13 @@ import {
 } from './images';
 import { pickDailyTopic } from './topics';
 import {
+  buildMakeupFaceAiBacklinkPrompt,
+  partnerLinksToReferences,
+  pickMakeupFaceAiLinksForTopic,
+  shouldIncludeMakeupFaceAiBacklinks,
+  type PartnerBacklink,
+} from './partnerBacklinks';
+import {
   appendGeneratedPost,
   commitGeneratedIndexToGitHub,
   readGeneratedIndex,
@@ -85,7 +92,16 @@ function normalizeHeading(h: string): string {
   return h.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 }
 
-function buildBlocks(payload: GeneratedPayload, images: BlogImage[]): BlogBlock[] {
+function bodyHasPartnerLinks(payload: GeneratedPayload, links: PartnerBacklink[]): boolean {
+  const blob = JSON.stringify(payload);
+  return links.some((l) => blob.includes(l.url));
+}
+
+function buildBlocks(
+  payload: GeneratedPayload,
+  images: BlogImage[],
+  partnerLinks?: PartnerBacklink[]
+): BlogBlock[] {
   const blocks: BlogBlock[] = [];
   const cover = images.find((i) => i.role === 'cover') || images[0];
   const inline = images.filter((i) => i !== cover);
@@ -148,6 +164,26 @@ function buildBlocks(payload: GeneratedPayload, images: BlogImage[]): BlogBlock[
     }
   });
 
+  // Guarantee partner links appear even if the model omitted them
+  if (partnerLinks?.length && !bodyHasPartnerLinks(payload, partnerLinks)) {
+    blocks.push({
+      type: 'heading',
+      level: 2,
+      text: 'Complementary makeup tools worth trying',
+    });
+    blocks.push({
+      type: 'paragraph',
+      text: 'If you want a makeup-focused follow-up after the Rizz Assist tips above, these free MakeUp Face Ai resources pair well without replacing your style or confidence work here.',
+    });
+    for (const link of partnerLinks) {
+      const note = link.note ? ` (${link.note.toLowerCase()})` : '';
+      blocks.push({
+        type: 'paragraph',
+        text: `Try the [${link.anchorText}](${link.url})${note}.`,
+      });
+    }
+  }
+
   return blocks;
 }
 
@@ -184,7 +220,10 @@ function resolveAuthor(
   };
 }
 
-async function requestLongFormPost(topic: BlogTopic): Promise<GeneratedPayload> {
+async function requestLongFormPost(
+  topic: BlogTopic,
+  partnerLinks?: PartnerBacklink[]
+): Promise<GeneratedPayload> {
   const inspirationBlock = topic.inspiration
     ? `Optional inspiration (do NOT copy wording or unique examples):
 - Title: ${topic.inspiration.title}
@@ -192,6 +231,11 @@ async function requestLongFormPost(topic: BlogTopic): Promise<GeneratedPayload> 
 - Author: ${topic.inspiration.author || 'unknown'}
 If you lean on this inspiration for structure or ideas, set usedInspiration=true. Otherwise false.`
     : 'No external inspiration for this topic. Set usedInspiration=false.';
+
+  const partnerBlock =
+    partnerLinks && partnerLinks.length > 0
+      ? `\n\n${buildMakeupFaceAiBacklinkPrompt(partnerLinks)}\n`
+      : '';
 
   const system = `You write long blog posts for Rizz Assist (rizzassistgo.com), an AI rizz coach for style, confidence, dating communication, and appearance tools.
 
@@ -220,6 +264,7 @@ Angle: ${topic.angle}
 Related tool: ${topic.relatedToolLabel || 'none'} (${topic.relatedToolHref || 'n/a'})
 
 ${inspirationBlock}
+${partnerBlock}
 
 Requirements:
 - About 1,400 to 2,200 words across sections (aim for an 8 to 12 minute read)
@@ -235,6 +280,7 @@ Requirements:
 - readMinutes: integer estimate
 - usedInspiration: boolean
 - Absolutely no em dashes or en dashes anywhere in the JSON strings
+- When partner backlinks are required, put markdown links inside paragraph strings, e.g. "Try the [eye shape detector on MakeUp Face Ai](https://makeupfaceai.com/tools/eye-shape-detector/)."
 
 JSON shape:
 {
@@ -379,11 +425,18 @@ export async function generateDailyBlog(options?: {
   }
 
   const topic = pickDailyTopic(index.topicHistory, date);
-  const payload = await requestLongFormPost(topic);
+  const includePartnerLinks = shouldIncludeMakeupFaceAiBacklinks(index.posts.length);
+  const partnerLinks = includePartnerLinks
+    ? pickMakeupFaceAiLinksForTopic(topic)
+    : undefined;
+
+  const payload = await requestLongFormPost(topic, partnerLinks);
   const briefs = await requestImageBriefs(topic, payload);
   const images = await fetchBlogImagesFromBriefs(briefs, topic.imageQueries);
-  const blocks = buildBlocks(payload, images);
-  const { author, references } = resolveAuthor(topic, payload.usedInspiration);
+  const blocks = buildBlocks(payload, images, partnerLinks);
+  const { author, references: baseRefs } = resolveAuthor(topic, payload.usedInspiration);
+  const partnerRefs = partnerLinks ? partnerLinksToReferences(partnerLinks) : [];
+  const references = [...baseRefs, ...partnerRefs];
   const imageCredits = toImageCredits(images);
   const cover = images.find((i) => i.role === 'cover') || images[0];
 
@@ -405,6 +458,7 @@ export async function generateDailyBlog(options?: {
     references,
     imageCredits,
     generated: true,
+    includesPartnerBacklinks: includePartnerLinks || undefined,
     relatedToolHref: topic.relatedToolHref,
     relatedToolLabel: topic.relatedToolLabel,
   };

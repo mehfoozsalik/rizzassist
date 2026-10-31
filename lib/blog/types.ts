@@ -60,6 +60,8 @@ export type BlogPost = {
   imageCredits?: BlogImageCredit[];
   /** True when created by the daily DeepSeek automation. */
   generated?: boolean;
+  /** True when this post includes MakeUp Face Ai partner backlinks (every 4th generated post). */
+  includesPartnerBacklinks?: boolean;
   relatedToolHref?: string;
   relatedToolLabel?: string;
 };
