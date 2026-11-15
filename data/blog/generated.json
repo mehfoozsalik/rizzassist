@@ -1,6 +1,366 @@
 {
   "posts": [
     {
+      "slug": "photo-setup-guide-face-eye-ai-tools-20261115",
+      "title": "Photo Setup Guide for Face & Eye AI Tools",
+      "excerpt": "Better photos mean better AI results. Learn lighting, angle, and expression tips to get cleaner advice from face shape and eye shape detectors.",
+      "category": "How-to",
+      "date": "2026-11-15",
+      "readMinutes": 10,
+      "content": [
+        "You upload a selfie to a face shape detector or an eye shape analyzer, and the advice comes back feeling off. Maybe it says your face is rounder than it is, or your eyes look less almond than they do in the mirror. Before you blame the AI, check your photo. Most bad results come from bad input, not bad algorithms.",
+        "These tools measure proportions: the width of your jaw relative to your cheekbones, the tilt of your eye axis, the distance between your pupils. If lighting flattens your features or your hair covers half your face, the tool has to guess. Your job is to give it a clean, honest photo so the measurements line up with what you see every day.",
+        "This guide walks through the setup that consistently gets cleaner results: lighting, angle, hair, expression, and resolution. You'll also get a quick self-check routine and a list of common mistakes with fixes. By the end you'll know how to take a photo that works for both face shape and eye shape tools, plus try-ons for hair and glasses.",
+        "Lighting decides whether the tool sees your bone structure or a flat blob. Soft, even light from the front brings out the contours of your face without harsh shadows. Hard light from the side or above carves deep shadows under your cheekbones and nose, which can trick a face shape detector into thinking your face is longer or more angular than it is.",
+        "The best free setup is a window during daytime. Stand facing the window, about an arm's length away, with the light hitting you directly. Avoid direct sun: it squints your eyes and blows out highlights. An overcast day or a sheer curtain gives you soft, diffused light that's close to ideal.",
+        "If you're shooting at night, use a ring light or a soft lamp placed in front of you at eye level. Avoid overhead lights that cast shadows down your face, and avoid colored lights (blue, red, purple) because they can confuse skin tone detection and eye color analysis. Neutral white light is your friend.",
+        "Face shape and eye shape tools work best when your head is straight and your camera is at eye level. Tilting your chin down or up changes the apparent length of your face and the visibility of your eyelids. A high angle (camera above you) makes your forehead look bigger and your jaw smaller. A low angle does the opposite. Both distort the proportions the tool is trying to read.",
+        "Hold your phone at eye level, directly in front of you. Keep your nose pointing straight at the camera, not turned to the side. For eye shape detection, you want both eyes fully visible and looking straight ahead. For face shape, you want your full jawline and hairline in frame, so the tool can trace your outline.",
+        "A simple trick: set your phone on a shelf or stack of books at eye level, set a 5-second timer, and step back. That removes the slight tilt you get from holding the phone yourself.",
+        "Hair frames your face, which is great for photos but bad for measurement. If your hair covers your forehead, cheeks, or jawline, the tool has to guess where your face actually ends. That can skew face shape results toward oval or heart when you might be square or oblong.",
+        "Pull your hair back for the detection shot. Use a headband, clips, or a hair tie to keep it off your face and forehead. If you have bangs, pin them back or to the side. If you have a beard, that's fine, but make sure it's not covering your jawline in a way that hides your actual bone structure. The goal is to show the tool your real outline.",
+        "Once you have your base measurements, you can take a second photo with your hair down to test try-on styles. But for the initial detection, clarity wins.",
+        "A big smile changes everything: your cheeks lift, your eyes narrow, your jaw shifts. That's great for a profile pic, but it's terrible for measurement. Face shape tools need your neutral resting face to read your jawline and cheekbones accurately. Eye shape tools need your eyes open at a natural width, not squinting from a smile.",
+        "Relax your face completely. Let your lips close gently without pressing them together. Keep your eyes open normally, looking straight at the camera lens. Don't widen your eyes or raise your eyebrows. Think of the expression you'd have while reading a book.",
+        "If you're unsure, take three shots: one neutral, one slight smile, one big smile. Use the neutral one for detection, and keep the others for try-on comparisons.",
+        "AI tools need detail. A blurry, low-resolution selfie gives the algorithm less to work with, which leads to vague or incorrect results. Use your phone's main rear camera if you can, or the front camera in good light. Avoid zooming in digitally; instead, move closer or crop later.",
+        "Frame your head and shoulders so your entire face is in the shot with a little breathing room around it. Don't crop off the top of your head or your chin. For eye tools, make sure both eyes are clearly visible and not covered by hair or glasses glare. If you wear glasses, consider taking them off for eye shape detection, or tilt them slightly to avoid reflections.",
+        "A good rule: the image should be at least 1000 pixels wide on the face area. Most modern phones deliver that easily. Just avoid sending a screenshot of a screenshot.",
+        "Before you upload to any tool, run this quick routine. It takes two minutes and saves you from misleading results.",
+        "Step 1: Find your light. Stand facing a window or set a soft lamp in front of you. Check for shadows under your nose or eyes. If you see them, adjust until the light is even.",
+        "Step 2: Set your phone at eye level. Use a shelf or stack of books. Set a timer so you're not holding it.",
+        "Step 3: Pull your hair back and relax your face. Take one neutral shot.",
+        "Step 4: Review the photo on your phone. Zoom in on your jawline and eyes. Are they clear? Is your hair out of the way? Is the lighting even? If not, retake.",
+        "Step 5: Upload to the tool. If you're testing a new style, take a second photo with your hair down or with glasses, but keep the neutral one as your baseline.",
+        "Even with good intentions, little things sneak in. Here are the most common photo mistakes that throw off face and eye AI tools, and how to correct them fast.",
+        "Mistake 1: Using a filtered selfie. Beauty filters smooth skin and reshape features, which defeats the purpose. Fix: turn off all filters and use the raw camera app.",
+        "Mistake 2: Backlighting. If you're in front of a window with the light behind you, your face goes dark. Fix: turn around so the light hits your face.",
+        "Mistake 3: Tilting your head. A slight tilt feels natural but skews measurements. Fix: keep your head straight and look directly at the lens.",
+        "Mistake 4: Hair covering one eye. This is especially bad for eye shape tools. Fix: pin back any strands that fall over your eyes.",
+        "Mistake 5: Too far away. If your face is small in the frame, the tool has fewer pixels to work with. Fix: move closer or crop the image so your face fills more of the frame.",
+        "You don't need a studio. You need consistent, honest photos. Start with one good neutral shot taken in daylight with your hair pulled back. Use that as your baseline for any face or eye tool. Then, when you want to test styles, take additional shots with different hair or accessories, but always compare them to the baseline.",
+        "Remember that the goal is useful advice, not a perfect portrait. The AI is a mirror: it reflects what you give it. Give it clarity, and it will give you specific, actionable feedback on your face shape, eye shape, and style choices.",
+        "Ready to see the difference? Try the [Face Shape Detection](https://rizzassistgo.com/face-shape-detector) with your new setup and compare the results. You'll likely notice more precise guidance and better style suggestions."
+      ],
+      "author": "Rizz Assist",
+      "coverImage": "https://images.unsplash.com/photo-1786038474785-32769a3582eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTA2NTU5fDB8MXxzZWFyY2h8OHx8d29tYW4lMjBmYWNpbmclMjBjYW1lcmElMjB3aW5kb3clMjBsaWdodHxlbnwxfDB8fHwxNzk0NzU1MTUzfDA&ixlib=rb-4.1.0&q=80&w=1080&w=1400&q=80",
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Why Your Photo Setup Makes or Breaks AI Face and Eye Tools"
+        },
+        {
+          "type": "paragraph",
+          "text": "You upload a selfie to a face shape detector or an eye shape analyzer, and the advice comes back feeling off. Maybe it says your face is rounder than it is, or your eyes look less almond than they do in the mirror. Before you blame the AI, check your photo. Most bad results come from bad input, not bad algorithms."
+        },
+        {
+          "type": "paragraph",
+          "text": "These tools measure proportions: the width of your jaw relative to your cheekbones, the tilt of your eye axis, the distance between your pupils. If lighting flattens your features or your hair covers half your face, the tool has to guess. Your job is to give it a clean, honest photo so the measurements line up with what you see every day."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide walks through the setup that consistently gets cleaner results: lighting, angle, hair, expression, and resolution. You'll also get a quick self-check routine and a list of common mistakes with fixes. By the end you'll know how to take a photo that works for both face shape and eye shape tools, plus try-ons for hair and glasses."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Good input = more accurate advice",
+            "Bad input = confusing or generic advice",
+            "The fix is usually 2 minutes of setup, not a new phone"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Lighting: The Single Biggest Factor"
+        },
+        {
+          "type": "paragraph",
+          "text": "Lighting decides whether the tool sees your bone structure or a flat blob. Soft, even light from the front brings out the contours of your face without harsh shadows. Hard light from the side or above carves deep shadows under your cheekbones and nose, which can trick a face shape detector into thinking your face is longer or more angular than it is."
+        },
+        {
+          "type": "paragraph",
+          "text": "The best free setup is a window during daytime. Stand facing the window, about an arm's length away, with the light hitting you directly. Avoid direct sun: it squints your eyes and blows out highlights. An overcast day or a sheer curtain gives you soft, diffused light that's close to ideal."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you're shooting at night, use a ring light or a soft lamp placed in front of you at eye level. Avoid overhead lights that cast shadows down your face, and avoid colored lights (blue, red, purple) because they can confuse skin tone detection and eye color analysis. Neutral white light is your friend."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Face a window during the day for soft, even light",
+            "At night, put a soft light in front of you at eye level",
+            "Avoid overheads, side shadows, and colored bulbs"
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "If you can see a shadow under your nose, the tool will see it too, and it might measure it."
+        },
+        {
+          "type": "image",
+          "src": "https://images.unsplash.com/photo-1687834208116-6180b0a4c92f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTA2NTU5fDB8MXxzZWFyY2h8Mnx8cmluZyUyMGxpZ2h0JTIwc2VsZmllJTIwcGhvbmUlMjB0cmlwb2R8ZW58MXwwfHx8MTc5NDc1NTE1NHww&ixlib=rb-4.1.0&q=80&w=1080&w=1400&q=80",
+          "alt": "A person holds a smartphone on a tripod with a ring light attached, taking a selfie in a well-lit room.",
+          "caption": "Photo by NATHAN MULLET on Unsplash",
+          "photographer": "NATHAN MULLET",
+          "photographerUrl": "https://unsplash.com/@nate072107?utm_source=rizzassist&utm_medium=referral",
+          "photoUrl": "https://unsplash.com/photos/a-man-taking-a-picture-of-a-woman-using-a-cell-phone-Z-NcGJMj2do?utm_source=rizzassist&utm_medium=referral"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Angle: Keep It Neutral and Straight-On"
+        },
+        {
+          "type": "paragraph",
+          "text": "Face shape and eye shape tools work best when your head is straight and your camera is at eye level. Tilting your chin down or up changes the apparent length of your face and the visibility of your eyelids. A high angle (camera above you) makes your forehead look bigger and your jaw smaller. A low angle does the opposite. Both distort the proportions the tool is trying to read."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hold your phone at eye level, directly in front of you. Keep your nose pointing straight at the camera, not turned to the side. For eye shape detection, you want both eyes fully visible and looking straight ahead. For face shape, you want your full jawline and hairline in frame, so the tool can trace your outline."
+        },
+        {
+          "type": "paragraph",
+          "text": "A simple trick: set your phone on a shelf or stack of books at eye level, set a 5-second timer, and step back. That removes the slight tilt you get from holding the phone yourself."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Camera at eye level, head straight",
+            "No tilting chin up or down",
+            "Face the camera directly, not at an angle"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Hair: Get It Out of the Way"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hair frames your face, which is great for photos but bad for measurement. If your hair covers your forehead, cheeks, or jawline, the tool has to guess where your face actually ends. That can skew face shape results toward oval or heart when you might be square or oblong."
+        },
+        {
+          "type": "paragraph",
+          "text": "Pull your hair back for the detection shot. Use a headband, clips, or a hair tie to keep it off your face and forehead. If you have bangs, pin them back or to the side. If you have a beard, that's fine, but make sure it's not covering your jawline in a way that hides your actual bone structure. The goal is to show the tool your real outline."
+        },
+        {
+          "type": "paragraph",
+          "text": "Once you have your base measurements, you can take a second photo with your hair down to test try-on styles. But for the initial detection, clarity wins."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Pull hair off your face and forehead",
+            "Pin back bangs",
+            "Keep beards neat so jawline is visible"
+          ]
+        },
+        {
+          "type": "image",
+          "src": "https://images.unsplash.com/photo-1461198350017-435221f909bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTA2NTU5fDB8MXxzZWFyY2h8Mnx8aGFpciUyMHB1bGxlZCUyMGJhY2slMjBjbGVhbiUyMGZhY2V8ZW58MXwwfHx8MTc5NDc1NTE1NHww&ixlib=rb-4.1.0&q=80&w=1080&w=1400&q=80",
+          "alt": "Close-up of a person with hair pulled back, showing a clear, unobstructed view of their face.",
+          "caption": "Photo by Tyler McRobert on Unsplash",
+          "photographer": "Tyler McRobert",
+          "photographerUrl": "https://unsplash.com/@tylermcrobert?utm_source=rizzassist&utm_medium=referral",
+          "photoUrl": "https://unsplash.com/photos/person-showing-red-hair-Rn0rzGxPedM?utm_source=rizzassist&utm_medium=referral"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Expression: Relaxed Neutral Beats Smiling"
+        },
+        {
+          "type": "paragraph",
+          "text": "A big smile changes everything: your cheeks lift, your eyes narrow, your jaw shifts. That's great for a profile pic, but it's terrible for measurement. Face shape tools need your neutral resting face to read your jawline and cheekbones accurately. Eye shape tools need your eyes open at a natural width, not squinting from a smile."
+        },
+        {
+          "type": "paragraph",
+          "text": "Relax your face completely. Let your lips close gently without pressing them together. Keep your eyes open normally, looking straight at the camera lens. Don't widen your eyes or raise your eyebrows. Think of the expression you'd have while reading a book."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you're unsure, take three shots: one neutral, one slight smile, one big smile. Use the neutral one for detection, and keep the others for try-on comparisons."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Neutral, relaxed face for detection",
+            "Lips gently closed, eyes normally open",
+            "Save smiles for after you have your measurements"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Resolution and Framing: Give the Tool Enough Pixels"
+        },
+        {
+          "type": "paragraph",
+          "text": "AI tools need detail. A blurry, low-resolution selfie gives the algorithm less to work with, which leads to vague or incorrect results. Use your phone's main rear camera if you can, or the front camera in good light. Avoid zooming in digitally; instead, move closer or crop later."
+        },
+        {
+          "type": "paragraph",
+          "text": "Frame your head and shoulders so your entire face is in the shot with a little breathing room around it. Don't crop off the top of your head or your chin. For eye tools, make sure both eyes are clearly visible and not covered by hair or glasses glare. If you wear glasses, consider taking them off for eye shape detection, or tilt them slightly to avoid reflections."
+        },
+        {
+          "type": "paragraph",
+          "text": "A good rule: the image should be at least 1000 pixels wide on the face area. Most modern phones deliver that easily. Just avoid sending a screenshot of a screenshot."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use rear camera or good front camera",
+            "Frame full face with space around it",
+            "Avoid digital zoom and heavy filters"
+          ]
+        },
+        {
+          "type": "image",
+          "src": "https://images.unsplash.com/photo-1710528925809-8f91d349283e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTA2NTU5fDB8MXxzZWFyY2h8MTB8fG5ldXRyYWwlMjBleHByZXNzaW9uJTIwaGVhZHNob3QlMjBkYXlsaWdodHxlbnwxfDB8fHwxNzk0NzU1MTU0fDA&ixlib=rb-4.1.0&q=80&w=1080&w=1400&q=80",
+          "alt": "A headshot of a person with a relaxed, neutral expression, lit by natural daylight.",
+          "caption": "Photo by Blaire Harmon on Unsplash",
+          "photographer": "Blaire Harmon",
+          "photographerUrl": "https://unsplash.com/@bharmon?utm_source=rizzassist&utm_medium=referral",
+          "photoUrl": "https://unsplash.com/photos/a-close-up-of-a-person-with-long-hair-6cs3MHO-yOU?utm_source=rizzassist&utm_medium=referral"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to Check Yourself: A 5-Step Practice Routine"
+        },
+        {
+          "type": "paragraph",
+          "text": "Before you upload to any tool, run this quick routine. It takes two minutes and saves you from misleading results."
+        },
+        {
+          "type": "paragraph",
+          "text": "Step 1: Find your light. Stand facing a window or set a soft lamp in front of you. Check for shadows under your nose or eyes. If you see them, adjust until the light is even."
+        },
+        {
+          "type": "paragraph",
+          "text": "Step 2: Set your phone at eye level. Use a shelf or stack of books. Set a timer so you're not holding it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Step 3: Pull your hair back and relax your face. Take one neutral shot."
+        },
+        {
+          "type": "paragraph",
+          "text": "Step 4: Review the photo on your phone. Zoom in on your jawline and eyes. Are they clear? Is your hair out of the way? Is the lighting even? If not, retake."
+        },
+        {
+          "type": "paragraph",
+          "text": "Step 5: Upload to the tool. If you're testing a new style, take a second photo with your hair down or with glasses, but keep the neutral one as your baseline."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Light check: no harsh shadows",
+            "Angle check: camera at eye level, head straight",
+            "Hair check: face and forehead clear",
+            "Expression check: neutral and relaxed",
+            "Resolution check: sharp and well-framed"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Common Mistakes and How to Fix Them"
+        },
+        {
+          "type": "paragraph",
+          "text": "Even with good intentions, little things sneak in. Here are the most common photo mistakes that throw off face and eye AI tools, and how to correct them fast."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mistake 1: Using a filtered selfie. Beauty filters smooth skin and reshape features, which defeats the purpose. Fix: turn off all filters and use the raw camera app."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mistake 2: Backlighting. If you're in front of a window with the light behind you, your face goes dark. Fix: turn around so the light hits your face."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mistake 3: Tilting your head. A slight tilt feels natural but skews measurements. Fix: keep your head straight and look directly at the lens."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mistake 4: Hair covering one eye. This is especially bad for eye shape tools. Fix: pin back any strands that fall over your eyes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mistake 5: Too far away. If your face is small in the frame, the tool has fewer pixels to work with. Fix: move closer or crop the image so your face fills more of the frame."
+        },
+        {
+          "type": "list",
+          "items": [
+            "No filters",
+            "Front lighting, not backlighting",
+            "Head straight, eyes clear",
+            "Face fills the frame"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Your Action Plan: Clean Photos, Better Advice"
+        },
+        {
+          "type": "paragraph",
+          "text": "You don't need a studio. You need consistent, honest photos. Start with one good neutral shot taken in daylight with your hair pulled back. Use that as your baseline for any face or eye tool. Then, when you want to test styles, take additional shots with different hair or accessories, but always compare them to the baseline."
+        },
+        {
+          "type": "paragraph",
+          "text": "Remember that the goal is useful advice, not a perfect portrait. The AI is a mirror: it reflects what you give it. Give it clarity, and it will give you specific, actionable feedback on your face shape, eye shape, and style choices."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ready to see the difference? Try the [Face Shape Detection](https://rizzassistgo.com/face-shape-detector) with your new setup and compare the results. You'll likely notice more precise guidance and better style suggestions."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Take one baseline neutral photo in daylight",
+            "Use it for all detection tools",
+            "Retake if lighting or angle changes"
+          ]
+        }
+      ],
+      "references": [],
+      "imageCredits": [
+        {
+          "photographer": "Konrad Nowacki",
+          "photographerUrl": "https://unsplash.com/@knowacki?utm_source=rizzassist&utm_medium=referral",
+          "photoUrl": "https://unsplash.com/photos/young-woman-looking-at-camera-by-a-sunlit-window-9IB0ipN745A?utm_source=rizzassist&utm_medium=referral",
+          "alt": "A woman sits facing the camera directly, soft window light illuminating her face evenly, neutral background."
+        },
+        {
+          "photographer": "NATHAN MULLET",
+          "photographerUrl": "https://unsplash.com/@nate072107?utm_source=rizzassist&utm_medium=referral",
+          "photoUrl": "https://unsplash.com/photos/a-man-taking-a-picture-of-a-woman-using-a-cell-phone-Z-NcGJMj2do?utm_source=rizzassist&utm_medium=referral",
+          "alt": "A person holds a smartphone on a tripod with a ring light attached, taking a selfie in a well-lit room."
+        },
+        {
+          "photographer": "Tyler McRobert",
+          "photographerUrl": "https://unsplash.com/@tylermcrobert?utm_source=rizzassist&utm_medium=referral",
+          "photoUrl": "https://unsplash.com/photos/person-showing-red-hair-Rn0rzGxPedM?utm_source=rizzassist&utm_medium=referral",
+          "alt": "Close-up of a person with hair pulled back, showing a clear, unobstructed view of their face."
+        },
+        {
+          "photographer": "Blaire Harmon",
+          "photographerUrl": "https://unsplash.com/@bharmon?utm_source=rizzassist&utm_medium=referral",
+          "photoUrl": "https://unsplash.com/photos/a-close-up-of-a-person-with-long-hair-6cs3MHO-yOU?utm_source=rizzassist&utm_medium=referral",
+          "alt": "A headshot of a person with a relaxed, neutral expression, lit by natural daylight."
+        }
+      ],
+      "generated": true,
+      "relatedToolHref": "/face-shape-detector",
+      "relatedToolLabel": "Try Face Shape Detection"
+    },
+    {
       "slug": "eyebrow-grooming-presence-practical-guide-20261114",
       "title": "Eyebrow Grooming for Presence: A Practical Guide",
       "excerpt": "Eyebrow grooming that boosts presence: natural thickness norms, stray cleanup, what to tell a barber, and how brows frame eye contact.",
@@ -8340,6 +8700,7 @@
     }
   ],
   "topicHistory": [
+    "photo-setup-face-tools",
     "eyebrow-grooming-presence",
     "communication-styles",
     "first-message-dating",
@@ -8350,8 +8711,7 @@
     "glasses-for-face-shape",
     "dating-first-impressions",
     "color-analysis-wardrobe",
-    "charisma-conversation",
-    "photo-setup-face-tools"
+    "charisma-conversation"
   ],
-  "lastGeneratedDate": "2026-11-14"
+  "lastGeneratedDate": "2026-11-15"
 }
