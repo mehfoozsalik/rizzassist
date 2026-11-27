@@ -7,6 +7,7 @@ import {
   isRateLimit,
 } from '@/lib/deepseekServer';
 import { generateDailyBlog } from '@/lib/blog/generator';
+import { blogger } from '@/lib/tools/blogger';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -32,6 +33,18 @@ function isAuthorized(req: NextRequest): boolean {
 async function handle(req: NextRequest) {
   if (!isAuthorized(req)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401, headers: SEO_HEADERS });
+  }
+
+  if (!blogger) {
+    return NextResponse.json(
+      {
+        ok: true,
+        created: false,
+        skipped: true,
+        reason: 'Paused: set blogger to true in lib/tools/blogger.ts',
+      },
+      { headers: SEO_HEADERS }
+    );
   }
 
   if (!process.env.DEEPSEEK_API_KEY?.trim()) {

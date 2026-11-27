@@ -5,6 +5,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import { generateDailyBlog } from '../lib/blog/generator';
+import { blogger } from '../lib/tools/blogger';
 
 /** Load .env / .env.local without adding a dotenv dependency. */
 async function loadEnvFiles() {
@@ -34,6 +35,10 @@ async function loadEnvFiles() {
 
 async function main() {
   await loadEnvFiles();
+  if (!blogger) {
+    console.log('Skipped: blogger is false in lib/tools/blogger.ts');
+    process.exit(0);
+  }
   const force = process.argv.includes('--force');
   const result = await generateDailyBlog({ force });
 

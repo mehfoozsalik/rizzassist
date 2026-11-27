@@ -19,6 +19,8 @@ import {
   todayKey,
   type GeneratedBlogIndex,
 } from './storage';
+import { blogger } from '@/lib/tools/blogger';
+import { contentFromBlocks, plainCopy, plainHeading } from './plainCopy';
 import type {
   BlogBlock,
   BlogImage,
@@ -49,28 +51,21 @@ function slugify(input: string): string {
     .slice(0, 80);
 }
 
-/** Strip em/en dashes and other AI-ish punctuation quirks. */
+/** Scrub machine-writing tells from post copy. */
 export function humanizeText(input: string): string {
-  return input
-    .replace(/\u2014/g, ', ')
-    .replace(/\u2013/g, ', ')
-    .replace(/--+/g, ', ')
-    .replace(/\s+,/g, ',')
-    .replace(/,\s*,+/g, ',')
-    .replace(/\s{2,}/g, ' ')
-    .trim();
+  return plainCopy(input);
 }
 
 function humanizePayload(payload: GeneratedPayload): GeneratedPayload {
   return {
     ...payload,
-    title: humanizeText(payload.title),
-    excerpt: humanizeText(payload.excerpt),
+    title: plainCopy(payload.title),
+    excerpt: plainCopy(payload.excerpt),
     sections: payload.sections.map((section) => ({
-      heading: humanizeText(section.heading),
-      paragraphs: (section.paragraphs || []).map(humanizeText),
-      bullets: section.bullets?.map(humanizeText),
-      quote: section.quote ? humanizeText(section.quote) : undefined,
+      heading: plainHeading(section.heading),
+      paragraphs: (section.paragraphs || []).map(plainCopy),
+      bullets: section.bullets?.map(plainCopy),
+      quote: section.quote ? plainCopy(section.quote) : undefined,
     })),
   };
 }
@@ -248,7 +243,9 @@ Voice:
 
 Hard bans:
 - Never use em dashes (—) or en dashes (–). Use commas, periods, colons, or parentheses instead.
-- Avoid AI tells: "delve", "landscape", "robust", "in today's world", "it's important to note", "unlock your potential", "game-changer", "navigate the complexities".
+- Never use curly quotes. Use straight ' and " only.
+- Avoid machine-writing tells: "delve", "landscape", "robust", "seamless", "crucial", "pivotal", "vibrant", "intricate", "testament", "underscore", "foster", "showcase", "Additionally", "Moreover", "Furthermore", "In conclusion", "in today's world", "it's important to note", "Whether you", "It's not just... it's...", "unlock your potential", "game-changer", "navigate the complexities", rule-of-three padding, generic pep-talk endings.
+- Headings in sentence case (not Title Case).
 - No medical claims. No vanity scoring. No plagiarism.
 - Always original wording.
 - Say "Rizz Assist" (two words), never "RizzAssist".
@@ -410,9 +407,20 @@ export async function generateDailyBlog(options?: {
   force?: boolean;
   date?: Date;
 }): Promise<GenerateBlogResult> {
+  const index = await readGeneratedIndex();
+
+  if (!blogger) {
+    return {
+      created: false,
+      skipped: true,
+      reason: 'Paused: set blogger to true in lib/tools/blogger.ts',
+      index,
+      post: index.posts[0],
+    };
+  }
+
   const date = options?.date ?? new Date();
   const dateKey = todayKey(date);
-  const index = await readGeneratedIndex();
 
   if (!options?.force && index.lastGeneratedDate === dateKey) {
     return {
@@ -440,9 +448,7 @@ export async function generateDailyBlog(options?: {
   const imageCredits = toImageCredits(images);
   const cover = images.find((i) => i.role === 'cover') || images[0];
 
-  const content = blocks
-    .filter((b): b is Extract<BlogBlock, { type: 'paragraph' }> => b.type === 'paragraph')
-    .map((b) => b.text);
+  const content = contentFromBlocks(blocks);
 
   const post: BlogPost = {
     slug: payload.slug || slugify(payload.title),
