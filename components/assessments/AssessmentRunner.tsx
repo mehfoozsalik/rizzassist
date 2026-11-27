@@ -67,7 +67,7 @@ export function AssessmentRunner({ definition, onComplete, onCancel }: Props) {
   }
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm dark:border-white/5 dark:bg-ink-900 sm:p-8">
+    <div className="glass-card rounded-2xl p-5 sm:p-8">
       <div className="sticky top-16 z-10 -mx-1 mb-6 rounded-xl bg-white/95 px-1 py-2 backdrop-blur dark:bg-ink-900/95">
         <div className="flex items-center justify-between text-xs font-medium text-ink-600 dark:text-white/50">
           <span>

@@ -197,7 +197,7 @@ export function FaceShapeDetector() {
       )}
 
       {(status === 'preview' || status === 'loading') && previewUrl && (
-        <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-white/5 dark:bg-ink-800">
+        <div className="overflow-hidden glass-card rounded-2xl">
           <div className="relative mx-auto aspect-[4/5] max-w-sm overflow-hidden bg-gray-100 dark:bg-ink-700">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={previewUrl} alt="Photo for face shape analysis" className="h-full w-full object-cover" />
@@ -331,7 +331,7 @@ function AdviceCard({
   items: string[];
 }) {
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm dark:border-white/5 dark:bg-ink-800">
+    <div className="glass-card rounded-2xl p-5">
       <h4 className="flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white">
         <span className="text-brand-600">{icon}</span>
         {title}

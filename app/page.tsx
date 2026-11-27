@@ -35,7 +35,7 @@ const ImageUploader = dynamic(
     ssr: false,
     loading: () => (
       <div
-        className="mx-auto flex min-h-[280px] w-full max-w-2xl animate-pulse flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-200 bg-white dark:border-white/10 dark:bg-ink-800"
+        className="glass-card mx-auto flex min-h-[280px] w-full max-w-2xl animate-pulse flex-col items-center justify-center rounded-2xl border-2 border-dashed border-black/10 dark:border-white/15"
         aria-hidden="true"
       >
         <div className="h-16 w-16 rounded-2xl bg-gray-100 dark:bg-ink-700" />
@@ -95,26 +95,26 @@ const PERSONALITY_TOOLS = [
   {
     href: "/personality-test",
     title: "Personality Test",
-    text: "Map traits and habits that help you enhance your personality over time.",
-    cta: "Start personality assessment",
+    text: "See the habits you lean on in conversations, and which ones actually help.",
+    cta: "Start personality check",
   },
   {
     href: "/confidence-test",
     title: "Confidence Test",
-    text: "Discover how confident you are in social situations.",
-    cta: "Analyze your confidence",
+    text: "A quick read on how steady you feel in rooms, dates, and group chats.",
+    cta: "Check your confidence",
   },
   {
     href: "/charisma-test",
     title: "Charisma Test",
-    text: "Analyze your social presence and communication style.",
+    text: "Warmth, timing, presence. Figure out which piece is already working.",
     cta: "Measure your charisma",
   },
   {
     href: "/rizz-test",
     title: "Rizz Test",
-    text: "Understand your conversation and dating strengths.",
-    cta: "Check your rizz score",
+    text: "Honest scorecard for flirting, banter, and reading the room.",
+    cta: "Check your rizz",
   },
 ];
 
@@ -122,22 +122,22 @@ const STEPS = [
   {
     icon: ImagePlus,
     title: "Upload your photo",
-    text: "Use a clear, well-lit selfie or full-body shot. The more Rizz Assist can see, the better the feedback.",
+    text: "Clear light, face visible, no heavy filters. A normal selfie is enough.",
   },
   {
     icon: BarChart3,
-    title: "AI reads your vibe",
-    text: "Our vision AI analyzes face shape, expression, grooming, outfit colors, and overall presentation.",
+    title: "We read the frame",
+    text: "Face shape, expression, grooming, colors, and how the outfit sits together.",
   },
   {
     icon: FileText,
     title: "Get your Rizz Report",
-    text: "Receive a style score, pickup line suggestions, outfit tips, shades recommendations, and confidence boosters.",
+    text: "Style notes, shade ideas, and openers that match the look you just uploaded.",
   },
   {
     icon: Rocket,
-    title: "Walk out with swagger",
-    text: "Apply the tips, use the lines, and let Rizz Assist turn heads for you.",
+    title: "Try one thing today",
+    text: "Pick a tip, use a line, tweak the fit. Small changes stick better than overhauls.",
   },
 ];
 
@@ -226,7 +226,7 @@ export default function HomePage() {
         {/* Explore personality tools */}
         <section
           aria-labelledby="explore-personality"
-          className="border-t border-gray-100 bg-white px-4 py-16 dark:border-white/5 dark:bg-ink-900"
+          className="border-t border-black/5 bg-gradient-to-b from-cream-50 to-white px-4 py-16 dark:border-white/5 dark:from-ink-900 dark:to-ink-800"
         >
           <div className="mx-auto max-w-5xl">
             <Reveal>
@@ -237,13 +237,13 @@ export default function HomePage() {
                 Explore Your Personality
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-500 dark:text-white/50">
-                Free assessments that help you enhance your personality. Cover confidence, charisma, and rizz, then open a combined improvement report.
+                Short quizzes on confidence, charisma, and rizz. Stack a few, then open one report that ties them together.
               </p>
             </Reveal>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {PERSONALITY_TOOLS.map((tool, i) => (
                 <Reveal key={tool.href} delay={i * 0.06}>
-                  <article className="flex h-full flex-col rounded-2xl border border-gray-100 bg-cream-50 p-5 transition hover:border-brand-200 hover:shadow-md dark:border-white/5 dark:bg-ink-800 dark:hover:border-brand-600/30">
+                  <article className="glass-card flex h-full flex-col rounded-2xl p-5">
                     <p className="text-sm font-semibold text-gray-900 dark:text-white">
                       {tool.title}
                     </p>
@@ -275,7 +275,7 @@ export default function HomePage() {
         <section
           id="upload"
           aria-labelledby="upload-heading"
-          className="scroll-mt-20 bg-cream-50 px-4 py-16 dark:bg-ink-800"
+          className="scroll-mt-24 bg-gradient-to-b from-white to-cream-50 px-4 py-16 dark:from-ink-800 dark:to-ink-900"
         >
           <div className="mx-auto max-w-2xl">
             <Reveal>
@@ -296,7 +296,7 @@ export default function HomePage() {
         {/* What Rizz Assist Does */}
         <section
           aria-labelledby="what-we-do"
-          className="border-t border-gray-100 bg-white px-4 py-16 dark:border-white/5 dark:bg-ink-900"
+          className="border-t border-black/5 bg-gradient-to-b from-cream-50 to-white px-4 py-16 dark:border-white/5 dark:from-ink-900 dark:to-ink-800"
         >
           <div className="mx-auto max-w-5xl">
             <Reveal>
@@ -304,25 +304,18 @@ export default function HomePage() {
                 id="what-we-do"
                 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white"
               >
-                Why Rizz Assist Hits Different
+                What you actually get
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-gray-500 dark:text-white/50">
-                Personalized pickup lines, style upgrades, shades matched to your
-                face, and confidence tips, plus free calculators for body type,
-                body shape, and eye shape.
+                Openers that fit your face and vibe, outfit notes, frame tips, and
+                free calculators for body type, body shape, and eye shape.
               </p>
             </Reveal>
 
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {CAPABILITIES.map((cap, i) => (
                 <Reveal key={cap.title} delay={(i % 4) * 0.07}>
-                  <article
-                    className={`group flex h-full flex-col rounded-2xl border border-gray-100 bg-cream-50 p-5 transition-all dark:border-white/5 dark:bg-ink-800 ${
-                      cap.href
-                        ? "hover:border-brand-200 hover:shadow-md dark:hover:border-brand-600/30 dark:hover:shadow-black/30"
-                        : ""
-                    }`}
-                  >
+                  <article className="glass-card group flex h-full flex-col rounded-2xl p-5">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-900 transition-transform duration-200 group-hover:scale-105 dark:bg-ink-700">
                       <cap.icon
                         className="h-5 w-5 text-brand-400"
@@ -360,7 +353,7 @@ export default function HomePage() {
         {/* How it works */}
         <section
           aria-labelledby="how-it-works"
-          className="border-t border-gray-100 bg-cream-50 px-4 py-16 dark:border-white/5 dark:bg-ink-800"
+          className="border-t border-black/5 bg-gradient-to-b from-white to-cream-50 px-4 py-16 dark:border-white/5 dark:from-ink-800 dark:to-ink-900"
         >
           <div className="mx-auto max-w-5xl">
             <Reveal>
@@ -368,11 +361,10 @@ export default function HomePage() {
                 id="how-it-works"
                 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white"
               >
-                How Rizz Assist Works
+                How it works
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-center text-sm text-gray-500 dark:text-white/50">
-                Four steps from photo to full-on swagger. It is the same path that
-                helps you unlock your inner rizz with AI in under a minute.
+                Four steps. Usually under a minute. No account, no lecture.
               </p>
             </Reveal>
 
@@ -380,7 +372,7 @@ export default function HomePage() {
               {STEPS.map((step, i) => (
                 <li key={step.title} className="h-full">
                   <Reveal delay={i * 0.08} className="h-full">
-                    <div className="relative h-full rounded-2xl border border-gray-100 bg-white p-6 transition-shadow hover:shadow-md dark:border-white/5 dark:bg-ink-900 dark:hover:shadow-black/30">
+                    <div className="glass-card relative h-full rounded-2xl p-6">
                       <span className="absolute -top-3.5 left-5 flex h-7 w-7 items-center justify-center rounded-full bg-ink-900 text-xs font-bold text-white shadow-sm dark:bg-ink-700">
                         {i + 1}
                       </span>
@@ -416,7 +408,7 @@ export default function HomePage() {
         {/* Share */}
         <section
           aria-labelledby="share-heading"
-          className="border-t border-gray-100 bg-white px-4 py-12 dark:border-white/5 dark:bg-ink-900"
+          className="border-t border-black/5 bg-gradient-to-b from-cream-50 to-white px-4 py-12 dark:border-white/5 dark:from-ink-900 dark:to-ink-800"
         >
           <div className="mx-auto max-w-3xl text-center">
             <Reveal>
@@ -427,8 +419,7 @@ export default function HomePage() {
                 Share Rizz Assist
               </h2>
               <p className="mx-auto mt-2 max-w-lg text-sm text-gray-500 dark:text-white/50">
-                Know someone who wants to level up their rizz? Pass the free AI
-                coach along.
+                Got a friend who keeps asking what to wear or what to say? Send them this.
               </p>
             </Reveal>
             <div className="mt-6">
@@ -461,7 +452,7 @@ export default function HomePage() {
         {/* FAQ */}
         <section
           aria-labelledby="faq-heading"
-          className="border-t border-gray-100 bg-cream-50 px-4 py-16 dark:border-white/5 dark:bg-ink-800"
+          className="border-t border-black/5 bg-gradient-to-b from-white to-cream-50 px-4 py-16 dark:border-white/5 dark:from-ink-800 dark:to-ink-900"
         >
           <div className="mx-auto max-w-3xl">
             <Reveal>
@@ -476,7 +467,7 @@ export default function HomePage() {
             <div className="mt-10 space-y-2">
               {FAQS.map((faq, i) => (
                 <Reveal key={faq.question} delay={i * 0.05}>
-                  <details className="group rounded-xl border border-gray-100 bg-white p-5 open:border-brand-200 transition-colors dark:border-white/5 dark:bg-ink-900 dark:open:border-brand-600/30 dark:open:bg-ink-700">
+                  <details className="glass-card group rounded-xl p-5 open:border-brand-200/50 dark:open:border-brand-600/30">
                     <summary className="cursor-pointer list-none text-sm font-semibold text-gray-900 marker:hidden dark:text-white">
                       {faq.question}
                     </summary>

@@ -316,7 +316,7 @@ export function EyeShapeDetector() {
       )}
 
       {status === 'preview' && previewUrl && (
-        <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-white/5 dark:bg-ink-800">
+        <div className="overflow-hidden glass-card rounded-2xl">
           <figure className="relative mx-auto w-full max-w-sm p-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-gray-100 dark:bg-ink-700">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -457,7 +457,7 @@ export function EyeShapeDetector() {
               )}
 
               {result.famousExamples.length > 0 && (
-                <div className="rounded-2xl border border-gray-100 bg-white p-5 text-center shadow-sm dark:border-white/5 dark:bg-ink-800">
+                <div className="rounded-2xl border border-gray-100 bg-white p-5 text-center shadow-sm">
                   <h4 className="flex items-center justify-center gap-1.5 text-sm font-semibold text-gray-900 dark:text-white">
                     <Users className="h-4 w-4 text-brand-600 dark:text-brand-400" aria-hidden="true" />
                     Famous people with this eye shape

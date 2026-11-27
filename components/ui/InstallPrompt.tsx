@@ -46,7 +46,7 @@ export function InstallPrompt() {
     <div
       role="dialog"
       aria-label="Install Rizz Assist"
-      className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-sm rounded-2xl border border-brand-300/60 bg-white p-4 shadow-lg dark:border-brand-600/30 dark:bg-ink-800 sm:bottom-6 sm:left-auto sm:right-6 sm:max-w-xs"
+      className="glass-strong fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-sm rounded-2xl border border-brand-300/60 p-4 sm:bottom-6 sm:left-auto sm:right-6 sm:max-w-xs"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1">

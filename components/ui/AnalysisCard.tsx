@@ -166,7 +166,7 @@ function TipCard({
   return (
     <motion.div
       variants={fadeUp}
-      className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm dark:border-white/5 dark:bg-ink-800"
+      className="glass-card rounded-2xl p-5"
     >
       <h3 className="flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white">
         <span className="text-brand-600 dark:text-brand-400" aria-hidden="true">{icon}</span>

@@ -56,7 +56,7 @@ export function FaceSymmetryTool() {
 
   return (
     <div className="mx-auto max-w-xl">
-      <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-white/5 dark:bg-ink-800">
+      <div className="glass-card rounded-2xl p-6">
         <p className="text-sm text-gray-500 dark:text-white/50">
           This is a <strong>balance check for grooming</strong>, not an attractiveness
           score. Use it to notice lighting, brow tidy-up, or hair parting that

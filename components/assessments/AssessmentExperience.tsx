@@ -104,7 +104,7 @@ export function AssessmentExperience({ definition }: { definition: AssessmentDef
         </ul>
       </section>
 
-      <section className="rounded-2xl border border-gray-100 bg-white p-6 dark:border-white/5 dark:bg-ink-900 sm:p-8">
+      <section className="glass-card rounded-2xl p-6 sm:p-8">
         <h2 className="text-xl font-bold text-ink-900 dark:text-white">What is this test?</h2>
         <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-white/60">
           {definition.whatItMeasures}
@@ -133,7 +133,7 @@ export function AssessmentExperience({ definition }: { definition: AssessmentDef
           ].map((s) => (
             <li
               key={s.step}
-              className="rounded-2xl border border-gray-100 bg-white p-5 text-center dark:border-white/5 dark:bg-ink-900"
+              className="glass-card rounded-2xl p-5 text-center"
             >
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white">
                 {s.step}
@@ -154,7 +154,7 @@ export function AssessmentExperience({ definition }: { definition: AssessmentDef
         </div>
       </section>
 
-      <section className="rounded-2xl border border-gray-100 bg-white p-6 dark:border-white/5 dark:bg-ink-900">
+      <section className="glass-card rounded-2xl p-6">
         <h2 className="text-lg font-bold text-ink-900 dark:text-white">Benefits</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-ink-600 dark:text-white/60">
           <li>Clear scores across meaningful social dimensions</li>
@@ -164,7 +164,7 @@ export function AssessmentExperience({ definition }: { definition: AssessmentDef
         </ul>
       </section>
 
-      <section className="rounded-2xl border border-gray-100 bg-white p-6 dark:border-white/5 dark:bg-ink-900">
+      <section className="glass-card rounded-2xl p-6">
         <h2 className="text-lg font-bold text-ink-900 dark:text-white">FAQ</h2>
         <dl className="mt-4 space-y-4">
           {definition.faqs.map((f) => (

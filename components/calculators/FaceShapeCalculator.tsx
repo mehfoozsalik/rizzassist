@@ -42,7 +42,7 @@ export function FaceShapeCalculator() {
     <div className="mx-auto max-w-xl">
       <form
         onSubmit={onSubmit}
-        className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-white/5 dark:bg-ink-800"
+        className="glass-card rounded-2xl p-6"
       >
         <p className="text-sm text-gray-500 dark:text-white/50">
           Measure with a soft tape or string. Use the same unit for all four, only ratios matter for personality grooming recommendations.
@@ -72,7 +72,7 @@ export function FaceShapeCalculator() {
       </form>
 
       {profile && shape && (
-        <div className="mt-6 rounded-2xl border border-brand-200 bg-white p-6 dark:border-brand-600/30 dark:bg-ink-800">
+        <div className="mt-6 rounded-2xl border border-brand-200 bg-white p-6">
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-600">Result</p>
           <h3 className="mt-1 text-2xl font-extrabold text-gray-900 dark:text-white">{shape}</h3>
           <p className="mt-2 text-sm text-gray-600 dark:text-white/60">{profile.tagline}</p>

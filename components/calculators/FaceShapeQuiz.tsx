@@ -63,7 +63,7 @@ export function FaceShapeQuiz() {
 
   if (profile && shape) {
     return (
-      <div className="rounded-2xl border border-brand-200 bg-white p-6 text-center dark:border-brand-600/30 dark:bg-ink-800">
+      <div className="rounded-2xl border border-brand-200 bg-white p-6 text-center">
         <p className="text-xs font-semibold uppercase tracking-widest text-brand-600">Quiz result</p>
         <h3 className="mt-2 text-3xl font-extrabold text-gray-900 dark:text-white">{shape}</h3>
         <p className="mt-2 text-sm text-gray-600 dark:text-white/60">{profile.tagline}</p>
@@ -83,7 +83,7 @@ export function FaceShapeQuiz() {
   }
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-white/5 dark:bg-ink-800">
+    <div className="glass-card rounded-2xl p-6">
       <p className="text-xs font-semibold uppercase tracking-widest text-gray-400">
         Question {step + 1} of {QUESTIONS.length}
       </p>

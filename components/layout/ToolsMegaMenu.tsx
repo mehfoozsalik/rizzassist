@@ -1,6 +1,14 @@
 'use client';
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import {
   Activity,
@@ -113,11 +121,30 @@ const TOOL_GROUPS: ToolGroup[] = [
   },
 ];
 
-export function ToolsMegaMenu() {
+type ToolsMegaMenuProps = {
+  onOpenChange?: (open: boolean) => void;
+};
+
+type PanelPos = { top: number; right: number; width: number };
+
+export function ToolsMegaMenu({ onOpenChange }: ToolsMegaMenuProps) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [pos, setPos] = useState<PanelPos>({ top: 0, right: 16, width: 640 });
   const panelId = useId();
   const rootRef = useRef<HTMLLIElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => setMounted(true), []);
+
+  const setOpenState = useCallback(
+    (next: boolean) => {
+      setOpen(next);
+      onOpenChange?.(next);
+    },
+    [onOpenChange]
+  );
 
   const clearClose = () => {
     if (closeTimer.current) {
@@ -128,18 +155,42 @@ export function ToolsMegaMenu() {
 
   const scheduleClose = () => {
     clearClose();
-    closeTimer.current = setTimeout(() => setOpen(false), 160);
+    closeTimer.current = setTimeout(() => setOpenState(false), 180);
   };
 
   const openMenu = () => {
     clearClose();
-    setOpen(true);
+    setOpenState(true);
   };
 
   const closeMenu = useCallback(() => {
     clearClose();
-    setOpen(false);
+    setOpenState(false);
+  }, [setOpenState]);
+
+  const updatePos = useCallback(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const width = Math.min(window.innerWidth - 24, 640);
+    const right = Math.max(12, window.innerWidth - rect.right);
+    setPos({
+      top: rect.bottom + 8,
+      right,
+      width,
+    });
   }, []);
+
+  useLayoutEffect(() => {
+    if (!open) return;
+    updatePos();
+    window.addEventListener('resize', updatePos);
+    window.addEventListener('scroll', updatePos, true);
+    return () => {
+      window.removeEventListener('resize', updatePos);
+      window.removeEventListener('scroll', updatePos, true);
+    };
+  }, [open, updatePos]);
 
   useEffect(() => {
     if (!open) return;
@@ -147,9 +198,10 @@ export function ToolsMegaMenu() {
       if (e.key === 'Escape') closeMenu();
     };
     const onPointer = (e: MouseEvent) => {
-      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
-        closeMenu();
-      }
+      const t = e.target as Node;
+      if (rootRef.current?.contains(t)) return;
+      if (panelRef.current?.contains(t)) return;
+      closeMenu();
     };
     document.addEventListener('keydown', onKey);
     document.addEventListener('mousedown', onPointer);
@@ -160,6 +212,78 @@ export function ToolsMegaMenu() {
   }, [open, closeMenu]);
 
   useEffect(() => () => clearClose(), []);
+
+  const panel =
+    mounted &&
+    open &&
+    createPortal(
+      <div
+        ref={panelRef}
+        id={panelId}
+        role="menu"
+        aria-label="Rizz Assist tools"
+        className="tools-frost"
+        onMouseEnter={openMenu}
+        onMouseLeave={scheduleClose}
+        style={{
+          position: 'fixed',
+          top: pos.top,
+          right: pos.right,
+          width: pos.width,
+          zIndex: 80,
+        }}
+      >
+          <div className="grid gap-0 sm:grid-cols-3">
+            {TOOL_GROUPS.map((group) => (
+              <div
+                key={group.title}
+                className="border-b border-black/5 p-3 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0 dark:border-white/10"
+              >
+                <p className="px-2 pb-2 text-[10px] font-semibold uppercase tracking-widest text-brand-600">
+                  {group.title}
+                </p>
+                <ul className="space-y-0.5">
+                  {group.items.map((item) => (
+                    <li key={item.href} role="none">
+                      <Link
+                        href={item.href}
+                        role="menuitem"
+                        onClick={closeMenu}
+                        className="group flex cursor-pointer items-start gap-2.5 rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/45 focus-visible:bg-white/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-500 dark:hover:bg-white/10 dark:focus-visible:bg-white/10"
+                      >
+                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/55 text-brand-600 transition-colors duration-200 group-hover:bg-brand-600 group-hover:text-white dark:bg-white/10">
+                          <item.icon className="h-4 w-4" aria-hidden />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block text-sm font-semibold text-ink-900 dark:text-white">
+                            {item.label}
+                          </span>
+                          <span className="mt-0.5 block text-xs leading-snug text-ink-600 dark:text-white/55">
+                            {item.blurb}
+                          </span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-2 border-t border-black/5 bg-white/15 px-4 py-3 dark:border-white/10 dark:bg-white/5">
+            <p className="text-xs text-ink-600 dark:text-white/50">
+              20+ assessments &amp; appearance tools
+            </p>
+            <Link
+              href="/tools"
+              onClick={closeMenu}
+              className="cursor-pointer rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors duration-200 hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
+            >
+              See full tool list →
+            </Link>
+          </div>
+      </div>,
+      document.body
+    );
 
   return (
     <li
@@ -173,10 +297,10 @@ export function ToolsMegaMenu() {
         aria-expanded={open}
         aria-haspopup="true"
         aria-controls={panelId}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => (open ? closeMenu() : openMenu())}
         onFocus={openMenu}
-        className={`inline-flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-ink-600 transition-colors duration-200 hover:bg-ink-100 hover:text-ink-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white ${
-          open ? 'bg-ink-100 text-ink-900 dark:bg-white/5 dark:text-white' : ''
+        className={`inline-flex cursor-pointer items-center gap-1 rounded-lg px-3 py-1.5 text-ink-600 transition-colors duration-200 hover:bg-white/50 hover:text-ink-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white ${
+          open ? 'bg-white/60 text-ink-900 dark:bg-white/10 dark:text-white' : ''
         }`}
       >
         Tools
@@ -187,69 +311,7 @@ export function ToolsMegaMenu() {
           aria-hidden
         />
       </button>
-
-      <div
-        id={panelId}
-        role="menu"
-        aria-label="RizzAssist tools"
-        aria-hidden={!open}
-        className={`absolute left-1/2 top-full z-50 w-[min(92vw,40rem)] -translate-x-1/2 pt-2 transition-all duration-200 motion-reduce:transition-none ${
-          open
-            ? 'pointer-events-auto translate-y-0 opacity-100'
-            : 'pointer-events-none -translate-y-1 opacity-0'
-        }`}
-      >
-        <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg shadow-ink-900/10 dark:border-white/10 dark:bg-ink-900 dark:shadow-black/40">
-          <div className="grid gap-0 sm:grid-cols-3">
-            {TOOL_GROUPS.map((group) => (
-              <div
-                key={group.title}
-                className="border-b border-gray-100 p-3 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0 dark:border-white/5"
-              >
-                <p className="px-2 pb-2 text-[10px] font-semibold uppercase tracking-widest text-brand-600">
-                  {group.title}
-                </p>
-                <ul className="space-y-0.5">
-                  {group.items.map((item) => (
-                    <li key={item.href} role="none">
-                      <Link
-                        href={item.href}
-                        role="menuitem"
-                        onClick={closeMenu}
-                        className="group flex cursor-pointer items-start gap-2.5 rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-brand-50 focus-visible:bg-brand-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-500 dark:hover:bg-brand-500/10 dark:focus-visible:bg-brand-500/10"
-                      >
-                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-ink-100 text-brand-600 transition-colors duration-200 group-hover:bg-brand-600 group-hover:text-white dark:bg-white/10">
-                          <item.icon className="h-4 w-4" aria-hidden />
-                        </span>
-                        <span className="min-w-0">
-                          <span className="block text-sm font-semibold text-ink-900 dark:text-white">
-                            {item.label}
-                          </span>
-                          <span className="mt-0.5 block text-xs leading-snug text-ink-500 dark:text-white/45">
-                            {item.blurb}
-                          </span>
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-wrap items-center justify-between gap-2 border-t border-gray-100 bg-cream-50 px-4 py-3 dark:border-white/5 dark:bg-ink-800">
-            <p className="text-xs text-ink-500 dark:text-white/45">
-              20+ assessments &amp; appearance tools
-            </p>
-            <Link
-              href="/tools"
-              onClick={closeMenu}
-              className="cursor-pointer rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors duration-200 hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
-            >
-              See full tool list →
-            </Link>
-          </div>
-        </div>
-      </div>
+      {panel}
     </li>
   );
 }

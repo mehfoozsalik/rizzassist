@@ -159,7 +159,7 @@ export function StyleTryOn({ mode }: { mode: Mode }) {
   return (
     <div className="mx-auto max-w-3xl">
       {!previewUrl && (
-        <div className="rounded-2xl border-2 border-dashed border-gray-200 bg-white p-10 text-center dark:border-white/10 dark:bg-ink-800">
+        <div className="glass-card rounded-2xl border-2 border-dashed border-black/10 p-10 text-center dark:border-white/15">
           <ImagePlus className="mx-auto h-8 w-8 text-brand-400" />
           <p className="mt-4 font-semibold text-gray-900 dark:text-white">
             Upload a selfie to preview {mode === 'hairstyle' ? 'hairstyles' : 'glasses'}

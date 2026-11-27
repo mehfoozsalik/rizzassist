@@ -16,7 +16,7 @@ export function RelatedTools({
 }) {
   if (!tools.length) return null;
   return (
-    <section className="rounded-2xl border border-gray-100 bg-white p-6 dark:border-white/5 dark:bg-ink-900">
+    <section className="glass-card rounded-2xl p-6">
       <h2 className="text-lg font-bold text-ink-900 dark:text-white">{title}</h2>
       <p className="mt-1 text-sm text-ink-600 dark:text-white/50">{subtitle}</p>
       <div className="mt-5 grid gap-3 sm:grid-cols-2">

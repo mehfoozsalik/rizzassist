@@ -24,7 +24,7 @@ export function AssessmentResults({ result, related, onRetake }: Props) {
 
   return (
     <div className="space-y-6">
-      <section className="rounded-2xl border border-gray-100 bg-white p-6 dark:border-white/5 dark:bg-ink-900 sm:p-8">
+      <section className="glass-card rounded-2xl p-6 sm:p-8">
         <p className="text-xs font-semibold uppercase tracking-widest text-brand-600">
           Your RizzAssist profile
         </p>
@@ -51,7 +51,7 @@ export function AssessmentResults({ result, related, onRetake }: Props) {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-gray-100 bg-white p-6 dark:border-white/5 dark:bg-ink-900">
+      <section className="glass-card rounded-2xl p-6">
         <h3 className="text-lg font-bold text-ink-900 dark:text-white">Dimension breakdown</h3>
         <ul className="mt-4 space-y-3">
           {result.dimensions.map((d) => (
@@ -105,7 +105,7 @@ export function AssessmentResults({ result, related, onRetake }: Props) {
         </article>
       </div>
 
-      <section className="rounded-2xl border border-gray-100 bg-white p-6 dark:border-white/5 dark:bg-ink-900">
+      <section className="glass-card rounded-2xl p-6">
         <h3 className="text-lg font-bold text-ink-900 dark:text-white">How you can improve</h3>
         <p className="mt-1 text-sm text-ink-600 dark:text-white/50">
           Recommendations based on your weakest and strongest dimensions, not generic tips.
@@ -117,7 +117,7 @@ export function AssessmentResults({ result, related, onRetake }: Props) {
         </ol>
       </section>
 
-      <section className="rounded-2xl border border-gray-100 bg-white p-6 dark:border-white/5 dark:bg-ink-900">
+      <section className="glass-card rounded-2xl p-6">
         <h3 className="text-lg font-bold text-ink-900 dark:text-white">
           Personalized action highlights
         </h3>

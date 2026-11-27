@@ -213,7 +213,7 @@ export function BodyShapeCalculator() {
       </div>
 
       {mode === 'manual' && (
-        <form onSubmit={onManualSubmit} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 dark:border-white/5 dark:bg-ink-800">
+        <form onSubmit={onManualSubmit} className="glass-card rounded-2xl p-6 sm:p-8">
           <div className="flex items-center justify-between gap-4">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Your measurements</h2>
             <div className="inline-flex rounded-lg border border-gray-200 p-0.5 text-sm dark:border-white/10">
@@ -273,7 +273,7 @@ export function BodyShapeCalculator() {
       )}
 
       {mode === 'photo' && (
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 dark:border-white/5 dark:bg-ink-800">
+        <div className="glass-card rounded-2xl p-6 sm:p-8">
           <div className="flex items-start gap-2 rounded-xl border border-blue-100 bg-blue-50 p-3 text-xs text-blue-700 dark:border-blue-900/40 dark:bg-blue-900/20 dark:text-blue-300">
             <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
             Waist is estimated from pose. For best accuracy, enter measurements manually.
@@ -365,7 +365,7 @@ export function BodyShapeCalculator() {
       </div>
 
       {shape && profile && (
-        <div role="alert" aria-live="polite" className="mt-8 rounded-2xl border border-brand-300 bg-white p-6 shadow-sm sm:p-8 dark:border-brand-600/30 dark:bg-ink-800">
+        <div role="alert" aria-live="polite" className="mt-8 rounded-2xl border border-brand-300 bg-white p-6 shadow-sm sm:p-8">
           {poseEstimated && (
             <div className="mb-5 flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-xs text-amber-700">
               <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />

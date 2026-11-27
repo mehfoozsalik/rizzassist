@@ -13,7 +13,7 @@ export function LoadingSteps({
     <div
       role="status"
       aria-live="polite"
-      className="mx-auto w-full max-w-sm rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-white/5 dark:bg-ink-800"
+      className="glass-card mx-auto w-full max-w-sm rounded-2xl p-6"
     >
       <ul className="space-y-3">
         {steps.map((step, i) => {

@@ -3,8 +3,8 @@ import Image from "next/image";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-gray-200 bg-white dark:border-white/5 dark:bg-ink-900">
-      <div className="mx-auto max-w-6xl px-4 py-12">
+    <footer className="border-t border-black/5 bg-gradient-to-b from-cream-50 to-white dark:border-white/5 dark:from-ink-900 dark:to-ink-800">
+      <div className="glass mx-auto mt-0 max-w-[1280px] rounded-t-3xl px-4 py-12 sm:px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link
@@ -24,9 +24,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-600 dark:text-white/50">
-              AI self-improvement platform: personality, confidence, social
-              skills, dating tools, and appearance analyzers. Free to start. No
-              photo vault.
+              Personality checks, style notes, dating tools, and face-aware tips.
+              Free to start. Photos never sit in a vault.
             </p>
           </div>
 

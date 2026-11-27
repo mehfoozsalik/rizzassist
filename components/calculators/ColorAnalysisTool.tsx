@@ -38,7 +38,7 @@ export function ColorAnalysisTool() {
   const result = season ? SEASONS[season] : null;
 
   return (
-    <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-6 dark:border-white/5 dark:bg-ink-800">
+    <div className="mx-auto max-w-xl glass-card rounded-2xl p-6">
       <p className="text-sm text-gray-500 dark:text-white/50">
         Soft color-season check for clothing presence, helps you pick colors that
         support personality grooming in outfits and photos.

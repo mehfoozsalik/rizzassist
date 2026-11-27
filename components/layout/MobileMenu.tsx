@@ -37,7 +37,7 @@ export function MobileMenu({ links }: { links: NavLink[] }) {
       {open && (
         <div
           id="mobile-menu"
-          className="absolute left-0 right-0 top-full max-h-[min(80vh,32rem)] overflow-y-auto border-b border-gray-200 bg-white px-4 py-3 shadow-lg dark:border-white/5 dark:bg-ink-900 dark:shadow-black/30"
+          className="glass-menu absolute left-0 right-0 top-[calc(100%+0.5rem)] max-h-[min(80vh,32rem)] overflow-y-auto rounded-2xl px-4 py-3"
         >
           <ul className="flex flex-col gap-1 text-sm font-medium">
             {links.map((link) =>

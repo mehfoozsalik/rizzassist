@@ -44,7 +44,7 @@ function ToolCard({ tool }: { tool: CatalogTool }) {
   return (
     <Link
       href={tool.href}
-      className="group flex flex-col rounded-2xl border border-gray-100 bg-white p-5 transition hover:border-brand-200 hover:shadow-md dark:border-white/5 dark:bg-ink-900 dark:hover:border-brand-500/30"
+      className="glass-card group flex flex-col rounded-2xl p-5"
     >
       <div className="flex items-start justify-between gap-2">
         <Icon className="h-5 w-5 text-brand-500" aria-hidden />

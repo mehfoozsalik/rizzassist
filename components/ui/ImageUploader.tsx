@@ -285,10 +285,10 @@ export function ImageUploader() {
           onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
           onDragLeave={() => setDragging(false)}
           onDrop={onDrop}
-          className={`relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-12 text-center transition-all ${
+          className={`glass-card relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-12 text-center transition-all ${
             dragging
               ? 'border-brand-500 bg-brand-50/60 dark:bg-brand-600/10'
-              : 'border-gray-200 bg-white hover:border-brand-400 hover:bg-brand-50/30 dark:border-white/10 dark:bg-ink-800 dark:hover:border-brand-500 dark:hover:bg-ink-700/50'
+              : 'border-black/10 hover:border-brand-400 dark:border-white/15 dark:hover:border-brand-500'
           }`}
         >
           <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-ink-900 shadow-lg dark:bg-ink-700">
@@ -335,7 +335,7 @@ export function ImageUploader() {
       )}
 
       {(status === 'preview' || status === 'loading') && previewUrl && (
-        <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-white/5 dark:bg-ink-800">
+        <div className="glass-card overflow-hidden rounded-2xl">
           <figure className="relative mx-auto w-full max-w-sm p-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-gray-100 dark:bg-ink-700">
               <Image

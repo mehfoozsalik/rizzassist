@@ -1,108 +1,90 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Sparkles, ArrowDown, ShieldCheck, Zap } from "lucide-react";
+import { ArrowDown, ShieldCheck, Zap } from "lucide-react";
 
-/** CSS-only hero motion, keeps framer-motion off the LCP path. */
+/** CSS-only hero, keeps framer-motion off the LCP path. */
 export function AnimatedHero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative overflow-hidden bg-ink-50 dark:bg-ink-900"
+      className="relative -mt-14 overflow-x-clip overflow-y-hidden bg-ink-900 pt-14 sm:-mt-16 sm:pt-16"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 overflow-hidden"
-      >
-        <div className="absolute -left-32 -top-16 h-96 w-96 rounded-full bg-brand-600/10 blur-3xl animate-blob dark:bg-brand-600/10" />
-        <div className="absolute right-0 top-24 h-80 w-80 rounded-full bg-brand-400/10 blur-3xl animate-blob [animation-delay:4s]" />
-        <div className="absolute bottom-0 left-1/2 h-72 w-72 rounded-full bg-ink-200/60 blur-3xl animate-blob [animation-delay:8s] dark:bg-ink-700/60" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute left-0 top-1/4 h-64 w-64 rounded-full bg-brand-600/20 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-56 w-56 rounded-full bg-white/5 blur-3xl" />
       </div>
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 hidden dark:block"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
+      <div className="relative mx-auto grid w-full max-w-[1280px] items-end gap-4 px-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] lg:gap-8">
+        {/* Image left — flush to bottom, height capped to stop overflow */}
+        <figure className="relative order-1 mx-auto mb-0 w-full min-w-0 max-w-[280px] self-end sm:max-w-[320px] lg:max-w-none lg:justify-self-start">
+          <Image
+            src="/hero-silhouette.png"
+            alt="Stylized silhouette with red rim light, Rizz Assist hero"
+            width={340}
+            height={640}
+            sizes="(max-width: 1024px) 70vw, 440px"
+            priority
+            fetchPriority="high"
+            quality={85}
+            className="mx-auto block h-auto max-h-[min(87vh,640px)] w-full object-contain object-bottom"
+          />
+        </figure>
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-10 sm:py-18 lg:grid-cols-2">
-        <div className="animate-fade-in-up text-center motion-reduce:animate-none lg:text-left">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-600/30 bg-brand-600/10 px-3 py-1 text-xs font-medium text-brand-700 backdrop-blur dark:text-brand-400">
-            <Sparkles className="h-3 w-3" aria-hidden="true" />
-            AI Rizz Coach &middot; Free. No login.
-          </span>
+        {/* Text + buttons right */}
+        <div className="order-2 min-w-0 self-center py-6 text-center sm:py-8 lg:py-10 lg:text-left">
+          <p className="text-sm font-semibold tracking-[0.18em] text-brand-400 uppercase">
+            Rizz Assist
+          </p>
 
           <h1
             id="hero-heading"
-            className="mt-6 text-balance text-4xl font-extrabold tracking-tight text-ink-900 sm:text-5xl lg:text-6xl dark:text-white"
+            className="mt-3 text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]"
           >
-            Boost Your <span className="gold-text">Rizz</span> with AI
+            Your look is talking.{" "}
+            <span className="gold-text">
+              Make sure it says the right thing.
+            </span>
           </h1>
 
-          <p className="mx-auto mt-5 max-w-xl text-balance text-base leading-relaxed text-ink-700 sm:text-lg lg:mx-0 dark:text-white/65">
-            Upload a photo, get personalized pickup lines, style upgrades, shade
-            recommendations, and confidence tips tailored to your look.
+          <p className="mx-auto mt-4 max-w-xl text-pretty text-base leading-relaxed text-white/70 sm:text-lg lg:mx-0">
+            Drop a clear selfie. You get straight talk on fit, grooming, and
+            vibe, plus openers that sound like you, not a script someone stole
+            from a group chat.
           </p>
 
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
+          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
             <a
               href="#upload"
-              className="group inline-flex items-center gap-2 rounded-xl bg-brand-600 px-7 py-3.5 font-semibold text-white shadow-lg shadow-brand-600/25 transition-all hover:bg-brand-500 hover:shadow-brand-500/30"
+              className="group inline-flex items-center gap-2 rounded-xl bg-brand-600 px-7 py-3.5 font-semibold text-white shadow-lg shadow-brand-600/30 transition-all duration-200 hover:bg-brand-500 hover:shadow-brand-500/40"
             >
-              Get Your Rizz Report
-              <ArrowDown className="h-4 w-4" aria-hidden="true" />
+              Upload your photo
+              <ArrowDown
+                className="h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5"
+                aria-hidden="true"
+              />
             </a>
             <Link
               href="/personality-test"
-              className="inline-flex items-center gap-2 rounded-xl border border-ink-200 bg-white/80 px-6 py-3.5 font-semibold text-ink-800 transition hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-white"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 font-semibold text-white transition duration-200 hover:bg-white/10"
             >
-              Start Personality Test
+              Try a personality check
             </Link>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-            <span className="flex items-center gap-1.5 text-xs text-ink-500 dark:text-white/45">
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+            <span className="flex items-center gap-1.5 text-xs text-white/55">
               <ShieldCheck
-                className="h-3.5 w-3.5 text-brand-500"
+                className="h-3.5 w-3.5 text-brand-400"
                 aria-hidden="true"
               />
-              100% private, photo never stored
+              Photo stays in memory, never stored
             </span>
-            <span className="flex items-center gap-1.5 text-xs text-ink-500 dark:text-white/45">
-              <Zap className="h-3.5 w-3.5 text-brand-500" aria-hidden="true" />
-              Instant results, no waitlist
+            <span className="flex items-center gap-1.5 text-xs text-white/55">
+              <Zap className="h-3.5 w-3.5 text-brand-400" aria-hidden="true" />
+              Results in seconds, no waitlist
             </span>
           </div>
         </div>
-
-        <figure className="animate-fade-in-up relative mx-auto w-full max-w-xl motion-reduce:animate-none [animation-delay:120ms] lg:max-w-none lg:w-[112%] lg:justify-self-end">
-          <div className="animate-float motion-reduce:animate-none">
-            <div className="absolute -inset-5 rounded-[2.5rem] bg-gradient-to-tr from-brand-600/20 to-brand-400/10 blur-2xl" />
-            <Image
-              src="/hero.jpg"
-              alt="Rizz Assist AI rizz coach showing pickup lines, style tips, and look analysis from a photo"
-              width={1152}
-              height={864}
-              sizes="(max-width: 1024px) 92vw, 620px"
-              priority
-              fetchPriority="high"
-              quality={75}
-              className="relative aspect-[4/3] w-full rounded-[1.75rem] border border-ink-200/60 object-cover shadow-xl shadow-ink-300/20 dark:border-white/10 dark:shadow-2xl dark:shadow-black/50"
-            />
-          </div>
-        </figure>
       </div>
     </section>
   );

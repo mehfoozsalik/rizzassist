@@ -81,7 +81,7 @@ export function BodyTypeCalculator() {
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <form onSubmit={onSubmit} className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 dark:border-white/5 dark:bg-ink-800">
+      <form onSubmit={onSubmit} className="glass-card rounded-2xl p-6 sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Your measurements</h2>
           <div className="inline-flex rounded-lg border border-gray-200 p-0.5 text-sm dark:border-white/10">
@@ -184,7 +184,7 @@ export function BodyTypeCalculator() {
 
       {result && (
         <div role="alert" aria-live="polite" className="mt-8 space-y-6">
-          <div className="flex flex-col items-center gap-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:flex-row sm:justify-center dark:border-white/5 dark:bg-ink-800">
+          <div className="flex flex-col items-center gap-6 glass-card rounded-2xl p-6 sm:flex-row sm:justify-center">
             <BMIGauge bmi={result.bmi} />
             <div className="text-center sm:text-left">
               <p className="text-sm text-gray-500 dark:text-white/50">
@@ -208,7 +208,7 @@ export function BodyTypeCalculator() {
                   className={`rounded-2xl border p-5 transition-all ${
                     isMatch
                       ? 'border-brand-400 bg-ink-900 text-white shadow-xl ring-2 ring-brand-400'
-                      : 'border-gray-200 bg-white text-gray-900 dark:border-white/5 dark:bg-ink-800 dark:text-white'
+                      : 'border-gray-200 bg-white text-gray-900 dark:text-white'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -229,7 +229,7 @@ export function BodyTypeCalculator() {
           </div>
 
           {fallbackProfile && (
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 dark:border-white/5 dark:bg-ink-800">
+            <div className="glass-card rounded-2xl p-6 sm:p-8">
               <div className="flex flex-wrap gap-2" role="tablist" aria-label="Body type advice categories">
                 {TABS.map((tab) => (
                   <button

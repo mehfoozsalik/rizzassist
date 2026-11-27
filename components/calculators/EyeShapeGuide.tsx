@@ -42,7 +42,7 @@ export function EyeShapeGuide() {
         return (
           <div
             key={entry.name}
-            className="overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-white/5 dark:bg-ink-800"
+            className="overflow-hidden glass-card rounded-2xl"
           >
             <button
               type="button"

@@ -7,11 +7,19 @@
   --foreground: 15 20 25;
   --brand: 225 29 72;
   --ink: 15 20 25;
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(15, 20, 25, 0.08);
+  --glass-shadow: 0 8px 32px rgba(15, 20, 25, 0.08);
 }
 
 .dark {
   --background: 15 20 25;
   --foreground: 255 245 243;
+  --glass-bg: rgba(26, 34, 45, 0.55);
+  --glass-bg-strong: rgba(26, 34, 45, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -35,6 +43,113 @@ body {
   border-radius: 4px;
 }
 
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+  }
+
+  .glass-strong {
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+  }
+
+  .glass-chip {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    transition:
+      border-color 200ms ease,
+      box-shadow 200ms ease,
+      background 200ms ease,
+      transform 200ms ease;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(225, 29, 72, 0.28);
+    box-shadow: 0 12px 36px rgba(225, 29, 72, 0.12);
+  }
+
+  .dark .glass-card:hover {
+    border-color: rgba(244, 63, 94, 0.35);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  }
+
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(15, 20, 25, 0.08);
+    box-shadow: 0 10px 40px rgba(15, 20, 25, 0.1);
+    backdrop-filter: blur(18px) saturate(170%);
+    -webkit-backdrop-filter: blur(18px) saturate(170%);
+    transition:
+      background 220ms ease,
+      backdrop-filter 220ms ease,
+      box-shadow 220ms ease,
+      border-color 220ms ease;
+  }
+
+  .dark .glass-nav {
+    background: rgba(15, 20, 25, 0.62);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-nav-open {
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(225, 29, 72, 0.2);
+    box-shadow: 0 16px 48px rgba(15, 20, 25, 0.14);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+  }
+
+  .dark .glass-nav-open {
+    background: rgba(26, 34, 45, 0.88);
+    border-color: rgba(244, 63, 94, 0.28);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+  }
+
+  .glass-menu {
+    background: rgba(255, 255, 255, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow:
+      0 20px 60px rgba(15, 20, 25, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+  }
+
+  .dark .glass-menu {
+    background: rgba(15, 20, 25, 0.48);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -49,5 +164,65 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+}
+
+/*
+  Split frost: blur layer stays transparent; tint sits above it.
+  Combining both on one element fails in some Chromium/Electron builds.
+*/
+.tools-frost {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 1rem;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  background: transparent;
+  /* Do NOT set overflow:hidden — it kills backdrop-filter sampling in Chromium */
+}
+
+.tools-frost::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.01);
+  -webkit-backdrop-filter: blur(48px) saturate(160%);
+  backdrop-filter: blur(48px) saturate(160%);
+  pointer-events: none;
+}
+
+.tools-frost::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+html.dark .tools-frost {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+html.dark .tools-frost::after {
+  background: rgba(12, 16, 22, 0.38);
+}
+
+.tools-frost > * {
+  position: relative;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-card,
+  .glass-nav {
+    transition: none;
   }
 }
